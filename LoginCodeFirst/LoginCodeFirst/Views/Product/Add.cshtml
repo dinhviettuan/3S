@@ -1,0 +1,45 @@
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@model LoginCodeFirst.ViewModels.Product.AddViewModel
+@inject IViewLocalizer Localizer
+@{
+    ViewBag.Title = "title";
+    Layout = "_Layout";
+}
+ <link rel="stylesheet" href="~/css/addstyle.css"/>
+<div class="container">
+<div class="row">
+    <div class="col-md-4">
+        <div class="form_main">
+            <h4 class="heading"><strong> @Localizer["Add Product"]</strong> <span></span></h4>				
+            <div class="form">
+                <form asp-controller="Product" asp-action="Add" method="post">
+                    <div>
+                        <label class="col-md-4 control-label"> @Localizer["BRAND"]*</label>
+                        <select asp-for="BrandId" type="text" asp-items="@ViewBag.BrandId" class="txt"></select>
+                        <span style="color: red" asp-validation-for="BrandId"></span>
+                    </div>
+                    <div>
+                        <label class="col-md-4 control-label"> @Localizer["CATEGORY"]*</label>
+                        <select asp-for="CategoryId" type="text" asp-items="@ViewBag.CategoryId" class="txt"></select>
+                        <span style="color: red" asp-validation-for="CategoryId"></span>
+                    </div>
+                    <div>
+                        <label class="col-md-4 control-label"> @Localizer["PRODUCT NAME"]*</label>
+                        <input asp-for="ProductName" type="text" placeholder="Please input your ProductName"class="txt">
+                        <span style="color: red" asp-validation-for="ProductName"></span>
+                    </div>
+                    <div>
+                        <label class="col-md-4 control-label"> @Localizer["MODEL YEAR"]</label>
+                        <input asp-for="ModelYear" type="text" placeholder="Please input your ModelYear"class="txt">
+                    </div>
+                    <div>
+                        <label class="col-md-4 control-label"> @Localizer["LIST PRICE"]</label>
+                        <input asp-for="ListPrice" type="text" placeholder="Please input your ListPrice"class="txt">
+                    </div>
+                    <input type="submit" value="submit" name="submit" class="txt2">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</div>

@@ -1,0 +1,82 @@
+﻿@using LoginCodeFirst.Resources
+@model LoginCodeFirst.ViewModels.User.LoginViewModel 
+@inject ResourcesServices Localizer
+
+@{
+    ViewBag.Title = "Login";
+    Layout = "_LayoutLogin";
+}
+
+@* <form asp-action="Login" asp-controller="User" method="post"> *@
+@*     *@
+@*     <p class="clearfix"> *@
+@*         <label asp-for="Email">@Localizer.GetLocalizedHtmlString("Username") </label> *@
+@*         <input type="text"  asp-for="Email" placeholder=@Localizer.GetLocalizedHtmlString("Username")/> *@
+@*         <span asp-validation-for="Email"></span> *@
+@*     </p> *@
+@*     <p class="clearfix"> *@
+@*         <label asp-for="Password">@Localizer.GetLocalizedHtmlString("Password")</label> *@
+@*         <input type="password"  asp-for="Password" placeholder=@Localizer.GetLocalizedHtmlString("Password")/> *@
+@*         <span asp-validation-for="Password"></span> *@
+@*     </p> *@
+@*     <p class="clearfix"> *@
+@*         <input type="checkbox" name="remember" id="remember"> *@
+@*         <label for="remember">@Localizer.GetLocalizedHtmlString("Remember me")</label> *@
+@*     </p> *@
+@*     <p class="clearfix"> *@
+@*         <input type="submit" name="submit" value=@Localizer.GetLocalizedHtmlString("Sign in")> *@
+@*     </p> *@
+@* </form> *@
+
+<div class="login-box">
+    <div class="logo">
+        <a href="javascript:void(0);"><b>@Localizer.GetLocalizedHtmlString("Login")</b></a>
+        <small>@ViewBag.Title - Tuan Project</small>
+    </div>
+    <div class="card">
+        <div class="body">
+            <form asp-action="Login" asp-controller="User" method="post">
+                
+                @if (ViewBag.Err != null)
+                {
+                    <div class="text-danger" style="text-align: center">@ViewBag.Err</div>
+                }
+                <div class="input-group">
+                    <span class="input-group-addon">
+                        <i class="material-icons">person</i>
+                    </span>
+                    <div class="form-line">
+                        <input type="text" class="form-control" asp-for="Email" placeholder=@Localizer.GetLocalizedHtmlString("Email")/>
+                    </div>
+                    <span class="text-danger" asp-validation-for="Email"></span>
+                </div>
+                <div class="input-group">
+                    <span class="input-group-addon">
+                        <i class="material-icons">lock</i>
+                    </span>
+                    <div class="form-line">
+                        <input type="password" class="form-control" asp-for="Password" placeholder=@Localizer.GetLocalizedHtmlString("Password")/>
+                    </div>
+                    <span class="text-danger" asp-validation-for="Password"></span>
+                </div>
+                <div class="row">
+                    <div class="col-xs-8 p-t-5">
+                        <input type="checkbox" name="rememberme" id="rememberme" class="filled-in chk-col-pink">
+                        <label for="rememberme">@Localizer.GetLocalizedHtmlString("Remember me")</label>
+                    </div>
+                    <div class="col-xs-4">
+                        <button class="btn btn-block bg-pink waves-effect" type="submit">@Localizer.GetLocalizedHtmlString("Sign in")</button>
+                    </div>
+                </div>
+                <div class="row m-t-15 m-b--20">
+                    <div class="col-xs-6">
+                        <a href="#">Register Now!</a>
+                    </div>
+                    <div class="col-xs-6 align-right">
+                        <a href="#">Forgot Password?</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

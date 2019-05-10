@@ -1,0 +1,31 @@
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@model LoginCodeFirst.ViewModels.Brand.IndexViewModel
+@inject IViewLocalizer Localizer
+@{
+    ViewBag.Title = "title";
+    Layout = "_Layout";
+}
+<link rel="stylesheet" href="~/css/box.css"/>
+<div class="container">
+    @if(ViewBag.Err != null)
+    {
+        <p class="alert-danger">@ViewBag.Err</p>
+    }
+    <div class="row">
+        <div class="col-md-4">
+            <div class="form_main">
+                <h4 class="heading"><strong> @Localizer["Add Brand"]</strong> <span></span></h4>
+                <div class="form">
+                    <form asp-controller="Brand" asp-action="Add" method="post">
+                        <div>
+                            <label class="col-md-4 control-label"> @Localizer["CATEGORYNAME*"]</label><br/>
+                            <input asp-for="BrandName" type="text" placeholder="Please input your BrandName"class="txt">
+                            <span style="color: red" asp-validation-for="BrandName"></span>
+                        </div>
+                        <input type="submit" value="submit" name="submit" class="txt2">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
