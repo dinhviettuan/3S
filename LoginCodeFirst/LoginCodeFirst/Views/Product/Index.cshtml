@@ -46,6 +46,9 @@
                                         @Localizer.GetLocalizedHtmlString("ListPrice")
                                     </th>
                                     <th>
+                                        @Localizer.GetLocalizedHtmlString("Image")
+                                    </th>
+                                    <th>
                                         @Localizer.GetLocalizedHtmlString("Actions")
                                     </th>
                                 </tr>
@@ -71,6 +74,9 @@
                                      </td>
                                      <td>
                                          @Html.DisplayFor(modelItem => item.ListPrice)
+                                     </td>
+                                     <td>
+                                         <img src="~/admin/images/@Html.DisplayFor(modelItem => item.Image)"/>
                                      </td>
                                      <td>
                                          <a asp-controller="Product" asp-action="Edit" asp-route-id="@item.ProductId">@Localizer.GetLocalizedHtmlString("Edit")</a>

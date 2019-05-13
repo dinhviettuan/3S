@@ -86,6 +86,8 @@ namespace LoginCodeFirst.Models
                 .Property(t => t.ModelYear);
             modelBuilder.Entity<Product>()
                 .Property(t => t.ListPrice);
+            modelBuilder.Entity<Product>()
+                .Property(t => t.Image);
 //            
             modelBuilder.Entity<Stock>()
                 .Property(t => t.StoreId);
@@ -179,7 +181,7 @@ namespace LoginCodeFirst.Models
                     CategoryId = 1,
                     ModelYear = 1,
                     ListPrice = 123456,
-                    Image = 1
+                    Image = "wewqe"
                 });
 //
             modelBuilder.Entity<Stock>().HasData(

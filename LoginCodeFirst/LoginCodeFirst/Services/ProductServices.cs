@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Threading.Tasks;
 using AutoMapper;
 using LoginCodeFirst.Models;
@@ -54,13 +55,19 @@ namespace LoginCodeFirst.Services
         {
             try
             {
+                var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images", product.Image.FileName);
+                using (var stream = new FileStream(path, FileMode.Create))
+                {
+                    await product.Image.CopyToAsync(stream);
+                }
                 var products = new Product
                 {
                     ProductName = product.ProductName,
                     BrandId = product.BrandId,
                     CategoryId = product.CategoryId,
                     ModelYear = product.ModelYear,
-                    ListPrice = product.ListPrice
+                    ListPrice = product.ListPrice,
+                    Image = product.Image.FileName
                 };
             
                 _context.Product.Add(products);
@@ -122,12 +129,7 @@ namespace LoginCodeFirst.Services
             }
             
         }
-
-//        public async Task<bool> UpLoadFile(IndexProductViewModel Image)
-//        {
-//            var images = _context.Product.Find(Image);
-//            _context.Product.Update(images);
-//            _context.SaveChanges();
-//            return true;
+            
+               
         }
     }

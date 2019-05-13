@@ -11,13 +11,15 @@ namespace LoginCodeFirst.Services
 {
     public interface IBrandServices
     {
-        IEnumerable<Brand> Brands { get; }
+        IEnumerable<Brand> Brands();
         Task<List<IndexViewModel>> GetBrandList();
         Task<bool> Add(IndexViewModel brand);
         Task<IndexViewModel> GetId(int? id);
         Task<bool> Edit(IndexViewModel brand);
         Task<bool> Delete(int? id);
-       
+        Task<IEnumerable<Brand>> BrandAsync();
+
+
     }
         
     public class BrandServices : IBrandServices
@@ -32,9 +34,16 @@ namespace LoginCodeFirst.Services
             _mapper = mapper;
         }
         
-        public IEnumerable<Brand> Brands => _context.Brand;
-        
-        
+        public IEnumerable<Brand> Brands()
+        {
+            return _context.Brand;
+        }
+
+
+        public async Task<IEnumerable<Brand>> BrandAsync()
+        {
+            return await _context.Brand.ToListAsync();
+        }
         public async Task<List<IndexViewModel>> GetBrandList()
         {
             var brand = await _context.Brand.ToListAsync();

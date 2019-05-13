@@ -12,7 +12,7 @@ namespace LoginCodeFirst.Services
 {
     public interface IUserServices
     {
-        Task<IEnumerable<User>> Users();
+        IEnumerable<User> GetUsers();
         Task<bool> Login(string email, string password);
         Task<List<IndexViewModel>> GetUserList();
         Task<EditViewModel> GetId(int? id);
@@ -36,9 +36,12 @@ namespace LoginCodeFirst.Services
             _mapper = mapper;
         }
 
-        public async Task<IEnumerable<User>> Users()
+
+        
+
+        public IEnumerable<User> GetUsers()
         {
-            return await _context.User.ToListAsync();
+            return _context.User;
         }
 
         public async Task<bool> Login(string email, string password)
@@ -176,6 +179,7 @@ namespace LoginCodeFirst.Services
             var user = await _context.User.FindAsync(email);
             return user;
         }
+
         
     }
 }

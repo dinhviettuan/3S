@@ -11,7 +11,8 @@ namespace LoginCodeFirst.Services
 {
     public interface ICategoryServices
     {
-        IEnumerable<Category> Categories { get; }
+        IEnumerable<Category> GetCategory();
+        Task<IEnumerable<Category>> CategoriesAsync();
         Task<List<IndexViewModel>> GetListAsync();
         Task<bool>Add(IndexViewModel category);
         Task<IndexViewModel> GetId(int? id);
@@ -30,9 +31,16 @@ namespace LoginCodeFirst.Services
             _mapper = mapper;
         }
 
-        public IEnumerable<Category> Categories => _context.Category;
-        
-        
+        public IEnumerable<Category> GetCategory()
+        {
+            return _context.Category;
+        }
+
+        public async Task<IEnumerable<Category>> CategoriesAsync()
+        {
+            return await _context.Category.ToListAsync();
+        }
+
         public async Task<List<IndexViewModel>> GetListAsync()
         {
             var category = await _context.Category.ToListAsync();

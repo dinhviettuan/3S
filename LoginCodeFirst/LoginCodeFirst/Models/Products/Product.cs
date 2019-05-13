@@ -10,7 +10,7 @@ namespace LoginCodeFirst.Models.Products
         public int   CategoryId { get; set;  }
         public int ModelYear { get; set;  }
         public decimal ListPrice { get; set;  }
-        public  byte Image { get; set; }
+        public  string Image { get; set; }
         
         public virtual Category Category { get; set; }
         public virtual Brand Brand { get; set; }

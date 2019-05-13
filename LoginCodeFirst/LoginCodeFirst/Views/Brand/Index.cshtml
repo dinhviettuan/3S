@@ -1,55 +1,64 @@
-﻿@using Microsoft.AspNetCore.Mvc.Localization
+﻿@using LoginCodeFirst.Resources
 @model List<LoginCodeFirst.ViewModels.Brand.IndexViewModel>
-@inject IViewLocalizer Localizer
+@inject ResourcesServices Localizer
 @{
-    ViewBag.Title = "title";
-    Layout = "_Layout";
+    ViewBag.Title = "Index Brand";
 }
-<h1>@Localizer["Brand"]</h1>
-<link rel="stylesheet" href="~/css/box.css"/>
-<a asp-controller="Brand" asp-action="Add" class="btn btn-success">@Localizer["ADD CATEGORY"]</a>
-<div class="container">
-    <table class="table">
-        <thead>
-        @if (TempData["Brands"] != null)
-        {
-            <div class="alert-box success"><span>success: </span>@TempData["Brands"]</div>
-        }
-        <tr>
-            <th>
-                @Localizer["BrandId"]
-            </th>
-            <th>
-                @Localizer["BrandName"]
-            </th>
-        </tr>
-        </thead>
-        <tbody>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.BrandId)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.BrandName)
-                </td>
-                <td>
-                    <div class="edit">
-                        <img src="~/image/edit.png" alt="Avatar" class="image">
-                        <div class="overlay">
-                            <a  asp-controller="Brand" asp-action="Edit" asp-route-id="@item.BrandId">@Localizer["Edit"]</a>
-                        </div>
+
+
+<div class="container-fluid">
+    <div class="block-header">
+        <h2>
+            @ViewBag.Title
+        </h2>
+    </div>
+    <!-- Basic Examples -->
+    <div class="row clearfix">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="card">
+                <div class="header">
+                    <h2>
+                        <a class="btn btn-success" asp-controller="Brand" asp-action="Add">@Localizer.GetLocalizedHtmlString("ADD")</a>
+                    </h2>
+                </div>
+                <div class="body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
+                            <thead>
+                                <tr>
+
+                                    <th>
+                                        @Localizer.GetLocalizedHtmlString("BrandId")
+                                    </th>
+                                    <th>
+                                        @Localizer.GetLocalizedHtmlString("BrandName")
+                                    </th>
+                                    <th>
+                                        @Localizer.GetLocalizedHtmlString("Actions")
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.BrandId)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.BrandName)
+                                        </td>
+                                        <td>
+                                            <a asp-controller="Brand" asp-action="Edit" asp-route-id="@item.BrandId">@Localizer.GetLocalizedHtmlString("Edit")</a>
+                                            <a asp-controller="Brand" asp-action="Delete" onclick=" return confirm('You really want to delete?')" asp-route-id="@item.BrandId">@Localizer.GetLocalizedHtmlString("Delete")</a>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
                     </div>
-                    <div class="edit">
-                        <img src="~/image/delete.png" alt="Avatar" class="image">
-                        <div class="overlay">
-                            <a  asp-controller="Brand" asp-action="Delete" onclick=" return confirm('You really want to delete?')" asp-route-id="@item.BrandId">@Localizer["Delete"]</a>
-                        </div>
-                    </div>
-                </td>
-            </tr>
-        }
-        </tbody>
-    </table>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

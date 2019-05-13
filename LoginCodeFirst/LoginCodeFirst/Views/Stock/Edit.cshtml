@@ -20,16 +20,6 @@
                         <input asp-for="StoreId" type="hidden">
                         <input asp-for="ProductId" type="hidden">
                         <div>
-                            <label class="col-md-4 control-label">@Localizer["StoreId"]</label>
-                            <select asp-for="StoreId" class="form-control" asp-items="@ViewBag.StoreId" disabled>
-                            </select>
-                        </div>
-                        <div>
-                            <label class="col-md-4 control-label">@Localizer["ProductId"]</label>
-                            <select asp-for="ProductId" class="form-control" asp-items="@ViewBag.ProductId" disabled>
-                            </select>
-                        </div>
-                        <div>
                             <label class="col-md-4 control-label"> @Localizer["QUANTITY"]*</label>
                             <input asp-for="Quantity" type="text" placeholder="Please input your Quantity"class="txt">
                             <span style="color: red" asp-validation-for="Quantity"></span>

@@ -1,4 +1,6 @@
-﻿namespace LoginCodeFirst.ViewModels.Product
+﻿using Microsoft.AspNetCore.Http;
+
+namespace LoginCodeFirst.ViewModels.Product
 {
     public class AddViewModel
     {
@@ -7,5 +9,6 @@
         public int   CategoryId { get; set;  }
         public int ModelYear { get; set;  }
         public decimal ListPrice { get; set;  }
+        public IFormFile Image { get; set; }
     }
 }

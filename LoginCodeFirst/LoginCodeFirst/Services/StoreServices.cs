@@ -12,6 +12,7 @@ namespace LoginCodeFirst.Services
     public interface IStoreServices
     {
         IEnumerable<Store> Stores { get; }
+        Task<IEnumerable<Store>> StoreAsync();
         Task<List<IndexViewModel>> GetStore();
         Task<bool> Add(IndexViewModel store);
         Task<IndexViewModel> GetId(int? id);
@@ -33,8 +34,12 @@ namespace LoginCodeFirst.Services
         }
 
         public IEnumerable<Store> Stores => _context.Store;
-        
-        
+
+        public async Task<IEnumerable<Store>> StoreAsync()
+        {
+            return await _context.Store.ToListAsync();
+        }
+
         public async Task<List<IndexViewModel>> GetStore()
         {
             var stores = await _context.Store.ToListAsync();

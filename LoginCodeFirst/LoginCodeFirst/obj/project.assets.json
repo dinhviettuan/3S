@@ -12220,23 +12220,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\huanh\\.nuget\\packages\\": {},
+    "C:\\Users\\dvtua\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "G:\\Tuan\\3S\\LoginCodeFirst\\LoginCodeFirst\\LoginCodeFirst.csproj",
+      "projectUniqueName": "G:\\3S\\LoginCodeFirst\\LoginCodeFirst\\LoginCodeFirst.csproj",
       "projectName": "LoginCodeFirst",
-      "projectPath": "G:\\Tuan\\3S\\LoginCodeFirst\\LoginCodeFirst\\LoginCodeFirst.csproj",
-      "packagesPath": "C:\\Users\\huanh\\.nuget\\packages\\",
-      "outputPath": "G:\\Tuan\\3S\\LoginCodeFirst\\LoginCodeFirst\\obj\\",
+      "projectPath": "G:\\3S\\LoginCodeFirst\\LoginCodeFirst\\LoginCodeFirst.csproj",
+      "packagesPath": "C:\\Users\\dvtua\\.nuget\\packages\\",
+      "outputPath": "G:\\3S\\LoginCodeFirst\\LoginCodeFirst\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\huanh\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\dvtua\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
