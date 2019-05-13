@@ -23,15 +23,15 @@ namespace LoginCodeFirst.Controllers
         [HttpGet]
         public async Task<IActionResult> Index()
         {
-            var listStock = await _stockServices.GetListAsync();
+            var listStock = await _stockServices.GetStockListAsync();
             return View(listStock);
         }
         
         [HttpGet]
         public IActionResult Add()
         {
-            ViewBag.ProductId = new SelectList(_productServices.Products, "ProductId", "ProductName");
-            ViewBag.StoreId = new SelectList(_storeServices.Stores, "StoreId", "StoreName");
+            ViewBag.ProductId = new SelectList(_productServices.GetProducts(), "ProductId", "ProductName");
+            ViewBag.StoreId = new SelectList(_storeServices.GetStores(), "StoreId", "StoreName");
             return View();
         }
         
@@ -41,16 +41,19 @@ namespace LoginCodeFirst.Controllers
 
             if (ModelState.IsValid)
             { 
-                var list = await _stockServices.Add(stock);
+                var list = await _stockServices.AddAsync(stock);
                 if (list)
                 {
                     TempData["Stock"] = "Add Stock Success";
                     return RedirectToAction("Index");
                 }
+                ViewBag.ProductId = new SelectList(_productServices.GetProducts(), "ProductId", "ProductName",stock.ProductId);
+                ViewBag.StoreId = new SelectList(_storeServices.GetStores(), "StoreId", "StoreName",stock.StoreId);
+                ViewBag.Err = "Add Stock Failure";
+                return View(stock);
             }
-            ViewBag.ProductId = new SelectList(_productServices.Products, "ProductId", "ProductName",stock.ProductId);
-            ViewBag.StoreId = new SelectList(_storeServices.Stores, "StoreId", "StoreName",stock.StoreId);
-            ViewBag.Err = "Add Stock Failure";
+            ViewBag.ProductId = new SelectList(_productServices.GetProducts(), "ProductId", "ProductName",stock.ProductId);
+            ViewBag.StoreId = new SelectList(_storeServices.GetStores(), "StoreId", "StoreName",stock.StoreId);
             return View(stock);
         }
         
@@ -61,36 +64,43 @@ namespace LoginCodeFirst.Controllers
             {
                 return BadRequest();
             }
-            var list = await _stockServices.GetId(storeId, productId);
+            var list = await _stockServices.GetIdAsync(storeId, productId);
             if (list == null)
             {
                 return NotFound();
             }
-            ViewBag.ProductId = new SelectList(_productServices.Products, "ProductId", "ProductName");
-            ViewBag.StoreId = new SelectList(_storeServices.Stores, "StoreId", "StoreName");
+            ViewBag.ProductId = new SelectList(_productServices.GetProducts(), "ProductId", "ProductName");
+            ViewBag.StoreId = new SelectList(_storeServices.GetStores(), "StoreId", "StoreName");
             return View(list);
         }
         
         [HttpPost]
-        public async Task<IActionResult> Edit(IndexViewModel stock)
+        public async Task<IActionResult> Edit(IndexViewModel stockViewModel)
         {
 
             if (ModelState.IsValid)
             {
-                    await _stockServices.Edit(stock);
+                  var stocks =   await _stockServices.EditAsync(stockViewModel);
+                if (stocks)
+                {
                     TempData["Stock"] = "Edit Stock Success";
-                    return RedirectToAction("Index");
+                    return RedirectToAction("Index"); 
+                }
+                ViewBag.ProductId = new SelectList(_productServices.GetProducts(), "ProductId", "ProductName",stockViewModel.ProductId);
+                ViewBag.StoreId = new SelectList(_storeServices.GetStores(), "StoreId", "StoreName",stockViewModel.StoreId);
+                ViewBag.Err = "Edit Stock Failure";
+                return View(stockViewModel);
+                    
             } 
-            ViewBag.ProductId = new SelectList(_productServices.Products, "ProductId", "ProductName",stock.ProductId);
-            ViewBag.StoreId = new SelectList(_storeServices.Stores, "StoreId", "StoreName",stock.StoreId);
-            ViewBag.Err = "Edit Stock Failure";
-            return View(stock);
+            ViewBag.ProductId = new SelectList(_productServices.GetProducts(), "ProductId", "ProductName",stockViewModel.ProductId);
+            ViewBag.StoreId = new SelectList(_storeServices.GetStores(), "StoreId", "StoreName",stockViewModel.StoreId);
+            return View(stockViewModel);
         }
         
         [HttpGet]
         public async Task<IActionResult> Delete(int? storeId, int? productId)
         {
-            await _stockServices.Delete(storeId,productId);
+            await _stockServices.DeleteAsync(storeId,productId);
             TempData["Stock"] = "Delete Stock Success";
             return  RedirectToAction("Index");
         }

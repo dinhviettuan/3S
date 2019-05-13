@@ -13,15 +13,15 @@ namespace LoginCodeFirst.Services
     public interface IUserServices
     {
         IEnumerable<User> GetUsers();
-        Task<bool> Login(string email, string password);
-        Task<List<IndexViewModel>> GetUserList();
-        Task<EditViewModel> GetId(int? id);
-        Task<PasswordViewModel> GetEditPassword(int? Id);
-        Task<bool> Add(IndexViewModel user);
-        Task<bool>Edit(EditViewModel user);
-        Task<bool> EditPassword(PasswordViewModel editPasswordUser);
-        Task<bool> Delete(int? id);
-        Task<User> GetEmail(string email);
+        Task<bool> LoginAsync(string email, string password);
+        Task<List<IndexViewModel>> GetUserListAsync();
+        Task<EditViewModel> GetIdAsync(int? id);
+        Task<PasswordViewModel> GetEditPasswordAsync(int? Id);
+        Task<bool> AddAsync(IndexViewModel user);
+        Task<bool>EditAsync(EditViewModel user);
+        Task<bool> EditPasswordAsync(PasswordViewModel editPasswordUser);
+        Task<bool> DeleteAsync(int? id);
+        Task<User> GetEmailAsync(string email);
 
     }
 
@@ -44,7 +44,7 @@ namespace LoginCodeFirst.Services
             return _context.User;
         }
 
-        public async Task<bool> Login(string email, string password)
+        public async Task<bool> LoginAsync(string email, string password)
         {
             try
             {
@@ -68,7 +68,7 @@ namespace LoginCodeFirst.Services
             }
         }
 
-        public async Task<List<IndexViewModel>> GetUserList()
+        public async Task<List<IndexViewModel>> GetUserListAsync()
         {
             var users = await _context.User
                 .Include(u => u.Store)
@@ -78,14 +78,14 @@ namespace LoginCodeFirst.Services
          
         }
         
-        public async Task<EditViewModel> GetId(int? id)
+        public async Task<EditViewModel> GetIdAsync(int? id)
         {
             var user = await _context.User.FindAsync(id);
             var userViewModel = _mapper.Map<EditViewModel>(user);
             return userViewModel;
         }
 
-        public async Task<PasswordViewModel> GetEditPassword(int? Id)
+        public async Task<PasswordViewModel> GetEditPasswordAsync(int? Id)
         {
             var user = await _context.User.FindAsync(Id);
             var passwordViewModel = _mapper.Map<PasswordViewModel>(user);
@@ -93,21 +93,21 @@ namespace LoginCodeFirst.Services
         }
 
 
-        public async Task<bool> Add(IndexViewModel user)
+        public async Task<bool> AddAsync(IndexViewModel userViewModel)
         {
             try
             {
                 var users = new User
                 {
-                    Email = user.Email,
-                    Fullname = user.FullName,
-                    Password = SecurePasswordHasher.Hash(user.Password),
-                    Phone = user.Phone,
-                    IsActive = user.IsActive,
-                    StoreId = user.StoreId
+                    Email = userViewModel.Email,
+                    Fullname = userViewModel.FullName,
+                    Password = SecurePasswordHasher.Hash(userViewModel.Password),
+                    Phone = userViewModel.Phone,
+                    IsActive = userViewModel.IsActive,
+                    StoreId = userViewModel.StoreId
                 };
-                    _context.User.Add(users);
-              await _context.SaveChangesAsync();
+                     _context.User.Add(users);
+                     await _context.SaveChangesAsync();
                 return true;
             }
             catch (Exception e)
@@ -117,15 +117,15 @@ namespace LoginCodeFirst.Services
             }     
         }
         
-        public async Task<bool>Edit(EditViewModel user)
+        public async Task<bool>EditAsync(EditViewModel userViewModel)
         {
             try
             {
-                var users = await _context.User.FindAsync(user.UserId);
-                users.Email = user.Email;
-                users.Fullname = user.FullName;
-                users.Phone = user.Phone;
-                users.IsActive = user.IsActive;
+                var users = await _context.User.FindAsync(userViewModel.UserId);
+                users.Email = userViewModel.Email;
+                users.Fullname = userViewModel.FullName;
+                users.Phone = userViewModel.Phone;
+                users.IsActive = userViewModel.IsActive;
                 _context.User.Update(users);
                 await _context.SaveChangesAsync();
                 return true;
@@ -139,12 +139,12 @@ namespace LoginCodeFirst.Services
         }
         
        
-        public async Task<bool> EditPassword(PasswordViewModel editPassword)
+        public async Task<bool> EditPasswordAsync(PasswordViewModel passwordViewModel)
         {
             try
             {
-                var user = await _context.User.FindAsync(editPassword.UserId);
-                user.Password = SecurePasswordHasher.Hash(editPassword.Password);
+                var user = await _context.User.FindAsync(passwordViewModel.UserId);
+                user.Password = SecurePasswordHasher.Hash(passwordViewModel.Password);
                 _context.User.Update(user);
                 await _context.SaveChangesAsync();
                 return true;
@@ -157,7 +157,7 @@ namespace LoginCodeFirst.Services
             
         }
 
-        public async Task<bool> Delete(int? id)
+        public async Task<bool> DeleteAsync(int? id)
         {
             try
             {
@@ -174,7 +174,7 @@ namespace LoginCodeFirst.Services
             
         }
 
-        public async Task<User> GetEmail(string email)
+        public async Task<User> GetEmailAsync(string email)
         {
             var user = await _context.User.FindAsync(email);
             return user;

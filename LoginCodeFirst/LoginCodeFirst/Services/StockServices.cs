@@ -5,17 +5,19 @@ using AutoMapper;
 using LoginCodeFirst.Models;
 using LoginCodeFirst.Models.Products;
 using LoginCodeFirst.ViewModels.Stock;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.EntityFrameworkCore;
 
 namespace LoginCodeFirst.Services
 {
     public interface IStockServices
     {
-        Task<List<IndexViewModel>> GetListAsync();
-        Task<bool> Add(IndexViewModel stock);
-        Task<IndexViewModel> GetId(int? storeId, int? productId);
-        Task<bool> Edit(IndexViewModel stockViewModel);
-        Task<bool> Delete(int? storeId, int? productId);
+        IEnumerable<Stock> GetStocks();
+        Task<List<IndexViewModel>> GetStockListAsync();
+        Task<bool> AddAsync(IndexViewModel stock);
+        Task<IndexViewModel> GetIdAsync(int? storeId, int? productId);
+        Task<bool> EditAsync(IndexViewModel stockViewModel);
+        Task<bool> DeleteAsync(int? storeId, int? productId);
     }
 
     public class StockServices : IStockServices
@@ -29,8 +31,13 @@ namespace LoginCodeFirst.Services
             _context = context;
             _mapper = mapper;
         }
+        
+        public IEnumerable<Stock> GetStocks()
+        {
+            return _context.Stock;
+        }
 
-        public async Task<List<IndexViewModel>> GetListAsync()
+        public async Task<List<IndexViewModel>> GetStockListAsync()
         {
             var stocks = await _context.Stock
                 .Include(stock => stock.Product)
@@ -40,15 +47,23 @@ namespace LoginCodeFirst.Services
             return list;
         }
 
-        public async Task<bool> Add(IndexViewModel stock)
+        public async Task<bool> AddAsync(IndexViewModel stockViewModel)
         {
             try
             {
+                var st = await _context.Stock.FindAsync(stockViewModel.ProductId, stockViewModel.StoreId);
+                if (st != null)
+                {
+                    st.Quantity += stockViewModel.Quantity;
+                    _context.Stock.Update(st);
+                    await _context.SaveChangesAsync();
+                    return true;
+                }                
                 var stocks = new Stock
                 {
-                    StoreId = stock.StoreId,
-                    ProductId = stock.ProductId,
-                    Quantity = stock.Quantity
+                    StoreId = stockViewModel.StoreId,
+                    ProductId = stockViewModel.ProductId,
+                    Quantity = stockViewModel.Quantity
                 };
                 _context.Stock.Add(stocks);
                 await _context.SaveChangesAsync();
@@ -62,14 +77,14 @@ namespace LoginCodeFirst.Services
             
         }
 
-        public async Task<IndexViewModel> GetId(int? storeId, int? productId)
+        public async Task<IndexViewModel> GetIdAsync(int? storeId, int? productId)
         {
             var stock = await _context.Stock.FindAsync(storeId, productId);
             var getViewModel = _mapper.Map<IndexViewModel>(stock);
             return getViewModel;
         }
 
-        public async Task<bool> Edit(IndexViewModel stockViewModel)
+        public async Task<bool> EditAsync(IndexViewModel stockViewModel)
         {
             try
             {
@@ -89,7 +104,7 @@ namespace LoginCodeFirst.Services
             
         }
 
-        public async Task<bool> Delete(int? storeId, int? productId)
+        public async Task<bool> DeleteAsync(int? storeId, int? productId)
         {
             try
             {

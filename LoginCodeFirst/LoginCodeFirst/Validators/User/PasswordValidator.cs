@@ -14,8 +14,7 @@ namespace LoginCodeFirst.Validator
         public PasswordValidator(IUserServices userServices, IStringLocalizer<PasswordValidator> localizer)
         {
             RuleFor(x => x.Password).NotNull().WithMessage(localizer["Password must not be empty."]);
-            RuleFor(x => x.Password).NotNull().WithMessage(localizer["Password including letters and numbers."]);
-            RuleFor(x => x.Password).NotNull().WithMessage(localizer["Password not less than 5 characters."]);
+            RuleFor(x => x.Password).MinimumLength(8).WithMessage(localizer["Password not less than 8 characters."]);
             RuleFor(x => x.Password).Matches("^(?=.*[0-9])(?=.*[a-zA-Z])([a-zA-Z0-9]+)$").WithMessage(localizer["Password must have both letters and numbers."]);
         }
     }

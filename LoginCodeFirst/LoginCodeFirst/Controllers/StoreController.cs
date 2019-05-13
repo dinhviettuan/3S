@@ -17,7 +17,7 @@ namespace LoginCodeFirst.Controllers
         [HttpGet]
         public async Task<IActionResult> Index()
         {
-            var liststore = await _storeService.GetStore();
+            var liststore = await _storeService.GetStoreListAsync();
             return View(liststore);
         }
 
@@ -33,15 +33,15 @@ namespace LoginCodeFirst.Controllers
 
             if (ModelState.IsValid)
             { 
-                var list = await _storeService.Add(store);
+                var list = await _storeService.AddAsync(store);
                 if (list)
                 {
                     TempData["Store"] = "Add Store Success";
                     return RedirectToAction("Index");
                 }
+                ViewBag.Err = "Add Store Failure";
+                return View(store);
             }
-
-            ViewBag.Err = "Add Store Failure";
             return View(store);
         }
 
@@ -52,7 +52,7 @@ namespace LoginCodeFirst.Controllers
             {
                 return BadRequest();
             }
-            var store = await _storeService.GetId(id);
+            var store = await _storeService.GetIdAsync(id);
             if (store == null)
             {
                 return NotFound();
@@ -61,24 +61,28 @@ namespace LoginCodeFirst.Controllers
             return View(store);
         }
         [HttpPost]
-        public async Task<IActionResult> Edit(IndexViewModel store)
+        public async Task<IActionResult> Edit(IndexViewModel storeViewModel)
         {
 
             if (ModelState.IsValid)
             {
-              await _storeService.Edit(store);
-                TempData["Store"] = "Edit Store Success";
-                return RedirectToAction("Index");
-            }
 
-            ViewBag.Err = "Edit Store Failure";
-            return View(store);
+                var store = await _storeService.EditAsync(storeViewModel);
+                if (store)
+                {
+                    TempData["Store"] = "Edit Store Success";
+                    return RedirectToAction("Index");
+                }
+                ViewBag.Err = "Edit Store Failure";
+                return View(storeViewModel);
+            }
+            return View(storeViewModel);
         }
-//        
+        
         [HttpGet]
         public async Task<IActionResult> Delete(int? id)
         {
-            await _storeService.Delete(id);
+            await _storeService.DeleteAsync(id);
             TempData["Store"] = "Delete Store Success";
             return  RedirectToAction("Index");
         }

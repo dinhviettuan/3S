@@ -1,6 +1,6 @@
-﻿@using Microsoft.AspNetCore.Mvc.Localization
+﻿@using LoginCodeFirst.Resources
 @model LoginCodeFirst.ViewModels.Stock.IndexViewModel
-@inject IViewLocalizer Localizer
+@inject ResourcesServices Localizer
 @{
     ViewBag.Title = "Add Stock";
     Layout = "_Layout";
@@ -29,7 +29,7 @@
                         <div class="col-sm-12">
                             <form asp-controller="Stock" asp-action="Add" method="post">
                                 <div class="form-group">
-                                    <label class="form-label" asp-for="ProductId"></label>
+                                    <label class="form-label" asp-for="ProductId">@Localizer.GetLocalizedHtmlString("lbl_productName")</label>
                                     <select asp-for="ProductId" class="form-control" asp-items="@ViewBag.ProductId"></select>
                                 </div>
                                 <div class="form-group">
@@ -39,7 +39,7 @@
                                 <div class="form-group">
                                     <label class="form-label" asp-for="Quantity"></label>
                                     <input type="text" asp-for="Quantity" placeholder="Quantity" class="form-control">
-                                    <span class="alert-danger" asp-validation-for="Quantity"></span>
+                                    <span class="text-danger" asp-validation-for="Quantity"></span>
                                 </div>
 
                                 <button class="btn btn-primary waves-effect" type="submit">SUBMIT</button>

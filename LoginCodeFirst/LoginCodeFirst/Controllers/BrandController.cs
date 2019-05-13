@@ -19,7 +19,7 @@ namespace LoginCodeFirst.Controllers
         [HttpGet]
         public async Task<IActionResult> Index()
         {
-            var listBrand = await _brandServices.GetBrandList();
+            var listBrand = await _brandServices.GetBrandListAsync();
             return View(listBrand);
         }
 
@@ -36,15 +36,19 @@ namespace LoginCodeFirst.Controllers
 
             if (ModelState.IsValid)
             { 
-                await _brandServices.Add(brand);
-               
-                TempData["Brand"] = "Add Brand Success";
-                return RedirectToAction("Index");
-            }
+                var  list= await _brandServices.AddAsync(brand);
+                if (list)
+                {
+                    TempData["Brand"] = "Add Brand Success";
+                    return RedirectToAction("Index"); 
+                }
                 ViewBag.Err = "Add Brand Failure";
+                return View(brand);
+            }
             return View(brand);
         }
 
+        
         [HttpGet]
         public async Task<IActionResult> Edit(int? id)
         {
@@ -52,7 +56,7 @@ namespace LoginCodeFirst.Controllers
             {
                 return BadRequest();
             }
-            var brand = await _brandServices.GetId(id);
+            var brand = await _brandServices.GetIdAsync(id);
             if (brand == null)
             {
                 return NotFound();
@@ -68,19 +72,22 @@ namespace LoginCodeFirst.Controllers
 
             if (ModelState.IsValid)
             {
-               await _brandServices.Edit(brand);
-                TempData["Brand"] = "Edit Brand Success";
-                return RedirectToAction("Index");
+                var list= await _brandServices.EditAsync(brand);
+                if (list)
+                {
+                    TempData["Brand"] = "Edit Brand Success";
+                    return RedirectToAction("Index");
+                } 
+                ViewBag.Err = "Edit Brand Failure";
+                return View(brand);
             }
-
-            ViewBag.Err = "Edit Brand Failure";
             return View(brand);
         }
         
         [HttpGet]
         public async  Task<IActionResult> Delete(int? id)
         {
-            await _brandServices.Delete(id);
+            await _brandServices.DeleteAsync(id);
             TempData["Brand"] = "Delete Brand Success";
             return  RedirectToAction("Index");
         }   

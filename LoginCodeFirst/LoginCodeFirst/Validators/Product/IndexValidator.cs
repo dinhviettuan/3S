@@ -10,6 +10,11 @@ namespace LoginCodeFirst.Validators.Product
     {
         public IndexValidator(IProductServices productServices, IStringLocalizer<IndexViewModel> localizer)
         {
+            var products = productServices.GetProducts();
+            foreach (var product in products)
+            {
+                RuleFor(x => x.ProductName).NotEqual(product.ProductName).WithMessage(localizer["This ProductName already exists."]);
+            }
             RuleFor(x => x.ProductName).NotNull().WithMessage(localizer["ProductName not be empty"]);
             RuleFor(x => x.ModelYear).NotNull().WithMessage(localizer["ModelYear not be empty"]);
             RuleFor(x => x.ListPrice).NotNull().WithMessage(localizer["ListPrice not be empty"]);

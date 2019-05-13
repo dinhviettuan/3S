@@ -28,7 +28,7 @@ namespace LoginCodeFirst.Controllers
         [HttpGet]
         public async Task<IActionResult> Index()
         {
-            var list = await _productServices.GetListAsync();
+            var list = await _productServices.GetProductListAsync();
             return View(list);
         }
         
@@ -37,27 +37,30 @@ namespace LoginCodeFirst.Controllers
         [HttpGet]
         public IActionResult Add()
         {
-            ViewBag.CategoryId = new SelectList(_categoryServices.Categories, "CategoryId", "CategoryName");
-            ViewBag.BrandId = new SelectList(_brandServices.Brands, "BrandId", "BrandName");
+            ViewBag.CategoryId = new SelectList(_categoryServices.GetCategory(), "CategoryId", "CategoryName");
+            ViewBag.BrandId = new SelectList(_brandServices.GetBrands(), "BrandId", "BrandName");
             return View();
         }
 
         [HttpPost]
-        public async Task<IActionResult> Add(AddViewModel product)
+        public async Task<IActionResult> Add(IndexViewModel product)
         {
             if (ModelState.IsValid)
             {
-                var list = await _productServices.Add(product);
+                var list = await _productServices.AddAsync(product);
                 if (list)
                 {
-                    ViewBag.CategoryId = new SelectList(_categoryServices.Categories, "CategoryId", "CategoryName",product.CategoryId);
-                    ViewBag.BrandId = new SelectList(_brandServices.Brands, "BrandId", "BrandName",product.BrandId);
                     TempData["Product"] = "Add Product Success";
                     return RedirectToAction("Index");
                 }
+                ViewBag.ErrorMessage = "Add Product Failure";
+                ViewBag.CategoryId = new SelectList(_categoryServices.GetCategory(), "CategoryId", "CategoryName",product.CategoryId);
+                ViewBag.BrandId = new SelectList(_brandServices.GetBrands(), "BrandId", "BrandName",product.BrandId);
+                return View(product);
+                
             }
-
-            ViewBag.ErrorMessage = "Add Product Failure";
+            ViewBag.CategoryId = new SelectList(_categoryServices.GetCategory(), "CategoryId", "CategoryName",product.CategoryId);
+            ViewBag.BrandId = new SelectList(_brandServices.GetBrands(), "BrandId", "BrandName",product.BrandId);
             return View(product);
         }
 
@@ -69,37 +72,40 @@ namespace LoginCodeFirst.Controllers
                 return BadRequest();
             }
 
-            var list =  await _productServices.GetId(id);
+            var list =  await _productServices.GetIdAsync(id);
             if (list == null)
             {
                 return NotFound();
             }
-            ViewBag.CategoryId = new SelectList(_categoryServices.Categories, "CategoryId", "CategoryName");
-            ViewBag.BrandId = new SelectList(_brandServices.Brands, "BrandId", "BrandName");
+            ViewBag.CategoryId = new SelectList(_categoryServices.GetCategory(), "CategoryId", "CategoryName");
+            ViewBag.BrandId = new SelectList(_brandServices.GetBrands(), "BrandId", "BrandName");
             return View(list);
         }
         
         [HttpPost]
-        public async Task<IActionResult> Edit(EditViewModel product)
+        public async Task<IActionResult> Edit(IndexViewModel product)
         {
 
             if (ModelState.IsValid)
             {
-                ViewBag.CategoryId = new SelectList(_categoryServices.Categories, "CategoryId", "CategoryName", product.CategoryId);
-                ViewBag.BrandId = new SelectList(_brandServices.Brands, "BrandId", "BrandName",product.BrandId);
-               await _productServices.Edit(product);
-                TempData["Product"] = "Edit Product Success";
-                return RedirectToAction("Index");
+                var list = await _productServices.EditAsync(product);
+                if (list)
+                {
+                    ViewBag.CategoryId = new SelectList(_categoryServices.GetCategory(), "CategoryId", "CategoryName", product.CategoryId);
+                    ViewBag.BrandId = new SelectList(_brandServices.GetBrands(), "BrandId", "BrandName",product.BrandId);
+                    TempData["Product"] = "Edit Product Success";
+                    return RedirectToAction("Index"); 
+                }
+                ViewBag.Err = "Edit Product Failure";
+                return View(product);
             }
-
-            ViewBag.Err = "Edit Product Failure";
             return View(product);
         }
         
         [HttpGet]
         public async Task<IActionResult> Delete(int? id)
         {
-            await _productServices.Delete(id);
+            await _productServices.DeleteAsync(id);
             TempData["Product"] = "Delete Product Success";
             return  RedirectToAction("Index");
         }

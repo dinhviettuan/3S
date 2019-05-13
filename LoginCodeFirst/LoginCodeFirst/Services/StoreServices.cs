@@ -11,13 +11,12 @@ namespace LoginCodeFirst.Services
 {
     public interface IStoreServices
     {
-        IEnumerable<Store> Stores { get; }
-        Task<IEnumerable<Store>> StoreAsync();
-        Task<List<IndexViewModel>> GetStore();
-        Task<bool> Add(IndexViewModel store);
-        Task<IndexViewModel> GetId(int? id);
-        Task<bool> Edit(IndexViewModel store);
-        Task<bool> Delete(int? id);
+        IEnumerable<Store> GetStores();
+        Task<List<IndexViewModel>> GetStoreListAsync();
+        Task<bool> AddAsync(IndexViewModel store);
+        Task<IndexViewModel> GetIdAsync(int? id);
+        Task<bool> EditAsync(IndexViewModel store);
+        Task<bool> DeleteAsync(int? id);
 
 
     }
@@ -33,21 +32,20 @@ namespace LoginCodeFirst.Services
             _mapper = mapper;
         }
 
-        public IEnumerable<Store> Stores => _context.Store;
 
-        public async Task<IEnumerable<Store>> StoreAsync()
+        public IEnumerable<Store> GetStores()
         {
-            return await _context.Store.ToListAsync();
+            return _context.Store;
         }
 
-        public async Task<List<IndexViewModel>> GetStore()
+        public async Task<List<IndexViewModel>> GetStoreListAsync()
         {
             var stores = await _context.Store.ToListAsync();
             var storeViewModels = _mapper.Map<List<IndexViewModel>>(stores);
             return storeViewModels;
         }
 
-        public async Task<bool> Add(IndexViewModel store)
+        public async Task<bool> AddAsync(IndexViewModel store)
         {
             try
             {
@@ -75,14 +73,14 @@ namespace LoginCodeFirst.Services
           
         }
 
-        public async Task<IndexViewModel> GetId(int? id)
+        public async Task<IndexViewModel> GetIdAsync(int? id)
         {
             var store = await _context.Store.FindAsync(id);
             var storeEditViewModel = _mapper.Map<IndexViewModel>(store);
             return storeEditViewModel;
         }
 
-        public async Task<bool> Edit(IndexViewModel store)
+        public async Task<bool> EditAsync(IndexViewModel store)
         {
             try
             {
@@ -106,7 +104,7 @@ namespace LoginCodeFirst.Services
             }
         }
 //
-        public async Task<bool> Delete(int? id)
+        public async Task<bool> DeleteAsync(int? id)
         {
             try
             {

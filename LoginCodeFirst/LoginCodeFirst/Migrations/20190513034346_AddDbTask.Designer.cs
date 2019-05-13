@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LoginCodeFirst.Migrations
 {
     [DbContext(typeof(CodeDataContext))]
-    [Migration("20190507031525_AddDbImage")]
-    partial class AddDbImage
+    [Migration("20190513034346_AddDbTask")]
+    partial class AddDbTask
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -19,6 +19,108 @@ namespace LoginCodeFirst.Migrations
                 .HasAnnotation("ProductVersion", "2.2.0-rtm-35687")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+            modelBuilder.Entity("LoginCodeFirst.Models.Products.Brand", b =>
+                {
+                    b.Property<int>("BrandId")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("BrandName");
+
+                    b.HasKey("BrandId");
+
+                    b.ToTable("Brand");
+
+                    b.HasData(
+                        new
+                        {
+                            BrandId = 1,
+                            BrandName = "chanel"
+                        });
+                });
+
+            modelBuilder.Entity("LoginCodeFirst.Models.Products.Category", b =>
+                {
+                    b.Property<int>("CategoryId")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("CategoryName");
+
+                    b.HasKey("CategoryId");
+
+                    b.ToTable("Category");
+
+                    b.HasData(
+                        new
+                        {
+                            CategoryId = 1,
+                            CategoryName = "tui sach"
+                        });
+                });
+
+            modelBuilder.Entity("LoginCodeFirst.Models.Products.Product", b =>
+                {
+                    b.Property<int>("ProductId")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("BrandId");
+
+                    b.Property<int>("CategoryId");
+
+                    b.Property<string>("Image");
+
+                    b.Property<decimal>("ListPrice");
+
+                    b.Property<int>("ModelYear");
+
+                    b.Property<string>("ProductName");
+
+                    b.HasKey("ProductId");
+
+                    b.HasIndex("BrandId");
+
+                    b.HasIndex("CategoryId");
+
+                    b.ToTable("Product");
+
+                    b.HasData(
+                        new
+                        {
+                            ProductId = 1,
+                            BrandId = 1,
+                            CategoryId = 1,
+                            Image = "wewqe",
+                            ListPrice = 123456m,
+                            ModelYear = 1,
+                            ProductName = "giay"
+                        });
+                });
+
+            modelBuilder.Entity("LoginCodeFirst.Models.Products.Stock", b =>
+                {
+                    b.Property<int>("ProductId");
+
+                    b.Property<int>("StoreId");
+
+                    b.Property<int>("Quantity");
+
+                    b.HasKey("ProductId", "StoreId");
+
+                    b.HasIndex("StoreId");
+
+                    b.ToTable("Stock");
+
+                    b.HasData(
+                        new
+                        {
+                            ProductId = 1,
+                            StoreId = 1,
+                            Quantity = 1
+                        });
+                });
 
             modelBuilder.Entity("LoginCodeFirst.Models.Store", b =>
                 {
@@ -105,144 +207,42 @@ namespace LoginCodeFirst.Migrations
                             Email = "tuan1@gmail.com",
                             Fullname = "Dinh Viet Tuan",
                             IsActive = true,
-                            Password = "10000:ltHdEFS7PKMnLev8kQoiY1+sG99zNSrtnS+e/wqCI1DNM5MR",
+                            Password = "10000:5kTFzM8vq20sEyPJg8ZtHfyKDX0OVYa1BJw70Mu2yf6mvHxJ",
                             Phone = "123456789",
                             StoreId = 1
                         });
                 });
 
-            modelBuilder.Entity("LoginCodeFirst.Production.Brand", b =>
+            modelBuilder.Entity("LoginCodeFirst.Models.Products.Product", b =>
                 {
-                    b.Property<int>("BrandId")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("BrandName");
-
-                    b.HasKey("BrandId");
-
-                    b.ToTable("Brand");
-
-                    b.HasData(
-                        new
-                        {
-                            BrandId = 1,
-                            BrandName = "chanel"
-                        });
-                });
-
-            modelBuilder.Entity("LoginCodeFirst.Production.Category", b =>
-                {
-                    b.Property<int>("CategoryId")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("CategoryName");
-
-                    b.HasKey("CategoryId");
-
-                    b.ToTable("Category");
-
-                    b.HasData(
-                        new
-                        {
-                            CategoryId = 1,
-                            CategoryName = "tui sach"
-                        });
-                });
-
-            modelBuilder.Entity("LoginCodeFirst.Production.Product", b =>
-                {
-                    b.Property<int>("ProductId")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("BrandId");
-
-                    b.Property<int>("CategoryId");
-
-                    b.Property<byte>("Image");
-
-                    b.Property<decimal>("ListPrice");
-
-                    b.Property<int>("ModelYear");
-
-                    b.Property<string>("ProductName");
-
-                    b.HasKey("ProductId");
-
-                    b.HasIndex("BrandId");
-
-                    b.HasIndex("CategoryId");
-
-                    b.ToTable("Product");
-
-                    b.HasData(
-                        new
-                        {
-                            ProductId = 1,
-                            BrandId = 1,
-                            CategoryId = 1,
-                            Image = (byte)1,
-                            ListPrice = 123456m,
-                            ModelYear = 1,
-                            ProductName = "giay"
-                        });
-                });
-
-            modelBuilder.Entity("LoginCodeFirst.Production.Stock", b =>
-                {
-                    b.Property<int>("ProductId");
-
-                    b.Property<int>("StoreId");
-
-                    b.Property<int>("Quantity");
-
-                    b.HasKey("ProductId", "StoreId");
-
-                    b.HasIndex("StoreId");
-
-                    b.ToTable("Stock");
-
-                    b.HasData(
-                        new
-                        {
-                            ProductId = 1,
-                            StoreId = 1,
-                            Quantity = 1
-                        });
-                });
-
-            modelBuilder.Entity("LoginCodeFirst.Models.User", b =>
-                {
-                    b.HasOne("LoginCodeFirst.Models.Store", "Store")
-                        .WithMany("Users")
-                        .HasForeignKey("StoreId")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("LoginCodeFirst.Production.Product", b =>
-                {
-                    b.HasOne("LoginCodeFirst.Production.Brand", "Brand")
+                    b.HasOne("LoginCodeFirst.Models.Products.Brand", "Brand")
                         .WithMany("Products")
                         .HasForeignKey("BrandId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("LoginCodeFirst.Production.Category", "Category")
+                    b.HasOne("LoginCodeFirst.Models.Products.Category", "Category")
                         .WithMany("Products")
                         .HasForeignKey("CategoryId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("LoginCodeFirst.Production.Stock", b =>
+            modelBuilder.Entity("LoginCodeFirst.Models.Products.Stock", b =>
                 {
-                    b.HasOne("LoginCodeFirst.Production.Product", "Product")
+                    b.HasOne("LoginCodeFirst.Models.Products.Product", "Product")
                         .WithMany("Stocks")
                         .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("LoginCodeFirst.Models.Store", "Store")
                         .WithMany("Stocks")
+                        .HasForeignKey("StoreId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("LoginCodeFirst.Models.User", b =>
+                {
+                    b.HasOne("LoginCodeFirst.Models.Store", "Store")
+                        .WithMany("Users")
                         .HasForeignKey("StoreId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });

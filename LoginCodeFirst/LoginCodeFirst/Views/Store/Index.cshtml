@@ -2,9 +2,8 @@
 @model List<LoginCodeFirst.ViewModels.Store.IndexViewModel>
 @inject ResourcesServices Localizer
 @{
-    ViewBag.Title = "Index Store";
+    ViewBag.Title = @Localizer.GetLocalizedHtmlString("Store");
 }
-
 
 <div class="container-fluid">
     <div class="block-header">
@@ -18,7 +17,7 @@
             <div class="card">
                 <div class="header">
                     <h2>
-                        <a class="btn btn-success" asp-controller="Store" asp-action="Add">@Localizer.GetLocalizedHtmlString("ADD")</a>
+                        <a class="btn btn-success" asp-controller="Store" asp-action="Add">@Localizer.GetLocalizedHtmlString("a_ADD")</a>
                     </h2>
                 </div>
                 <div class="body">
@@ -27,31 +26,31 @@
                             <thead>
                                 <tr>
                                     <th>
-                                        @Localizer.GetLocalizedHtmlString("StoreId")
+                                        @Localizer.GetLocalizedHtmlString("th_StoreId")
                                     </th>
                                     <th>
-                                        @Localizer.GetLocalizedHtmlString("StoreName")
+                                        @Localizer.GetLocalizedHtmlString("th_StoreName")
                                     </th>
                                     <th>
-                                        @Localizer.GetLocalizedHtmlString("Phone")
+                                        @Localizer.GetLocalizedHtmlString("th_Phone")
                                     </th>
                                     <th>
-                                        @Localizer.GetLocalizedHtmlString("Email")
+                                        @Localizer.GetLocalizedHtmlString("th_Email")
                                     </th>
                                     <th>
-                                        @Localizer.GetLocalizedHtmlString("Street")
+                                        @Localizer.GetLocalizedHtmlString("th_Street")
                                     </th>
                                     <th>
-                                        @Localizer.GetLocalizedHtmlString("City")
+                                        @Localizer.GetLocalizedHtmlString("th_City")
                                     </th>
                                     <th>
-                                        @Localizer.GetLocalizedHtmlString("State")
+                                        @Localizer.GetLocalizedHtmlString("th_State")
                                     </th>
                                     <th>
-                                        @Localizer.GetLocalizedHtmlString("ZipCode")
+                                        @Localizer.GetLocalizedHtmlString("th_ZipCode")
                                     </th>   
                                     <th>
-                                        @Localizer.GetLocalizedHtmlString("Actions")
+                                        @Localizer.GetLocalizedHtmlString("th_Actions")
                                     </th>                                
                                 </tr>
                             </thead>
@@ -85,8 +84,8 @@
                                      </td>
                                      
                                      <td>
-                                         <a asp-controller="Store" asp-action="Edit" asp-route-id="@item.StoreId">@Localizer.GetLocalizedHtmlString("Edit")</a> |
-                                         <a asp-controller="Store" asp-action="Delete" onclick=" return confirm('You really want to delete?')" asp-route-id="@item.StoreId">@Localizer.GetLocalizedHtmlString("Delete")</a>
+                                         <a asp-controller="Store" asp-action="Edit" asp-route-id="@item.StoreId">@Localizer.GetLocalizedHtmlString("a_Edit")</a> |
+                                         <a asp-controller="Store" asp-action="Delete" onclick=" return confirm('You really want to delete?')" asp-route-id="@item.StoreId">@Localizer.GetLocalizedHtmlString("a_Delete")</a>
                                      </td>
                                  </tr>
                              }

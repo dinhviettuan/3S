@@ -12,12 +12,11 @@ namespace LoginCodeFirst.Services
     public interface ICategoryServices
     {
         IEnumerable<Category> GetCategory();
-        Task<IEnumerable<Category>> CategoriesAsync();
-        Task<List<IndexViewModel>> GetListAsync();
-        Task<bool>Add(IndexViewModel category);
-        Task<IndexViewModel> GetId(int? id);
-        Task<bool> Edit(IndexViewModel categoryPro);
-        Task<bool> Delete(int? id);
+        Task<List<IndexViewModel>> GetCategoryListAsync();
+        Task<bool>AddAsync(IndexViewModel category);
+        Task<IndexViewModel> GetIdAsync(int? id);
+        Task<bool> EditAsync(IndexViewModel categoryPro);
+        Task<bool> DeleteAsync(int? id);
         
     }
 
@@ -36,12 +35,7 @@ namespace LoginCodeFirst.Services
             return _context.Category;
         }
 
-        public async Task<IEnumerable<Category>> CategoriesAsync()
-        {
-            return await _context.Category.ToListAsync();
-        }
-
-        public async Task<List<IndexViewModel>> GetListAsync()
+        public async Task<List<IndexViewModel>> GetCategoryListAsync()
         {
             var category = await _context.Category.ToListAsync();
             var list = _mapper.Map<List<IndexViewModel>>(category);
@@ -50,7 +44,7 @@ namespace LoginCodeFirst.Services
         
         
         //add
-        public async Task<bool>Add(IndexViewModel category)
+        public async Task<bool>AddAsync(IndexViewModel category)
         {
             try
             {
@@ -70,7 +64,7 @@ namespace LoginCodeFirst.Services
             
         }
 
-        public async Task<IndexViewModel> GetId(int? id)
+        public async Task<IndexViewModel> GetIdAsync(int? id)
         {
             var category = await _context.Category.FindAsync(id);
             var categoryViewModel = _mapper.Map<IndexViewModel>(category);
@@ -78,7 +72,7 @@ namespace LoginCodeFirst.Services
         }
     
         
-        public async Task<bool> Edit(IndexViewModel categoryViewModel)
+        public async Task<bool> EditAsync(IndexViewModel categoryViewModel)
         {
             try
             {
@@ -98,7 +92,7 @@ namespace LoginCodeFirst.Services
             
         }
         
-        public async Task<bool> Delete(int? id)
+        public async Task<bool> DeleteAsync(int? id)
         {
             try
             {

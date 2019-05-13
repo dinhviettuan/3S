@@ -31,17 +31,22 @@
                                 <div class="form-group">
                                     <label class="form-label" asp-for="ProductName"></label>
                                     <input type="text" asp-for="ProductName" placeholder="ProductName" class="form-control">
-                                    <span class="alert-danger" asp-validation-for="ProductName"></span>
+                                    <span class="text-danger" asp-validation-for="ProductName"></span>
                                 </div>
                                 <div class="form-group">
                                     <label class="form-label" asp-for="ModelYear"></label>
                                     <input type="text" asp-for="ModelYear" placeholder="ModelYear" class="form-control">
-                                    <span class="alert-danger" asp-validation-for="ModelYear"></span>
+                                    <span class="text-danger" asp-validation-for="ModelYear"></span>
                                 </div>
                                 <div class="form-group">
                                     <label class="form-label" asp-for="ListPrice"></label>
                                     <input type="text" asp-for="ListPrice" placeholder="ListPrice" class="form-control">
-                                    <span class="alert-danger" asp-validation-for="ListPrice"></span>
+                                    <span class="text-danger" asp-validation-for="ListPrice"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label" asp-for="ImageFile"></label>
+                                    <input type="file" asp-for="ImageFile" class="form-control">
+                                    <span class="text-danger" asp-validation-for="ImageFile"></span>
                                 </div>
                                 <div class="form-group">
                                     <label class="form-label" asp-for="BrandId"></label>

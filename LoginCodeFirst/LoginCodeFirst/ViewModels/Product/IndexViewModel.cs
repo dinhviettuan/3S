@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using LoginCodeFirst.Models.Products;
+using Microsoft.AspNetCore.Http;
 
 namespace LoginCodeFirst.ViewModels.Product
 {
@@ -11,7 +12,8 @@ namespace LoginCodeFirst.ViewModels.Product
         public int   CategoryId { get; set;  }
         public int ModelYear { get; set;  }
         public decimal ListPrice { get; set;  }
-        public string Image { get; set; }
+        public string Image { get; set;  }
+        public IFormFile ImageFile { get; set; }
         
         public virtual Models.Products.Category Category { get; set; }
         public virtual Models.Products.Brand Brand { get; set; }

@@ -35,15 +35,16 @@ namespace LoginCodeFirst.Controllers
         {
             if (ModelState.IsValid)
             {
-                var isValidator = await _userService.Login(user.Email, user.Password);
+                var isValidator = await _userService.LoginAsync(user.Email, user.Password);
                 if (isValidator)
                 {
-                    var users = _userService.GetEmail(user.Email);
+                    var users = _userService.GetEmailAsync(user.Email);
                     HttpContext.Session.SetString("fullname", user.Email);
                     return RedirectToAction("Index");
                 }
+                ViewBag.Err = "Login Fail!!! Email or Password is wrong!";
+                return View(user);
             }
-            ViewBag.Err = "Login Fail!!! Email or Password is wrong!";
             return View(user);
         }
 
@@ -51,19 +52,8 @@ namespace LoginCodeFirst.Controllers
         [HttpGet]
         public async Task<IActionResult> Index()
         {
-            var listuser = await _userService.GetUserList();
+            var listuser = await _userService.GetUserListAsync();
             return View(listuser);
-        }
-
-        [HttpPost]
-        public IActionResult SetLanguage(string culture, string returnUrl)
-        {
-            Response.Cookies.Append(
-                CookieRequestCultureProvider.DefaultCookieName,
-                CookieRequestCultureProvider.MakeCookieValue(new RequestCulture(culture)),
-                new CookieOptions { Expires = DateTimeOffset.UtcNow.AddYears(1) }
-            );
-            return LocalRedirect(returnUrl);
         }
 
 
@@ -71,7 +61,7 @@ namespace LoginCodeFirst.Controllers
         [HttpGet]
         public IActionResult Add()
         {
-            ViewBag.StoreId = new SelectList(_storeServices.Stores, "StoreId", "StoreName");
+            ViewBag.StoreId = new SelectList(_storeServices.GetStores(), "StoreId", "StoreName");
             return View();
         }
 
@@ -81,17 +71,18 @@ namespace LoginCodeFirst.Controllers
             if (ModelState.IsValid)
             {
 
-                var list = await _userService.Add(user);
+                var list = await _userService.AddAsync(user);
                 if (list)
                 {
-                    ViewBag.StoreId = new SelectList(_storeServices.Stores, "StoreId", "StoreName", user.StoreId);
+                    ViewBag.StoreId = new SelectList(_storeServices.GetStores(), "StoreId", "StoreName", user.StoreId);
                     TempData["User"] = "Add user success!";
                     return RedirectToAction("Index");
                 }
-            }
-
                 ViewBag.Err = "Add User Failure";
-                ViewBag.StoreId = new SelectList(_storeServices.Stores, "StoreId", "StoreName", user.StoreId);
+                ViewBag.StoreId = new SelectList(_storeServices.GetStores(), "StoreId", "StoreName", user.StoreId);
+                return View(user);
+            }
+            ViewBag.StoreId = new SelectList(_storeServices.GetStores(), "StoreId", "StoreName", user.StoreId);
             return View(user);
         }
         [HttpGet]
@@ -101,12 +92,12 @@ namespace LoginCodeFirst.Controllers
             {
                 return BadRequest();
             }
-            var findUser = await _userService.GetId(id);
+            var findUser = await _userService.GetIdAsync(id);
             if (findUser == null)
             {
                 return NotFound();
             }
-                ViewBag.StoreId = new SelectList(_storeServices.Stores, "StoreId", "StoreName");
+            ViewBag.StoreId = new SelectList(_storeServices.GetStores(), "StoreId", "StoreName");
             return View(findUser);
         }
 
@@ -116,11 +107,16 @@ namespace LoginCodeFirst.Controllers
 
             if (ModelState.IsValid)
             {
-                await _userService.Edit(user);
-                TempData["User"] = "Edit User Success";
-                return RedirectToAction("Index"); 
+                var list = await _userService.EditAsync(user);
+                if (list)
+                {
+                    TempData["User"] = "Edit User Success";
+                    return RedirectToAction("Index"); 
+                }  
+                ViewBag.StoreId = new SelectList(_storeServices.GetStores(), "StoreId", "StoreName", user.StoreId);
+                return View(user);
             }
-
+            ViewBag.StoreId = new SelectList(_storeServices.GetStores(), "StoreId", "StoreName", user.StoreId);
             return View(user);
         }
 
@@ -129,7 +125,7 @@ namespace LoginCodeFirst.Controllers
         public async Task<IActionResult> EditPassword(int? id)
         {
 
-            var users = await _userService.GetEditPassword(id);
+            var users = await _userService.GetEditPasswordAsync(id);
             if (users == null)
             {
                 return NotFound();
@@ -139,26 +135,27 @@ namespace LoginCodeFirst.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> EditPassword(PasswordViewModel user)
+        public async Task<IActionResult> EditPassword(PasswordViewModel userViewModel)
         {
             if (ModelState.IsValid)
             {
-                if (await _userService.EditPassword(user))
+                if (await _userService.EditPasswordAsync(userViewModel))
                 {
                     TempData["User"] = "Edit Password Success";
                     return RedirectToAction("Index");
                 }
+                ViewBag.Err = "Edit Password Failure";
+                return View(userViewModel);
             }
 
-            ViewBag.Err = "Edit Password Failure";
-            return View(user);
+            return View(userViewModel);
         }
 
 
         [HttpGet]
         public async Task<IActionResult> Delete(int? id)
         {
-            await _userService.Delete(id);
+            await _userService.DeleteAsync(id);
             TempData["User"] = "Delete User Success";
             return RedirectToAction("Index");
         }

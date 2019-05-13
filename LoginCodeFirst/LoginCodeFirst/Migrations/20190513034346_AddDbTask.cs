@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace LoginCodeFirst.Migrations
 {
-    public partial class AddDbImage : Migration
+    public partial class AddDbTask : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -63,7 +63,7 @@ namespace LoginCodeFirst.Migrations
                     CategoryId = table.Column<int>(nullable: false),
                     ModelYear = table.Column<int>(nullable: false),
                     ListPrice = table.Column<decimal>(nullable: false),
-                    Image = table.Column<byte>(nullable: false)
+                    Image = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -149,12 +149,12 @@ namespace LoginCodeFirst.Migrations
             migrationBuilder.InsertData(
                 table: "Product",
                 columns: new[] { "ProductId", "BrandId", "CategoryId", "Image", "ListPrice", "ModelYear", "ProductName" },
-                values: new object[] { 1, 1, 1, (byte)1, 123456m, 1, "giay" });
+                values: new object[] { 1, 1, 1, "wewqe", 123456m, 1, "giay" });
 
             migrationBuilder.InsertData(
                 table: "User",
                 columns: new[] { "UserId", "Email", "Fullname", "IsActive", "Password", "Phone", "StoreId" },
-                values: new object[] { 1, "tuan1@gmail.com", "Dinh Viet Tuan", true, "10000:ltHdEFS7PKMnLev8kQoiY1+sG99zNSrtnS+e/wqCI1DNM5MR", "123456789", 1 });
+                values: new object[] { 1, "tuan1@gmail.com", "Dinh Viet Tuan", true, "10000:5kTFzM8vq20sEyPJg8ZtHfyKDX0OVYa1BJw70Mu2yf6mvHxJ", "123456789", 1 });
 
             migrationBuilder.InsertData(
                 table: "Stock",

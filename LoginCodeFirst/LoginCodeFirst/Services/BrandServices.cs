@@ -11,13 +11,12 @@ namespace LoginCodeFirst.Services
 {
     public interface IBrandServices
     {
-        IEnumerable<Brand> Brands();
-        Task<List<IndexViewModel>> GetBrandList();
-        Task<bool> Add(IndexViewModel brand);
-        Task<IndexViewModel> GetId(int? id);
-        Task<bool> Edit(IndexViewModel brand);
-        Task<bool> Delete(int? id);
-        Task<IEnumerable<Brand>> BrandAsync();
+        IEnumerable<Brand> GetBrands();
+        Task<List<IndexViewModel>> GetBrandListAsync();
+        Task<bool> AddAsync(IndexViewModel brand);
+        Task<IndexViewModel> GetIdAsync(int? id);
+        Task<bool> EditAsync(IndexViewModel brand);
+        Task<bool> DeleteAsync(int? id);
 
 
     }
@@ -34,17 +33,14 @@ namespace LoginCodeFirst.Services
             _mapper = mapper;
         }
         
-        public IEnumerable<Brand> Brands()
+        public IEnumerable<Brand> GetBrands()
         {
             return _context.Brand;
         }
 
 
-        public async Task<IEnumerable<Brand>> BrandAsync()
-        {
-            return await _context.Brand.ToListAsync();
-        }
-        public async Task<List<IndexViewModel>> GetBrandList()
+        
+        public async Task<List<IndexViewModel>> GetBrandListAsync()
         {
             var brand = await _context.Brand.ToListAsync();
             var brandViewModel = _mapper.Map<List<IndexViewModel>>(brand);
@@ -52,7 +48,7 @@ namespace LoginCodeFirst.Services
         }
 
         
-        public async Task<bool> Add(IndexViewModel brand)
+        public async Task<bool> AddAsync(IndexViewModel brand)
         { 
            try
             {
@@ -71,7 +67,7 @@ namespace LoginCodeFirst.Services
             }
          }
 
-        public async Task<IndexViewModel> GetId(int? id)
+        public async Task<IndexViewModel> GetIdAsync(int? id)
         {
             var brand = await _context.Brand.FindAsync(id);
             var brandViewModel = _mapper.Map<IndexViewModel>(brand);
@@ -80,7 +76,7 @@ namespace LoginCodeFirst.Services
 
         
         
-        public async Task<bool> Edit(IndexViewModel brand)
+        public async Task<bool> EditAsync(IndexViewModel brand)
         {
             try
             {   
@@ -101,7 +97,7 @@ namespace LoginCodeFirst.Services
             
         
 
-        public async Task<bool> Delete(int? id)
+        public async Task<bool> DeleteAsync(int? id)
         {   
             try
             {

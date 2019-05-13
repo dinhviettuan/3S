@@ -7,8 +7,7 @@ namespace LoginCodeFirst.ViewModels.Product
         public Profiles()
         {
             CreateMap<Models.Products.Product, IndexViewModel>();
-            CreateMap<Models.Products.Product, EditViewModel>();
-            CreateMap<Models.Products.Product, AddViewModel>();
+           
         }
     }
 }

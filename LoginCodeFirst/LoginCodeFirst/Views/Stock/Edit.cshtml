@@ -22,7 +22,7 @@
                         <div>
                             <label class="col-md-4 control-label"> @Localizer["QUANTITY"]*</label>
                             <input asp-for="Quantity" type="text" placeholder="Please input your Quantity"class="txt">
-                            <span style="color: red" asp-validation-for="Quantity"></span>
+                            <span class="text-danger" asp-validation-for="Quantity"></span>
                         </div>
                         <input type="submit" value="submit" name="submit" class="txt2">
                     </form>

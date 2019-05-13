@@ -18,32 +18,130 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-    <data name="Login">
+    <!--Login-->
+    <data name="a_Login">
         <value>Đăng Nhập</value>
     </data>
-    <data name="Username">
+    <data name="ip_UserEmail">
         <value>Tài Khoản</value>
     </data>
-    <data name="Password">
+    <data name="ip_Password">
         <value>Mật Khẩu</value>
     </data>
-    <data name="Remember me">
+    <data name="lb_Remember me">
         <value>Ghi Nhớ</value>
     </data>
-    <data name="Sign in">
+    <data name="bt_Sign in">
         <value>Nhấn</value>
     </data>
-
+    
+    
+    <!--User-->
+    <data name="a_ADD">
+        <value>Thêm</value>
+    </data>
+    <data name="th_ID">
+        <value>ID</value>
+    </data>
+    <data name="th_StoreId">
+        <value>Cửa Hàng</value>
+    </data>
+    <data name="th_Email">
+        <value>Email</value>
+    </data>
+    <data name="th_Password">
+        <value>Email</value>
+    </data>
+    <data name="th_FullName">
+        <value>Họ Tên</value>
+    </data>
+    <data name="th_Phone">
+        <value>SDT</value>
+    </data>
+    <data name="th_IsActive">
+        <value>Trạng thái</value>
+    </data>
+    <data name="th_Actions">
+        <value>Thao Tác</value>
+    </data>
+    <data name="a_EditPassword">
+        <value>Sửa</value>
+    </data>
+    <data name="a_Edit">
+        <value>Sửa</value>
+    </data>
+    <data name="a_Delete">
+        <value>Xóa</value>
+    </data>
+    <data name="bt_SUBMIT">
+        <value>Nhấn</value>
+    </data>
+    <data name="Edit User">
+        <value>Sửa Người Dùng</value>
+    </data>
+    <data name="Add User">
+        <value>Thêm Người Dùng</value>
+    </data>
     <data name="User">
         <value>Người Dùng</value>
     </data>
-    <data name="ADD">
-        <value>Thêm</value>
+    
+    
+    <!--Store-->
+    <data name="lb_StoreName">
+        <value>Tên Cửa Hàng</value>
     </data>
-    <data name="">
-        <value>Nhấn</value>
+    <data name="lb_Phone">
+        <value>Địa Chỉ</value>
     </data>
-    <data name="Sign in">
-        <value>Nhấn</value>
+    <data name="lb_Email">
+        <value>Thành Phố</value>
     </data>
+    <data name="lb_Street">
+        <value>Tỉnh</value>
+    </data>
+    <data name="lb_City">
+        <value>Mã Bưu Chính</value>
+    </data>
+    <data name="lb_State">
+        <value>Cửa Hàng</value>
+    </data>
+    <data name="lb_ZipCode">
+        <value>Cửa Hàng</value>
+    </data>
+    
+    <!--moi lam ngang day-->
+    
+    
+    
+    <!--Stock-->
+    <data name="ProductId">
+        <value>Tên Sản Phẩm</value>
+    </data>
+    <data name="Quantity">
+        <value>Số Lượng</value>
+    </data>
+    
+    
+    
+    <data name="ProductId">
+        <value>Tên Sản Phẩm</value>
+    </data>
+    <data name="ProductId">
+        <value>Tên Sản Phẩm</value>
+    </data>
+    <data name="ProductId">
+        <value>Tên Sản Phẩm</value>
+    </data>
+    <data name="ProductId">
+        <value>Tên Sản Phẩm</value>
+    </data>
+    <data name="lbl_productName">
+        <value>Ten San Pham</value>
+    </data>
+    
+    
+    
+    
+    
 </root>

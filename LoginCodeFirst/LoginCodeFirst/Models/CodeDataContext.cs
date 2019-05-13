@@ -106,13 +106,13 @@ namespace LoginCodeFirst.Models
                 .WithMany(p => p.Products)
                 .HasForeignKey(d => d.BrandId);
             
-////            Khoa ngoai tu bang Stock sang store, product 
-//            modelBuilder.Entity<Stock>().HasOne(d => d.Store)
-//                .WithMany(p => p.Stocks)
-//                .HasForeignKey(d => d.StoreId);
-//            modelBuilder.Entity<Stock>().HasOne(d => d.Product)
-//                .WithMany(p => p.Stocks)
-//                .HasForeignKey(d => d.ProductId);
+//            Khoa ngoai tu bang Stock sang store, product 
+            modelBuilder.Entity<Stock>().HasOne(d => d.Store)
+                .WithMany(p => p.Stocks)
+                .HasForeignKey(d => d.StoreId);
+            modelBuilder.Entity<Stock>().HasOne(d => d.Product)
+                .WithMany(p => p.Stocks)
+                .HasForeignKey(d => d.ProductId);
             
             
 //            khoa ngoai tu store qua user

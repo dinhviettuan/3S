@@ -8,21 +8,18 @@ using LoginCodeFirst.Models.Products;
 using LoginCodeFirst.ViewModels.Brand;
 using LoginCodeFirst.ViewModels.Product;
 using Microsoft.EntityFrameworkCore;
-using AddViewModel = LoginCodeFirst.ViewModels.Product.AddViewModel;
-using EditViewModel = LoginCodeFirst.ViewModels.Product.EditViewModel;
 using IndexViewModel = LoginCodeFirst.ViewModels.Product.IndexViewModel;
 
 namespace LoginCodeFirst.Services
 {
     public interface IProductServices
     {
-        IEnumerable<Product> Products { get; }
-        Task<List<IndexViewModel>> GetListAsync();
-        Task<bool> Add(AddViewModel product);
-        Task<EditViewModel> GetId(int? id);
-        Task<bool> Edit(EditViewModel product);
-        Task<bool> Delete(int? id);
-//        Task<bool> UpLoadFile(IndexProductViewModel Image);
+        IEnumerable<Product> GetProducts();
+        Task<List<IndexViewModel>> GetProductListAsync();
+        Task<bool> AddAsync(IndexViewModel product);
+        Task<IndexViewModel> GetIdAsync(int? id);
+        Task<bool> EditAsync(IndexViewModel product);
+        Task<bool> DeleteAsync(int? id);
     }
 
     public class ProductServices : IProductServices
@@ -37,10 +34,13 @@ namespace LoginCodeFirst.Services
             _mapper = mapper;
         }
 
-        public IEnumerable<Product> Products => _context.Product;
+        public IEnumerable<Product> GetProducts()
+        {
+            return _context.Product;
+        }
         
         
-        public async Task<List<IndexViewModel>> GetListAsync()
+        public async Task<List<IndexViewModel>> GetProductListAsync()
         {
            var product = await _context.Product
                .Include(p => p.Brand)
@@ -51,14 +51,14 @@ namespace LoginCodeFirst.Services
 
        
         
-        public async Task<bool> Add(AddViewModel product)
+        public async Task<bool> AddAsync(IndexViewModel product)
         {
             try
             {
-                var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images", product.Image.FileName);
+                var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images", product.ImageFile.FileName);
                 using (var stream = new FileStream(path, FileMode.Create))
                 {
-                    await product.Image.CopyToAsync(stream);
+                    await product.ImageFile.CopyToAsync(stream);
                 }
                 var products = new Product
                 {
@@ -67,7 +67,7 @@ namespace LoginCodeFirst.Services
                     CategoryId = product.CategoryId,
                     ModelYear = product.ModelYear,
                     ListPrice = product.ListPrice,
-                    Image = product.Image.FileName
+                    Image = product.ImageFile.FileName
                 };
             
                 _context.Product.Add(products);
@@ -82,14 +82,14 @@ namespace LoginCodeFirst.Services
            
         }
 
-        public async Task<EditViewModel> GetId(int? id)
+        public async Task<IndexViewModel> GetIdAsync(int? id)
         {
             var product = await _context.Product.FindAsync(id);
-            var list = _mapper.Map<EditViewModel>(product);
+            var list = _mapper.Map<IndexViewModel>(product);
             return list;
         }
 
-        public async Task<bool> Edit(EditViewModel product)
+        public async Task<bool> EditAsync(IndexViewModel product)
         {
             try
             {
@@ -113,7 +113,7 @@ namespace LoginCodeFirst.Services
            
         }
         
-        public async Task<bool> Delete(int? id)
+        public async Task<bool> DeleteAsync(int? id)
         {
             try
             {

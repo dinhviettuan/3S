@@ -76,7 +76,7 @@
                                          @Html.DisplayFor(modelItem => item.ListPrice)
                                      </td>
                                      <td>
-                                         <img src="~/admin/images/@Html.DisplayFor(modelItem => item.Image)"/>
+                                         <img src="~/images/@Html.DisplayFor(modelItem => item.Image)" width="100px"/>
                                      </td>
                                      <td>
                                          <a asp-controller="Product" asp-action="Edit" asp-route-id="@item.ProductId">@Localizer.GetLocalizedHtmlString("Edit")</a>

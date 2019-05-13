@@ -18,7 +18,7 @@ namespace LoginCodeFirst.Controllers
         [HttpGet]
         public async Task<IActionResult> Index()
         {
-            var liststore = await _categoryServices.GetListAsync();
+            var liststore = await _categoryServices.GetCategoryListAsync();
             return View(liststore);
         }
 
@@ -36,7 +36,7 @@ namespace LoginCodeFirst.Controllers
 
             if (ModelState.IsValid)
             {
-                var list = await _categoryServices.Add(category);
+                var list = await _categoryServices.AddAsync(category);
                 if (list)
                 {
                     TempData["Category"] = "Add Category Success";
@@ -45,7 +45,6 @@ namespace LoginCodeFirst.Controllers
                 ViewBag.ErrorMessage = "Add Category Failure";
                 return View(category);
             }
-            ViewBag.ErrorMessage = "Add Category Failure";
             return View(category);
         }
         [HttpGet]
@@ -55,7 +54,7 @@ namespace LoginCodeFirst.Controllers
             {
                 return BadRequest();
             }
-            var list = await _categoryServices.GetId(id);
+            var list = await _categoryServices.GetIdAsync(id);
             if (list == null)
             {
                 return NotFound();
@@ -70,20 +69,22 @@ namespace LoginCodeFirst.Controllers
 
             if (ModelState.IsValid)
             {
-                await _categoryServices.Edit(category);
-                TempData["Category"] = "Edit Category Success";
-                return RedirectToAction("Index");
-
+                var list = await _categoryServices.EditAsync(category);
+                if (list)
+                {
+                    TempData["Category"] = "Edit Category Success";
+                    return RedirectToAction("Index");
+                }
+                ViewBag.Err = "Edit Category Failure";
+                return View(category);
             }
-
-            ViewBag.Err = "Edit Category Failure";
             return View(category);
         }
 
         [HttpGet]
         public async Task<IActionResult> Delete(int? id)
         {
-            await _categoryServices.Delete(id);
+            await _categoryServices.DeleteAsync(id);
             TempData["Category"] = "Delete Category Success";
             return RedirectToAction("Index");
         }
