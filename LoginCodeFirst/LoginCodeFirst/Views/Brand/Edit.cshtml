@@ -1,8 +1,8 @@
-﻿@using Microsoft.AspNetCore.Mvc.Localization
+﻿@using LoginCodeFirst.Resources
 @model LoginCodeFirst.ViewModels.Brand.IndexViewModel
-@inject IViewLocalizer Localizer
+@inject ResourcesServices Localizer
 @{
-    ViewBag.Title = "Edit Brand";
+    ViewBag.Title = Localizer.GetLocalizedHtmlString("msg_EditBrand");
     Layout = "_Layout";
 }
 
@@ -18,7 +18,7 @@
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <div class="card">
                 <div class="body">
-                    <h2 class="card-inside-title">Edit Brand</h2>
+                    <h2 class="card-inside-title"></h2>
                     @if (ViewBag.Err != null)
                     {
                         <div class="alert alert-danger">
@@ -31,14 +31,14 @@
                             <form asp-controller="Brand" asp-action="Edit" method="post">
                                 <input asp-for="BrandId" type="hidden">
                                 <div class="form-group">
-                                    <label class="form-label" asp-for="BrandName"></label>
+                                    <label class="form-label" asp-for="BrandName">@Localizer.GetLocalizedHtmlString("lbl_BrandName")</label>
                                     <input type="text" asp-for="BrandName" placeholder="BrandName" class="form-control">
                                     <span class="text-danger" asp-validation-for="BrandName"></span>
                                 </div>
 
 
 
-                                <button class="btn btn-primary waves-effect" type="submit">SUBMIT</button>
+                                <button class="btn btn-primary waves-effect" type="submit">@Localizer.GetLocalizedHtmlString("btn_SUBMIT")</button>
                             </form>
                         </div>
                     </div>

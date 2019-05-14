@@ -390,3 +390,4 @@ G:/3S/LoginCodeFirst/LoginCodeFirst/obj/Debug/netcoreapp2.2/LoginCodeFirst.cspro
 /home/local/3SI/tuan.dv/3S/LoginCodeFirst/LoginCodeFirst/bin/Debug/netcoreapp2.2/en-US/LoginCodeFirst.resources.dll
 /home/local/3SI/tuan.dv/3S/LoginCodeFirst/LoginCodeFirst/obj/Debug/netcoreapp2.2/en-US/LoginCodeFirst.resources.cs
 /home/local/3SI/tuan.dv/3S/LoginCodeFirst/LoginCodeFirst/obj/Debug/netcoreapp2.2/en-US/LoginCodeFirst.resources.dll
+/home/local/3SI/tuan.dv/3S/LoginCodeFirst/LoginCodeFirst/obj/Debug/netcoreapp2.2/Razor/Views/User/_ChangePassword.g.cshtml.cs

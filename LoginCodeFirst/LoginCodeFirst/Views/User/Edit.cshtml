@@ -2,7 +2,7 @@
 @model LoginCodeFirst.ViewModels.User.EditViewModel
 @inject ResourcesServices Localizer
 @{ 
-    ViewBag.Title = @Localizer.GetLocalizedHtmlString("Edit User");
+    ViewBag.Title = Localizer.GetLocalizedHtmlString("msg_EditUser");
     Layout = "_Layout";
 }
 
@@ -30,30 +30,30 @@
                             <form asp-controller="User" asp-action="Edit" method="post">
                                 <input asp-for="UserId" type="hidden">
                                 <div class="form-group">
-                                    <label class="form-label" asp-for="Email">@Localizer.GetLocalizedHtmlString("lb_Email")</label>
+                                    <label class="form-label" asp-for="Email">@Localizer.GetLocalizedHtmlString("lbl_Email*")</label>
                                     <input asp-for="Email" type="text" placeholder="Email" class="form-control">
                                     <span class="text-danger" asp-validation-for="Email"></span>
                                 </div>
                                 <div class="form-group">
-                                    <label class="form-label" asp-for="FullName">@Localizer.GetLocalizedHtmlString("lb_FullName")</label>
+                                    <label class="form-label" asp-for="FullName">@Localizer.GetLocalizedHtmlString("lbl_FullName*")</label>
                                     <input asp-for="FullName" type="text" placeholder="FullName" class="form-control">
                                     <span class="text-danger" asp-validation-for="FullName"></span>
                                 </div>
                                 <div class="form-group">
-                                    <label class="form-label" asp-for="Phone">@Localizer.GetLocalizedHtmlString("lb_Phone")</label>
+                                    <label class="form-label" asp-for="Phone">@Localizer.GetLocalizedHtmlString("lbl_Phone*")</label>
                                     <input asp-for="Phone" type="text" placeholder="Phone" class="form-control">
                                     <span class="text-danger" asp-validation-for="Phone"></span>
                                 </div>
                                 
                                 <div class="form-group">
-                                    <label class="form-label" asp-for="StoreId"></label>
+                                    <label class="form-label" asp-for="StoreId">@Localizer.GetLocalizedHtmlString("lbl_StoreId")</label>
                                     <select asp-for="StoreId" class="form-control" asp-items="@ViewBag.StoreId"></select>
                                 </div>
                                 <div>
                                     <input asp-for="IsActive" type="checkbox"/>
-                                    <label asp-for="IsActive">@Localizer.GetLocalizedHtmlString("lb_IsActive")</label>
+                                    <label asp-for="IsActive">@Localizer.GetLocalizedHtmlString("lbl_IsActive")</label>
                                 </div>
-                                <button class="btn btn-primary waves-effect" type="submit">@Localizer.GetLocalizedHtmlString("bt_SUBMIT")</button>
+                                <button class="btn btn-primary waves-effect" type="submit">@Localizer.GetLocalizedHtmlString("btn_SUBMIT")</button>
                             </form>
                         </div>
                     </div>

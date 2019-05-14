@@ -18,4 +18,187 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
+    <data name="a_Login">
+        <value>Login</value>
+    </data>
+    <data name="ip_UserEmail">
+        <value>UserEmail</value>
+    </data>
+    <data name="ip_Password">
+        <value>Password</value>
+    </data>
+    <data name="lb_RememberMe">
+        <value>Remember Me</value>
+    </data>
+    <data name="bt_Signin">
+        <value>Sing in</value>
+    </data>
+    <data name="a_RegisterNow!">
+        <value>Đăng Ký Ngay</value>
+    </data>
+    <data name="a_ForgotPassword?">
+        <value>Quên Mật Khẩu</value>
+    </data>
+
+
+    <!--User-->
+    <data name="a_ADD">
+        <value>ADD</value>
+    </data>
+    <data name="th_ID">
+        <value>ID</value>
+    </data>
+    <data name="th_StoreId">
+        <value>StoreId</value>
+    </data>
+    <data name="th_Email">
+        <value>Email</value>
+    </data>
+    <data name="th_Password">
+        <value>Password</value>
+    </data>
+    <data name="th_FullName">
+        <value>Full Name</value>
+    </data>
+    <data name="th_Phone">
+        <value>Phone</value>
+    </data>
+    <data name="th_IsActive">
+        <value>IsActive</value>
+    </data>
+    <data name="th_Actions">
+        <value>Actions</value>
+    </data>
+    <data name="a_EditPassword">
+        <value>Edit Password</value>
+    </data>
+    <data name="a_Edit">
+        <value>Edit</value>
+    </data>
+    <data name="a_Delete">
+        <value>Delete</value>
+    </data>
+    <data name="bt_SUBMIT">
+        <value>SUBMIT</value>
+    </data>
+    <data name="vb_EditUser">
+        <value>Edit User</value>
+    </data>
+    <data name="vb_AddUser">
+        <value>Add User</value>
+    </data>
+    <data name="vb_ListUser">
+        <value>List User</value>
+    </data>
+
+
+
+    <!--Store-->
+    <data name="lbl_StoreName">
+        <value>StoreName</value>
+    </data>
+    <data name="lb_Phone">
+        <value>Phone</value>
+    </data>
+    <data name="lb_Email">
+        <value>Email</value>
+    </data>
+    <data name="lb_Street">
+        <value>Street</value>
+    </data>
+    <data name="lb_City">
+        <value></value>
+    </data>
+    <data name="lb_State">
+        <value>Cửa Hàng</value>
+    </data>
+    <data name="lb_ZipCode">
+        <value>Cửa Hàng</value>
+    </data>
+    <data name="vb_EditStore">
+        <value>Sửa Cửa Hàng</value>
+    </data>
+    <data name="vb_AddStore">
+        <value>Thêm Cửa Hàng</value>
+    </data>
+    <data name="vb_ListStore">
+        <value>Danh Sách Cửa Hàng</value>
+    </data>
+
+
+
+    <!--Stock-->
+    <data name="th_StoreId">
+        <value>Cửa Hàng</value>
+    </data>
+    <data name="th_ProductId">
+        <value> Sản Phẩm</value>
+    </data>
+    <data name="th_Quantity">
+        <value>Số Lượng</value>
+    </data>
+    <data name="lb_Quantity">
+        <value>Số Lượng</value>
+    </data>
+    <data name="lb_ProductName">
+        <value>Tên Sản Phẩm</value>
+    </data>
+    <data name="vb_ListStock">
+        <value>Danh Sách Kho</value>
+    </data>
+    <data name="vb_EditStock">
+        <value>Sửa Kho</value>
+    </data>
+    <data name="vb_AddStock">
+        <value>Thêm Kho</value>
+    </data>
+
+
+
+    <!--Product-->
+
+    <data name="vb_ListProduct">
+        <value>Danh Sách Sản Phẩm</value>
+    </data>
+    <data name="vb_EditProduct">
+        <value>Sửa Sản Phẩm</value>
+    </data>
+    <data name="th_ProductName">
+        <value>Tên Sản Phẩm</value>
+    </data>
+    <data name="th_BrandId">
+        <value>Nhãn Hiệu</value>
+    </data>
+    <data name="th_CategoryId">
+        <value>Thể Loại</value>
+    </data>
+    <data name="th_ModelYear">
+        <value>Năm Sản Xuất</value>
+    </data>
+    <data name="th_ListPrice">
+        <value>Bảng Giá</value>
+    </data>
+    <data name="th_Image">
+        <value>Ảnh</value>
+    </data>
+    <data name="lb_ProductName">
+        <value>Tên Sản Phẩm</value>
+    </data>
+    <data name="lb_ListPrice">
+        <value>Bảng Giá</value>
+    </data>
+    <data name="lb_ImageFile">
+        <value>Ảnh</value>
+    </data>
+    <data name="lb_BrandId">
+        <value>Nhãn Hiệu</value>
+    </data>
+    <data name="lb_CategoryId">
+        <value>Thể Loại</value>
+    </data>
+    <data name="lb_ModelYear">
+        <value>Năm Sản Xuất</value>
+    </data>
+
+    
 </root>

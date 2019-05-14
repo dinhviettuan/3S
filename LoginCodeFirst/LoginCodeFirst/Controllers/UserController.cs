@@ -130,7 +130,7 @@ namespace LoginCodeFirst.Controllers
             {
                 return NotFound();
             }
-            return View(users); 
+            return PartialView("_ChangePassword"); 
 
         }
 
@@ -145,10 +145,10 @@ namespace LoginCodeFirst.Controllers
                     return RedirectToAction("Index");
                 }
                 ViewBag.Err = "Edit Password Failure";
-                return View(userViewModel);
+                return PartialView("_ChangePassword",userViewModel); 
             }
 
-            return View(userViewModel);
+            return PartialView("_ChangePassword",userViewModel);
         }
 
 

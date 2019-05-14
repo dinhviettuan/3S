@@ -2,7 +2,7 @@
 @model List<LoginCodeFirst.ViewModels.Product.IndexViewModel>
 @inject ResourcesServices Localizer
 @{
-    ViewBag.Title = "Index Product";
+    ViewBag.Title = Localizer.GetLocalizedHtmlString("msg_ListProduct");
 }
 
 
@@ -18,7 +18,7 @@
             <div class="card">
                 <div class="header">
                     <h2>
-                        <a class="btn btn-success" asp-controller="Product" asp-action="Add">@Localizer.GetLocalizedHtmlString("ADD")</a>
+                        <a class="btn btn-success" asp-controller="Product" asp-action="Add">@Localizer.GetLocalizedHtmlString("a_ADD")</a>
                     </h2>
                 </div>
                 <div class="body">
@@ -28,28 +28,28 @@
                                 <tr>
                                    
                                     <th>
-                                        @Localizer.GetLocalizedHtmlString("ProductId")
+                                        @Localizer.GetLocalizedHtmlString("th_ProductId")
                                     </th>
                                     <th>
-                                        @Localizer.GetLocalizedHtmlString("ProductName")
+                                        @Localizer.GetLocalizedHtmlString("th_ProductName")
                                     </th>
                                     <th>
-                                        @Localizer.GetLocalizedHtmlString("BrandId")
+                                        @Localizer.GetLocalizedHtmlString("th_BrandId")
                                     </th>
                                     <th>
-                                        @Localizer.GetLocalizedHtmlString("CategoryId")
+                                        @Localizer.GetLocalizedHtmlString("th_CategoryId")
                                     </th>
                                     <th>
-                                        @Localizer.GetLocalizedHtmlString("ModelYear")
+                                        @Localizer.GetLocalizedHtmlString("th_ModelYear")
                                     </th>
                                     <th>
-                                        @Localizer.GetLocalizedHtmlString("ListPrice")
+                                        @Localizer.GetLocalizedHtmlString("th_ListPrice")
                                     </th>
                                     <th>
-                                        @Localizer.GetLocalizedHtmlString("Image")
+                                        @Localizer.GetLocalizedHtmlString("th_Image")
                                     </th>
                                     <th>
-                                        @Localizer.GetLocalizedHtmlString("Actions")
+                                        @Localizer.GetLocalizedHtmlString("th_Actions")
                                     </th>
                                 </tr>
                             </thead>
@@ -79,8 +79,8 @@
                                          <img src="~/images/@Html.DisplayFor(modelItem => item.Image)" width="100px"/>
                                      </td>
                                      <td>
-                                         <a asp-controller="Product" asp-action="Edit" asp-route-id="@item.ProductId">@Localizer.GetLocalizedHtmlString("Edit")</a>
-                                         <a asp-controller="Product" asp-action="Delete" onclick=" return confirm('You really want to delete?')"asp-route-productId="@item.ProductId">@Localizer.GetLocalizedHtmlString("Delete")</a>
+                                         <a asp-controller="Product" asp-action="Edit" asp-route-id="@item.ProductId">@Localizer.GetLocalizedHtmlString("a_Edit")</a>
+                                         <a asp-controller="Product" asp-action="Delete" onclick=" return confirm('You really want to delete?')"asp-route-productId="@item.ProductId">@Localizer.GetLocalizedHtmlString("a_Delete")</a>
                                      </td>
                                  </tr>
                              }

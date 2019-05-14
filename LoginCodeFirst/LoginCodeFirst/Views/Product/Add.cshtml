@@ -1,8 +1,9 @@
-﻿@using Microsoft.AspNetCore.Mvc.Localization
+﻿
+@using LoginCodeFirst.Resources
 @model LoginCodeFirst.ViewModels.Product.IndexViewModel
-@inject IViewLocalizer Localizer
+@inject ResourcesServices Localizer
 @{
-    ViewBag.Title = "Add Product";
+    ViewBag.Title = Localizer.GetLocalizedHtmlString("msg_AddProduct");
     Layout = "_Layout";
 }
 
@@ -17,7 +18,7 @@
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <div class="card">
                 <div class="body">
-                    <h2 class="card-inside-title">Add Product</h2>
+                    <h2 class="card-inside-title"></h2>
                     @if (ViewBag.Err != null)
                     {
                         <div class="alert alert-danger">
@@ -29,36 +30,36 @@
                         <div class="col-sm-12">
                             <form asp-controller="Product" asp-action="Add" method="post" enctype="multipart/form-data">
                                 <div class="form-group">
-                                    <label class="form-label" asp-for="ProductName"></label>
+                                    <label class="form-label" asp-for="ProductName">@Localizer.GetLocalizedHtmlString("lbl_ProductName")</label>
                                     <input type="text" asp-for="ProductName" placeholder="ProductName" class="form-control">
                                     <span class="text-danger" asp-validation-for="ProductName"></span>
                                 </div>
                                 <div class="form-group">
-                                    <label class="form-label" asp-for="ModelYear"></label>
+                                    <label class="form-label" asp-for="ModelYear">@Localizer.GetLocalizedHtmlString("lbl_ModelYear")</label>
                                     <input type="text" asp-for="ModelYear" placeholder="ModelYear" class="form-control">
                                     <span class="text-danger" asp-validation-for="ModelYear"></span>
                                 </div>
                                 <div class="form-group">
-                                    <label class="form-label" asp-for="ListPrice"></label>
+                                    <label class="form-label" asp-for="ListPrice">@Localizer.GetLocalizedHtmlString("lbl_ListPrice")</label>
                                     <input type="text" asp-for="ListPrice" placeholder="ListPrice" class="form-control">
                                     <span class="text-danger" asp-validation-for="ListPrice"></span>
                                 </div>
                                 <div class="form-group">
-                                    <label class="form-label" asp-for="ImageFile"></label>
+                                    <label class="form-label" asp-for="ImageFile">@Localizer.GetLocalizedHtmlString("lbl_ImageFile")</label>
                                     <input type="file" asp-for="ImageFile" class="form-control">
                                     <span class="text-danger" asp-validation-for="ImageFile"></span>
                                 </div>
                                 <div class="form-group">
-                                    <label class="form-label" asp-for="BrandId"></label>
+                                    <label class="form-label" asp-for="BrandId">@Localizer.GetLocalizedHtmlString("lbl_BrandId")</label>
                                     <select asp-for="BrandId" class="form-control" asp-items="@ViewBag.BrandId"></select>
                                 </div>
                                 <div class="form-group">
-                                    <label class="form-label" asp-for="CategoryId"></label>
+                                    <label class="form-label" asp-for="CategoryId">@Localizer.GetLocalizedHtmlString("lbl_CategoryId")</label>
                                     <select asp-for="CategoryId" class="form-control" asp-items="@ViewBag.CategoryId"></select>
                                 </div>
           
 
-                                <button class="btn btn-primary waves-effect" type="submit">SUBMIT</button>
+                                <button class="btn btn-primary waves-effect" type="submit">@Localizer.GetLocalizedHtmlString("btn_SUBMIT")</button>
                             </form>
                         </div>
                     </div>

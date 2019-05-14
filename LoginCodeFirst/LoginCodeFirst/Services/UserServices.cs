@@ -144,7 +144,7 @@ namespace LoginCodeFirst.Services
             try
             {
                 var user = await _context.User.FindAsync(passwordViewModel.UserId);
-                user.Password = SecurePasswordHasher.Hash(passwordViewModel.Password);
+                user.Password = SecurePasswordHasher.Hash(passwordViewModel.NewPassword);
                 _context.User.Update(user);
                 await _context.SaveChangesAsync();
                 return true;

@@ -1,8 +1,9 @@
-﻿@using Microsoft.AspNetCore.Mvc.Localization
+﻿
+@using LoginCodeFirst.Resources
 @model LoginCodeFirst.ViewModels.Brand.IndexViewModel
-@inject IViewLocalizer Localizer
+@inject ResourcesServices Localizer
 @{
-    ViewBag.Title = "Add Brand";
+    ViewBag.Title = Localizer.GetLocalizedHtmlString("msg_AddBrand");
     Layout = "_Layout";
 }
 

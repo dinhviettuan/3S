@@ -22,24 +22,41 @@
     <data name="a_Login">
         <value>Đăng Nhập</value>
     </data>
-    <data name="ip_UserEmail">
+    <data name="ipt_UserEmail">
         <value>Tài Khoản</value>
     </data>
-    <data name="ip_Password">
+    <data name="ipt_Password">
         <value>Mật Khẩu</value>
     </data>
-    <data name="lb_Remember me">
+    <data name="lbl_Remember me">
         <value>Ghi Nhớ</value>
     </data>
-    <data name="bt_Sign in">
+    <data name="btn_Sign in">
         <value>Nhấn</value>
     </data>
+    <data name="a_RegisterNow!">
+        <value>Đăng Ký Ngay</value>
+    </data>
+    <data name="a_ForgotPassword?">
+        <value>Quên Mật Khẩu</value>
+    </data>
+    
     
     
     <!--User-->
+    <data name="a_Edit">
+        <value>Sửa</value>
+    </data>
+    <data name="a_Delete">
+        <value>Xóa</value>
+    </data>
     <data name="a_ADD">
         <value>Thêm</value>
     </data>
+    <data name="a_EditPassword">
+        <value>Sửa Mật Khẩu</value>
+    </data>
+    
     <data name="th_ID">
         <value>ID</value>
     </data>
@@ -50,7 +67,7 @@
         <value>Email</value>
     </data>
     <data name="th_Password">
-        <value>Email</value>
+        <value>Mật Khẩu</value>
     </data>
     <data name="th_FullName">
         <value>Họ Tên</value>
@@ -64,81 +81,223 @@
     <data name="th_Actions">
         <value>Thao Tác</value>
     </data>
-    <data name="a_EditPassword">
-        <value>Sửa</value>
+    
+    
+    <data name="lbl_Email*">
+        <value>Email</value>
     </data>
-    <data name="a_Edit">
-        <value>Sửa</value>
+    <data name="lbl_FullName*">
+        <value>Họ Tên</value>
     </data>
-    <data name="a_Delete">
-        <value>Xóa</value>
+    <data name="lbl_Phone*">
+        <value>Số Điện Thoại</value>
     </data>
-    <data name="bt_SUBMIT">
+    <data name="lbl_Password*">
+        <value>Mật Khẩu</value>
+    </data>
+    <data name="lbl_StoreId">
+        <value>Cửa Hàng</value>
+    </data>
+    <data name="lbl_IsActive">
+        <value>Thao Tác</value>
+    </data>
+    
+    <data name="btn_SUBMIT">
         <value>Nhấn</value>
     </data>
-    <data name="Edit User">
+    
+    <data name="msg_EditUser">
         <value>Sửa Người Dùng</value>
     </data>
-    <data name="Add User">
+    <data name="msg_AddUser">
         <value>Thêm Người Dùng</value>
     </data>
-    <data name="User">
-        <value>Người Dùng</value>
+    <data name="msg_ListUser">
+        <value>Danh Sách Người Dùng</value>
     </data>
+    
     
     
     <!--Store-->
-    <data name="lb_StoreName">
+    <data name="msg_EditStore">
+        <value>Sửa Cửa Hàng</value>
+    </data>
+    <data name="msg_AddStore">
+        <value>Thêm Cửa Hàng</value>
+    </data>
+    <data name="msg_ListStore">
+        <value>Danh Sách Cửa Hàng</value>
+    </data>
+
+   
+    
+    <data name="th_StoreName">
         <value>Tên Cửa Hàng</value>
     </data>
-    <data name="lb_Phone">
+    <data name="th_Street">
         <value>Địa Chỉ</value>
     </data>
-    <data name="lb_Email">
+    <data name="th_City">
         <value>Thành Phố</value>
     </data>
-    <data name="lb_Street">
-        <value>Tỉnh</value>
-    </data>
-    <data name="lb_City">
+    <data name="th_State">
+        <value>Tiểu Bang</value>
+    </data> 
+    <data name="th_ZipCode">
         <value>Mã Bưu Chính</value>
     </data>
-    <data name="lb_State">
-        <value>Cửa Hàng</value>
+    
+
+    <data name="lbl_StoreName*">
+        <value>Tên Cửa Hàng</value>
     </data>
-    <data name="lb_ZipCode">
-        <value>Cửa Hàng</value>
+    <data name="lbl_Phone*">
+        <value>Số Điện Thoại</value>
+    </data>
+    <data name="lbl_Email*">
+        <value>Email</value>
+    </data> 
+    <data name="lbl_Street">
+         <value>Địa Chỉ</value>
+    </data>
+    <data name="lbl_City">
+        <value>Thành Phố</value>
+    </data>
+    <data name="lbl_ZipCode">
+        <value>Mã Bưu Chính</value>
     </data>
     
-    <!--moi lam ngang day-->
+    
+    
     
     
     
     <!--Stock-->
-    <data name="ProductId">
-        <value>Tên Sản Phẩm</value>
+    <data name="msg_ListStock">
+        <value>Danh Sách Kho</value>
     </data>
-    <data name="Quantity">
+    <data name="msg_EditStock">
+        <value>Sửa Kho</value>
+    </data>
+    <data name="msg_AddStock">
+        <value>Thêm Kho</value>
+    </data>
+    
+    <data name="th_ProductId">
+        <value>Sản Phẩm</value>
+    </data>
+    <data name="th_Quantity">
         <value>Số Lượng</value>
     </data>
     
+    <data name="lbl_Quantity">
+        <value>Số Lượng</value>
+    </data>
+    <data name="lbl_ProductId">
+        <value>Tên Sản Phẩm</value>
+    </data>
     
     
-    <data name="ProductId">
+    
+    
+    <!--Product-->
+    <data name="msg_ListProduct">
+        <value>Danh Sách Sản Phẩm</value>
+    </data>
+    <data name="msg_EditProduct">
+        <value>Sửa Sản Phẩm</value>
+    </data>
+    <data name="msg_AddProduct">
+        <value>Thêm Sản Phẩm</value>
+    </data>
+
+    <data name="th_ProductId">
+        <value>Sản Phẩm</value>
+    </data>
+    <data name="th_ProductName">
+        <value>Tên Sản Phẩm</value>
+    </data> 
+    <data name="th_BrandId">
+        <value>Nhãn Hiệu</value>
+    </data> 
+    <data name="th_CategoryId">
+        <value>Thể Loại</value>
+    </data>
+    <data name="th_ModelYear">
+        <value>Năm Sản Xuất</value>
+    </data>
+    <data name="th_ListPrice">
+        <value>Bảng Giá</value>
+    </data>
+    <data name="th_Image">
+        <value>Ảnh</value>
+    </data>
+    
+    <data name="lbl_ProductName">
         <value>Tên Sản Phẩm</value>
     </data>
-    <data name="ProductId">
-        <value>Tên Sản Phẩm</value>
+    <data name="lbl_ListPrice">
+        <value>Bảng Giá</value>
     </data>
-    <data name="ProductId">
-        <value>Tên Sản Phẩm</value>
+    <data name="lbl_ImageFile">
+        <value>Ảnh</value>
     </data>
-    <data name="ProductId">
-        <value>Tên Sản Phẩm</value>
+    <data name="lbl_BrandId">
+        <value>Nhãn Hiệu</value>
     </data>
-    <data name="lbl_productName">
-        <value>Ten San Pham</value>
+    <data name="lbl_CategoryId">
+        <value>Thể Loại</value>
     </data>
+    <data name="lbl_ModelYear">
+        <value>Năm Sản Xuất</value>
+    </data>
+    
+    <!--Category-->
+
+    <data name="msg_ListCategory">
+        <value>Danh Sách Loại Hàng</value>
+    </data>
+    <data name="msg_EditCategory">
+        <value>Sủa Loại Hàng</value>
+    </data>
+    <data name="msg_AddCategory">
+        <value>Thêm Loại Hàng</value>
+    </data>
+    
+   
+    <data name="th_CategoryName">
+        <value>Tên Loại Hàng</value>
+    </data>
+
+    <data name="lbl_CategoryName">
+        <value>Tên Loại Hàng</value>
+    </data>
+    
+    <!--Brand-->
+
+
+    <data name="msg_EditBrand">
+        <value>Sửa Loại Hàng</value>
+    </data>
+    <data name="msg_ListBrand">
+        <value>Danh Sách Loại Hàng</value>
+    </data>
+    <data name="msg_AddBrand">
+        <value>Thêm Loại Hàng</value>
+    </data>
+    
+    
+    <data name="th_BrandName">
+        <value>Tên Nhãn Hiệu</value>
+    </data>
+    
+    <data name="lbl_BrandName">
+        <value>Tên Nhãn Hiệu</value>
+    </data>
+    
+    
+    
+    
     
     
     
