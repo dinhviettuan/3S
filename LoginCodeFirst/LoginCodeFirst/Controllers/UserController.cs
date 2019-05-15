@@ -50,7 +50,7 @@ namespace LoginCodeFirst.Controllers
                 if (list)
                 {
                     ViewBag.StoreId = new SelectList(_storeServices.GetStores(), "StoreId", "StoreName", user.StoreId);
-                    TempData["User"] = "Add user success!";
+                    TempData["Success"] = "Add user success!";
                     return RedirectToAction("Index");
                 }
                 ViewBag.Err = "Add User Failure";
@@ -85,7 +85,7 @@ namespace LoginCodeFirst.Controllers
                 var list = await _userService.EditAsync(user);
                 if (list)
                 {
-                    TempData["User"] = "Edit User Success";
+                    TempData["Success"] = "Edit User Success";
                     return RedirectToAction("Index"); 
                 }  
                 ViewBag.StoreId = new SelectList(_storeServices.GetStores(), "StoreId", "StoreName", user.StoreId);
@@ -116,7 +116,7 @@ namespace LoginCodeFirst.Controllers
             {
                 if (await _userService.EditPasswordAsync(userViewModel))
                 {
-                    TempData["User"] = "Edit Password Success";
+                    TempData["Success"] = "Edit Password Success";
                     return RedirectToAction("Index");
                 }
                 ViewBag.Err = "Edit Password Failure";
@@ -131,7 +131,8 @@ namespace LoginCodeFirst.Controllers
         public async Task<IActionResult> Delete(int? id)
         {
             await _userService.DeleteAsync(id.Value);
-            TempData["User"] = "Delete User Success";
+
+            TempData["Success"] = "Delete User Success";
             return RedirectToAction("Index");
         }
 

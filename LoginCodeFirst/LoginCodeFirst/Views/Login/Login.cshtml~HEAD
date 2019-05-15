@@ -1,0 +1,56 @@
+﻿@using LoginCodeFirst.Resources
+@model LoginCodeFirst.ViewModels.User.LoginViewModel 
+@inject ResourcesServices Localizer
+
+@{
+    ViewBag.Title = Localizer.GetLocalizedHtmlString("lbl_LoginProject");
+    Layout = "_LayoutLogin";
+}
+
+<div class="login-box">
+    <div class="logo">
+        <a href="javascript:void(0);"><b>@Localizer.GetLocalizedHtmlString("btn_Login")</b></a>
+        @* <small>@ViewBag.Title</small> *@
+    </div>
+    <div class="card">
+        <div class="body">
+            <form asp-action="Login" asp-controller="Login" method="post">
+                <div class="input-group">
+                    <span class="input-group-addon">
+                        <i class="material-icons">person</i>
+                    </span>
+                    <div class="form-line">
+                        <input type="text" class="form-control" asp-for="Email" placeholder="@Localizer.GetLocalizedHtmlString("lbl_UserEmail")"></input>
+                    </div>
+                    <span class="text-danger" asp-validation-for="Email"></span>
+                </div>
+                <div class="input-group">
+                    <span class="input-group-addon">
+                        <i class="material-icons">lock</i>
+                    </span>
+                    <div class="form-line">
+                        <input type="password" class="form-control" asp-for="Password" placeholder="Password">@Localizer.GetLocalizedHtmlString("lbl_Password")</input>
+                    </div>
+                    <span class="text-danger" asp-validation-for="Password"></span>
+                </div>
+                <div class="row">
+                    <div class="col-xs-8 p-t-5">
+                        <input type="checkbox" name="rememberme" id="rememberme" class="filled-in chk-col-pink">
+                        <label for="rememberme">@Localizer.GetLocalizedHtmlString("btn_Remember me")</label>
+                    </div>
+                    <div class="col-xs-4">
+                        <button class="btn btn-block bg-pink waves-effect" type="submit">@Localizer.GetLocalizedHtmlString("btn_SignIn")</button>
+                    </div>
+                </div>
+                <div class="row m-t-15 m-b--20">
+                    <div class="col-xs-6">
+                        <a href="#">@Localizer.GetLocalizedHtmlString("btn_RegisterNow!")</a>
+                    </div>
+                    <div class="col-xs-6 align-right">
+                        <a href="#">@Localizer.GetLocalizedHtmlString("btn_ForgotPassword?")</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

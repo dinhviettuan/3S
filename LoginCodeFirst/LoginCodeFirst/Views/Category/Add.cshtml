@@ -2,7 +2,7 @@
 @model LoginCodeFirst.ViewModels.Category.CategoryViewModel
 @inject ResourcesServices Localizer
 @{
-    ViewBag.Title = Localizer.GetLocalizedHtmlString("msg_AddCategory");
+    ViewBag.Title = Localizer.GetLocalizedHtmlString("lbl_AddCategory");
     Layout = "_Layout";
 }
 
@@ -36,11 +36,15 @@
                                 
 
 
-                                <button class="btn btn-primary waves-effect" type="submit">@Localizer.GetLocalizedHtmlString("btn_SUBMIT")</button>
+                                <button class="btn btn-primary waves-effect" type="submit">@Localizer.GetLocalizedHtmlString("btn_Submit")</button>
                             </form>
                         </div>
                         <a asp-area="" asp-controller="Category" asp-action="Index">
+<<<<<<< HEAD
+                            <i class="material-icons">reply</i>@Localizer.GetLocalizedHtmlString("btn_ComBack")
+=======
                             <i class="material-icons">reply</i>@Localizer.GetLocalizedHtmlString("cb_a_ComBack")
+>>>>>>> master
                         </a>
                     </div>
                 </div>

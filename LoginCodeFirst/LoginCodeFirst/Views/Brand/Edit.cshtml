@@ -2,7 +2,7 @@
 @model LoginCodeFirst.ViewModels.Brand.BrandViewModel
 @inject ResourcesServices Localizer
 @{
-    ViewBag.Title = Localizer.GetLocalizedHtmlString("msg_EditBrand");
+    ViewBag.Title = Localizer.GetLocalizedHtmlString("lbl_EditBrand");
     Layout = "_Layout";
 }
 
@@ -38,11 +38,15 @@
 
 
 
-                                <button class="btn btn-primary waves-effect" type="submit">@Localizer.GetLocalizedHtmlString("btn_SUBMIT")</button>
+                                <button class="btn btn-primary waves-effect" type="submit">@Localizer.GetLocalizedHtmlString("btn_Submit")</button>
                             </form>
                         </div>
                         <a asp-area="" asp-controller="Brand" asp-action="Index">
+<<<<<<< HEAD
+                            <i class="material-icons">reply</i>@Localizer.GetLocalizedHtmlString("btn_ComBack")
+=======
                             <i class="material-icons">reply</i>@Localizer.GetLocalizedHtmlString("cb_a_ComBack")
+>>>>>>> master
                         </a>
                     </div>
                 </div>

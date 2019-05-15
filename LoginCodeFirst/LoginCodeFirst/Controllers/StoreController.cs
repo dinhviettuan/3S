@@ -36,7 +36,7 @@ namespace LoginCodeFirst.Controllers
                 var list = await _storeService.AddAsync(store);
                 if (list)
                 {
-                    TempData["Store"] = "Add Store Success";
+                    TempData["Success"] = "Add Store Success";
                     return RedirectToAction("Index");
                 }
                 ViewBag.Err = "Add Store Failure";
@@ -70,7 +70,7 @@ namespace LoginCodeFirst.Controllers
                 var store = await _storeService.EditAsync(storeViewModel);
                 if (store)
                 {
-                    TempData["Store"] = "Edit Store Success";
+                    TempData["Success"] = "Edit Store Success";
                     return RedirectToAction("Index");
                 }
                 ViewBag.Err = "Edit Store Failure";
@@ -83,7 +83,7 @@ namespace LoginCodeFirst.Controllers
         public async Task<IActionResult> Delete(int? id)
         {
             await _storeService.DeleteAsync(id.Value);
-            TempData["Store"] = "Delete Store Success";
+            TempData["Success"] = "Delete Store Success";
             return  RedirectToAction("Index");
         }
    }

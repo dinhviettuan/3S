@@ -2,15 +2,12 @@
 @model LoginCodeFirst.ViewModels.User.IndexViewModel
 @inject ResourcesServices Localizer
 @{ 
-    ViewBag.Title = @Localizer.GetLocalizedHtmlString("msg_AddUser");
+    ViewBag.Title = @Localizer.GetLocalizedHtmlString("lbl_AddUser");
     Layout = "_Layout";
 }
 
 <div class="container-fluid">
     <div class="block-header">
-        <h2>
-            @ViewBag.Title  
-        </h2>
     </div>
     <!-- Basic Validation -->
     <div class="row clearfix">
@@ -18,12 +15,6 @@
             <div class="card">
                 <div class="body">
                     <h2 class="card-inside-title"></h2>
-                    @if(ViewBag.Err != null)
-                    {
-                        <div class="alert alert-danger">
-                            <strong>@ViewBag.Err</strong>
-                        </div>
-                    }
                     
                     <div class="row clearfix">
                         <div class="col-sm-12">
@@ -57,23 +48,20 @@
                                     <input asp-for="IsActive" type="checkbox"/>
                                     <label asp-for="IsActive">@Localizer.GetLocalizedHtmlString("lbl_IsActive")</label>
                                 </div>
-                                <button class="btn btn-primary waves-effect" type="submit">@Localizer.GetLocalizedHtmlString("btn_SUBMIT")</button>
+                                <button class="btn btn-primary waves-effect" type="submit">@Localizer.GetLocalizedHtmlString("btn_Submit")</button>
                             </form>
                         </div>
-                        @* <a asp-action="Index">a_back</a> *@
-                       
-                        @* <a type="button" class="btn btn-default btn-sm" asp-action="Index"> *@
-                        @*     <span class="glyphicon glyphicon-arrow-left"></span> COME BACK *@
-                        @* </a> *@
                         
                         <a asp-area="" asp-controller="User" asp-action="Index">
-                            <i class="material-icons">reply</i>@Localizer.GetLocalizedHtmlString("cb_a_ComBack")                      
-                        </a>
+                        <i class="material-icons">reply</i>@Localizer.GetLocalizedHtmlString("btn_ComBack")  
                         
+
+                       
+                        
+                     
+               
+         
                     </div>
-                </div>
-            </div>
-        </div>
     </div>
     <!-- #END# Basic Validation -->
 </div>

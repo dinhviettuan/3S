@@ -39,7 +39,7 @@ namespace LoginCodeFirst.Controllers
                 var list = await _categoryServices.AddAsync(category);
                 if (list)
                 {
-                    TempData["Category"] = "Add Category Success";
+                    TempData["Success"] = "Add Category Success";
                     return RedirectToAction("Index");
                 }
                 ViewBag.ErrorMessage = "Add Category Failure";
@@ -72,7 +72,7 @@ namespace LoginCodeFirst.Controllers
                 var list = await _categoryServices.EditAsync(category);
                 if (list)
                 {
-                    TempData["Category"] = "Edit Category Success";
+                    TempData["Success"] = "Edit Category Success";
                     return RedirectToAction("Index");
                 }
                 ViewBag.Err = "Edit Category Failure";
@@ -85,7 +85,10 @@ namespace LoginCodeFirst.Controllers
         public async Task<IActionResult> Delete(int? id)
         {
             await _categoryServices.DeleteAsync(id.Value);
-            TempData["Category"] = "Delete Category Success";
+
+            TempData["Success"] = "Delete Category Success";
+
+ 
             return RedirectToAction("Index");
         }
     }

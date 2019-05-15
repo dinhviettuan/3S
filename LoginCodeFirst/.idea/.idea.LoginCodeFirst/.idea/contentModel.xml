@@ -100,7 +100,8 @@
             <e p="Privacy.cshtml" t="Include" />
           </e>
           <e p="Login" t="Include">
-            <e p="Login.cshtml" t="Include" />
+            <e p="Login.cshtml~HEAD" t="Include" />
+            <e p="Login.cshtml~master" t="Include" />
           </e>
           <e p="Product" t="Include">
             <e p="Add.cshtml" t="Include" />

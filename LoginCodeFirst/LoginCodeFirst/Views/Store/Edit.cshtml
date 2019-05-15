@@ -2,15 +2,12 @@
 @model LoginCodeFirst.ViewModels.Store.StoreViewModel
 @inject ResourcesServices Localizer
 @{ 
-    ViewBag.Title = Localizer.GetLocalizedHtmlString("msg_EditStore");
+    ViewBag.Title = Localizer.GetLocalizedHtmlString("lbl_EditStore");
     Layout = "_Layout";
 }
 
 <div class="container-fluid">
     <div class="block-header">
-        <h2>
-            @ViewBag.Title  
-        </h2>
     </div>
     <!-- Basic Validation -->
     <div class="row clearfix">
@@ -18,12 +15,6 @@
             <div class="card">
                 <div class="body">
                     <h2 class="card-inside-title"></h2>
-                    @if(ViewBag.Err != null)
-                    {
-                        <div class="alert alert-danger">
-                            <strong>@ViewBag.Err</strong>
-                        </div>
-                    }
                     
                     <div class="row clearfix">
                         <div class="col-sm-12">
@@ -64,11 +55,15 @@
                                     <input asp-for="ZipCode" type="text" placeholder="ZipCode" class="form-control">
                                     <span class="text-danger" asp-validation-for="ZipCode"></span>
                                 </div>
-                                <button class="btn btn-primary waves-effect" type="submit">@Localizer.GetLocalizedHtmlString("btn_SUBMIT")</button>
+                                <button class="btn btn-primary waves-effect" type="submit">@Localizer.GetLocalizedHtmlString("btn_Submit")</button>
                             </form>
                         </div>
                         <a asp-area="" asp-controller="Store" asp-action="Index">
+<<<<<<< HEAD
+                            <i class="material-icons">reply</i>@Localizer.GetLocalizedHtmlString("btn_ComBack")
+=======
                             <i class="material-icons">reply</i>@Localizer.GetLocalizedHtmlString("cb_a_ComBack")
+>>>>>>> master
                         </a>
                     </div>
                 </div>

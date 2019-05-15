@@ -3,15 +3,12 @@
 @model LoginCodeFirst.ViewModels.Product.ProductViewModel
 @inject ResourcesServices Localizer
 @{
-    ViewBag.Title = Localizer.GetLocalizedHtmlString("msg_AddProduct");
+    ViewBag.Title = Localizer.GetLocalizedHtmlString("lbl_AddProduct");
     Layout = "_Layout";
 }
 
 <div class="container-fluid">
     <div class="block-header">
-        <h2>
-            @ViewBag.Title
-        </h2>
     </div>
     <!-- Basic Validation -->
     <div class="row clearfix">
@@ -59,11 +56,15 @@
                                 </div>
           
 
-                                <button class="btn btn-primary waves-effect" type="submit">@Localizer.GetLocalizedHtmlString("btn_SUBMIT")</button>
+                                <button class="btn btn-primary waves-effect" type="submit">@Localizer.GetLocalizedHtmlString("btn_Submit")</button>
                             </form>
                         </div>
                         <a asp-area="" asp-controller="Product" asp-action="Index">
+<<<<<<< HEAD
+                            <i class="material-icons">reply</i>@Localizer.GetLocalizedHtmlString("btn_ComBack")
+=======
                             <i class="material-icons">reply</i>@Localizer.GetLocalizedHtmlString("cb_a_ComBack")
+>>>>>>> master
                         </a>
                     </div>
                 </div>

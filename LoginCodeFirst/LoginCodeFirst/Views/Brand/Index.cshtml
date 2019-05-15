@@ -2,7 +2,7 @@
 @model List<LoginCodeFirst.ViewModels.Brand.BrandViewModel>
 @inject ResourcesServices Localizer
 @{
-    ViewBag.Title = Localizer.GetLocalizedHtmlString("msg_ListBrand");
+    ViewBag.Title = Localizer.GetLocalizedHtmlString("lbl_ListBrand");
 }
 
 
@@ -19,7 +19,9 @@
                 <div class="header">
                     <h2> 
                         <a type="button" class="btn btn-primary" data-toggle="ajax-modal" data-target="#add-contact" 
-                           asp-controller="Brand" asp-action="Add")>@Localizer.GetLocalizedHtmlString("a_ADD")</a>
+
+                           asp-controller="Brand" asp-action="Add")>@Localizer.GetLocalizedHtmlString("btn_Add")</a>
+
                     </h2>  
                 </div>
                 <div class="body">
@@ -29,13 +31,13 @@
                                 <tr>
 
                                     <th>
-                                        @Localizer.GetLocalizedHtmlString("th_BrandId")
+                                        @Localizer.GetLocalizedHtmlString("lbl_BrandId")
                                     </th>
                                     <th>
-                                        @Localizer.GetLocalizedHtmlString("th_BrandName")
+                                        @Localizer.GetLocalizedHtmlString("lbl_BrandName")
                                     </th>
                                     <th>
-                                        @Localizer.GetLocalizedHtmlString("th_Actions")
+                                        @Localizer.GetLocalizedHtmlString("lbl_Actions")
                                     </th>
                                 </tr>
                             </thead>
@@ -54,8 +56,16 @@
                                         @Html.DisplayFor(modelItem => item.BrandName)
                                     </td>
                                     <td>
+
+                                        <a asp-controller="Brand" asp-action="Edit" 
+                                           asp-route-id="@item.BrandId">@Localizer.GetLocalizedHtmlString("btn_Edit")</a>
+                                        <a asp-controller="Brand" asp-action="Delete" 
+                                           onclick=" return confirm('You really want to delete?')" 
+                                           asp-route-id="@item.BrandId">@Localizer.GetLocalizedHtmlString("btn_Delete")</a>
                                         <a asp-controller="Brand" asp-action="Edit" asp-route-id="@item.BrandId">@Localizer.GetLocalizedHtmlString("a_Edit")</a>
-                                        <a asp-controller="Brand" asp-action="Delete" onclick=" return confirm('You really want to delete?')" asp-route-id="@item.BrandId">@Localizer.GetLocalizedHtmlString("a_Delete")</a>
+                                        <a asp-controller="Brand" asp-action="Delete"
+                                           onclick=" return confirm('You really want to delete?')" 
+                                           asp-route-id="@item.BrandId">@Localizer.GetLocalizedHtmlString("a_Delete")</a>
                                     </td>
                                 </tr>
                             }

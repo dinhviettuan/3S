@@ -3,7 +3,10 @@
 @model LoginCodeFirst.ViewModels.Brand.BrandViewModel
 @inject ResourcesServices Localizer
 @{
-    ViewBag.Title = Localizer.GetLocalizedHtmlString("brd_lbl_AddBrand");
+
+    ViewBag.Title = Localizer.GetLocalizedHtmlString("lbl_AddBrand");
+    
+
     Layout = "_Layout";
 }
 
@@ -18,7 +21,7 @@
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <div class="card">
                 <div class="body">
-                    <h2 class="card-inside-title">Add Brand</h2>
+                    <h2 class="card-inside-title"></h2>
                     @if (ViewBag.Err != null)
                     {
                         <div class="alert alert-danger">
@@ -30,18 +33,20 @@
                         <div class="col-sm-12">
                             <form asp-controller="Brand" asp-action="Add" method="post">
                                 <div class="form-group">
-                                    <label class="form-label" asp-for="BrandName"></label>
+                                    <label class="form-label" asp-for="BrandName">@Localizer.GetLocalizedHtmlString("lbl_BrandName")</label>
                                     <input type="text" asp-for="BrandName" placeholder="BrandName" class="form-control">
                                     <span class="text-danger" asp-validation-for="BrandName"></span>
                                 </div>
 
 
 
-                                <button class="btn btn-primary waves-effect" type="submit">SUBMIT</button>
+                                <button class="btn btn-primary waves-effect" type="submit">@Localizer.GetLocalizedHtmlString("btn_Submit")</button>
                             </form>
                         </div>
                         <a asp-area="" asp-controller="Brand" asp-action="Index">
-                            <i class="material-icons">reply</i>@Localizer.GetLocalizedHtmlString("cb_a_ComBack")
+
+                            <i class="material-icons">reply</i>@Localizer.GetLocalizedHtmlString("btn_ComBack")
+                            
                         </a>
                     </div>
                 </div>

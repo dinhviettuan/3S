@@ -39,7 +39,7 @@ namespace LoginCodeFirst.Controllers
                 var  list= await _brandServices.AddAsync(brand);
                 if (list)
                 {
-                    TempData["Brand"] = "Add Brand Success";
+                    TempData["Success"] = "Add Brand Success";
                     return RedirectToAction("Index"); 
                 }
                 ViewBag.Err = "Add Brand Failure";
@@ -75,7 +75,7 @@ namespace LoginCodeFirst.Controllers
                 var list= await _brandServices.EditAsync(brand);
                 if (list)
                 {
-                    TempData["Brand"] = "Edit Brand Success";
+                    TempData["Success"] = "Edit Brand Success";
                     return RedirectToAction("Index");
                 } 
                 ViewBag.Err = "Edit Brand Failure";
@@ -88,7 +88,11 @@ namespace LoginCodeFirst.Controllers
         public async  Task<IActionResult> Delete(int? id)
         {
             await _brandServices.DeleteAsync(id.Value);
+<<<<<<< HEAD
+            TempData["Success"] = "Delete Brand Success";
+=======
             TempData["Brand"] = "Delete Brand Success";
+>>>>>>> master
             return  RedirectToAction("Index");
         }   
     }

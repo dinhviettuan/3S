@@ -50,7 +50,7 @@ namespace LoginCodeFirst.Controllers
                 var list = await _productServices.AddAsync(product);
                 if (list)
                 {
-                    TempData["Product"] = "Add Product Success";
+                    TempData["Success"] = "Add Product Success";
                     return RedirectToAction("Index");
                 }
                 ViewBag.ErrorMessage = "Add Product Failure";
@@ -93,7 +93,7 @@ namespace LoginCodeFirst.Controllers
                 {
                     ViewBag.CategoryId = new SelectList(_categoryServices.GetCategorys(), "CategoryId", "CategoryName", product.CategoryId);
                     ViewBag.BrandId = new SelectList(_brandServices.GetBrands(), "BrandId", "BrandName",product.BrandId);
-                    TempData["Product"] = "Edit Product Success";
+                    TempData["Success"] = "Edit Product Success";
                     return RedirectToAction("Index"); 
                 }
                 ViewBag.Err = "Edit Product Failure";
@@ -106,7 +106,8 @@ namespace LoginCodeFirst.Controllers
         public async Task<IActionResult> Delete(int? id)
         {
             await _productServices.DeleteAsync(id.Value);
-            TempData["Product"] = "Delete Product Success";
+
+            TempData["Success"] = "Delete Product Success";
             return  RedirectToAction("Index");
         }
     }

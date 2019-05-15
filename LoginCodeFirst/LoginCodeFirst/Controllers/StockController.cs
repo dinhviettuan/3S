@@ -44,7 +44,7 @@ namespace LoginCodeFirst.Controllers
                 var list = await _stockServices.AddAsync(stock);
                 if (list)
                 {
-                    TempData["Stock"] = "Add Stock Success";
+                    TempData["Success"] = "Add Stock Success";
                     return RedirectToAction("Index");
                 }
                 ViewBag.ProductId = new SelectList(_productServices.GetProducts(), "ProductId", "ProductName",stock.ProductId);
@@ -83,7 +83,7 @@ namespace LoginCodeFirst.Controllers
                   var stocks =   await _stockServices.EditAsync(stockViewModel);
                 if (stocks)
                 {
-                    TempData["Stock"] = "Edit Stock Success";
+                    TempData["Success"] = "Edit Stock Success";
                     return RedirectToAction("Index"); 
                 }
                 ViewBag.ProductId = new SelectList(_productServices.GetProducts(), "ProductId", "ProductName",stockViewModel.ProductId);
@@ -101,6 +101,8 @@ namespace LoginCodeFirst.Controllers
         public async Task<IActionResult> Delete(int? storeId, int? productId)
         {
             await _stockServices.DeleteAsync(storeId.Value,productId.Value);
+            TempData["Success"] = "Delete Stock Success";
+
             TempData["Stock"] = "Delete Stock Success";
             return  RedirectToAction("Index");
         }
