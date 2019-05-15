@@ -1,5 +1,5 @@
 ﻿
-namespace LoginCodeFirst.Models.Products
+namespace LoginCodeFirst.Models
 {
     public class Stock
     {

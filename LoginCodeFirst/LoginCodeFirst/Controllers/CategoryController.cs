@@ -31,7 +31,7 @@ namespace LoginCodeFirst.Controllers
 
 
         [HttpPost]
-        public async Task<IActionResult> Add(IndexViewModel category)
+        public async Task<IActionResult> Add(CategoryViewModel category)
         {
 
             if (ModelState.IsValid)
@@ -50,11 +50,11 @@ namespace LoginCodeFirst.Controllers
         [HttpGet]
         public async Task<IActionResult> Edit(int? id)
         {
-            if (id == null)
+            if (id == 0)
             {
                 return BadRequest();
             }
-            var list = await _categoryServices.GetIdAsync(id);
+            var list = await _categoryServices.GetIdAsync(id.Value);
             if (list == null)
             {
                 return NotFound();
@@ -64,7 +64,7 @@ namespace LoginCodeFirst.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Edit(int? id, IndexViewModel category)
+        public async Task<IActionResult> Edit(CategoryViewModel category)
         {
 
             if (ModelState.IsValid)
@@ -84,7 +84,7 @@ namespace LoginCodeFirst.Controllers
         [HttpGet]
         public async Task<IActionResult> Delete(int? id)
         {
-            await _categoryServices.DeleteAsync(id);
+            await _categoryServices.DeleteAsync(id.Value);
             TempData["Category"] = "Delete Category Success";
             return RedirectToAction("Index");
         }

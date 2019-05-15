@@ -28,7 +28,7 @@ namespace LoginCodeFirst.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Add(IndexViewModel store)
+        public async Task<IActionResult> Add(StoreViewModel store)
         {
 
             if (ModelState.IsValid)
@@ -52,7 +52,7 @@ namespace LoginCodeFirst.Controllers
             {
                 return BadRequest();
             }
-            var store = await _storeService.GetIdAsync(id);
+            var store = await _storeService.GetIdAsync(id.Value);
             if (store == null)
             {
                 return NotFound();
@@ -61,7 +61,7 @@ namespace LoginCodeFirst.Controllers
             return View(store);
         }
         [HttpPost]
-        public async Task<IActionResult> Edit(IndexViewModel storeViewModel)
+        public async Task<IActionResult> Edit(StoreViewModel storeViewModel)
         {
 
             if (ModelState.IsValid)
@@ -82,7 +82,7 @@ namespace LoginCodeFirst.Controllers
         [HttpGet]
         public async Task<IActionResult> Delete(int? id)
         {
-            await _storeService.DeleteAsync(id);
+            await _storeService.DeleteAsync(id.Value);
             TempData["Store"] = "Delete Store Success";
             return  RedirectToAction("Index");
         }

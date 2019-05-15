@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using LoginCodeFirst.Models;
@@ -15,14 +16,14 @@ namespace LoginCodeFirst.Services
         IEnumerable<User> GetUsers();
         Task<bool> LoginAsync(string email, string password);
         Task<List<IndexViewModel>> GetUserListAsync();
-        Task<EditViewModel> GetIdAsync(int? id);
-        Task<PasswordViewModel> GetEditPasswordAsync(int? Id);
+        Task<EditViewModel> GetIdAsync(int id);
+        Task<PasswordViewModel> GetEditPasswordAsync(int Id);
         Task<bool> AddAsync(IndexViewModel user);
         Task<bool>EditAsync(EditViewModel user);
         Task<bool> EditPasswordAsync(PasswordViewModel editPasswordUser);
-        Task<bool> DeleteAsync(int? id);
+        Task<bool> DeleteAsync(int id);
         Task<User> GetEmailAsync(string email);
-
+        bool IsExistedName(string email, int id);
     }
 
 
@@ -78,14 +79,14 @@ namespace LoginCodeFirst.Services
          
         }
         
-        public async Task<EditViewModel> GetIdAsync(int? id)
+        public async Task<EditViewModel> GetIdAsync(int id)
         {
             var user = await _context.User.FindAsync(id);
             var userViewModel = _mapper.Map<EditViewModel>(user);
             return userViewModel;
         }
 
-        public async Task<PasswordViewModel> GetEditPasswordAsync(int? Id)
+        public async Task<PasswordViewModel> GetEditPasswordAsync(int Id)
         {
             var user = await _context.User.FindAsync(Id);
             var passwordViewModel = _mapper.Map<PasswordViewModel>(user);
@@ -157,7 +158,7 @@ namespace LoginCodeFirst.Services
             
         }
 
-        public async Task<bool> DeleteAsync(int? id)
+        public async Task<bool> DeleteAsync(int id)
         {
             try
             {
@@ -180,6 +181,9 @@ namespace LoginCodeFirst.Services
             return user;
         }
 
-        
+        public bool IsExistedName(string email,int id)
+        {
+            return  _context.User.Any(x => x.Email == email && x.UserId != id);
+        }
     }
 }

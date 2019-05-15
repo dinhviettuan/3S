@@ -364,7 +364,6 @@ G:/3S/LoginCodeFirst/LoginCodeFirst/obj/Debug/netcoreapp2.2/LoginCodeFirst.cspro
 /home/local/3SI/tuan.dv/3S/LoginCodeFirst/LoginCodeFirst/obj/Debug/netcoreapp2.2/Razor/Views/Shared/_MenuPartial.g.cshtml.cs
 /home/local/3SI/tuan.dv/3S/LoginCodeFirst/LoginCodeFirst/obj/Debug/netcoreapp2.2/Razor/Views/Shared/_RightSidebarPartial.g.cshtml.cs
 /home/local/3SI/tuan.dv/3S/LoginCodeFirst/LoginCodeFirst/obj/Debug/netcoreapp2.2/Razor/Views/Shared/_TopSidebarPartial.g.cshtml.cs
-/home/local/3SI/tuan.dv/3S/LoginCodeFirst/LoginCodeFirst/obj/Debug/netcoreapp2.2/Razor/Views/Shared/_UserLoginPartial.g.cshtml.cs
 /home/local/3SI/tuan.dv/3S/LoginCodeFirst/LoginCodeFirst/obj/Debug/netcoreapp2.2/Razor/Views/Shared/_ValidationScriptsPartial.g.cshtml.cs
 /home/local/3SI/tuan.dv/3S/LoginCodeFirst/LoginCodeFirst/obj/Debug/netcoreapp2.2/Razor/Views/Stock/Add.g.cshtml.cs
 /home/local/3SI/tuan.dv/3S/LoginCodeFirst/LoginCodeFirst/obj/Debug/netcoreapp2.2/Razor/Views/Stock/Edit.g.cshtml.cs
@@ -376,7 +375,6 @@ G:/3S/LoginCodeFirst/LoginCodeFirst/obj/Debug/netcoreapp2.2/LoginCodeFirst.cspro
 /home/local/3SI/tuan.dv/3S/LoginCodeFirst/LoginCodeFirst/obj/Debug/netcoreapp2.2/Razor/Views/User/Edit.g.cshtml.cs
 /home/local/3SI/tuan.dv/3S/LoginCodeFirst/LoginCodeFirst/obj/Debug/netcoreapp2.2/Razor/Views/User/EditPassword.g.cshtml.cs
 /home/local/3SI/tuan.dv/3S/LoginCodeFirst/LoginCodeFirst/obj/Debug/netcoreapp2.2/Razor/Views/User/Index.g.cshtml.cs
-/home/local/3SI/tuan.dv/3S/LoginCodeFirst/LoginCodeFirst/obj/Debug/netcoreapp2.2/Razor/Views/User/Login.g.cshtml.cs
 /home/local/3SI/tuan.dv/3S/LoginCodeFirst/LoginCodeFirst/obj/Debug/netcoreapp2.2/Razor/Views/_ViewImports.g.cshtml.cs
 /home/local/3SI/tuan.dv/3S/LoginCodeFirst/LoginCodeFirst/obj/Debug/netcoreapp2.2/Razor/Views/_ViewStart.g.cshtml.cs
 /home/local/3SI/tuan.dv/3S/LoginCodeFirst/LoginCodeFirst/obj/Debug/netcoreapp2.2/LoginCodeFirst.RazorTargetAssemblyInfo.cache
@@ -391,3 +389,5 @@ G:/3S/LoginCodeFirst/LoginCodeFirst/obj/Debug/netcoreapp2.2/LoginCodeFirst.cspro
 /home/local/3SI/tuan.dv/3S/LoginCodeFirst/LoginCodeFirst/obj/Debug/netcoreapp2.2/en-US/LoginCodeFirst.resources.cs
 /home/local/3SI/tuan.dv/3S/LoginCodeFirst/LoginCodeFirst/obj/Debug/netcoreapp2.2/en-US/LoginCodeFirst.resources.dll
 /home/local/3SI/tuan.dv/3S/LoginCodeFirst/LoginCodeFirst/obj/Debug/netcoreapp2.2/Razor/Views/User/_ChangePassword.g.cshtml.cs
+/home/local/3SI/tuan.dv/3S/LoginCodeFirst/LoginCodeFirst/obj/Debug/netcoreapp2.2/Razor/Views/Login/Login.g.cshtml.cs
+/home/local/3SI/tuan.dv/3S/LoginCodeFirst/LoginCodeFirst/obj/Debug/netcoreapp2.2/Razor/Views/Shared/_UserLoginPartial.g.cshtml.cs

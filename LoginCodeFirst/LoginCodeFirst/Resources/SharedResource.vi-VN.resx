@@ -88,10 +88,7 @@
     </data>
     <data name="lbl_FullName*">
         <value>Họ Tên</value>
-    </data>
-    <data name="lbl_Phone*">
-        <value>Số Điện Thoại</value>
-    </data>
+    </data>                                                  
     <data name="lbl_Password*">
         <value>Mật Khẩu</value>
     </data>

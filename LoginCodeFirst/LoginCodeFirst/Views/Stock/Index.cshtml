@@ -1,5 +1,5 @@
 ﻿@using LoginCodeFirst.Resources
-@model List<LoginCodeFirst.ViewModels.Stock.IndexViewModel>
+@model List<LoginCodeFirst.ViewModels.Stock.StockViewModel>
 @inject ResourcesServices Localizer
 @{
     ViewBag.Title = Localizer.GetLocalizedHtmlString("msg_ListStock");
@@ -17,9 +17,10 @@
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <div class="card">
                 <div class="header">
-                    <h2>
-                        <a class="btn btn-success" asp-controller="Stock" asp-action="Add">@Localizer.GetLocalizedHtmlString("a_ADD")</a>
-                    </h2>
+                    <h2> 
+                        <a type="button" class="btn btn-primary" data-toggle="ajax-modal" data-target="#add-contact" 
+                           asp-controller="Stock" asp-action="Add")>@Localizer.GetLocalizedHtmlString("a_ADD")</a>
+                    </h2>  
                 </div>
                 <div class="body">
                     <div class="table-responsive">
@@ -45,24 +46,28 @@
                             </tr>
                             </thead>
                             <tbody>
+                            @{ var stt = 0;}
                             @foreach (var item in Model)
-                             {
-                                 <tr>
-                                     <td>
-                                         @Html.DisplayFor(modelItem => item.StoreId)
-                                     </td>
-                                     <td>
-                                         @Html.DisplayFor(modelItem => item.ProductId)
-                                     </td>
-                                     <td>
-                                         @Html.DisplayFor(modelItem => item.Quantity)
-                                     </td>
-                                     <td>
-                                         <a asp-controller="Stock" asp-action="Edit" asp-route-storeId="@item.StoreId" asp-route-productId="@item.ProductId">@Localizer.GetLocalizedHtmlString("a_Edit")</a>
-                                         <a asp-controller="Stock" asp-action="Delete" onclick=" return confirm('You really want to delete?')" asp-route-storeId="@item.StoreId" asp-route-productId="@item.ProductId">@Localizer.GetLocalizedHtmlString("a_Delete")</a>
-                                     </td>
-                                 </tr>
-                             }
+                            {
+                                stt += 1;
+                                <tr>
+                                    <td>@stt</td>
+                                    <td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.StoreId)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.ProductId)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Quantity)
+                                    </td>
+                                    <td>
+                                        <a asp-controller="Stock" asp-action="Edit" asp-route-storeId="@item.StoreId" asp-route-productId="@item.ProductId">@Localizer.GetLocalizedHtmlString("a_Edit")</a>
+                                        <a asp-controller="Stock" asp-action="Delete" onclick=" return confirm('You really want to delete?')" asp-route-storeId="@item.StoreId" asp-route-productId="@item.ProductId">@Localizer.GetLocalizedHtmlString("a_Delete")</a>
+                                    </td>
+                                </tr>
+                            }
                             </tbody>
                         </table>
                     </div>

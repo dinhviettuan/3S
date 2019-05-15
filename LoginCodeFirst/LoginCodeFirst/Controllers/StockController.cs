@@ -36,7 +36,7 @@ namespace LoginCodeFirst.Controllers
         }
         
         [HttpPost]
-        public async Task<IActionResult> Add(IndexViewModel stock)
+        public async Task<IActionResult> Add(StockViewModel stock)
         {
 
             if (ModelState.IsValid)
@@ -64,10 +64,10 @@ namespace LoginCodeFirst.Controllers
             {
                 return BadRequest();
             }
-            var list = await _stockServices.GetIdAsync(storeId, productId);
+            var list = await _stockServices.GetIdAsync(storeId.Value, productId.Value);
             if (list == null)
             {
-                return NotFound();
+                return BadRequest();
             }
             ViewBag.ProductId = new SelectList(_productServices.GetProducts(), "ProductId", "ProductName");
             ViewBag.StoreId = new SelectList(_storeServices.GetStores(), "StoreId", "StoreName");
@@ -75,7 +75,7 @@ namespace LoginCodeFirst.Controllers
         }
         
         [HttpPost]
-        public async Task<IActionResult> Edit(IndexViewModel stockViewModel)
+        public async Task<IActionResult> Edit(StockViewModel stockViewModel)
         {
 
             if (ModelState.IsValid)
@@ -100,7 +100,7 @@ namespace LoginCodeFirst.Controllers
         [HttpGet]
         public async Task<IActionResult> Delete(int? storeId, int? productId)
         {
-            await _stockServices.DeleteAsync(storeId,productId);
+            await _stockServices.DeleteAsync(storeId.Value,productId.Value);
             TempData["Stock"] = "Delete Stock Success";
             return  RedirectToAction("Index");
         }

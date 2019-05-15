@@ -1,9 +1,7 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using LoginCodeFirst.Services;
 using LoginCodeFirst.ViewModels.User;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
@@ -15,7 +13,7 @@ namespace LoginCodeFirst.Controllers
 
         private readonly IUserServices _userService;
 
-        public readonly IStoreServices _storeServices;
+        private readonly IStoreServices _storeServices;
 
         public UserController(IUserServices userService,IStoreServices storeServices)
         {
@@ -24,29 +22,6 @@ namespace LoginCodeFirst.Controllers
             _storeServices = storeServices;
         }
 
-        [HttpGet]
-        public IActionResult Login()
-        {
-            return View();
-        }
-
-        [HttpPost]
-        public async Task<IActionResult> Login(LoginViewModel user)
-        {
-            if (ModelState.IsValid)
-            {
-                var isValidator = await _userService.LoginAsync(user.Email, user.Password);
-                if (isValidator)
-                {
-                    var users = _userService.GetEmailAsync(user.Email);
-                    HttpContext.Session.SetString("fullname", user.Email);
-                    return RedirectToAction("Index");
-                }
-                ViewBag.Err = "Login Fail!!! Email or Password is wrong!";
-                return View(user);
-            }
-            return View(user);
-        }
 
             
         [HttpGet]
@@ -92,13 +67,13 @@ namespace LoginCodeFirst.Controllers
             {
                 return BadRequest();
             }
-            var findUser = await _userService.GetIdAsync(id);
-            if (findUser == null)
+            var user = await _userService.GetIdAsync(id.Value);
+            if (user == null)
             {
-                return NotFound();
+                return BadRequest();
             }
             ViewBag.StoreId = new SelectList(_storeServices.GetStores(), "StoreId", "StoreName");
-            return View(findUser);
+            return View(user);
         }
 
         [HttpPost]
@@ -125,12 +100,12 @@ namespace LoginCodeFirst.Controllers
         public async Task<IActionResult> EditPassword(int? id)
         {
 
-            var users = await _userService.GetEditPasswordAsync(id);
+            var users = await _userService.GetEditPasswordAsync(id.Value);
             if (users == null)
             {
-                return NotFound();
+                return BadRequest();
             }
-            return PartialView("_ChangePassword"); 
+            return PartialView("_ChangePassword", users); 
 
         }
 
@@ -155,16 +130,11 @@ namespace LoginCodeFirst.Controllers
         [HttpGet]
         public async Task<IActionResult> Delete(int? id)
         {
-            await _userService.DeleteAsync(id);
+            await _userService.DeleteAsync(id.Value);
             TempData["User"] = "Delete User Success";
             return RedirectToAction("Index");
         }
 
-        [HttpGet]
-        public IActionResult LogOut()
-        {
-            HttpContext.Session.Remove("fullname");
-            return RedirectToAction("Login");
-        }
+        
     }
 }

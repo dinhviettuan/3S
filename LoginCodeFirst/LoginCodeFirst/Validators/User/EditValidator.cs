@@ -9,15 +9,16 @@ namespace LoginCodeFirst.Validators.User
     {
         public IndexValidator(IUserServices userServices, IStringLocalizer<EditViewModel> localizer)
         {
-            var users = userServices.GetUsers();
-            foreach (var user in users)
-            {
-                RuleFor(x => x.Email).NotEqual(user.Email).WithMessage(localizer["This Email already exists."]);
-            }
-            RuleFor(x => x.Email).NotNull().WithMessage(localizer["Email not be empty"]);
-            RuleFor(x => x.Email).EmailAddress().WithMessage(localizer["Please enter a valid email!"]);            
-            RuleFor(x => x.FullName).NotNull().WithMessage(localizer["Fullname not be empty"]);
-            RuleFor(x => x.Phone).NotNull().WithMessage(localizer["Phone not be empty"]);
+            RuleFor(x => x.Email).Must((reg,c) => !userServices.IsExistedName(reg.Email,reg.UserId))
+                .WithMessage(localizer["This Email already exists."]);
+            RuleFor(x => x.Email).NotNull()
+                .WithMessage(localizer["Email not be empty"]);
+            RuleFor(x => x.Email).EmailAddress()
+                .WithMessage(localizer["Please enter a valid email!"]);            
+            RuleFor(x => x.FullName).NotNull()
+                .WithMessage(localizer["Fullname not be empty"]);
+            RuleFor(x => x.Phone).NotNull()
+                .WithMessage(localizer["Phone not be empty"]);
             RuleFor(x => x.IsActive).NotNull();
         }
 

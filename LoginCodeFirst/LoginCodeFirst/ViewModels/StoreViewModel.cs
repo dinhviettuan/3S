@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
-using LoginCodeFirst.Models.Products;
+
 
 namespace LoginCodeFirst.ViewModels.Store
 {
-    public class IndexViewModel
+    public class StoreViewModel
     {
         public int StoreId { get; set; }
         public string StoreName { get; set; } 
@@ -15,7 +15,7 @@ namespace LoginCodeFirst.ViewModels.Store
         public string ZipCode { get; set; } 
         
         public  virtual ICollection<Models.User> Users { get; set; }
-        public virtual ICollection<Models.Products.Stock> Stocks { get; set; }
+        public virtual ICollection<Models.Stock> Stocks { get; set; }
         
     }
 }

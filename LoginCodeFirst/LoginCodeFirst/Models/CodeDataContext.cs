@@ -1,5 +1,4 @@
-﻿using LoginCodeFirst.Models.Products;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using TaskTranning.Infrastructure;
 
 namespace LoginCodeFirst.Models

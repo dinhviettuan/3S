@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace LoginCodeFirst.Models.Products
+namespace LoginCodeFirst.Models
 {
     public class Brand
     {

@@ -1,5 +1,5 @@
 ﻿@using LoginCodeFirst.Resources
-@model List<LoginCodeFirst.ViewModels.Brand.IndexViewModel>
+@model List<LoginCodeFirst.ViewModels.Brand.BrandViewModel>
 @inject ResourcesServices Localizer
 @{
     ViewBag.Title = Localizer.GetLocalizedHtmlString("msg_ListBrand");
@@ -17,9 +17,10 @@
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <div class="card">
                 <div class="header">
-                    <h2>
-                        <a class="btn btn-success" asp-controller="Brand" asp-action="Add">@Localizer.GetLocalizedHtmlString("a_ADD")</a>
-                    </h2>
+                    <h2> 
+                        <a type="button" class="btn btn-primary" data-toggle="ajax-modal" data-target="#add-contact" 
+                           asp-controller="Brand" asp-action="Add")>@Localizer.GetLocalizedHtmlString("a_ADD")</a>
+                    </h2>  
                 </div>
                 <div class="body">
                     <div class="table-responsive">
@@ -39,21 +40,25 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach (var item in Model)
-                                {
-                                    <tr>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.BrandId)
-                                        </td>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.BrandName)
-                                        </td>
-                                        <td>
-                                            <a asp-controller="Brand" asp-action="Edit" asp-route-id="@item.BrandId">@Localizer.GetLocalizedHtmlString("a_Edit")</a>
-                                            <a asp-controller="Brand" asp-action="Delete" onclick=" return confirm('You really want to delete?')" asp-route-id="@item.BrandId">@Localizer.GetLocalizedHtmlString("a_Delete")</a>
-                                        </td>
-                                    </tr>
-                                }
+                            @{ var stt = 0;}
+                            @foreach (var item in Model)
+                            {
+                                stt += 1;
+                                <tr>
+                                    <td>@stt</td>
+                                    <td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.BrandId)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.BrandName)
+                                    </td>
+                                    <td>
+                                        <a asp-controller="Brand" asp-action="Edit" asp-route-id="@item.BrandId">@Localizer.GetLocalizedHtmlString("a_Edit")</a>
+                                        <a asp-controller="Brand" asp-action="Delete" onclick=" return confirm('You really want to delete?')" asp-route-id="@item.BrandId">@Localizer.GetLocalizedHtmlString("a_Delete")</a>
+                                    </td>
+                                </tr>
+                            }
                             </tbody>
                         </table>
                     </div>

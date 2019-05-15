@@ -1,5 +1,5 @@
 ﻿@using LoginCodeFirst.Resources
-@model LoginCodeFirst.ViewModels.Brand.IndexViewModel
+@model LoginCodeFirst.ViewModels.Brand.BrandViewModel
 @inject ResourcesServices Localizer
 @{
     ViewBag.Title = Localizer.GetLocalizedHtmlString("msg_EditBrand");
@@ -41,6 +41,9 @@
                                 <button class="btn btn-primary waves-effect" type="submit">@Localizer.GetLocalizedHtmlString("btn_SUBMIT")</button>
                             </form>
                         </div>
+                        <a asp-area="" asp-controller="Brand" asp-action="Index">
+                            <i class="material-icons">reply</i>@Localizer.GetLocalizedHtmlString("cb_a_ComBack")
+                        </a>
                     </div>
                 </div>
             </div>

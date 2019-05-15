@@ -60,7 +60,16 @@
                                 <button class="btn btn-primary waves-effect" type="submit">@Localizer.GetLocalizedHtmlString("btn_SUBMIT")</button>
                             </form>
                         </div>
-                        <a asp-action="Index">a_back</a>
+                        @* <a asp-action="Index">a_back</a> *@
+                       
+                        @* <a type="button" class="btn btn-default btn-sm" asp-action="Index"> *@
+                        @*     <span class="glyphicon glyphicon-arrow-left"></span> COME BACK *@
+                        @* </a> *@
+                        
+                        <a asp-area="" asp-controller="User" asp-action="Index">
+                            <i class="material-icons">reply</i>@Localizer.GetLocalizedHtmlString("cb_a_ComBack")                      
+                        </a>
+                        
                     </div>
                 </div>
             </div>

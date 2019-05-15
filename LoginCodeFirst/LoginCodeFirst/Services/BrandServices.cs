@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using LoginCodeFirst.Models;
-using LoginCodeFirst.Models.Products;
 using LoginCodeFirst.ViewModels.Brand;
 using Microsoft.EntityFrameworkCore;
 
@@ -12,13 +12,14 @@ namespace LoginCodeFirst.Services
     public interface IBrandServices
     {
         IEnumerable<Brand> GetBrands();
-        Task<List<IndexViewModel>> GetBrandListAsync();
-        Task<bool> AddAsync(IndexViewModel brand);
-        Task<IndexViewModel> GetIdAsync(int? id);
-        Task<bool> EditAsync(IndexViewModel brand);
-        Task<bool> DeleteAsync(int? id);
+        Task<List<BrandViewModel>> GetBrandListAsync();
+        Task<bool> AddAsync(BrandViewModel brand);
+        Task<BrandViewModel> GetIdAsync(int id);
+        Task<bool> EditAsync(BrandViewModel brand);
+        Task<bool> DeleteAsync(int id);
+        bool IsExistedName(string name,int id);
 
-
+        
     }
         
     public class BrandServices : IBrandServices
@@ -40,15 +41,15 @@ namespace LoginCodeFirst.Services
 
 
         
-        public async Task<List<IndexViewModel>> GetBrandListAsync()
+        public async Task<List<BrandViewModel>> GetBrandListAsync()
         {
             var brand = await _context.Brand.ToListAsync();
-            var brandViewModel = _mapper.Map<List<IndexViewModel>>(brand);
+            var brandViewModel = _mapper.Map<List<BrandViewModel>>(brand);
             return brandViewModel;
         }
 
         
-        public async Task<bool> AddAsync(IndexViewModel brand)
+        public async Task<bool> AddAsync(BrandViewModel brand)
         { 
            try
             {
@@ -67,16 +68,16 @@ namespace LoginCodeFirst.Services
             }
          }
 
-        public async Task<IndexViewModel> GetIdAsync(int? id)
+        public async Task<BrandViewModel> GetIdAsync(int id)
         {
             var brand = await _context.Brand.FindAsync(id);
-            var brandViewModel = _mapper.Map<IndexViewModel>(brand);
+            var brandViewModel = _mapper.Map<BrandViewModel>(brand);
             return brandViewModel;
         }
 
         
         
-        public async Task<bool> EditAsync(IndexViewModel brand)
+        public async Task<bool> EditAsync(BrandViewModel brand)
         {
             try
             {   
@@ -97,7 +98,7 @@ namespace LoginCodeFirst.Services
             
         
 
-        public async Task<bool> DeleteAsync(int? id)
+        public async Task<bool> DeleteAsync(int id)
         {   
             try
             {
@@ -113,6 +114,11 @@ namespace LoginCodeFirst.Services
             return false;
             }
            
+        }
+
+        public bool IsExistedName(string name,int id)
+        {
+            return  _context.Brand.Any(x => x.BrandName == name && x.BrandId != id);
         }
     }
 }

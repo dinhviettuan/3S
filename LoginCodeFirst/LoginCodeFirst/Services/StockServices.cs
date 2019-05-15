@@ -3,9 +3,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using AutoMapper;
 using LoginCodeFirst.Models;
-using LoginCodeFirst.Models.Products;
 using LoginCodeFirst.ViewModels.Stock;
-using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.EntityFrameworkCore;
 
 namespace LoginCodeFirst.Services
@@ -13,11 +11,11 @@ namespace LoginCodeFirst.Services
     public interface IStockServices
     {
         IEnumerable<Stock> GetStocks();
-        Task<List<IndexViewModel>> GetStockListAsync();
-        Task<bool> AddAsync(IndexViewModel stock);
-        Task<IndexViewModel> GetIdAsync(int? storeId, int? productId);
-        Task<bool> EditAsync(IndexViewModel stockViewModel);
-        Task<bool> DeleteAsync(int? storeId, int? productId);
+        Task<List<StockViewModel>> GetStockListAsync();
+        Task<bool> AddAsync(StockViewModel stock);
+        Task<StockViewModel> GetIdAsync(int storeId, int productId);
+        Task<bool> EditAsync(StockViewModel stockViewModel);
+        Task<bool> DeleteAsync(int storeId, int productId);
     }
 
     public class StockServices : IStockServices
@@ -37,17 +35,17 @@ namespace LoginCodeFirst.Services
             return _context.Stock;
         }
 
-        public async Task<List<IndexViewModel>> GetStockListAsync()
+        public async Task<List<StockViewModel>> GetStockListAsync()
         {
             var stocks = await _context.Stock
                 .Include(stock => stock.Product)
                 .Include(stock => stock.Store)
                 .ToListAsync();
-            var list = _mapper.Map<List<IndexViewModel>>(stocks);
+            var list = _mapper.Map<List<StockViewModel>>(stocks);
             return list;
         }
 
-        public async Task<bool> AddAsync(IndexViewModel stockViewModel)
+        public async Task<bool> AddAsync(StockViewModel stockViewModel)
         {
             try
             {
@@ -77,14 +75,14 @@ namespace LoginCodeFirst.Services
             
         }
 
-        public async Task<IndexViewModel> GetIdAsync(int? storeId, int? productId)
+        public async Task<StockViewModel> GetIdAsync(int storeId, int productId)
         {
             var stock = await _context.Stock.FindAsync(storeId, productId);
-            var getViewModel = _mapper.Map<IndexViewModel>(stock);
+            var getViewModel = _mapper.Map<StockViewModel>(stock);
             return getViewModel;
         }
 
-        public async Task<bool> EditAsync(IndexViewModel stockViewModel)
+        public async Task<bool> EditAsync(StockViewModel stockViewModel)
         {
             try
             {
@@ -104,7 +102,7 @@ namespace LoginCodeFirst.Services
             
         }
 
-        public async Task<bool> DeleteAsync(int? storeId, int? productId)
+        public async Task<bool> DeleteAsync(int storeId, int productId)
         {
             try
             {

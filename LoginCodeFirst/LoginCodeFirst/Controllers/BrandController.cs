@@ -31,7 +31,7 @@ namespace LoginCodeFirst.Controllers
         }
         
         [HttpPost]
-        public async Task<IActionResult> Add(IndexViewModel brand)
+        public async Task<IActionResult> Add(BrandViewModel brand)
         {
 
             if (ModelState.IsValid)
@@ -56,7 +56,7 @@ namespace LoginCodeFirst.Controllers
             {
                 return BadRequest();
             }
-            var brand = await _brandServices.GetIdAsync(id);
+            var brand = await _brandServices.GetIdAsync(id.Value);
             if (brand == null)
             {
                 return NotFound();
@@ -67,7 +67,7 @@ namespace LoginCodeFirst.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Edit(IndexViewModel brand)
+        public async Task<IActionResult> Edit(BrandViewModel brand)
         {
 
             if (ModelState.IsValid)
@@ -87,7 +87,7 @@ namespace LoginCodeFirst.Controllers
         [HttpGet]
         public async  Task<IActionResult> Delete(int? id)
         {
-            await _brandServices.DeleteAsync(id);
+            await _brandServices.DeleteAsync(id.Value);
             TempData["Brand"] = "Delete Brand Success";
             return  RedirectToAction("Index");
         }   

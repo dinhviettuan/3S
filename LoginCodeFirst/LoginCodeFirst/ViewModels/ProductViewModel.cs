@@ -1,10 +1,9 @@
 ﻿using System.Collections.Generic;
-using LoginCodeFirst.Models.Products;
 using Microsoft.AspNetCore.Http;
 
 namespace LoginCodeFirst.ViewModels.Product
 {
-    public class IndexViewModel
+    public class ProductViewModel
     {
         public int ProductId { get; set;  }
         public string ProductName { get; set;  }
@@ -15,8 +14,8 @@ namespace LoginCodeFirst.ViewModels.Product
         public string Image { get; set;  }
         public IFormFile ImageFile { get; set; }
         
-        public virtual Models.Products.Category Category { get; set; }
-        public virtual Models.Products.Brand Brand { get; set; }
-        public virtual ICollection<Models.Products.Stock> Stocks { get; set; }
+        public virtual Models.Category Category { get; set; }
+        public virtual Models.Brand Brand { get; set; }
+        public virtual ICollection<Models.Stock> Stocks { get; set; }
     }
 }

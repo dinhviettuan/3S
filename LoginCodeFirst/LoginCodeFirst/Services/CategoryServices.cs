@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using LoginCodeFirst.Models;
-using LoginCodeFirst.Models.Products;
 using LoginCodeFirst.ViewModels.Category;
 using Microsoft.EntityFrameworkCore;
 
@@ -11,13 +11,14 @@ namespace LoginCodeFirst.Services
 {
     public interface ICategoryServices
     {
-        IEnumerable<Category> GetCategory();
-        Task<List<IndexViewModel>> GetCategoryListAsync();
-        Task<bool>AddAsync(IndexViewModel category);
-        Task<IndexViewModel> GetIdAsync(int? id);
-        Task<bool> EditAsync(IndexViewModel categoryPro);
-        Task<bool> DeleteAsync(int? id);
-        
+        IEnumerable<Category> GetCategorys();
+        Task<List<CategoryViewModel>> GetCategoryListAsync();
+        Task<bool>AddAsync(CategoryViewModel category);
+        Task<CategoryViewModel> GetIdAsync(int id);
+        Task<bool> EditAsync(CategoryViewModel categoryPro);
+        Task<bool> DeleteAsync(int id);
+        bool IsExistedName(string name,int id);
+
     }
 
     public class CategoryServices : ICategoryServices
@@ -30,21 +31,21 @@ namespace LoginCodeFirst.Services
             _mapper = mapper;
         }
 
-        public IEnumerable<Category> GetCategory()
+        public IEnumerable<Category> GetCategorys()
         {
             return _context.Category;
         }
 
-        public async Task<List<IndexViewModel>> GetCategoryListAsync()
+        public async Task<List<CategoryViewModel>> GetCategoryListAsync()
         {
             var category = await _context.Category.ToListAsync();
-            var list = _mapper.Map<List<IndexViewModel>>(category);
+            var list = _mapper.Map<List<CategoryViewModel>>(category);
             return list;
         }
         
         
         //add
-        public async Task<bool>AddAsync(IndexViewModel category)
+        public async Task<bool>AddAsync(CategoryViewModel category)
         {
             try
             {
@@ -64,15 +65,15 @@ namespace LoginCodeFirst.Services
             
         }
 
-        public async Task<IndexViewModel> GetIdAsync(int? id)
+        public async Task<CategoryViewModel> GetIdAsync(int id)
         {
             var category = await _context.Category.FindAsync(id);
-            var categoryViewModel = _mapper.Map<IndexViewModel>(category);
+            var categoryViewModel = _mapper.Map<CategoryViewModel>(category);
             return categoryViewModel;
         }
     
         
-        public async Task<bool> EditAsync(IndexViewModel categoryViewModel)
+        public async Task<bool> EditAsync(CategoryViewModel categoryViewModel)
         {
             try
             {
@@ -92,7 +93,7 @@ namespace LoginCodeFirst.Services
             
         }
         
-        public async Task<bool> DeleteAsync(int? id)
+        public async Task<bool> DeleteAsync(int id)
         {
             try
             {
@@ -111,6 +112,12 @@ namespace LoginCodeFirst.Services
                 return false;
             }
            
+        }
+        
+        
+        public bool IsExistedName(string name,int id)
+        {
+            return  _context.Category.Any(x => x.CategoryName == name && x.CategoryId != id);
         }
     }
 }

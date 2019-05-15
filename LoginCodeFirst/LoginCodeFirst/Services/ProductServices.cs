@@ -1,14 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using LoginCodeFirst.Models;
-using LoginCodeFirst.Models.Products;
-using LoginCodeFirst.ViewModels.Brand;
-using LoginCodeFirst.ViewModels.Product;
 using Microsoft.EntityFrameworkCore;
-using IndexViewModel = LoginCodeFirst.ViewModels.Product.IndexViewModel;
+using IndexViewModel = LoginCodeFirst.ViewModels.Product.ProductViewModel;
 
 namespace LoginCodeFirst.Services
 {
@@ -17,9 +15,10 @@ namespace LoginCodeFirst.Services
         IEnumerable<Product> GetProducts();
         Task<List<IndexViewModel>> GetProductListAsync();
         Task<bool> AddAsync(IndexViewModel product);
-        Task<IndexViewModel> GetIdAsync(int? id);
+        Task<IndexViewModel> GetIdAsync(int id);
         Task<bool> EditAsync(IndexViewModel product);
-        Task<bool> DeleteAsync(int? id);
+        Task<bool> DeleteAsync(int id);
+        bool IsExistedName(string name, int id);
     }
 
     public class ProductServices : IProductServices
@@ -82,7 +81,7 @@ namespace LoginCodeFirst.Services
            
         }
 
-        public async Task<IndexViewModel> GetIdAsync(int? id)
+        public async Task<IndexViewModel> GetIdAsync(int id)
         {
             var product = await _context.Product.FindAsync(id);
             var list = _mapper.Map<IndexViewModel>(product);
@@ -113,7 +112,7 @@ namespace LoginCodeFirst.Services
            
         }
         
-        public async Task<bool> DeleteAsync(int? id)
+        public async Task<bool> DeleteAsync(int id)
         {
             try
             {
@@ -129,7 +128,11 @@ namespace LoginCodeFirst.Services
             }
             
         }
-            
+        
+        public bool IsExistedName(string name,int id)
+        {
+            return  _context.Product.Any(x => x.ProductName == name && x.ProductId != id);
+        }
                
         }
     }

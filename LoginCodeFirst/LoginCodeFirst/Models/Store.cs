@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using LoginCodeFirst.Models.Products;
 
 namespace LoginCodeFirst.Models
 {

@@ -3,11 +3,11 @@
 
 namespace LoginCodeFirst.ViewModels.Brand
 {
-    public class IndexViewModel
+    public class BrandViewModel
     {
         public int BrandId { get; set;  }
         public string BrandName { get; set;  } 
         
-        public virtual ICollection<Models.Products.Product> Products { get; set; }
+        public virtual ICollection<Models.Product> Products { get; set; }
     }
 }
