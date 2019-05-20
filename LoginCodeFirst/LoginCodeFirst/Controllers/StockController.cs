@@ -18,15 +18,22 @@ namespace LoginCodeFirst.Controllers
             _productServices = productServices;
             _storeServices = storeServices;
         }
-        
-        
+
+        /// <summary>
+        /// Index Stock Get Funciton
+        /// </summary>
+        /// <returns>Stock Index View</returns>
         [HttpGet]
         public async Task<IActionResult> Index()
         {
             var listStock = await _stockServices.GetStockListAsync();
             return View(listStock);
         }
-        
+
+        /// <summary>
+        ///  Add Stock Get Funciton
+        /// </summary>
+        /// <returns>Stock Index View</returns>
         [HttpGet]
         public IActionResult Add()
         {
@@ -34,7 +41,12 @@ namespace LoginCodeFirst.Controllers
             ViewBag.StoreId = new SelectList(_storeServices.GetStores(), "StoreId", "StoreName");
             return View();
         }
-        
+
+        /// <summary>
+        /// Add Stock Post Funciton
+        /// </summary>
+        /// <param name="stock"></param>
+        /// <returns>Stock Index View</returns>
         [HttpPost]
         public async Task<IActionResult> Add(StockViewModel stock)
         {
@@ -56,7 +68,13 @@ namespace LoginCodeFirst.Controllers
             ViewBag.StoreId = new SelectList(_storeServices.GetStores(), "StoreId", "StoreName",stock.StoreId);
             return View(stock);
         }
-        
+
+        /// <summary>
+        /// Edit Stock Get Function
+        /// </summary>
+        /// <param name="storeId"></param>
+        /// <param name="productId"></param>
+        /// <returns>Stock Index View</returns>
         [HttpGet]
         public async Task<IActionResult> Edit(int? storeId, int? productId)
         {
@@ -73,7 +91,12 @@ namespace LoginCodeFirst.Controllers
             ViewBag.StoreId = new SelectList(_storeServices.GetStores(), "StoreId", "StoreName");
             return View(list);
         }
-        
+
+        /// <summary>
+        /// Edit Stock Post Function
+        /// </summary>
+        /// <param name="stockViewModel"></param>
+        /// <returns>Stock Index View</returns>
         [HttpPost]
         public async Task<IActionResult> Edit(StockViewModel stockViewModel)
         {
@@ -96,7 +119,13 @@ namespace LoginCodeFirst.Controllers
             ViewBag.StoreId = new SelectList(_storeServices.GetStores(), "StoreId", "StoreName",stockViewModel.StoreId);
             return View(stockViewModel);
         }
-        
+
+        /// <summary>
+        /// Delete Stock Get Function
+        /// </summary>
+        /// <param name="storeId"></param>
+        /// <param name="productId"></param>
+        /// <returns>Stock Index View</returns>
         [HttpGet]
         public async Task<IActionResult> Delete(int? storeId, int? productId)
         {

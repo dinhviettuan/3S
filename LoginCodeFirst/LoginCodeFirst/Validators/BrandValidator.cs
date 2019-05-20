@@ -1,20 +1,20 @@
 ﻿using FluentValidation;
+using LoginCodeFirst.Resources;
 using LoginCodeFirst.Services;
 using LoginCodeFirst.ViewModels.Brand;
-using Microsoft.Extensions.Localization;
 
 namespace LoginCodeFirst.Validators.BrandValidator
 {
     public class BrandValidator : AbstractValidator<BrandViewModel>
     {
-        public BrandValidator(IStringLocalizer localizer,IBrandServices brandService)
+        public BrandValidator(ResourcesServices<BrandResources> localizer,IBrandServices brandService)
         {              
             RuleFor(x => x.BrandName).Must((reg,c) => !brandService.IsExistedName(reg.BrandName,reg.BrandId))
-                    .WithMessage(localizer["This BrandName already exists."]);
+                    .WithMessage(localizer.GetLocalizedHtmlString("lbl_ThisBrandNameAlreadyExists"));
             RuleFor(x => x.BrandName).NotNull()
-                    .WithMessage(localizer["BrandName not be empty"]);
+                    .WithMessage(localizer.GetLocalizedHtmlString("lbl_BrandNameNotBeEmpty"));
             RuleFor(x => x.BrandName).NotNull()
-                .WithMessage(localizer["Start with letters"]);
+                .WithMessage(localizer.GetLocalizedHtmlString("lbl_StartWithLetters"));
         }
     }
 }

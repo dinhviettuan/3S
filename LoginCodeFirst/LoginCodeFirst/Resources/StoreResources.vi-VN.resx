@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+            
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+
+    <data name="lbl_ListStore">
+        <value>Danh Sách Cửa Hàng</value>
+    </data>
+    <data name="lbl_StoreName">
+        <value>Tên Cửa Hàng</value>
+    </data>
+    <data name="lbl_Street">
+        <value>Địa Chỉ</value>
+    </data>
+    <data name="lbl_City">
+        <value>Thành Phố</value>
+    </data>
+    <data name="lbl_State">
+        <value>Tỉnh</value>
+    </data>
+    <data name="lbl_ZipCode">
+        <value>Mã Bưu Chính</value>
+    </data>
+    <data name="lbl_EditStore">
+        <value>Sửa Cửa Hàng</value>
+    </data>
+    <data name="lbl_AddStore">
+        <value>Thêm Cửa Hàng</value>
+    </data>
+</root>

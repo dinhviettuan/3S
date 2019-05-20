@@ -15,6 +15,10 @@ namespace LoginCodeFirst.Controllers
         }
 
 
+        /// <summary>
+        /// Index Category Get Function
+        /// </summary>
+        /// <returns>Category Index View</returns>
         [HttpGet]
         public async Task<IActionResult> Index()
         {
@@ -22,14 +26,21 @@ namespace LoginCodeFirst.Controllers
             return View(liststore);
         }
 
-
+        /// <summary>
+        ///  Add Category Get Function
+        /// </summary>
+        /// <returns>Category Index View</returns>
         [HttpGet]
         public IActionResult Add()
         {
             return View();
         }
 
-
+        /// <summary>
+        /// Add Category Post Function
+        /// </summary>
+        /// <param name="category"></param>
+        /// <returns>Category Index View</returns>
         [HttpPost]
         public async Task<IActionResult> Add(CategoryViewModel category)
         {
@@ -42,11 +53,17 @@ namespace LoginCodeFirst.Controllers
                     TempData["Success"] = "Add Category Success";
                     return RedirectToAction("Index");
                 }
-                ViewBag.ErrorMessage = "Add Category Failure";
+                ViewBag.Err = "Add Category Failure";
                 return View(category);
             }
             return View(category);
         }
+
+        /// <summary>
+        /// Edit Category Get Function
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>Category Index View</returns>
         [HttpGet]
         public async Task<IActionResult> Edit(int? id)
         {
@@ -63,6 +80,11 @@ namespace LoginCodeFirst.Controllers
             return View(list);
         }
 
+        /// <summary>
+        /// Edit Category Post Function
+        /// </summary>
+        /// <param name="category"></param>
+        /// <returns>Category Index View</returns>
         [HttpPost]
         public async Task<IActionResult> Edit(CategoryViewModel category)
         {
@@ -81,6 +103,11 @@ namespace LoginCodeFirst.Controllers
             return View(category);
         }
 
+        /// <summary>
+        /// Delete Category Get Function
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>Category Index View</returns>
         [HttpGet]
         public async Task<IActionResult> Delete(int? id)
         {

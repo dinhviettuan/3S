@@ -3694,7 +3694,6 @@
     <UpToDateCheckInput Remove="Pages\User\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Views\Login" />
     <Folder Include="wwwroot\images" />
   </ItemGroup>
 </Project>

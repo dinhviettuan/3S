@@ -11,12 +11,46 @@ namespace LoginCodeFirst.Services
 {
     public interface ICategoryServices
     {
+        /// <summary>
+        /// GetCategorys
+        /// </summary>
+        /// <returns>Categorys</returns>
         IEnumerable<Category> GetCategorys();
+        /// <summary>
+        /// GetCategoryListAsync
+        /// </summary>
+        /// <returns>ListCategory</returns>
         Task<List<CategoryViewModel>> GetCategoryListAsync();
+        /// <summary>
+        /// AddAsync
+        /// </summary>
+        /// <param name="category">CategoryViewModel</param>
+        /// <returns>Could Be Addted?</returns>
         Task<bool>AddAsync(CategoryViewModel category);
+        /// <summary>
+        /// GetIdAsync
+        /// </summary>
+        /// <param name="id">Category Id</param>
+        /// <returns>CategoryViewModel</returns>
         Task<CategoryViewModel> GetIdAsync(int id);
-        Task<bool> EditAsync(CategoryViewModel categoryPro);
+        /// <summary>
+        /// EditAsync
+        /// </summary>
+        /// <param name="categoryViewModel">CategoryViewModel</param>
+        /// <returns>Could be Editted?</returns>
+        Task<bool> EditAsync(CategoryViewModel categoryViewModel);
+        /// <summary>
+        /// DeleteAsync
+        /// </summary>
+        /// <param name="id"> Category Id</param>
+        /// <returns>Could be Deleted</returns>
         Task<bool> DeleteAsync(int id);
+        /// <summary>
+        /// IsExistedName
+        /// </summary>
+        /// <param name="name">Category Name</param>
+        /// <param name="id">Category Id</param>
+        /// <returns>ExistedName</returns>
         bool IsExistedName(string name,int id);
 
     }
@@ -31,20 +65,32 @@ namespace LoginCodeFirst.Services
             _mapper = mapper;
         }
 
+        /// <summary>
+        /// GetCategorys
+        /// </summary>
+        /// <returns>categorys</returns>
         public IEnumerable<Category> GetCategorys()
         {
             return _context.Category;
         }
 
+        /// <summary>
+        /// GetCategoryListAsync
+        /// </summary>
+        /// <returns>ListCategory</returns>
         public async Task<List<CategoryViewModel>> GetCategoryListAsync()
         {
             var category = await _context.Category.ToListAsync();
             var list = _mapper.Map<List<CategoryViewModel>>(category);
             return list;
         }
-        
-        
-        //add
+
+
+        /// <summary>
+        /// AddAsync
+        /// </summary>
+        /// <param name="category">CategoryViewModel</param>
+        /// <returns>Could Be Addted?</returns>
         public async Task<bool>AddAsync(CategoryViewModel category)
         {
             try
@@ -64,15 +110,23 @@ namespace LoginCodeFirst.Services
             }
             
         }
-
+        /// <summary>
+        /// GetIdAsync
+        /// </summary>
+        /// <param name="id">Category Id</param>
+        /// <returns>CategoryViewModel</returns>
         public async Task<CategoryViewModel> GetIdAsync(int id)
         {
             var category = await _context.Category.FindAsync(id);
             var categoryViewModel = _mapper.Map<CategoryViewModel>(category);
             return categoryViewModel;
         }
-    
-        
+
+        /// <summary>
+        /// EditAsync
+        /// </summary>
+        /// <param name="categoryViewModel">CategoryViewModel</param>
+        /// <returns>Could Be Editted?</returns>
         public async Task<bool> EditAsync(CategoryViewModel categoryViewModel)
         {
             try
@@ -92,7 +146,11 @@ namespace LoginCodeFirst.Services
             }
             
         }
-        
+        /// <summary>
+        /// DeleteAsync
+        /// </summary>
+        /// <param name="id">Category Id</param>
+        /// <returns>Could Be Deleted?</returns>
         public async Task<bool> DeleteAsync(int id)
         {
             try
@@ -113,8 +171,13 @@ namespace LoginCodeFirst.Services
             }
            
         }
-        
-        
+
+        /// <summary>
+        /// IsExistedName
+        /// </summary>
+        /// <param name="name">Category Name</param>
+        /// <param name="id">Category Id</param>
+        /// <returns>ExistedName</returns>
         public bool IsExistedName(string name,int id)
         {
             return  _context.Category.Any(x => x.CategoryName == name && x.CategoryId != id);

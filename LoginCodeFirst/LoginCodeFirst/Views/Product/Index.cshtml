@@ -1,8 +1,6 @@
-﻿@using LoginCodeFirst.Resources
-@model List<LoginCodeFirst.ViewModels.Product.ProductViewModel>
-@inject ResourcesServices Localizer
+﻿@model List<LoginCodeFirst.ViewModels.Product.ProductViewModel>
 @{
-    ViewBag.Title = Localizer.GetLocalizedHtmlString("lbl_ListProduct");
+    ViewBag.Title = ProductLocalizer.GetLocalizedHtmlString("lbl_ListProduct");
 }
 
 
@@ -17,7 +15,7 @@
                     <h2> 
                         <a type="button" class="btn btn-primary" data-toggle="ajax-modal" data-target="#add-contact" 
 
-                           asp-controller="Product" asp-action="Add")>@Localizer.GetLocalizedHtmlString("btn_Add")</a>
+                           asp-controller="Product" asp-action="Add")>@CommonLocalizer.GetLocalizedHtmlString("btn_Add")</a>
 
                     </h2>  
                 </div>
@@ -25,33 +23,32 @@
                     <div class="table-responsive">
                         <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
                             <thead>
-                                <tr>
-                                   
-                                    <th>
-                                        @Localizer.GetLocalizedHtmlString("lbl_ProductId")
-                                    </th>
-                                    <th>
-                                        @Localizer.GetLocalizedHtmlString("lbl_ProductName")
-                                    </th>
-                                    <th>
-                                        @Localizer.GetLocalizedHtmlString("lbl_BrandId")
-                                    </th>
-                                    <th>
-                                        @Localizer.GetLocalizedHtmlString("lbl_CategoryId")
-                                    </th>
-                                    <th>
-                                        @Localizer.GetLocalizedHtmlString("lbl_ModelYear")
-                                    </th>
-                                    <th>
-                                        @Localizer.GetLocalizedHtmlString("lbl_ListPrice")
-                                    </th>
-                                    <th>
-                                        @Localizer.GetLocalizedHtmlString("lbl_Image")
-                                    </th>
-                                    <th>
-                                        @Localizer.GetLocalizedHtmlString("lbl_Actions")
-                                    </th>
-                                </tr>
+                            <tr>
+                                <th>
+                                    @ProductLocalizer.GetLocalizedHtmlString("lbl_NumbericalOrder")
+                                </th>
+                                <th>
+                                    @ProductLocalizer.GetLocalizedHtmlString("lbl_ProductName")
+                                </th>
+                                <th>
+                                    @ProductLocalizer.GetLocalizedHtmlString("lbl_BrandId")
+                                </th>
+                                <th>
+                                    @ProductLocalizer.GetLocalizedHtmlString("lbl_CategoryId")
+                                </th>
+                                <th>
+                                    @ProductLocalizer.GetLocalizedHtmlString("lbl_ModelYear")
+                                </th>
+                                <th>
+                                    @ProductLocalizer.GetLocalizedHtmlString("lbl_ListPrice")
+                                </th>
+                                <th>
+                                    @ProductLocalizer.GetLocalizedHtmlString("lbl_Image")
+                                </th>
+                                <th>
+                                    @ProductLocalizer.GetLocalizedHtmlString("lbl_Actions")
+                                </th>
+                            </tr>
                             </thead>
                             <tbody>
                             @{ var stt = 0;}
@@ -84,9 +81,9 @@
                                     </td>
                                     <td>
                                         <a asp-controller="Product" asp-action="Edit" 
-                                           asp-route-id="@item.ProductId">@Localizer.GetLocalizedHtmlString("btn_Edit")</a>
-                                        <a asp-controller="Product" asp-action="Delete" onclick=" return confirm('You really want to delete?')"
-                                           asp-route-productId="@item.ProductId">@Localizer.GetLocalizedHtmlString("btn_Delete")</a>
+                                           asp-route-id="@item.ProductId">@CommonLocalizer.GetLocalizedHtmlString("btn_Edit")</a>
+                                        <a asp-controller="Product" asp-action="Delete" onclick=" return confirm('@CommonLocalizer.GetLocalizedHtmlString("btn_YouDelete")')"
+                                           asp-route-productId="@item.ProductId">@CommonLocalizer.GetLocalizedHtmlString("btn_Delete")</a>
 
                                     </td>
                                 </tr>

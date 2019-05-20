@@ -1,16 +1,11 @@
 ﻿@using LoginCodeFirst.Resources
 @model List<LoginCodeFirst.ViewModels.User.IndexViewModel>
-@inject ResourcesServices Localizer
+@inject ResourcesServices<ViewUserResources> Localizer
 @{
-<<<<<<< HEAD
+
     ViewBag.Title = Localizer.GetLocalizedHtmlString("lbl_ListUser");
     Layout = "_Layout";
-=======
-    ViewBag.Title = Localizer.GetLocalizedHtmlString("usr_lbl_User");
->>>>>>> master
 }
-
-
 <div class="container-fluid">
     <div class="block-header">
     </div>
@@ -20,12 +15,8 @@
             <div class="card">
                 <div class="header">                   
                     <h2> 
-                        <a type="button" class="btn btn-primary" data-toggle="ajax-modal" data-target="#add-contact" 
-<<<<<<< HEAD
+                        <a type="button" class="btn btn-primary" data-toggle="ajax-modal" data-target="#add-contact"
                            asp-controller="User" asp-action="Add")>@Localizer.GetLocalizedHtmlString("btn_Add")</a>
-=======
-                           asp-controller="User" asp-action="Add")>@Localizer.GetLocalizedHtmlString("add_a_Add")</a>
->>>>>>> master
                     </h2>                    
                 </div>
                 <div class="body">
@@ -34,7 +25,7 @@
                             <thead>
                             <tr>
                                 <th>
-                                    @Localizer.GetLocalizedHtmlString("lbl_NumbericOrder")
+                                    @Localizer.GetLocalizedHtmlString("lbl_NumbericalOrder")
                                 </th>
                                 <th>
                                     @Localizer.GetLocalizedHtmlString("lbl_StoreId")
@@ -93,7 +84,7 @@
                                         <a asp-controller="User" asp-action="Edit" 
                                            asp-route-id="@item.UserId">@Localizer.GetLocalizedHtmlString("btn_Edit")</a> ||
                                         <a asp-controller="User" asp-action="Delete" 
-                                           onclick=" return confirm('You really want to delete?')" 
+                                           onclick=" return confirm('@Localizer.GetLocalizedHtmlString("btn_YouDelete")')" 
                                            asp-route-id="@item.UserId">@Localizer.GetLocalizedHtmlString("btn_Delete")</a>
                                     </td>
                                 </tr>

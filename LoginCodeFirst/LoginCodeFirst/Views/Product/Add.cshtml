@@ -1,9 +1,6 @@
-﻿
-@using LoginCodeFirst.Resources
-@model LoginCodeFirst.ViewModels.Product.ProductViewModel
-@inject ResourcesServices Localizer
+﻿@model LoginCodeFirst.ViewModels.Product.ProductViewModel
 @{
-    ViewBag.Title = Localizer.GetLocalizedHtmlString("lbl_AddProduct");
+    ViewBag.Title = ProductLocalizer.GetLocalizedHtmlString("lbl_AddProduct");
     Layout = "_Layout";
 }
 
@@ -16,55 +13,44 @@
             <div class="card">
                 <div class="body">
                     <h2 class="card-inside-title"></h2>
-                    @if (ViewBag.Err != null)
-                    {
-                        <div class="alert alert-danger">
-                            <strong>@ViewBag.Err</strong>
-                        </div>
-                    }
-
                     <div class="row clearfix">
                         <div class="col-sm-12">
                             <form asp-controller="Product" asp-action="Add" method="post" enctype="multipart/form-data">
                                 <div class="form-group">
-                                    <label class="form-label" asp-for="ProductName">@Localizer.GetLocalizedHtmlString("lbl_ProductName")</label>
+                                    <label class="form-label" asp-for="ProductName">@ProductLocalizer.GetLocalizedHtmlString("lbl_ProductName")</label>
                                     <input type="text" asp-for="ProductName" placeholder="ProductName" class="form-control">
                                     <span class="text-danger" asp-validation-for="ProductName"></span>
                                 </div>
                                 <div class="form-group">
-                                    <label class="form-label" asp-for="ModelYear">@Localizer.GetLocalizedHtmlString("lbl_ModelYear")</label>
+                                    <label class="form-label" asp-for="ModelYear">@ProductLocalizer.GetLocalizedHtmlString("lbl_ModelYear")</label>
                                     <input type="text" asp-for="ModelYear" placeholder="ModelYear" class="form-control">
                                     <span class="text-danger" asp-validation-for="ModelYear"></span>
                                 </div>
                                 <div class="form-group">
-                                    <label class="form-label" asp-for="ListPrice">@Localizer.GetLocalizedHtmlString("lbl_ListPrice")</label>
+                                    <label class="form-label" asp-for="ListPrice">@ProductLocalizer.GetLocalizedHtmlString("lbl_ListPrice")</label>
                                     <input type="text" asp-for="ListPrice" placeholder="ListPrice" class="form-control">
                                     <span class="text-danger" asp-validation-for="ListPrice"></span>
                                 </div>
                                 <div class="form-group">
-                                    <label class="form-label" asp-for="ImageFile">@Localizer.GetLocalizedHtmlString("lbl_ImageFile")</label>
+                                    <label class="form-label" asp-for="ImageFile">@ProductLocalizer.GetLocalizedHtmlString("lbl_ImageFile")</label>
                                     <input type="file" asp-for="ImageFile" class="form-control">
                                     <span class="text-danger" asp-validation-for="ImageFile"></span>
                                 </div>
                                 <div class="form-group">
-                                    <label class="form-label" asp-for="BrandId">@Localizer.GetLocalizedHtmlString("lbl_BrandId")</label>
+                                    <label class="form-label" asp-for="BrandId">@ProductLocalizer.GetLocalizedHtmlString("lbl_BrandId")</label>
                                     <select asp-for="BrandId" class="form-control" asp-items="@ViewBag.BrandId"></select>
                                 </div>
                                 <div class="form-group">
-                                    <label class="form-label" asp-for="CategoryId">@Localizer.GetLocalizedHtmlString("lbl_CategoryId")</label>
+                                    <label class="form-label" asp-for="CategoryId">@ProductLocalizer.GetLocalizedHtmlString("lbl_CategoryId")</label>
                                     <select asp-for="CategoryId" class="form-control" asp-items="@ViewBag.CategoryId"></select>
                                 </div>
           
 
-                                <button class="btn btn-primary waves-effect" type="submit">@Localizer.GetLocalizedHtmlString("btn_Submit")</button>
+                                <button class="btn btn-primary waves-effect" type="submit">@CommonLocalizer.GetLocalizedHtmlString("btn_Submit")</button>
                             </form>
                         </div>
                         <a asp-area="" asp-controller="Product" asp-action="Index">
-<<<<<<< HEAD
-                            <i class="material-icons">reply</i>@Localizer.GetLocalizedHtmlString("btn_ComBack")
-=======
-                            <i class="material-icons">reply</i>@Localizer.GetLocalizedHtmlString("cb_a_ComBack")
->>>>>>> master
+                            <i class="material-icons">reply</i>@CommonLocalizer.GetLocalizedHtmlString("btn_ComBack")
                         </a>
                     </div>
                 </div>

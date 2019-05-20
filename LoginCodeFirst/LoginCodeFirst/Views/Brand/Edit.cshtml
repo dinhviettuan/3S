@@ -1,16 +1,11 @@
-﻿@using LoginCodeFirst.Resources
-@model LoginCodeFirst.ViewModels.Brand.BrandViewModel
-@inject ResourcesServices Localizer
+﻿@model LoginCodeFirst.ViewModels.Brand.BrandViewModel
 @{
-    ViewBag.Title = Localizer.GetLocalizedHtmlString("lbl_EditBrand");
+    ViewBag.Title = BrandLocalizer.GetLocalizedHtmlString("lbl_EditBrand");
     Layout = "_Layout";
 }
 
 <div class="container-fluid">
     <div class="block-header">
-        <h2>
-            @ViewBag.Title
-        </h2>
     </div>
     
     <!-- Basic Validation -->
@@ -19,34 +14,24 @@
             <div class="card">
                 <div class="body">
                     <h2 class="card-inside-title"></h2>
-                    @if (ViewBag.Err != null)
-                    {
-                        <div class="alert alert-danger">
-                            <strong>@ViewBag.Err</strong>
-                        </div>
-                    }
 
                     <div class="row clearfix">
                         <div class="col-sm-12">
                             <form asp-controller="Brand" asp-action="Edit" method="post">
                                 <input asp-for="BrandId" type="hidden">
                                 <div class="form-group">
-                                    <label class="form-label" asp-for="BrandName">@Localizer.GetLocalizedHtmlString("lbl_BrandName")</label>
+                                    <label class="form-label" asp-for="BrandName">@CommonLocalizer.GetLocalizedHtmlString("lbl_BrandName")</label>
                                     <input type="text" asp-for="BrandName" placeholder="BrandName" class="form-control">
                                     <span class="text-danger" asp-validation-for="BrandName"></span>
                                 </div>
 
 
 
-                                <button class="btn btn-primary waves-effect" type="submit">@Localizer.GetLocalizedHtmlString("btn_Submit")</button>
+                                <button class="btn btn-primary waves-effect" type="submit">@CommonLocalizer.GetLocalizedHtmlString("btn_Submit")</button>
                             </form>
                         </div>
                         <a asp-area="" asp-controller="Brand" asp-action="Index">
-<<<<<<< HEAD
-                            <i class="material-icons">reply</i>@Localizer.GetLocalizedHtmlString("btn_ComBack")
-=======
-                            <i class="material-icons">reply</i>@Localizer.GetLocalizedHtmlString("cb_a_ComBack")
->>>>>>> master
+                            <i class="material-icons">reply</i>@CommonLocalizer.GetLocalizedHtmlString("btn_ComBack")
                         </a>
                     </div>
                 </div>

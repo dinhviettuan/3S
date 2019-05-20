@@ -1,4 +1,4 @@
-﻿using System.Threading.Tasks;
+﻿    using System.Threading.Tasks;
 using LoginCodeFirst.Services;
 using LoginCodeFirst.ViewModels.Store;
 using Microsoft.AspNetCore.Mvc;
@@ -14,6 +14,11 @@ namespace LoginCodeFirst.Controllers
             _storeService = storeService;
         }
 
+
+        /// <summary>
+        /// Index Store Get Function
+        /// </summary>
+        /// <returns>Store Index View</returns>
         [HttpGet]
         public async Task<IActionResult> Index()
         {
@@ -21,12 +26,21 @@ namespace LoginCodeFirst.Controllers
             return View(liststore);
         }
 
+        /// <summary>
+        /// Add Store Get Function
+        /// </summary>
+        /// <returns>Store Index View</returns>
         [HttpGet]
         public IActionResult Add()
         {
             return View();
         }
 
+        /// <summary>
+        /// Add Store Post Function
+        /// </summary>
+        /// <param name="store"></param>
+        /// <returns>Store Index View</returns>
         [HttpPost]
         public async Task<IActionResult> Add(StoreViewModel store)
         {
@@ -45,6 +59,11 @@ namespace LoginCodeFirst.Controllers
             return View(store);
         }
 
+        /// <summary>
+        /// Edit Store Get Function
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>Store Index View</returns>
         [HttpGet]
         public async Task<IActionResult> Edit(int? id)
         {
@@ -60,6 +79,11 @@ namespace LoginCodeFirst.Controllers
  
             return View(store);
         }
+        /// <summary>
+        ///  Edit Store Post Function
+        /// </summary>
+        /// <param name="storeViewModel"></param>
+        /// <returns>Store Index View</returns>
         [HttpPost]
         public async Task<IActionResult> Edit(StoreViewModel storeViewModel)
         {
@@ -78,7 +102,12 @@ namespace LoginCodeFirst.Controllers
             }
             return View(storeViewModel);
         }
-        
+
+        /// <summary>
+        /// Delete Store Get Function
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>Store Index View</returns>
         [HttpGet]
         public async Task<IActionResult> Delete(int? id)
         {

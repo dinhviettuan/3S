@@ -11,12 +11,46 @@ namespace LoginCodeFirst.Services
 {
     public interface IBrandServices
     {
+        /// <summary>
+        /// Get Brands
+        /// </summary>
+        /// <returns>Brands</returns>
         IEnumerable<Brand> GetBrands();
+        /// <summary>
+        /// GetListBrandAsync
+        /// </summary>
+        /// <returns>ListBrand</returns>
         Task<List<BrandViewModel>> GetBrandListAsync();
+        /// <summary>
+        /// AddBrand
+        /// </summary>
+        /// <param name="brand">BrandViewModel</param>
+        /// <returns>Could be Addted?</returns>
         Task<bool> AddAsync(BrandViewModel brand);
+        /// <summary>
+        /// GetIdAsync
+        /// </summary>
+        /// <param name="id">Brand Id</param>
+        /// <returns>Brand</returns>
         Task<BrandViewModel> GetIdAsync(int id);
+        /// <summary>
+        /// EditBrand
+        /// </summary>
+        /// <param name="brand">BrandViewModel</param>
+        /// <returns>Could be Edited?</returns>
         Task<bool> EditAsync(BrandViewModel brand);
+        /// <summary>
+        /// DeleteBrand
+        /// </summary>
+        /// <param name="id">Brand Id</param>
+        /// <returns>Could be Deleted?</returns>
         Task<bool> DeleteAsync(int id);
+        /// <summary>
+        /// IsExistedName
+        /// </summary>
+        /// <param name="name">Brand Name</param>
+        /// <param name="id">Brand Id</param>
+        /// <returns>ExistedName</returns>
         bool IsExistedName(string name,int id);
 
         
@@ -33,14 +67,21 @@ namespace LoginCodeFirst.Services
             _context = context;
             _mapper = mapper;
         }
-        
+
+        /// <summary>
+        /// GetBrands
+        /// </summary>
+        /// <returns>Brands</returns>
         public IEnumerable<Brand> GetBrands()
         {
             return _context.Brand;
         }
 
 
-        
+        /// <summary>
+        /// GetBrandListAsync
+        /// </summary>
+        /// <returns>ListBrand</returns>
         public async Task<List<BrandViewModel>> GetBrandListAsync()
         {
             var brand = await _context.Brand.ToListAsync();
@@ -48,7 +89,11 @@ namespace LoginCodeFirst.Services
             return brandViewModel;
         }
 
-        
+        /// <summary>
+        /// AddAsync
+        /// </summary>
+        /// <param name="brand">BrandViewModel</param>
+        /// <returns>Could be Addted?</returns>
         public async Task<bool> AddAsync(BrandViewModel brand)
         { 
            try
@@ -68,6 +113,11 @@ namespace LoginCodeFirst.Services
             }
          }
 
+        /// <summary>
+        /// GetIdAsync
+        /// </summary>
+        /// <param name="id">Brand Id</param>
+        /// <returns>Brand</returns>
         public async Task<BrandViewModel> GetIdAsync(int id)
         {
             var brand = await _context.Brand.FindAsync(id);
@@ -75,8 +125,12 @@ namespace LoginCodeFirst.Services
             return brandViewModel;
         }
 
-        
-        
+
+        /// <summary>
+        /// EditAsync
+        /// </summary>
+        /// <param name="brand">BrandViewModel</param>
+        /// <returns>Could be Editted?</returns>
         public async Task<bool> EditAsync(BrandViewModel brand)
         {
             try
@@ -95,9 +149,13 @@ namespace LoginCodeFirst.Services
                 return false;
             }
          }
-            
-        
 
+
+        /// <summary>
+        /// DeleteAsync
+        /// </summary>
+        /// <param name="id">Brand Id</param>
+        /// <returns>Could Be Deleted?</returns>
         public async Task<bool> DeleteAsync(int id)
         {   
             try
@@ -116,6 +174,12 @@ namespace LoginCodeFirst.Services
            
         }
 
+        /// <summary>
+        /// IsExistedName
+        /// </summary>
+        /// <param name="name">Brand Name</param>
+        /// <param name="id">Brand Id</param>
+        /// <returns>ExistedName</returns>
         public bool IsExistedName(string name,int id)
         {
             return  _context.Brand.Any(x => x.BrandName == name && x.BrandId != id);

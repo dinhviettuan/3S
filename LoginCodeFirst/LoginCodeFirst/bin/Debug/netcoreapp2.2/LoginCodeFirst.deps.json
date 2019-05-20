@@ -34,11 +34,11 @@
           "LoginCodeFirst.dll": {}
         },
         "resources": {
-          "vi-VN/LoginCodeFirst.resources.dll": {
-            "locale": "vi-VN"
-          },
           "en-US/LoginCodeFirst.resources.dll": {
             "locale": "en-US"
+          },
+          "vi-VN/LoginCodeFirst.resources.dll": {
+            "locale": "vi-VN"
           }
         },
         "compile": {

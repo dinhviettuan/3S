@@ -24,16 +24,22 @@ namespace LoginCodeFirst.Controllers
         }
 
 
-
+        /// <summary>
+        /// Index Product Get Function
+        /// </summary>
+        /// <returns>Product Index View</returns>
         [HttpGet]
         public async Task<IActionResult> Index()
         {
             var list = await _productServices.GetProductListAsync();
             return View(list);
         }
-        
 
 
+        /// <summary>
+        /// Add Product Get Function
+        /// </summary>
+        /// <returns>Product Index View</returns>
         [HttpGet]
         public IActionResult Add()
         {
@@ -42,6 +48,11 @@ namespace LoginCodeFirst.Controllers
             return View();
         }
 
+        /// <summary>
+        /// Add Product Post Function
+        /// </summary>
+        /// <param name="product"></param>
+        /// <returns>Product Index View</returns>
         [HttpPost]
         public async Task<IActionResult> Add(ProductViewModel product)
         {
@@ -64,6 +75,11 @@ namespace LoginCodeFirst.Controllers
             return View(product);
         }
 
+        /// <summary>
+        /// Edit Product Get Function
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>Product Index View</returns>
         [HttpGet]
         public async Task<IActionResult> Edit(int? id)
         {
@@ -81,7 +97,12 @@ namespace LoginCodeFirst.Controllers
             ViewBag.BrandId = new SelectList(_brandServices.GetBrands(), "BrandId", "BrandName");
             return View(list);
         }
-        
+
+        /// <summary>
+        /// Edit Product Post Function
+        /// </summary>
+        /// <param name="product"></param>
+        /// <returns>Product Index View</returns>
         [HttpPost]
         public async Task<IActionResult> Edit(ProductViewModel product)
         {
@@ -101,7 +122,12 @@ namespace LoginCodeFirst.Controllers
             }
             return View(product);
         }
-        
+
+        /// <summary>
+        /// Delete Product Get Function
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>Product Index View</returns>
         [HttpGet]
         public async Task<IActionResult> Delete(int? id)
         {

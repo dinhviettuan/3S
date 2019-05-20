@@ -19,12 +19,21 @@ namespace LoginCodeFirst.Controllers
             _userService = userService;
         }
 
+        /// <summary>
+        /// Login Get Function
+        /// </summary>
+        /// <returns>Login View</returns>
         [HttpGet]
         public IActionResult Login()
         {
             return View();
         }
 
+        /// <summary>
+        /// Login Post Function
+        /// </summary>
+        /// <param name="loginViewModel"></param>
+        /// <returns>Login View</returns>
         [HttpPost]
         public async Task<IActionResult> Login(LoginViewModel loginViewModel)
         {
@@ -45,6 +54,10 @@ namespace LoginCodeFirst.Controllers
             return View(loginViewModel);
         }
         
+        /// <summary>
+        /// Logout Get Function
+        /// </summary>
+        /// <returns>Login View</returns>
         [HttpGet]
         public IActionResult LogOut()
         {

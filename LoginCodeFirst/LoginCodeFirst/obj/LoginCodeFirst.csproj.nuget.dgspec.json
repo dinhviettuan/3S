@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "G:\\3S\\LoginCodeFirst\\LoginCodeFirst\\LoginCodeFirst.csproj": {}
+    "C:\\3S-master\\LoginCodeFirst\\LoginCodeFirst\\LoginCodeFirst.csproj": {}
   },
   "projects": {
-    "G:\\3S\\LoginCodeFirst\\LoginCodeFirst\\LoginCodeFirst.csproj": {
+    "C:\\3S-master\\LoginCodeFirst\\LoginCodeFirst\\LoginCodeFirst.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "G:\\3S\\LoginCodeFirst\\LoginCodeFirst\\LoginCodeFirst.csproj",
+        "projectUniqueName": "C:\\3S-master\\LoginCodeFirst\\LoginCodeFirst\\LoginCodeFirst.csproj",
         "projectName": "LoginCodeFirst",
-        "projectPath": "G:\\3S\\LoginCodeFirst\\LoginCodeFirst\\LoginCodeFirst.csproj",
+        "projectPath": "C:\\3S-master\\LoginCodeFirst\\LoginCodeFirst\\LoginCodeFirst.csproj",
         "packagesPath": "C:\\Users\\dvtua\\.nuget\\packages\\",
-        "outputPath": "G:\\3S\\LoginCodeFirst\\LoginCodeFirst\\obj\\",
+        "outputPath": "C:\\3S-master\\LoginCodeFirst\\LoginCodeFirst\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

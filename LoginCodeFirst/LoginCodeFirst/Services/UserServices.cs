@@ -13,16 +13,71 @@ namespace LoginCodeFirst.Services
 {
     public interface IUserServices
     {
+        /// <summary>
+        /// GetUsers
+        /// </summary>
+        /// <returns>Users</returns>
         IEnumerable<User> GetUsers();
+        /// <summary>
+        /// LoginAsync 
+        /// </summary>
+        /// <param name="email">User Email</param>
+        /// <param name="password">User Password</param>
+        /// <returns>Login</returns>
         Task<bool> LoginAsync(string email, string password);
+        /// <summary>
+        /// GetUserListAsync
+        /// </summary>
+        /// <returns>ListUser</returns>
         Task<List<IndexViewModel>> GetUserListAsync();
+        /// <summary>
+        /// GetIdAsync
+        /// </summary>
+        /// <param name="id">User Id</param>
+        /// <returns>EditViewModel</returns>
         Task<EditViewModel> GetIdAsync(int id);
+        /// <summary>
+        /// GetEditPasswordAsync
+        /// </summary>
+        /// <param name="Id">User Id</param>
+        /// <returns>PasswordViewModel</returns>
         Task<PasswordViewModel> GetEditPasswordAsync(int Id);
+        /// <summary>
+        /// AddAsync
+        /// </summary>
+        /// <param name="user">IndexViewModel</param>
+        /// <returns>Could Be Addted?</returns>
         Task<bool> AddAsync(IndexViewModel user);
+        /// <summary>
+        /// EditAsync
+        /// </summary>
+        /// <param name="user">EditViewModel</param>
+        /// <returns>Could Be Editted?</returns>
         Task<bool>EditAsync(EditViewModel user);
+        /// <summary>
+        /// EditPasswordAsync
+        /// </summary>
+        /// <param name="editPasswordUser">PasswordViewModel</param>
+        /// <returns>Could Be EditPassword?</returns>
         Task<bool> EditPasswordAsync(PasswordViewModel editPasswordUser);
+        /// <summary>
+        /// DeleteAsync
+        /// </summary>
+        /// <param name="id">User Id </param>
+        /// <returns>Could Be Deleted?</returns>
         Task<bool> DeleteAsync(int id);
+        /// <summary>
+        /// GetEmailAsync
+        /// </summary>
+        /// <param name="email">UserViewModel</param>
+        /// <returns>UserViewModel</returns>
         Task<User> GetEmailAsync(string email);
+        /// <summary>
+        /// IsExistedName
+        /// </summary>
+        /// <param name="email">User Email</param>
+        /// <param name="id">User Id</param>
+        /// <returns>ExistedName</returns>
         bool IsExistedName(string email, int id);
     }
 
@@ -38,13 +93,21 @@ namespace LoginCodeFirst.Services
         }
 
 
-        
 
+        /// <summary>
+        /// GetUsers
+        /// </summary>
+        /// <returns>Users</returns>
         public IEnumerable<User> GetUsers()
         {
             return _context.User;
         }
-
+        /// <summary>
+        /// LoginAsync
+        /// </summary>
+        /// <param name="email">User Email</param>
+        /// <param name="password">User Password</param>
+        /// <returns>LoginViewModel</returns>
         public async Task<bool> LoginAsync(string email, string password)
         {
             try
@@ -68,6 +131,10 @@ namespace LoginCodeFirst.Services
                 return false;
             }
         }
+        /// <summary>
+        /// GetUserListAsync
+        /// </summary>
+        /// <returns>ListUser</returns>
 
         public async Task<List<IndexViewModel>> GetUserListAsync()
         {
@@ -78,14 +145,22 @@ namespace LoginCodeFirst.Services
             return list;
          
         }
-        
+        /// <summary>
+        /// GetIdAsync
+        /// </summary>
+        /// <param name="id">User Id</param>
+        /// <returns>EditViewModel</returns>
         public async Task<EditViewModel> GetIdAsync(int id)
         {
             var user = await _context.User.FindAsync(id);
             var userViewModel = _mapper.Map<EditViewModel>(user);
             return userViewModel;
         }
-
+        /// <summary>
+        /// GetEditPasswordAsync
+        /// </summary>
+        /// <param name="Id">User Id</param>
+        /// <returns>PasswordViewModel</returns>
         public async Task<PasswordViewModel> GetEditPasswordAsync(int Id)
         {
             var user = await _context.User.FindAsync(Id);
@@ -93,7 +168,11 @@ namespace LoginCodeFirst.Services
             return passwordViewModel;
         }
 
-
+        /// <summary>
+        /// AddAsync
+        /// </summary>
+        /// <param name="userViewModel">IndexViewModel</param>
+        /// <returns>Could Be Addted?</returns>
         public async Task<bool> AddAsync(IndexViewModel userViewModel)
         {
             try
@@ -117,7 +196,11 @@ namespace LoginCodeFirst.Services
                 return false;
             }     
         }
-        
+        /// <summary>
+        /// EditAsync
+        /// </summary>
+        /// <param name="userViewModel">EditViewModel</param>
+        /// <returns>Could Be Editted?</returns>
         public async Task<bool>EditAsync(EditViewModel userViewModel)
         {
             try
@@ -138,8 +221,12 @@ namespace LoginCodeFirst.Services
             }
             
         }
-        
-       
+
+        /// <summary>
+        /// EditPasswordAsync
+        /// </summary>
+        /// <param name="passwordViewModel">PasswordViewModel</param>
+        /// <returns>Could Be Edit?</returns>
         public async Task<bool> EditPasswordAsync(PasswordViewModel passwordViewModel)
         {
             try
@@ -157,7 +244,11 @@ namespace LoginCodeFirst.Services
             }
             
         }
-
+        /// <summary>
+        /// DeleteAsync
+        /// </summary>
+        /// <param name="id">User Id</param>
+        /// <returns>Could Be Deleted?</returns>
         public async Task<bool> DeleteAsync(int id)
         {
             try
@@ -174,13 +265,22 @@ namespace LoginCodeFirst.Services
             }
             
         }
-
+        /// <summary>
+        /// GetEmailAsync
+        /// </summary>
+        /// <param name="email">UserViewModel</param>
+        /// <returns>Email</returns>
         public async Task<User> GetEmailAsync(string email)
         {
             var user = await _context.User.FindAsync(email);
             return user;
         }
-
+        /// <summary>
+        /// IsExistedName
+        /// </summary>
+        /// <param name="email">User email</param>
+        /// <param name="id">User Id</param>
+        /// <returns>ExistedName</returns>
         public bool IsExistedName(string email,int id)
         {
             return  _context.User.Any(x => x.Email == email && x.UserId != id);

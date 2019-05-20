@@ -1,6 +1,6 @@
 ﻿@using LoginCodeFirst.Resources
 @model LoginCodeFirst.ViewModels.User.EditViewModel
-@inject ResourcesServices Localizer
+@inject ResourcesServices<ViewUserResources> Localizer
 @{ 
     ViewBag.Title = Localizer.GetLocalizedHtmlString("lbl_EditUser");
     Layout = "_Layout";
@@ -20,17 +20,17 @@
                             <form asp-controller="User" asp-action="Edit" method="post">
                                 <input asp-for="UserId" type="hidden">
                                 <div class="form-group">
-                                    <label class="form-label" asp-for="Email">@Localizer.GetLocalizedHtmlString("lbl_Email*")</label>
+                                    <label class="form-label" asp-for="Email">@Localizer.GetLocalizedHtmlString("lbl_Email")</label>
                                     <input asp-for="Email" type="text" placeholder="Email" class="form-control">
                                     <span class="text-danger" asp-validation-for="Email"></span>
                                 </div>
                                 <div class="form-group">
-                                    <label class="form-label" asp-for="FullName">@Localizer.GetLocalizedHtmlString("lbl_FullName*")</label>
+                                    <label class="form-label" asp-for="FullName">@Localizer.GetLocalizedHtmlString("lbl_FullName")</label>
                                     <input asp-for="FullName" type="text" placeholder="FullName" class="form-control">
                                     <span class="text-danger" asp-validation-for="FullName"></span>
                                 </div>
                                 <div class="form-group">
-                                    <label class="form-label" asp-for="Phone">@Localizer.GetLocalizedHtmlString("lbl_Phone*")</label>
+                                    <label class="form-label" asp-for="Phone">@Localizer.GetLocalizedHtmlString("lbl_Phone")</label>
                                     <input asp-for="Phone" type="text" placeholder="Phone" class="form-control">
                                     <span class="text-danger" asp-validation-for="Phone"></span>
                                 </div>
@@ -47,11 +47,7 @@
                             </form>
                         </div>
                         <a asp-area="" asp-controller="User" asp-action="Index">
-<<<<<<< HEAD
                             <i class="material-icons">reply</i>@Localizer.GetLocalizedHtmlString("btn_ComBack")
-=======
-                            <i class="material-icons">reply</i>@Localizer.GetLocalizedHtmlString("cb_a_ComBack")
->>>>>>> master
                         </a>
                     </div>
                 </div>

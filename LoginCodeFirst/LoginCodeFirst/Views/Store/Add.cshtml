@@ -1,9 +1,6 @@
-﻿
-@using LoginCodeFirst.Resources
-@model LoginCodeFirst.ViewModels.Store.StoreViewModel
-@inject ResourcesServices Localizer
+﻿@model LoginCodeFirst.ViewModels.Store.StoreViewModel
 @{ 
-    ViewBag.Title = Localizer.GetLocalizedHtmlString("lbl_AddStore");
+    ViewBag.Title = StoreLocalizer.GetLocalizedHtmlString("lbl_AddStore");
     Layout = "_Layout";
 }
 
@@ -21,49 +18,46 @@
                         <div class="col-sm-12">
                             <form asp-controller="Store" asp-action="Add" method="post">
                                 <div class="form-group">
-                                    <label class="form-label" asp-for="StoreName">@Localizer.GetLocalizedHtmlString("lbl_StoreName*")</label>
+                                    <label class="form-label" asp-for="StoreName">@StoreLocalizer.GetLocalizedHtmlString("lbl_StoreName")</label>
                                     <input asp-for="StoreName" type="text" placeholder="StoreName"  class="form-control">
                                     <span class="text-danger" asp-validation-for="StoreName"></span>
                                 </div>
                                 <div class="form-group">
-                                    <label class="form-label" asp-for="Phone">@Localizer.GetLocalizedHtmlString("lbl_Phone*")</label>
+                                    <label class="form-label" asp-for="Phone">@StoreLocalizer.GetLocalizedHtmlString("lbl_Phone")</label>
                                     <input type="text" asp-for="Phone" placeholder="Phone" class="form-control">
                                     <span class="text-danger" asp-validation-for="Phone"></span>
                                 </div>
                                 <div class="form-group">
-                                    <label class="form-label" asp-for="Email">@Localizer.GetLocalizedHtmlString("lbl_Email*")</label>
+                                    <label class="form-label" asp-for="Email">@StoreLocalizer.GetLocalizedHtmlString("lbl_Email")</label>
                                     <input asp-for="Email" type="text" placeholder="Email"  class="form-control">
                                     <span class="text-danger" asp-validation-for="Email"></span>
                                 </div>
                                 <div class="form-group">
-                                    <label class="form-label" asp-for="Street">@Localizer.GetLocalizedHtmlString("lbl_Street")</label>
+                                    <label class="form-label" asp-for="Street">@StoreLocalizer.GetLocalizedHtmlString("lbl_Street")</label>
                                     <input asp-for="Street" type="text" placeholder="Street"  class="form-control">
                                     <span class="text-danger" asp-validation-for="Street"></span>
                                 </div>
                                 <div class="form-group">
-                                    <label class="form-label" asp-for="City">@Localizer.GetLocalizedHtmlString("lbl_City")</label>
+                                    <label class="form-label" asp-for="City">@StoreLocalizer.GetLocalizedHtmlString("lbl_City")</label>
                                     <input asp-for="City" type="text" placeholder="City"  class="form-control">
                                     <span class="text-danger" asp-validation-for="City"></span>
                                 </div>
                                 <div class="form-group">
-                                    <label class="form-label" asp-for="State">@Localizer.GetLocalizedHtmlString("lbl_State")</label>
+                                    <label class="form-label" asp-for="State">@StoreLocalizer.GetLocalizedHtmlString("lbl_State")</label>
                                     <input asp-for="State" type="text" placeholder="State"  class="form-control">
                                     <span class="text-danger" asp-validation-for="State"></span>
                                 </div>
                                 <div class="form-group">
-                                    <label class="form-label" asp-for="ZipCode">@Localizer.GetLocalizedHtmlString("lbl_ZipCode")</label>
+                                    <label class="form-label" asp-for="ZipCode">@StoreLocalizer.GetLocalizedHtmlString("lbl_ZipCode")</label>
                                     <input asp-for="ZipCode" type="text" placeholder="ZipCode"  class="form-control">
                                     <span class="text-danger" asp-validation-for="ZipCode"></span>
                                 </div>
-                                <button class="btn btn-primary waves-effect" type="submit">@Localizer.GetLocalizedHtmlString("btn_Submit")</button>
+                                <button class="btn btn-primary waves-effect" type="submit">@CommonLocalizer.GetLocalizedHtmlString("btn_Submit")</button>
                             </form>
                         </div>
                         <a asp-area="" asp-controller="Store" asp-action="Index">
-<<<<<<< HEAD
-                            <i class="material-icons">reply</i>@Localizer.GetLocalizedHtmlString("btn_ComBack")
-=======
-                            <i class="material-icons">reply</i>@Localizer.GetLocalizedHtmlString("cb_a_ComBack")
->>>>>>> master
+
+                            <i class="material-icons">reply</i>@CommonLocalizer.GetLocalizedHtmlString("btn_ComBack")
                         </a>
                     </div>
                 </div>

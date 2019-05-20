@@ -41,7 +41,14 @@ namespace LoginCodeFirst
             
             services.AddAutoMapper();
             services.AddSession();
-            services.AddSingleton<ResourcesServices>();
+            services.AddSingleton<ResourcesServices<BrandResources>>();
+            services.AddSingleton<ResourcesServices<CommonResources>>();
+            services.AddSingleton<ResourcesServices<CategoryResources>>();
+            services.AddSingleton<ResourcesServices<LoginResources>>();
+            services.AddSingleton<ResourcesServices<ProductResources>>();
+            services.AddSingleton<ResourcesServices<StockResources>>();
+            services.AddSingleton<ResourcesServices<StoreResources>>();
+            services.AddSingleton<ResourcesServices<UserResources>>();
             #region snippet1
             
             services.AddLocalization(options => options.ResourcesPath = "Resources");
@@ -75,14 +82,7 @@ namespace LoginCodeFirst
                 .AddViewLocalization(LanguageViewLocationExpanderFormat.Suffix)
                 .AddDataAnnotationsLocalization()
                 .AddViewLocalization()
-                .AddDataAnnotationsLocalization(options =>
-                {
-                    options.DataAnnotationLocalizerProvider = (type, factory) =>
-                    {
-                        var assemblyName = new AssemblyName(typeof(SharedResource).GetTypeInfo().Assembly.FullName);
-                        return factory.Create("SharedResource", assemblyName.Name);
-                    };
-                })
+                .AddDataAnnotationsLocalization()
                 .SetCompatibilityVersion(CompatibilityVersion.Version_2_2).AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<LoginValidator>());
 
         }
@@ -113,7 +113,7 @@ namespace LoginCodeFirst
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=User}/{action=Index}/{id?}");
+                    template: "{controller=Login}/{action=Login}/{id?}");
             });
         }
     }

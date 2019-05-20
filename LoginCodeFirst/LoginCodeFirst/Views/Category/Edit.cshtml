@@ -1,8 +1,6 @@
-﻿@using LoginCodeFirst.Resources
-@model LoginCodeFirst.ViewModels.Category.CategoryViewModel
-@inject ResourcesServices Localizer
+﻿@model LoginCodeFirst.ViewModels.Category.CategoryViewModel
 @{
-    ViewBag.Title = Localizer.GetLocalizedHtmlString("lbl_EditCategory");
+    ViewBag.Title = CategoryLocalizer.GetLocalizedHtmlString("lbl_EditCategory");
     Layout = "_Layout";
 }
 
@@ -18,34 +16,23 @@
             <div class="card">
                 <div class="body">
                     <h2 class="card-inside-title"></h2>
-                    @if (ViewBag.Err != null)
-                    {
-                        <div class="alert alert-danger">
-                            <strong>@ViewBag.Err</strong>
-                        </div>
-                    }
-
                     <div class="row clearfix">
                         <div class="col-sm-12">
                             <form asp-controller="Category" asp-action="Edit" method="post">
                                 <input asp-for="CategoryId" type="hidden">
                                 <div class="form-group">
-                                    <label class="form-label" asp-for="CategoryName">@Localizer.GetLocalizedHtmlString("lbl_CategoryName")</label>
+                                    <label class="form-label" asp-for="CategoryName">@CategoryLocalizer.GetLocalizedHtmlString("lbl_CategoryName")</label>
                                     <input type="text" asp-for="CategoryName" placeholder="CategoryName" class="form-control">
                                     <span class="text-danger" asp-validation-for="CategoryName"></span>
                                 </div>
 
 
 
-                                <button class="btn btn-primary waves-effect" type="submit">@Localizer.GetLocalizedHtmlString("btn_Submit")</button>
+                                <button class="btn btn-primary waves-effect" type="submit">@CommonLocalizer.GetLocalizedHtmlString("btn_Submit")</button>
                             </form>
                         </div>
                         <a asp-area="" asp-controller="Category" asp-action="Index">
-<<<<<<< HEAD
-                            <i class="material-icons">reply</i>@Localizer.GetLocalizedHtmlString("btn_ComBack")
-=======
-                            <i class="material-icons">reply</i>@Localizer.GetLocalizedHtmlString("cb_a_ComBack")
->>>>>>> master
+                            <i class="material-icons">reply</i>@CommonLocalizer.GetLocalizedHtmlString("btn_ComBack")
                         </a>
                     </div>
                 </div>

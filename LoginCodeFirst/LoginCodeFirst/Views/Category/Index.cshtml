@@ -1,8 +1,7 @@
 ﻿@using LoginCodeFirst.Resources
 @model List<LoginCodeFirst.ViewModels.Category.CategoryViewModel>
-@inject ResourcesServices Localizer
 @{
-    ViewBag.Title = Localizer.GetLocalizedHtmlString("lbl_ListCategory");
+    ViewBag.Title = CategoryLocalizer.GetLocalizedHtmlString("lbl_ListCategory");
 }
 
 
@@ -20,7 +19,7 @@
                     <h2> 
                         <a type="button" class="btn btn-primary" data-toggle="ajax-modal" data-target="#add-contact" 
 
-                           asp-controller="Category" asp-action="Add")>@Localizer.GetLocalizedHtmlString("btn_Add")</a>
+                           asp-controller="Category" asp-action="Add")>@CommonLocalizer.GetLocalizedHtmlString("btn_Add")</a>
 
                     </h2>  
                 </div>
@@ -28,18 +27,17 @@
                     <div class="table-responsive">
                         <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
                             <thead>
-                                <tr>
-                                   
-                                    <th>
-                                        @Localizer.GetLocalizedHtmlString("lbl_CategoryId")
-                                    </th>
-                                    <th>
-                                        @Localizer.GetLocalizedHtmlString("lbl_CategoryName")
-                                    </th>
-                                    <th>
-                                        @Localizer.GetLocalizedHtmlString("lbl_Actions")
-                                    </th>
-                                </tr>
+                            <tr>
+                                <th>
+                                    @CommonLocalizer.GetLocalizedHtmlString("lbl_NumbericalOrder")
+                                </th>
+                                <th>
+                                    @CategoryLocalizer.GetLocalizedHtmlString("lbl_CategoryName")
+                                </th>
+                                <th>
+                                    @CommonLocalizer.GetLocalizedHtmlString("lbl_Actions")
+                                </th>
+                            </tr>
                             </thead>
                             <tbody>
                             @{ var stt = 0;}
@@ -58,16 +56,10 @@
                                     <td>
 
                                         <a asp-controller="Category" asp-action="Edit"
-                                           asp-route-id="@item.CategoryId">@Localizer.GetLocalizedHtmlString("btn_Edit")</a>
+                                           asp-route-id="@item.CategoryId">@CommonLocalizer.GetLocalizedHtmlString("btn_Edit")</a>
                                         <a asp-controller="Category" asp-action="Delete"
-                                           onclick=" return confirm('You really want to delete?')"
-                                           asp-route-id="@item.CategoryId">@Localizer.GetLocalizedHtmlString("btn_Delete")</a>
-                                        <a asp-controller="Category" asp-action="Edit" asp-route-id="@item.CategoryId">@Localizer.GetLocalizedHtmlString("btn_Edit")</a>
-                                        <a asp-controller="Category" asp-action="Delete" 
-                                           onclick=" return confirm('You really want to delete?')"
-                                           asp-route-id="@item.CategoryId">@Localizer.GetLocalizedHtmlString("btn_Delete")</a>
-
-                                    </td>
+                                           onclick=" return confirm('@CommonLocalizer.GetLocalizedHtmlString("btn_YouDelete")')"
+                                           asp-route-id="@item.CategoryId">@CommonLocalizer.GetLocalizedHtmlString("btn_Delete")</a>
                                 </tr>
                             }
                             </tbody>

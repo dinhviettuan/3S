@@ -1,4 +1,5 @@
 ﻿using FluentValidation;
+using LoginCodeFirst.Resources;
 using LoginCodeFirst.Services;
 using LoginCodeFirst.ViewModels.Category;
 using Microsoft.Extensions.Localization;
@@ -7,15 +8,15 @@ namespace LoginCodeFirst.Validators.CategoryValidator
 {
     public class CategoryValidator : AbstractValidator<CategoryViewModel>
     {
-        public CategoryValidator(ICategoryServices categoryServices, IStringLocalizer<CategoryViewModel> localizer)
+        public CategoryValidator(ResourcesServices<CategoryResources> localizer, ICategoryServices categoryServices)
         { 
                 
             RuleFor(x => x.CategoryName).Must((Reg,c) => !categoryServices.IsExistedName(Reg.CategoryName,Reg.CategoryId))
-                    .WithMessage(localizer["This CategoryName already exists."]);
+                    .WithMessage(localizer.GetLocalizedHtmlString("lbl_ThisCategoryNameAlreadyExists"));
             RuleFor(x => x.CategoryName).NotNull()
-                    .WithMessage(localizer["CategoryName not be empty"]);
+                    .WithMessage(localizer.GetLocalizedHtmlString("lbl_CategoryNameNotBeEmpty"));
             RuleFor(x => x.CategoryName).NotNull()
-                    .WithMessage(localizer["Start with letters"]);
+                    .WithMessage(localizer.GetLocalizedHtmlString("lbl_StartWithLetters"));
         }
     }
 }

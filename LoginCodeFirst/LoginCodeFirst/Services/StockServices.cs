@@ -10,11 +10,41 @@ namespace LoginCodeFirst.Services
 {
     public interface IStockServices
     {
+        /// <summary>
+        /// GetStocks
+        /// </summary>
+        /// <returns>Stocks</returns>
         IEnumerable<Stock> GetStocks();
+        /// <summary>
+        /// GetStockListAsync
+        /// </summary>
+        /// <returns>ListStock</returns>
         Task<List<StockViewModel>> GetStockListAsync();
+        /// <summary>
+        /// AddAsync
+        /// </summary>
+        /// <param name="stock">StockViewModel</param>
+        /// <returns>Could Be Addted?</returns>
         Task<bool> AddAsync(StockViewModel stock);
+        /// <summary>
+        /// GetIdAsync
+        /// </summary>
+        /// <param name="storeId">Store Id</param>
+        /// <param name="productId">Product Id</param>
+        /// <returns>StockViewModel</returns>
         Task<StockViewModel> GetIdAsync(int storeId, int productId);
+        /// <summary>
+        /// EditAsync
+        /// </summary>
+        /// <param name="stockViewModel">StockViewModel</param>
+        /// <returns>Could Be Editted?</returns>
         Task<bool> EditAsync(StockViewModel stockViewModel);
+        /// <summary>
+        /// DeleteAsync
+        /// </summary>
+        /// <param name="storeId">Store Id</param>
+        /// <param name="productId">Product Id</param>
+        /// <returns>Could Be Deleted?</returns>
         Task<bool> DeleteAsync(int storeId, int productId);
     }
 
@@ -29,12 +59,19 @@ namespace LoginCodeFirst.Services
             _context = context;
             _mapper = mapper;
         }
-        
+
+        /// <summary>
+        /// GetStocks
+        /// </summary>
+        /// <returns>Stocks</returns>
         public IEnumerable<Stock> GetStocks()
         {
             return _context.Stock;
         }
-
+        /// <summary>
+        /// GetStockListAsync
+        /// </summary>
+        /// <returns>ListStock</returns>
         public async Task<List<StockViewModel>> GetStockListAsync()
         {
             var stocks = await _context.Stock
@@ -44,7 +81,11 @@ namespace LoginCodeFirst.Services
             var list = _mapper.Map<List<StockViewModel>>(stocks);
             return list;
         }
-
+        /// <summary>
+        /// AddAsync
+        /// </summary>
+        /// <param name="stockViewModel">StockViewModel</param>
+        /// <returns>Could Be Addted?</returns>
         public async Task<bool> AddAsync(StockViewModel stockViewModel)
         {
             try
@@ -74,14 +115,23 @@ namespace LoginCodeFirst.Services
             }
             
         }
-
+        /// <summary>
+        /// GetIdAsync
+        /// </summary>
+        /// <param name="storeId">Store Id</param>
+        /// <param name="productId">Product Id</param>
+        /// <returns>StockViewModel</returns>
         public async Task<StockViewModel> GetIdAsync(int storeId, int productId)
         {
             var stock = await _context.Stock.FindAsync(storeId, productId);
             var getViewModel = _mapper.Map<StockViewModel>(stock);
             return getViewModel;
         }
-
+        /// <summary>
+        /// EditAsync
+        /// </summary>
+        /// <param name="stockViewModel">StockViewModel</param>
+        /// <returns>Could Be Editted?</returns>
         public async Task<bool> EditAsync(StockViewModel stockViewModel)
         {
             try
@@ -101,7 +151,12 @@ namespace LoginCodeFirst.Services
             }
             
         }
-
+        /// <summary>
+        /// DeleteAsync
+        /// </summary>
+        /// <param name="storeId">Store Id</param>
+        /// <param name="productId">Product Id</param>
+        /// <returns>Could Be Deleted?</returns>
         public async Task<bool> DeleteAsync(int storeId, int productId)
         {
             try

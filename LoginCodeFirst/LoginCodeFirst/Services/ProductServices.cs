@@ -5,19 +5,53 @@ using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using LoginCodeFirst.Models;
+using LoginCodeFirst.ViewModels.Product;
 using Microsoft.EntityFrameworkCore;
-using IndexViewModel = LoginCodeFirst.ViewModels.Product.ProductViewModel;
 
 namespace LoginCodeFirst.Services
 {
     public interface IProductServices
     {
+        /// <summary>
+        /// GetProducts
+        /// </summary>
+        /// <returns>Products</returns>
         IEnumerable<Product> GetProducts();
-        Task<List<IndexViewModel>> GetProductListAsync();
-        Task<bool> AddAsync(IndexViewModel product);
-        Task<IndexViewModel> GetIdAsync(int id);
-        Task<bool> EditAsync(IndexViewModel product);
+        /// <summary>
+        /// GetProductListAsync
+        /// </summary>
+        /// <returns>ListProduct</returns>
+        Task<List<ProductViewModel>> GetProductListAsync();
+        /// <summary>
+        /// AddAsync
+        /// </summary>
+        /// <param name="product">ProductViewModel</param>
+        /// <returns>Could be Addted?</returns>
+        Task<bool> AddAsync(ProductViewModel product);
+        /// <summary>
+        /// GetIdAsync
+        /// </summary>
+        /// <param name="id">Product Id</param>
+        /// <returns>ProductViewModel</returns>
+        Task<ProductViewModel> GetIdAsync(int id);
+        /// <summary>
+        /// EditAsync
+        /// </summary>
+        /// <param name="product">ProductViewModel</param>
+        /// <returns>Could Be Editted</returns>
+        Task<bool> EditAsync(ProductViewModel product);
+        /// <summary>
+        /// DeleteAsync
+        /// </summary>
+        /// <param name="id">Product Id</param>
+        /// <returns>Could Be Deleted?</returns>
         Task<bool> DeleteAsync(int id);
+        /// <summary>
+        /// IsExistedName
+        /// </summary>
+        /// <param name="name">Product Name</param>
+        /// <param name="id">Product Id</param>
+        /// <returns>ExistedName</returns>
         bool IsExistedName(string name, int id);
     }
 
@@ -33,24 +67,35 @@ namespace LoginCodeFirst.Services
             _mapper = mapper;
         }
 
+        /// <summary>
+        /// GetProducts
+        /// </summary>
+        /// <returns>Products</returns>
         public IEnumerable<Product> GetProducts()
         {
             return _context.Product;
         }
-        
-        
-        public async Task<List<IndexViewModel>> GetProductListAsync()
+
+        /// <summary>
+        /// GetProductListAsync
+        /// </summary>
+        /// <returns>ListProduct</returns>
+        public async Task<List<ProductViewModel>> GetProductListAsync()
         {
            var product = await _context.Product
                .Include(p => p.Brand)
                .Include(p => p.Category).ToListAsync();
-           var list = _mapper.Map<List<IndexViewModel>>(product);
+           var list = _mapper.Map<List<ProductViewModel>>(product);
             return list;
         }
 
-       
-        
-        public async Task<bool> AddAsync(IndexViewModel product)
+
+        /// <summary>
+        /// AddAsync
+        /// </summary>
+        /// <param name="product">ProductViewModel</param>
+        /// <returns>Could Be Addted?</returns>
+        public async Task<bool> AddAsync(ProductViewModel product)
         {
             try
             {
@@ -80,15 +125,23 @@ namespace LoginCodeFirst.Services
             }
            
         }
-
-        public async Task<IndexViewModel> GetIdAsync(int id)
+        /// <summary>
+        /// GetIdAsync
+        /// </summary>
+        /// <param name="id">Product Id</param>
+        /// <returns>ProductViewModel</returns>
+        public async Task<ProductViewModel> GetIdAsync(int id)
         {
             var product = await _context.Product.FindAsync(id);
-            var list = _mapper.Map<IndexViewModel>(product);
+            var list = _mapper.Map<ProductViewModel>(product);
             return list;
         }
-
-        public async Task<bool> EditAsync(IndexViewModel product)
+        /// <summary>
+        /// EditAsync
+        /// </summary>
+        /// <param name="product">ProductViewModel</param>
+        /// <returns>Could Be Editted?</returns>
+        public async Task<bool> EditAsync(ProductViewModel product)
         {
             try
             {
@@ -111,7 +164,11 @@ namespace LoginCodeFirst.Services
             }
            
         }
-        
+        /// <summary>
+        /// DeleteAsync
+        /// </summary>
+        /// <param name="id">Product Id</param>
+        /// <returns>Could Be Deleted?</returns>
         public async Task<bool> DeleteAsync(int id)
         {
             try
@@ -128,7 +185,12 @@ namespace LoginCodeFirst.Services
             }
             
         }
-        
+        /// <summary>
+        /// IsExistedName
+        /// </summary>
+        /// <param name="name">Product Name</param>
+        /// <param name="id">Product Id</param>
+        /// <returns>ExistedName</returns>
         public bool IsExistedName(string name,int id)
         {
             return  _context.Product.Any(x => x.ProductName == name && x.ProductId != id);

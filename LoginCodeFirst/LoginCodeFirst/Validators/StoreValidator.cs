@@ -1,33 +1,33 @@
 ﻿using FluentValidation;
+using LoginCodeFirst.Resources;
 using LoginCodeFirst.Services;
 using LoginCodeFirst.ViewModels.Store;
-using Microsoft.Extensions.Localization;
 
 namespace LoginCodeFirst.Validators.Store
 {
     public class StoreValidator : AbstractValidator<StoreViewModel>
     {
-        public StoreValidator(IStoreServices storeServices, IStringLocalizer<StoreViewModel> localizer)
+        public StoreValidator(ResourcesServices<StoreResources> localizer,IStoreServices storeServices)
         {
             RuleFor(x => x.Email).Must((Reg,c) => !storeServices.IsExistedName(Reg.Email,Reg.StoreId))
-                .WithMessage(localizer["This Email already exists."]);
+                .WithMessage(localizer.GetLocalizedHtmlString("lbl_ThisEmailAlreadyExists"));
                    
             RuleFor(x => x.Email).NotNull()
-                .WithMessage(localizer["Email not be empty"]);
+                .WithMessage(localizer.GetLocalizedHtmlString("lbl_EmailNotBeEmpty"));
             RuleFor(x => x.Email).EmailAddress()
-                .WithMessage(localizer["must start with a letter"]);
+                .WithMessage(localizer.GetLocalizedHtmlString("lbl_MustStartWithALetter"));
             RuleFor(x => x.Phone).NotNull()
-                .WithMessage(localizer["Phone not be empty"]);
+                .WithMessage(localizer.GetLocalizedHtmlString("lbl_PhoneNotBeEmpty"));
             RuleFor(x => x.StoreName).NotNull()
-                .WithMessage(localizer["StoreName not be empty"]);
+                .WithMessage(localizer.GetLocalizedHtmlString("lbl_StoreNameNotBeEmpty"));
             RuleFor(x => x.State).NotNull()
-                .WithMessage(localizer["State not be empty"]);
+                .WithMessage(localizer.GetLocalizedHtmlString("lbl_StateNotBeEmpty"));
             RuleFor(x => x.Street).NotNull()
-                .WithMessage(localizer["Street not be empty"]);
+                .WithMessage(localizer.GetLocalizedHtmlString("lbl_StreetNotBeEmpty"));
             RuleFor(x => x.City).NotNull()
-                .WithMessage(localizer["City not be empty"]);
+                .WithMessage(localizer.GetLocalizedHtmlString("lbl_CityNotBeEmpty"));
             RuleFor(x => x.ZipCode).NotNull()
-                .WithMessage(localizer["ZipCode not be empty"]);
+                .WithMessage(localizer.GetLocalizedHtmlString("lbl_ZipCodeNotBeEmpty"));
 
         }
     }

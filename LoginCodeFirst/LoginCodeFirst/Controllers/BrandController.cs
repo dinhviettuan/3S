@@ -11,11 +11,14 @@ namespace LoginCodeFirst.Controllers
 
         public BrandController(IBrandServices brandServices)
         {
-            _brandServices  = brandServices;
+            _brandServices = brandServices;
         }
         
         
-        
+        /// <summary>
+        /// Index Brand Get Function
+        /// </summary>
+        /// <returns>Brand Index View</returns>
         [HttpGet]
         public async Task<IActionResult> Index()
         {
@@ -23,13 +26,20 @@ namespace LoginCodeFirst.Controllers
             return View(listBrand);
         }
 
-        
+        /// <summary>
+        /// Add Brand Get Function
+        /// </summary>
+        /// <returns>Brand Index View</returns>
         [HttpGet]
         public IActionResult Add()
         {
             return View();
         }
-        
+        /// <summary>
+        /// Add Brand Post Function
+        /// </summary>
+        /// <param name="brand"></param>
+        /// <returns>Brand Index View</returns>
         [HttpPost]
         public async Task<IActionResult> Add(BrandViewModel brand)
         {
@@ -48,7 +58,11 @@ namespace LoginCodeFirst.Controllers
             return View(brand);
         }
 
-        
+        /// <summary>
+        /// Edit Brand Get Function
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>Brand Index View</returns>
         [HttpGet]
         public async Task<IActionResult> Edit(int? id)
         {
@@ -66,6 +80,11 @@ namespace LoginCodeFirst.Controllers
 
         }
 
+        /// <summary>
+        /// Edit Brand Post Function
+        /// </summary>
+        /// <param name="brand"></param>
+        /// <returns>Brand Index View</returns>
         [HttpPost]
         public async Task<IActionResult> Edit(BrandViewModel brand)
         {
@@ -83,16 +102,17 @@ namespace LoginCodeFirst.Controllers
             }
             return View(brand);
         }
-        
+
+        /// <summary>
+        /// Delete Brand Get Function
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>Brand Index View</returns>
         [HttpGet]
         public async  Task<IActionResult> Delete(int? id)
         {
             await _brandServices.DeleteAsync(id.Value);
-<<<<<<< HEAD
             TempData["Success"] = "Delete Brand Success";
-=======
-            TempData["Brand"] = "Delete Brand Success";
->>>>>>> master
             return  RedirectToAction("Index");
         }   
     }

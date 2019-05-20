@@ -38,12 +38,40 @@
           <e p="launchSettings.json" t="Include" />
         </e>
         <e p="Resources" t="Include">
+          <e p="BrandResources.en-US.Designer.cs" t="Include" />
+          <e p="BrandResources.en-US.resx" t="Include" />
+          <e p="BrandResources.vi-VN.Designer.cs" t="Include" />
+          <e p="BrandResources.vi-VN.resx" t="Include" />
+          <e p="CategoryResources.en-US.Designer.cs" t="Include" />
+          <e p="CategoryResources.en-US.resx" t="Include" />
+          <e p="CategoryResources.vi-VN.Designer.cs" t="Include" />
+          <e p="CategoryResources.vi-VN.resx" t="Include" />
+          <e p="CommonResources.en-US.Designer.cs" t="Include" />
+          <e p="CommonResources.en-US.resx" t="Include" />
+          <e p="CommonResources.vi-VN.Designer.cs" t="Include" />
+          <e p="CommonResources.vi-VN.resx" t="Include" />
           <e p="ResourcesServices.cs" t="Include" />
           <e p="SharedResource.cs" t="Include" />
-          <e p="SharedResource.vi-VN.Designer.cs" t="Include" />
-          <e p="SharedResource.vi-VN.resx" t="Include" />
-          <e p="SharedResources.en-US.Designer.cs" t="Include" />
-          <e p="SharedResources.en-US.resx" t="Include" />
+          <e p="ViewLoginResources.en-US.Designer.cs" t="Include" />
+          <e p="ViewLoginResources.en-US.resx" t="Include" />
+          <e p="ViewLoginResources.vi-VN.Designer.cs" t="Include" />
+          <e p="ViewLoginResources.vi-VN.resx" t="Include" />
+          <e p="ViewProductResources.en-US.Designer.cs" t="Include" />
+          <e p="ViewProductResources.en-US.resx" t="Include" />
+          <e p="ViewProductResources.vi-VN.Designer.cs" t="Include" />
+          <e p="ViewProductResources.vi-VN.resx" t="Include" />
+          <e p="ViewStockResources.en-US.Designer.cs" t="Include" />
+          <e p="ViewStockResources.en-US.resx" t="Include" />
+          <e p="ViewStockResources.vi-VN.Designer.cs" t="Include" />
+          <e p="ViewStockResources.vi-VN.resx" t="Include" />
+          <e p="ViewStoreResources.en-US.Designer.cs" t="Include" />
+          <e p="ViewStoreResources.en-US.resx" t="Include" />
+          <e p="ViewStoreResources.vi-VN.Designer.cs" t="Include" />
+          <e p="ViewStoreResources.vi-VN.resx" t="Include" />
+          <e p="ViewUserResources.en-US.Designer.cs" t="Include" />
+          <e p="ViewUserResources.en-US.resx" t="Include" />
+          <e p="ViewUserResources.vi-VN.Designer.cs" t="Include" />
+          <e p="ViewUserResources.vi-VN.resx" t="Include" />
         </e>
         <e p="SecureHasher" t="Include">
           <e p="SecurePasswordHasher.cs" t="Include" />
@@ -100,8 +128,7 @@
             <e p="Privacy.cshtml" t="Include" />
           </e>
           <e p="Login" t="Include">
-            <e p="Login.cshtml~HEAD" t="Include" />
-            <e p="Login.cshtml~master" t="Include" />
+            <e p="Login.cshtml" t="Include" />
           </e>
           <e p="Product" t="Include">
             <e p="Add.cshtml" t="Include" />
