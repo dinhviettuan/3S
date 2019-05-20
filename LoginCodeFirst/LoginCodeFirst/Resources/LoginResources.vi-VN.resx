@@ -43,4 +43,9 @@
     <data name="lbl_RememberMe">
         <value>Ghi Nhớ</value>
     </data>
+    <data name="btn_Login">
+        <value>Đăng Nhập</value>
+    </data>
+
+    
 </root>

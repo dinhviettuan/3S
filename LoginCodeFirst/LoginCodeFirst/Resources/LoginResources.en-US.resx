@@ -42,4 +42,9 @@
     <data name="lbl_RememberMe">
         <value>Remember Me</value>
     </data>
+    <data name="btn_Login">
+        <value>Login</value>
+    </data>
+
+    
 </root>

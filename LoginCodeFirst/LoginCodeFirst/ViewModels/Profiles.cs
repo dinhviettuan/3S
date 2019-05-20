@@ -22,6 +22,7 @@ namespace LoginCodeFirst.ViewModels
                 CreateMap<Models.User, LoginViewModel>();
                 CreateMap<Models.User, PasswordViewModel>();
                 CreateMap<Models.User, IndexViewModel>();
+                
             }
         }
 }

@@ -25,7 +25,7 @@
                             <thead>
                             <tr>
                                 <th>
-                                    @ProductLocalizer.GetLocalizedHtmlString("lbl_NumbericalOrder")
+                                    @CommonLocalizer.GetLocalizedHtmlString("lbl_NumbericalOrder")
                                 </th>
                                 <th>
                                     @ProductLocalizer.GetLocalizedHtmlString("lbl_ProductName")
@@ -46,7 +46,7 @@
                                     @ProductLocalizer.GetLocalizedHtmlString("lbl_Image")
                                 </th>
                                 <th>
-                                    @ProductLocalizer.GetLocalizedHtmlString("lbl_Actions")
+                                    @CommonLocalizer.GetLocalizedHtmlString("lbl_Actions")
                                 </th>
                             </tr>
                             </thead>
@@ -57,10 +57,6 @@
                                 stt += 1;
                                 <tr>
                                 <td>@stt</td>
-                                <td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.ProductId)
-                                    </td>
                                     <td>
                                         @Html.DisplayFor(modelItem => item.ProductName)
                                     </td>

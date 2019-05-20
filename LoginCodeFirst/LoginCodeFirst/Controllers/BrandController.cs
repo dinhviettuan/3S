@@ -1,10 +1,12 @@
 ﻿using System.Threading.Tasks;
+using LoginCodeFirst.Filter;
 using LoginCodeFirst.Services;
 using LoginCodeFirst.ViewModels.Brand;
 using Microsoft.AspNetCore.Mvc;
 
 namespace LoginCodeFirst.Controllers
 {
+    [ServiceFilter(typeof(ActionFilter))]
     public class BrandController : Controller
     {
         private readonly IBrandServices _brandServices;

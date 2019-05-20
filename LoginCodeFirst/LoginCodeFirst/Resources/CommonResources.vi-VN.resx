@@ -41,19 +41,26 @@
     <data name="btn_YouDelete">
         <value>Bạn Có Chắc Chắn Muốn Xóa</value>
     </data>
-    <data name="lbl_ZipCode">
-        <value>Mã Bưu Chính</value>
-    </data>
-    <data name="lbl_Phone">
-        <value>Số Điện Thoại*</value>
-    </data>
-    <data name="lbl_Email">
-        <value>Email*</value>
-    </data>
     <data name="lbl_NumbericalOrder">
         <value>STT</value>
     </data>
-    <data name="lbl_BrandName">
-        <value>Tên Nhãn Hiệu</value>
+
+    <data name="msg_AlreadyExists">
+        <value>Đã tồn tại</value>
+    </data>
+    <data name="msg_NotBeEmpty">
+        <value>Không được để trống</value>
+    </data>
+    <data name="msg_8Characters">
+        <value>Ít nhất phải có 8 ký tự</value>
+    </data>
+    <data name="msg_LettersAndNumbers">
+        <value>Phải bao gồm cả chữ và số</value>
+    </data>
+    <data name="msg_AValidEmail">
+        <value>Email phải đúng định dạng</value>
+    </data>
+    <data name="msg_WithALetter">
+        <value>Email Bắt đầu bằng chữ cái</value>
     </data>
 </root>

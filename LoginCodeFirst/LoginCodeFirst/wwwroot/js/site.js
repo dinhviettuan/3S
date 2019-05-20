@@ -1,5 +1,4 @@
-﻿
-$(function () {
+﻿$(function () {
     var placeholderElement = $('#modal-placeholder');
 
     $('button[data-toggle="ajax-modal"]').click(function (event) {
@@ -24,6 +23,7 @@ $(function () {
             var isValid = newBody.find('[name="IsValid"]').val() == 'True';
             if (isValid) {
                 placeholderElement.find('.modal').modal('hide');
+                location.reload();
             }
         });
     });

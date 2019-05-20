@@ -1,19 +1,19 @@
 ﻿using FluentValidation;
 using LoginCodeFirst.Resources;
 using LoginCodeFirst.Services;
+using LoginCodeFirst.ViewModels;
 using LoginCodeFirst.ViewModels.User;
 using Microsoft.Extensions.Localization;
 namespace LoginCodeFirst.Validator
 {
     public class LoginValidator : AbstractValidator<LoginViewModel>
     {
-        public LoginValidator(ResourcesServices<LoginResources> localizer,IUserServices userServices)
+        public LoginValidator(ResourcesServices<CommonResources> commonlocalizer)
         {
-            RuleFor(x => x.Email).NotNull().WithMessage(localizer.GetLocalizedHtmlString("lbl_EmailNotBeEmpty"));
-            RuleFor(x => x.Email).EmailAddress().WithMessage(localizer.GetLocalizedHtmlString("lbl_MustStartWithALetter"));
-            RuleFor(x => x.Email).EmailAddress().WithMessage(localizer.GetLocalizedHtmlString("lbl_EmailIncludingLettersAndNumbers"));
-            RuleFor(x => x.Password).NotNull().WithMessage(localizer.GetLocalizedHtmlString("lbl_PasswordNotBeEmpty"));
-            RuleFor(x => x.Password).MinimumLength(5).WithMessage(localizer.GetLocalizedHtmlString("lbl_NotLessThan5Characters"));
+            RuleFor(x => x.Email).NotNull().WithMessage(commonlocalizer.GetLocalizedHtmlString("msg_NotBeEmpty"));
+            RuleFor(x => x.Email).EmailAddress().WithMessage(commonlocalizer.GetLocalizedHtmlString("msg_WithALetter"));
+            RuleFor(x => x.Password).NotNull().WithMessage(commonlocalizer.GetLocalizedHtmlString("msg_NotBeEmpty"));
+            RuleFor(x => x.Password).MinimumLength(5).WithMessage(commonlocalizer.GetLocalizedHtmlString("msg_8Characters"));
         }
     }
 }

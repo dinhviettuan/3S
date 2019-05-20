@@ -1,4 +1,4 @@
-﻿namespace LoginCodeFirst.ViewModels.User
+﻿namespace LoginCodeFirst.ViewModels
 {
     public class LoginViewModel
     {

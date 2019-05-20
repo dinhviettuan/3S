@@ -51,9 +51,7 @@ namespace LoginCodeFirst.Services
         /// <param name="name">Brand Name</param>
         /// <param name="id">Brand Id</param>
         /// <returns>ExistedName</returns>
-        bool IsExistedName(string name,int id);
-
-        
+        bool IsExistedName(string name,int id);   
     }
         
     public class BrandServices : IBrandServices
@@ -76,7 +74,6 @@ namespace LoginCodeFirst.Services
         {
             return _context.Brand;
         }
-
 
         /// <summary>
         /// GetBrandListAsync
@@ -124,7 +121,6 @@ namespace LoginCodeFirst.Services
             var brandViewModel = _mapper.Map<BrandViewModel>(brand);
             return brandViewModel;
         }
-
 
         /// <summary>
         /// EditAsync

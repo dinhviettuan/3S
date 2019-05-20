@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ContentModelStore">
-    <e p="$USER_HOME$/.Rider2018.1/system/resharper-host/local/Transient/ReSharperHost/v12/SolutionCaches/_LoginCodeFirst.-412966526.00" t="ExcludeRecursive" />
+    <e p="$USER_HOME$/.Rider2018.1/system/resharper-host/local/Transient/ReSharperHost/v12/SolutionCaches/_LoginCodeFirst.2071702047.00" t="ExcludeRecursive" />
     <e p="$PROJECT_DIR$" t="IncludeFlat">
       <e p="LoginCodeFirst" t="IncludeRecursive">
         <e p="Controllers" t="Include">
@@ -13,6 +13,9 @@
           <e p="StockController.cs" t="Include" />
           <e p="StoreController.cs" t="Include" />
           <e p="UserController.cs" t="Include" />
+        </e>
+        <e p="Filter" t="Include">
+          <e p="ActionFilter.cs" t="Include" />
         </e>
         <e p="LoginCodeFirst.csproj" t="IncludeRecursive" />
         <e p="Migrations" t="Include">
@@ -50,28 +53,28 @@
           <e p="CommonResources.en-US.resx" t="Include" />
           <e p="CommonResources.vi-VN.Designer.cs" t="Include" />
           <e p="CommonResources.vi-VN.resx" t="Include" />
+          <e p="LoginResources.en-US.Designer.cs" t="Include" />
+          <e p="LoginResources.en-US.resx" t="Include" />
+          <e p="LoginResources.vi-VN.Designer.cs" t="Include" />
+          <e p="LoginResources.vi-VN.resx" t="Include" />
+          <e p="ProductResources.en-US.Designer.cs" t="Include" />
+          <e p="ProductResources.en-US.resx" t="Include" />
+          <e p="ProductResources.vi-VN.Designer.cs" t="Include" />
+          <e p="ProductResources.vi-VN.resx" t="Include" />
           <e p="ResourcesServices.cs" t="Include" />
           <e p="SharedResource.cs" t="Include" />
-          <e p="ViewLoginResources.en-US.Designer.cs" t="Include" />
-          <e p="ViewLoginResources.en-US.resx" t="Include" />
-          <e p="ViewLoginResources.vi-VN.Designer.cs" t="Include" />
-          <e p="ViewLoginResources.vi-VN.resx" t="Include" />
-          <e p="ViewProductResources.en-US.Designer.cs" t="Include" />
-          <e p="ViewProductResources.en-US.resx" t="Include" />
-          <e p="ViewProductResources.vi-VN.Designer.cs" t="Include" />
-          <e p="ViewProductResources.vi-VN.resx" t="Include" />
-          <e p="ViewStockResources.en-US.Designer.cs" t="Include" />
-          <e p="ViewStockResources.en-US.resx" t="Include" />
-          <e p="ViewStockResources.vi-VN.Designer.cs" t="Include" />
-          <e p="ViewStockResources.vi-VN.resx" t="Include" />
-          <e p="ViewStoreResources.en-US.Designer.cs" t="Include" />
-          <e p="ViewStoreResources.en-US.resx" t="Include" />
-          <e p="ViewStoreResources.vi-VN.Designer.cs" t="Include" />
-          <e p="ViewStoreResources.vi-VN.resx" t="Include" />
-          <e p="ViewUserResources.en-US.Designer.cs" t="Include" />
-          <e p="ViewUserResources.en-US.resx" t="Include" />
-          <e p="ViewUserResources.vi-VN.Designer.cs" t="Include" />
-          <e p="ViewUserResources.vi-VN.resx" t="Include" />
+          <e p="StockResources.en-US.Designer.cs" t="Include" />
+          <e p="StockResources.en-US.resx" t="Include" />
+          <e p="StockResources.vi-VN.Designer.cs" t="Include" />
+          <e p="StockResources.vi-VN.resx" t="Include" />
+          <e p="StoreResources.en-US.Designer.cs" t="Include" />
+          <e p="StoreResources.en-US.resx" t="Include" />
+          <e p="StoreResources.vi-VN.Designer.cs" t="Include" />
+          <e p="StoreResources.vi-VN.resx" t="Include" />
+          <e p="UserResources.en-US.Designer.cs" t="Include" />
+          <e p="UserResources.en-US.resx" t="Include" />
+          <e p="UserResources.vi-VN.Designer.cs" t="Include" />
+          <e p="UserResources.vi-VN.resx" t="Include" />
         </e>
         <e p="SecureHasher" t="Include">
           <e p="SecurePasswordHasher.cs" t="Include" />
@@ -79,6 +82,7 @@
         <e p="Services" t="Include">
           <e p="BrandServices.cs" t="Include" />
           <e p="CategoryServices.cs" t="Include" />
+          <e p="LoginServices.cs" t="Include" />
           <e p="ProductServices.cs" t="Include" />
           <e p="StockServices.cs" t="Include" />
           <e p="StoreServices.cs" t="Include" />
@@ -101,6 +105,7 @@
         <e p="ViewModels" t="Include">
           <e p="BrandViewModel.cs" t="Include" />
           <e p="CategoryViewModel.cs" t="Include" />
+          <e p="LoginViewModel.cs" t="Include" />
           <e p="ProductViewModel.cs" t="Include" />
           <e p="Profiles.cs" t="Include" />
           <e p="StockViewModel.cs" t="Include" />
@@ -108,7 +113,6 @@
           <e p="User" t="Include">
             <e p="EditViewModel.cs" t="Include" />
             <e p="IndexViewModel.cs" t="Include" />
-            <e p="LoginViewModel.cs" t="Include" />
             <e p="PasswordViewModel.cs" t="Include" />
           </e>
         </e>

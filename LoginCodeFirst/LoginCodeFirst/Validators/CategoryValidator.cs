@@ -8,15 +8,14 @@ namespace LoginCodeFirst.Validators.CategoryValidator
 {
     public class CategoryValidator : AbstractValidator<CategoryViewModel>
     {
-        public CategoryValidator(ResourcesServices<CategoryResources> localizer, ICategoryServices categoryServices)
+        public CategoryValidator(ResourcesServices<CommonResources> commonlocalizer, ICategoryServices categoryServices)
         { 
                 
             RuleFor(x => x.CategoryName).Must((Reg,c) => !categoryServices.IsExistedName(Reg.CategoryName,Reg.CategoryId))
-                    .WithMessage(localizer.GetLocalizedHtmlString("lbl_ThisCategoryNameAlreadyExists"));
+                    .WithMessage((reg,c) => string.Format(commonlocalizer.GetLocalizedHtmlString("msg_AlreadyExists"),c));
+            
             RuleFor(x => x.CategoryName).NotNull()
-                    .WithMessage(localizer.GetLocalizedHtmlString("lbl_CategoryNameNotBeEmpty"));
-            RuleFor(x => x.CategoryName).NotNull()
-                    .WithMessage(localizer.GetLocalizedHtmlString("lbl_StartWithLetters"));
+                    .WithMessage(commonlocalizer.GetLocalizedHtmlString("msg_NotBeEmpty"));
         }
     }
 }

@@ -40,19 +40,29 @@
     <data name="btn_YouDelete">
         <value>You really want to delete?</value>
     </data>
-    <data name="lbl_ZipCode">
-        <value>ZipCode</value>
-    </data>
-    <data name="lbl_Phone">
-        <value>Phone*</value>
-    </data>
-    <data name="lbl_Email">
-        <value>Email*</value>
-    </data>
+   
     <data name="lbl_NumbericalOrder">
         <value>STT</value>
     </data>
-    <data name="lbl_BrandName">
-        <value>BrandName</value>
+
+    
+    <data name="msg_AlreadyExists">
+        <value>Already Exists</value>
     </data>
+    <data name="msg_NotBeEmpty">
+        <value>Not Be Empty</value>
+    </data>
+    <data name="msg_8Characters">
+        <value>Minimum of 8 characters</value>
+    </data>
+    <data name="msg_LettersAndNumbers">
+        <value>Must include letters and numbers</value>
+    </data>
+    <data name="msg_AValidEmail">
+        <value>Email must be valid</value>
+    </data>
+    <data name="msg_WithALetter">
+        <value>Email Starts with letters</value>
+    </data>
+    
 </root>

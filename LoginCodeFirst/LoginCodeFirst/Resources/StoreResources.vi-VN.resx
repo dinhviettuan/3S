@@ -43,4 +43,13 @@
     <data name="lbl_AddStore">
         <value>Thêm Cửa Hàng</value>
     </data>
+    <data name="lbl_Phone">
+        <value>Số Điện Thoại</value>
+    </data>
+    <data name="lbl_Email">
+        <value>Email</value>
+    </data>
+
+    
+    
 </root>

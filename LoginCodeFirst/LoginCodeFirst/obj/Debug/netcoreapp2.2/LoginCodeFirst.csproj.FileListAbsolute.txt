@@ -405,71 +405,152 @@ G:/3S/LoginCodeFirst/LoginCodeFirst/obj/Debug/netcoreapp2.2/LoginCodeFirst.cspro
 /home/local/3SI/tuan.dv/3S/LoginCodeFirst/LoginCodeFirst/obj/Debug/netcoreapp2.2/LoginCodeFirst.Resources.ViewUserResources.en-US.resources
 /home/local/3SI/tuan.dv/3S/LoginCodeFirst/LoginCodeFirst/obj/Debug/netcoreapp2.2/LoginCodeFirst.Resources.BrandResources.en-US.resources
 /home/local/3SI/tuan.dv/3S/LoginCodeFirst/LoginCodeFirst/obj/Debug/netcoreapp2.2/LoginCodeFirst.Resources.BrandResources.vi-VN.resources
-C:\3S-master\LoginCodeFirst\LoginCodeFirst\obj\Debug\netcoreapp2.2\LoginCodeFirst.csprojAssemblyReference.cache
-C:\3S-master\LoginCodeFirst\LoginCodeFirst\obj\Debug\netcoreapp2.2\LoginCodeFirst.Resources.BrandResources.en-US.resources
-C:\3S-master\LoginCodeFirst\LoginCodeFirst\obj\Debug\netcoreapp2.2\LoginCodeFirst.Resources.BrandResources.vi-VN.resources
-C:\3S-master\LoginCodeFirst\LoginCodeFirst\obj\Debug\netcoreapp2.2\LoginCodeFirst.Resources.CategoryResources.en-US.resources
-C:\3S-master\LoginCodeFirst\LoginCodeFirst\obj\Debug\netcoreapp2.2\LoginCodeFirst.Resources.CategoryResources.vi-VN.resources
-C:\3S-master\LoginCodeFirst\LoginCodeFirst\obj\Debug\netcoreapp2.2\LoginCodeFirst.Resources.CommonResources.en-US.resources
-C:\3S-master\LoginCodeFirst\LoginCodeFirst\obj\Debug\netcoreapp2.2\LoginCodeFirst.Resources.CommonResources.vi-VN.resources
-C:\3S-master\LoginCodeFirst\LoginCodeFirst\obj\Debug\netcoreapp2.2\LoginCodeFirst.Resources.LoginResources.en-US.resources
-C:\3S-master\LoginCodeFirst\LoginCodeFirst\obj\Debug\netcoreapp2.2\LoginCodeFirst.Resources.LoginResources.vi-VN.resources
-C:\3S-master\LoginCodeFirst\LoginCodeFirst\obj\Debug\netcoreapp2.2\LoginCodeFirst.Resources.ProductResources.en-US.resources
-C:\3S-master\LoginCodeFirst\LoginCodeFirst\obj\Debug\netcoreapp2.2\LoginCodeFirst.Resources.ProductResources.vi-VN.resources
-C:\3S-master\LoginCodeFirst\LoginCodeFirst\obj\Debug\netcoreapp2.2\LoginCodeFirst.Resources.StockResources.en-US.resources
-C:\3S-master\LoginCodeFirst\LoginCodeFirst\obj\Debug\netcoreapp2.2\LoginCodeFirst.Resources.StockResources.vi-VN.resources
-C:\3S-master\LoginCodeFirst\LoginCodeFirst\obj\Debug\netcoreapp2.2\LoginCodeFirst.Resources.StoreResources.en-US.resources
-C:\3S-master\LoginCodeFirst\LoginCodeFirst\obj\Debug\netcoreapp2.2\LoginCodeFirst.Resources.StoreResources.vi-VN.resources
-C:\3S-master\LoginCodeFirst\LoginCodeFirst\obj\Debug\netcoreapp2.2\LoginCodeFirst.Resources.UserResources.en-US.resources
-C:\3S-master\LoginCodeFirst\LoginCodeFirst\obj\Debug\netcoreapp2.2\LoginCodeFirst.Resources.UserResources.vi-VN.resources
-C:\3S-master\LoginCodeFirst\LoginCodeFirst\obj\Debug\netcoreapp2.2\LoginCodeFirst.csproj.GenerateResource.cache
-C:\3S-master\LoginCodeFirst\LoginCodeFirst\obj\Debug\netcoreapp2.2\LoginCodeFirst.csproj.CoreCompileInputs.cache
-C:\3S-master\LoginCodeFirst\LoginCodeFirst\obj\Debug\netcoreapp2.2\LoginCodeFirst.RazorAssemblyInfo.cache
-C:\3S-master\LoginCodeFirst\LoginCodeFirst\obj\Debug\netcoreapp2.2\LoginCodeFirst.RazorAssemblyInfo.cs
-C:\3S-master\LoginCodeFirst\LoginCodeFirst\obj\Debug\netcoreapp2.2\LoginCodeFirst.AssemblyInfoInputs.cache
-C:\3S-master\LoginCodeFirst\LoginCodeFirst\obj\Debug\netcoreapp2.2\LoginCodeFirst.AssemblyInfo.cs
-C:\3S-master\LoginCodeFirst\LoginCodeFirst\obj\Debug\netcoreapp2.2\en-US\LoginCodeFirst.resources.dll
-C:\3S-master\LoginCodeFirst\LoginCodeFirst\obj\Debug\netcoreapp2.2\vi-VN\LoginCodeFirst.resources.dll
-C:\3S-master\LoginCodeFirst\LoginCodeFirst\obj\Debug\netcoreapp2.2\LoginCodeFirst.TagHelpers.input.cache
-C:\3S-master\LoginCodeFirst\LoginCodeFirst\obj\Debug\netcoreapp2.2\LoginCodeFirst.TagHelpers.output.cache
-C:\3S-master\LoginCodeFirst\LoginCodeFirst\obj\Debug\netcoreapp2.2\LoginCodeFirst.RazorCoreGenerate.cache
-C:\3S-master\LoginCodeFirst\LoginCodeFirst\obj\Debug\netcoreapp2.2\Razor\Views\Brand\Add.g.cshtml.cs
-C:\3S-master\LoginCodeFirst\LoginCodeFirst\obj\Debug\netcoreapp2.2\Razor\Views\Brand\Edit.g.cshtml.cs
-C:\3S-master\LoginCodeFirst\LoginCodeFirst\obj\Debug\netcoreapp2.2\Razor\Views\Brand\Index.g.cshtml.cs
-C:\3S-master\LoginCodeFirst\LoginCodeFirst\obj\Debug\netcoreapp2.2\Razor\Views\Category\Add.g.cshtml.cs
-C:\3S-master\LoginCodeFirst\LoginCodeFirst\obj\Debug\netcoreapp2.2\Razor\Views\Category\Edit.g.cshtml.cs
-C:\3S-master\LoginCodeFirst\LoginCodeFirst\obj\Debug\netcoreapp2.2\Razor\Views\Category\Index.g.cshtml.cs
-C:\3S-master\LoginCodeFirst\LoginCodeFirst\obj\Debug\netcoreapp2.2\Razor\Views\Home\Index.g.cshtml.cs
-C:\3S-master\LoginCodeFirst\LoginCodeFirst\obj\Debug\netcoreapp2.2\Razor\Views\Home\Privacy.g.cshtml.cs
-C:\3S-master\LoginCodeFirst\LoginCodeFirst\obj\Debug\netcoreapp2.2\Razor\Views\Login\Login.g.cshtml.cs
-C:\3S-master\LoginCodeFirst\LoginCodeFirst\obj\Debug\netcoreapp2.2\Razor\Views\Product\Add.g.cshtml.cs
-C:\3S-master\LoginCodeFirst\LoginCodeFirst\obj\Debug\netcoreapp2.2\Razor\Views\Product\Edit.g.cshtml.cs
-C:\3S-master\LoginCodeFirst\LoginCodeFirst\obj\Debug\netcoreapp2.2\Razor\Views\Product\Index.g.cshtml.cs
-C:\3S-master\LoginCodeFirst\LoginCodeFirst\obj\Debug\netcoreapp2.2\Razor\Views\Shared\Error.g.cshtml.cs
-C:\3S-master\LoginCodeFirst\LoginCodeFirst\obj\Debug\netcoreapp2.2\Razor\Views\Shared\_CookieConsentPartial.g.cshtml.cs
-C:\3S-master\LoginCodeFirst\LoginCodeFirst\obj\Debug\netcoreapp2.2\Razor\Views\Shared\_Layout.g.cshtml.cs
-C:\3S-master\LoginCodeFirst\LoginCodeFirst\obj\Debug\netcoreapp2.2\Razor\Views\Shared\_LayoutLogin.g.cshtml.cs
-C:\3S-master\LoginCodeFirst\LoginCodeFirst\obj\Debug\netcoreapp2.2\Razor\Views\Shared\_LeftSidebarPartial.g.cshtml.cs
-C:\3S-master\LoginCodeFirst\LoginCodeFirst\obj\Debug\netcoreapp2.2\Razor\Views\Shared\_MenuPartial.g.cshtml.cs
-C:\3S-master\LoginCodeFirst\LoginCodeFirst\obj\Debug\netcoreapp2.2\Razor\Views\Shared\_RightSidebarPartial.g.cshtml.cs
-C:\3S-master\LoginCodeFirst\LoginCodeFirst\obj\Debug\netcoreapp2.2\Razor\Views\Shared\_SelectLanguagePartial.g.cshtml.cs
-C:\3S-master\LoginCodeFirst\LoginCodeFirst\obj\Debug\netcoreapp2.2\Razor\Views\Shared\_TopSidebarPartial.g.cshtml.cs
-C:\3S-master\LoginCodeFirst\LoginCodeFirst\obj\Debug\netcoreapp2.2\Razor\Views\Shared\_UserLoginPartial.g.cshtml.cs
-C:\3S-master\LoginCodeFirst\LoginCodeFirst\obj\Debug\netcoreapp2.2\Razor\Views\Shared\_ValidationScriptsPartial.g.cshtml.cs
-C:\3S-master\LoginCodeFirst\LoginCodeFirst\obj\Debug\netcoreapp2.2\Razor\Views\Stock\Add.g.cshtml.cs
-C:\3S-master\LoginCodeFirst\LoginCodeFirst\obj\Debug\netcoreapp2.2\Razor\Views\Stock\Edit.g.cshtml.cs
-C:\3S-master\LoginCodeFirst\LoginCodeFirst\obj\Debug\netcoreapp2.2\Razor\Views\Stock\Index.g.cshtml.cs
-C:\3S-master\LoginCodeFirst\LoginCodeFirst\obj\Debug\netcoreapp2.2\Razor\Views\Store\Add.g.cshtml.cs
-C:\3S-master\LoginCodeFirst\LoginCodeFirst\obj\Debug\netcoreapp2.2\Razor\Views\Store\Edit.g.cshtml.cs
-C:\3S-master\LoginCodeFirst\LoginCodeFirst\obj\Debug\netcoreapp2.2\Razor\Views\Store\Index.g.cshtml.cs
-C:\3S-master\LoginCodeFirst\LoginCodeFirst\obj\Debug\netcoreapp2.2\Razor\Views\User\Add.g.cshtml.cs
-C:\3S-master\LoginCodeFirst\LoginCodeFirst\obj\Debug\netcoreapp2.2\Razor\Views\User\Edit.g.cshtml.cs
-C:\3S-master\LoginCodeFirst\LoginCodeFirst\obj\Debug\netcoreapp2.2\Razor\Views\User\EditPassword.g.cshtml.cs
-C:\3S-master\LoginCodeFirst\LoginCodeFirst\obj\Debug\netcoreapp2.2\Razor\Views\User\Index.g.cshtml.cs
-C:\3S-master\LoginCodeFirst\LoginCodeFirst\obj\Debug\netcoreapp2.2\Razor\Views\User\_ChangePassword.g.cshtml.cs
-C:\3S-master\LoginCodeFirst\LoginCodeFirst\obj\Debug\netcoreapp2.2\Razor\Views\_ViewImports.g.cshtml.cs
-C:\3S-master\LoginCodeFirst\LoginCodeFirst\obj\Debug\netcoreapp2.2\Razor\Views\_ViewStart.g.cshtml.cs
-C:\3S-master\LoginCodeFirst\LoginCodeFirst\obj\Debug\netcoreapp2.2\LoginCodeFirst.RazorTargetAssemblyInfo.cache
-C:\3S-master\LoginCodeFirst\LoginCodeFirst\obj\Debug\netcoreapp2.2\LoginCodeFirst.RazorTargetAssemblyInfo.cs
-C:\3S-master\LoginCodeFirst\LoginCodeFirst\obj\Debug\netcoreapp2.2\LoginCodeFirst.dll
-C:\3S-master\LoginCodeFirst\LoginCodeFirst\obj\Debug\netcoreapp2.2\LoginCodeFirst.pdb
+C:/3S-master/LoginCodeFirst/LoginCodeFirst/obj/Debug/netcoreapp2.2/LoginCodeFirst.csprojAssemblyReference.cache
+C:/3S-master/LoginCodeFirst/LoginCodeFirst/obj/Debug/netcoreapp2.2/LoginCodeFirst.Resources.BrandResources.en-US.resources
+C:/3S-master/LoginCodeFirst/LoginCodeFirst/obj/Debug/netcoreapp2.2/LoginCodeFirst.Resources.BrandResources.vi-VN.resources
+C:/3S-master/LoginCodeFirst/LoginCodeFirst/obj/Debug/netcoreapp2.2/LoginCodeFirst.Resources.CategoryResources.en-US.resources
+C:/3S-master/LoginCodeFirst/LoginCodeFirst/obj/Debug/netcoreapp2.2/LoginCodeFirst.Resources.CategoryResources.vi-VN.resources
+C:/3S-master/LoginCodeFirst/LoginCodeFirst/obj/Debug/netcoreapp2.2/LoginCodeFirst.Resources.CommonResources.en-US.resources
+C:/3S-master/LoginCodeFirst/LoginCodeFirst/obj/Debug/netcoreapp2.2/LoginCodeFirst.Resources.CommonResources.vi-VN.resources
+C:/3S-master/LoginCodeFirst/LoginCodeFirst/obj/Debug/netcoreapp2.2/LoginCodeFirst.Resources.LoginResources.en-US.resources
+C:/3S-master/LoginCodeFirst/LoginCodeFirst/obj/Debug/netcoreapp2.2/LoginCodeFirst.Resources.LoginResources.vi-VN.resources
+C:/3S-master/LoginCodeFirst/LoginCodeFirst/obj/Debug/netcoreapp2.2/LoginCodeFirst.Resources.ProductResources.en-US.resources
+C:/3S-master/LoginCodeFirst/LoginCodeFirst/obj/Debug/netcoreapp2.2/LoginCodeFirst.Resources.ProductResources.vi-VN.resources
+C:/3S-master/LoginCodeFirst/LoginCodeFirst/obj/Debug/netcoreapp2.2/LoginCodeFirst.Resources.StockResources.en-US.resources
+C:/3S-master/LoginCodeFirst/LoginCodeFirst/obj/Debug/netcoreapp2.2/LoginCodeFirst.Resources.StockResources.vi-VN.resources
+C:/3S-master/LoginCodeFirst/LoginCodeFirst/obj/Debug/netcoreapp2.2/LoginCodeFirst.Resources.StoreResources.en-US.resources
+C:/3S-master/LoginCodeFirst/LoginCodeFirst/obj/Debug/netcoreapp2.2/LoginCodeFirst.Resources.StoreResources.vi-VN.resources
+C:/3S-master/LoginCodeFirst/LoginCodeFirst/obj/Debug/netcoreapp2.2/LoginCodeFirst.Resources.UserResources.en-US.resources
+C:/3S-master/LoginCodeFirst/LoginCodeFirst/obj/Debug/netcoreapp2.2/LoginCodeFirst.Resources.UserResources.vi-VN.resources
+C:/3S-master/LoginCodeFirst/LoginCodeFirst/obj/Debug/netcoreapp2.2/LoginCodeFirst.csproj.GenerateResource.cache
+C:/3S-master/LoginCodeFirst/LoginCodeFirst/obj/Debug/netcoreapp2.2/LoginCodeFirst.csproj.CoreCompileInputs.cache
+C:/3S-master/LoginCodeFirst/LoginCodeFirst/obj/Debug/netcoreapp2.2/LoginCodeFirst.RazorAssemblyInfo.cache
+C:/3S-master/LoginCodeFirst/LoginCodeFirst/obj/Debug/netcoreapp2.2/LoginCodeFirst.RazorAssemblyInfo.cs
+C:/3S-master/LoginCodeFirst/LoginCodeFirst/obj/Debug/netcoreapp2.2/LoginCodeFirst.AssemblyInfoInputs.cache
+C:/3S-master/LoginCodeFirst/LoginCodeFirst/obj/Debug/netcoreapp2.2/LoginCodeFirst.AssemblyInfo.cs
+C:/3S-master/LoginCodeFirst/LoginCodeFirst/obj/Debug/netcoreapp2.2/en-US/LoginCodeFirst.resources.dll
+C:/3S-master/LoginCodeFirst/LoginCodeFirst/obj/Debug/netcoreapp2.2/vi-VN/LoginCodeFirst.resources.dll
+C:/3S-master/LoginCodeFirst/LoginCodeFirst/obj/Debug/netcoreapp2.2/LoginCodeFirst.TagHelpers.input.cache
+C:/3S-master/LoginCodeFirst/LoginCodeFirst/obj/Debug/netcoreapp2.2/LoginCodeFirst.TagHelpers.output.cache
+C:/3S-master/LoginCodeFirst/LoginCodeFirst/obj/Debug/netcoreapp2.2/LoginCodeFirst.RazorCoreGenerate.cache
+C:/3S-master/LoginCodeFirst/LoginCodeFirst/obj/Debug/netcoreapp2.2/Razor/Views/Brand/Add.g.cshtml.cs
+C:/3S-master/LoginCodeFirst/LoginCodeFirst/obj/Debug/netcoreapp2.2/Razor/Views/Brand/Edit.g.cshtml.cs
+C:/3S-master/LoginCodeFirst/LoginCodeFirst/obj/Debug/netcoreapp2.2/Razor/Views/Brand/Index.g.cshtml.cs
+C:/3S-master/LoginCodeFirst/LoginCodeFirst/obj/Debug/netcoreapp2.2/Razor/Views/Category/Add.g.cshtml.cs
+C:/3S-master/LoginCodeFirst/LoginCodeFirst/obj/Debug/netcoreapp2.2/Razor/Views/Category/Edit.g.cshtml.cs
+C:/3S-master/LoginCodeFirst/LoginCodeFirst/obj/Debug/netcoreapp2.2/Razor/Views/Category/Index.g.cshtml.cs
+C:/3S-master/LoginCodeFirst/LoginCodeFirst/obj/Debug/netcoreapp2.2/Razor/Views/Home/Index.g.cshtml.cs
+C:/3S-master/LoginCodeFirst/LoginCodeFirst/obj/Debug/netcoreapp2.2/Razor/Views/Home/Privacy.g.cshtml.cs
+C:/3S-master/LoginCodeFirst/LoginCodeFirst/obj/Debug/netcoreapp2.2/Razor/Views/Login/Login.g.cshtml.cs
+C:/3S-master/LoginCodeFirst/LoginCodeFirst/obj/Debug/netcoreapp2.2/Razor/Views/Product/Add.g.cshtml.cs
+C:/3S-master/LoginCodeFirst/LoginCodeFirst/obj/Debug/netcoreapp2.2/Razor/Views/Product/Edit.g.cshtml.cs
+C:/3S-master/LoginCodeFirst/LoginCodeFirst/obj/Debug/netcoreapp2.2/Razor/Views/Product/Index.g.cshtml.cs
+C:/3S-master/LoginCodeFirst/LoginCodeFirst/obj/Debug/netcoreapp2.2/Razor/Views/Shared/Error.g.cshtml.cs
+C:/3S-master/LoginCodeFirst/LoginCodeFirst/obj/Debug/netcoreapp2.2/Razor/Views/Shared/_CookieConsentPartial.g.cshtml.cs
+C:/3S-master/LoginCodeFirst/LoginCodeFirst/obj/Debug/netcoreapp2.2/Razor/Views/Shared/_Layout.g.cshtml.cs
+C:/3S-master/LoginCodeFirst/LoginCodeFirst/obj/Debug/netcoreapp2.2/Razor/Views/Shared/_LayoutLogin.g.cshtml.cs
+C:/3S-master/LoginCodeFirst/LoginCodeFirst/obj/Debug/netcoreapp2.2/Razor/Views/Shared/_LeftSidebarPartial.g.cshtml.cs
+C:/3S-master/LoginCodeFirst/LoginCodeFirst/obj/Debug/netcoreapp2.2/Razor/Views/Shared/_MenuPartial.g.cshtml.cs
+C:/3S-master/LoginCodeFirst/LoginCodeFirst/obj/Debug/netcoreapp2.2/Razor/Views/Shared/_RightSidebarPartial.g.cshtml.cs
+C:/3S-master/LoginCodeFirst/LoginCodeFirst/obj/Debug/netcoreapp2.2/Razor/Views/Shared/_SelectLanguagePartial.g.cshtml.cs
+C:/3S-master/LoginCodeFirst/LoginCodeFirst/obj/Debug/netcoreapp2.2/Razor/Views/Shared/_TopSidebarPartial.g.cshtml.cs
+C:/3S-master/LoginCodeFirst/LoginCodeFirst/obj/Debug/netcoreapp2.2/Razor/Views/Shared/_UserLoginPartial.g.cshtml.cs
+C:/3S-master/LoginCodeFirst/LoginCodeFirst/obj/Debug/netcoreapp2.2/Razor/Views/Shared/_ValidationScriptsPartial.g.cshtml.cs
+C:/3S-master/LoginCodeFirst/LoginCodeFirst/obj/Debug/netcoreapp2.2/Razor/Views/Stock/Add.g.cshtml.cs
+C:/3S-master/LoginCodeFirst/LoginCodeFirst/obj/Debug/netcoreapp2.2/Razor/Views/Stock/Edit.g.cshtml.cs
+C:/3S-master/LoginCodeFirst/LoginCodeFirst/obj/Debug/netcoreapp2.2/Razor/Views/Stock/Index.g.cshtml.cs
+C:/3S-master/LoginCodeFirst/LoginCodeFirst/obj/Debug/netcoreapp2.2/Razor/Views/Store/Add.g.cshtml.cs
+C:/3S-master/LoginCodeFirst/LoginCodeFirst/obj/Debug/netcoreapp2.2/Razor/Views/Store/Edit.g.cshtml.cs
+C:/3S-master/LoginCodeFirst/LoginCodeFirst/obj/Debug/netcoreapp2.2/Razor/Views/Store/Index.g.cshtml.cs
+C:/3S-master/LoginCodeFirst/LoginCodeFirst/obj/Debug/netcoreapp2.2/Razor/Views/User/Add.g.cshtml.cs
+C:/3S-master/LoginCodeFirst/LoginCodeFirst/obj/Debug/netcoreapp2.2/Razor/Views/User/Edit.g.cshtml.cs
+C:/3S-master/LoginCodeFirst/LoginCodeFirst/obj/Debug/netcoreapp2.2/Razor/Views/User/EditPassword.g.cshtml.cs
+C:/3S-master/LoginCodeFirst/LoginCodeFirst/obj/Debug/netcoreapp2.2/Razor/Views/User/Index.g.cshtml.cs
+C:/3S-master/LoginCodeFirst/LoginCodeFirst/obj/Debug/netcoreapp2.2/Razor/Views/User/_ChangePassword.g.cshtml.cs
+C:/3S-master/LoginCodeFirst/LoginCodeFirst/obj/Debug/netcoreapp2.2/Razor/Views/_ViewImports.g.cshtml.cs
+C:/3S-master/LoginCodeFirst/LoginCodeFirst/obj/Debug/netcoreapp2.2/Razor/Views/_ViewStart.g.cshtml.cs
+C:/3S-master/LoginCodeFirst/LoginCodeFirst/obj/Debug/netcoreapp2.2/LoginCodeFirst.RazorTargetAssemblyInfo.cache
+C:/3S-master/LoginCodeFirst/LoginCodeFirst/obj/Debug/netcoreapp2.2/LoginCodeFirst.RazorTargetAssemblyInfo.cs
+C:/3S-master/LoginCodeFirst/LoginCodeFirst/obj/Debug/netcoreapp2.2/LoginCodeFirst.dll
+C:/3S-master/LoginCodeFirst/LoginCodeFirst/obj/Debug/netcoreapp2.2/LoginCodeFirst.pdb
+/home/local/3SI/tuan.dv/3si 20.5/3S/LoginCodeFirst/LoginCodeFirst/bin/Debug/netcoreapp2.2/LoginCodeFirst.deps.json
+/home/local/3SI/tuan.dv/3si 20.5/3S/LoginCodeFirst/LoginCodeFirst/bin/Debug/netcoreapp2.2/LoginCodeFirst.runtimeconfig.json
+/home/local/3SI/tuan.dv/3si 20.5/3S/LoginCodeFirst/LoginCodeFirst/bin/Debug/netcoreapp2.2/LoginCodeFirst.runtimeconfig.dev.json
+/home/local/3SI/tuan.dv/3si 20.5/3S/LoginCodeFirst/LoginCodeFirst/bin/Debug/netcoreapp2.2/LoginCodeFirst.dll
+/home/local/3SI/tuan.dv/3si 20.5/3S/LoginCodeFirst/LoginCodeFirst/bin/Debug/netcoreapp2.2/LoginCodeFirst.pdb
+/home/local/3SI/tuan.dv/3si 20.5/3S/LoginCodeFirst/LoginCodeFirst/bin/Debug/netcoreapp2.2/en-US/LoginCodeFirst.resources.dll
+/home/local/3SI/tuan.dv/3si 20.5/3S/LoginCodeFirst/LoginCodeFirst/bin/Debug/netcoreapp2.2/vi-VN/LoginCodeFirst.resources.dll
+/home/local/3SI/tuan.dv/3si 20.5/3S/LoginCodeFirst/LoginCodeFirst/bin/Debug/netcoreapp2.2/LoginCodeFirst.Views.dll
+/home/local/3SI/tuan.dv/3si 20.5/3S/LoginCodeFirst/LoginCodeFirst/bin/Debug/netcoreapp2.2/LoginCodeFirst.Views.pdb
+/home/local/3SI/tuan.dv/3si 20.5/3S/LoginCodeFirst/LoginCodeFirst/obj/Debug/netcoreapp2.2/LoginCodeFirst.csprojAssemblyReference.cache
+/home/local/3SI/tuan.dv/3si 20.5/3S/LoginCodeFirst/LoginCodeFirst/obj/Debug/netcoreapp2.2/LoginCodeFirst.Resources.BrandResources.en-US.resources
+/home/local/3SI/tuan.dv/3si 20.5/3S/LoginCodeFirst/LoginCodeFirst/obj/Debug/netcoreapp2.2/LoginCodeFirst.Resources.BrandResources.vi-VN.resources
+/home/local/3SI/tuan.dv/3si 20.5/3S/LoginCodeFirst/LoginCodeFirst/obj/Debug/netcoreapp2.2/LoginCodeFirst.Resources.CategoryResources.en-US.resources
+/home/local/3SI/tuan.dv/3si 20.5/3S/LoginCodeFirst/LoginCodeFirst/obj/Debug/netcoreapp2.2/LoginCodeFirst.Resources.CategoryResources.vi-VN.resources
+/home/local/3SI/tuan.dv/3si 20.5/3S/LoginCodeFirst/LoginCodeFirst/obj/Debug/netcoreapp2.2/LoginCodeFirst.Resources.CommonResources.en-US.resources
+/home/local/3SI/tuan.dv/3si 20.5/3S/LoginCodeFirst/LoginCodeFirst/obj/Debug/netcoreapp2.2/LoginCodeFirst.Resources.CommonResources.vi-VN.resources
+/home/local/3SI/tuan.dv/3si 20.5/3S/LoginCodeFirst/LoginCodeFirst/obj/Debug/netcoreapp2.2/LoginCodeFirst.Resources.LoginResources.en-US.resources
+/home/local/3SI/tuan.dv/3si 20.5/3S/LoginCodeFirst/LoginCodeFirst/obj/Debug/netcoreapp2.2/LoginCodeFirst.Resources.LoginResources.vi-VN.resources
+/home/local/3SI/tuan.dv/3si 20.5/3S/LoginCodeFirst/LoginCodeFirst/obj/Debug/netcoreapp2.2/LoginCodeFirst.Resources.ProductResources.en-US.resources
+/home/local/3SI/tuan.dv/3si 20.5/3S/LoginCodeFirst/LoginCodeFirst/obj/Debug/netcoreapp2.2/LoginCodeFirst.Resources.ProductResources.vi-VN.resources
+/home/local/3SI/tuan.dv/3si 20.5/3S/LoginCodeFirst/LoginCodeFirst/obj/Debug/netcoreapp2.2/LoginCodeFirst.Resources.StockResources.en-US.resources
+/home/local/3SI/tuan.dv/3si 20.5/3S/LoginCodeFirst/LoginCodeFirst/obj/Debug/netcoreapp2.2/LoginCodeFirst.Resources.StockResources.vi-VN.resources
+/home/local/3SI/tuan.dv/3si 20.5/3S/LoginCodeFirst/LoginCodeFirst/obj/Debug/netcoreapp2.2/LoginCodeFirst.Resources.StoreResources.en-US.resources
+/home/local/3SI/tuan.dv/3si 20.5/3S/LoginCodeFirst/LoginCodeFirst/obj/Debug/netcoreapp2.2/LoginCodeFirst.Resources.StoreResources.vi-VN.resources
+/home/local/3SI/tuan.dv/3si 20.5/3S/LoginCodeFirst/LoginCodeFirst/obj/Debug/netcoreapp2.2/LoginCodeFirst.Resources.UserResources.en-US.resources
+/home/local/3SI/tuan.dv/3si 20.5/3S/LoginCodeFirst/LoginCodeFirst/obj/Debug/netcoreapp2.2/LoginCodeFirst.Resources.UserResources.vi-VN.resources
+/home/local/3SI/tuan.dv/3si 20.5/3S/LoginCodeFirst/LoginCodeFirst/obj/Debug/netcoreapp2.2/LoginCodeFirst.csproj.GenerateResource.cache
+/home/local/3SI/tuan.dv/3si 20.5/3S/LoginCodeFirst/LoginCodeFirst/obj/Debug/netcoreapp2.2/LoginCodeFirst.csproj.CoreCompileInputs.cache
+/home/local/3SI/tuan.dv/3si 20.5/3S/LoginCodeFirst/LoginCodeFirst/obj/Debug/netcoreapp2.2/LoginCodeFirst.RazorAssemblyInfo.cache
+/home/local/3SI/tuan.dv/3si 20.5/3S/LoginCodeFirst/LoginCodeFirst/obj/Debug/netcoreapp2.2/LoginCodeFirst.RazorAssemblyInfo.cs
+/home/local/3SI/tuan.dv/3si 20.5/3S/LoginCodeFirst/LoginCodeFirst/obj/Debug/netcoreapp2.2/LoginCodeFirst.AssemblyInfoInputs.cache
+/home/local/3SI/tuan.dv/3si 20.5/3S/LoginCodeFirst/LoginCodeFirst/obj/Debug/netcoreapp2.2/LoginCodeFirst.AssemblyInfo.cs
+/home/local/3SI/tuan.dv/3si 20.5/3S/LoginCodeFirst/LoginCodeFirst/obj/Debug/netcoreapp2.2/en-US/LoginCodeFirst.resources.cs
+/home/local/3SI/tuan.dv/3si 20.5/3S/LoginCodeFirst/LoginCodeFirst/obj/Debug/netcoreapp2.2/en-US/LoginCodeFirst.resources.dll
+/home/local/3SI/tuan.dv/3si 20.5/3S/LoginCodeFirst/LoginCodeFirst/obj/Debug/netcoreapp2.2/vi-VN/LoginCodeFirst.resources.cs
+/home/local/3SI/tuan.dv/3si 20.5/3S/LoginCodeFirst/LoginCodeFirst/obj/Debug/netcoreapp2.2/vi-VN/LoginCodeFirst.resources.dll
+/home/local/3SI/tuan.dv/3si 20.5/3S/LoginCodeFirst/LoginCodeFirst/obj/Debug/netcoreapp2.2/LoginCodeFirst.TagHelpers.input.cache
+/home/local/3SI/tuan.dv/3si 20.5/3S/LoginCodeFirst/LoginCodeFirst/obj/Debug/netcoreapp2.2/LoginCodeFirst.TagHelpers.output.cache
+/home/local/3SI/tuan.dv/3si 20.5/3S/LoginCodeFirst/LoginCodeFirst/obj/Debug/netcoreapp2.2/LoginCodeFirst.RazorCoreGenerate.cache
+/home/local/3SI/tuan.dv/3si 20.5/3S/LoginCodeFirst/LoginCodeFirst/obj/Debug/netcoreapp2.2/Razor/Views/Brand/Add.g.cshtml.cs
+/home/local/3SI/tuan.dv/3si 20.5/3S/LoginCodeFirst/LoginCodeFirst/obj/Debug/netcoreapp2.2/Razor/Views/Brand/Edit.g.cshtml.cs
+/home/local/3SI/tuan.dv/3si 20.5/3S/LoginCodeFirst/LoginCodeFirst/obj/Debug/netcoreapp2.2/Razor/Views/Brand/Index.g.cshtml.cs
+/home/local/3SI/tuan.dv/3si 20.5/3S/LoginCodeFirst/LoginCodeFirst/obj/Debug/netcoreapp2.2/Razor/Views/Category/Add.g.cshtml.cs
+/home/local/3SI/tuan.dv/3si 20.5/3S/LoginCodeFirst/LoginCodeFirst/obj/Debug/netcoreapp2.2/Razor/Views/Category/Edit.g.cshtml.cs
+/home/local/3SI/tuan.dv/3si 20.5/3S/LoginCodeFirst/LoginCodeFirst/obj/Debug/netcoreapp2.2/Razor/Views/Category/Index.g.cshtml.cs
+/home/local/3SI/tuan.dv/3si 20.5/3S/LoginCodeFirst/LoginCodeFirst/obj/Debug/netcoreapp2.2/Razor/Views/Home/Index.g.cshtml.cs
+/home/local/3SI/tuan.dv/3si 20.5/3S/LoginCodeFirst/LoginCodeFirst/obj/Debug/netcoreapp2.2/Razor/Views/Home/Privacy.g.cshtml.cs
+/home/local/3SI/tuan.dv/3si 20.5/3S/LoginCodeFirst/LoginCodeFirst/obj/Debug/netcoreapp2.2/Razor/Views/Login/Login.g.cshtml.cs
+/home/local/3SI/tuan.dv/3si 20.5/3S/LoginCodeFirst/LoginCodeFirst/obj/Debug/netcoreapp2.2/Razor/Views/Product/Add.g.cshtml.cs
+/home/local/3SI/tuan.dv/3si 20.5/3S/LoginCodeFirst/LoginCodeFirst/obj/Debug/netcoreapp2.2/Razor/Views/Product/Edit.g.cshtml.cs
+/home/local/3SI/tuan.dv/3si 20.5/3S/LoginCodeFirst/LoginCodeFirst/obj/Debug/netcoreapp2.2/Razor/Views/Product/Index.g.cshtml.cs
+/home/local/3SI/tuan.dv/3si 20.5/3S/LoginCodeFirst/LoginCodeFirst/obj/Debug/netcoreapp2.2/Razor/Views/Shared/Error.g.cshtml.cs
+/home/local/3SI/tuan.dv/3si 20.5/3S/LoginCodeFirst/LoginCodeFirst/obj/Debug/netcoreapp2.2/Razor/Views/Shared/_CookieConsentPartial.g.cshtml.cs
+/home/local/3SI/tuan.dv/3si 20.5/3S/LoginCodeFirst/LoginCodeFirst/obj/Debug/netcoreapp2.2/Razor/Views/Shared/_Layout.g.cshtml.cs
+/home/local/3SI/tuan.dv/3si 20.5/3S/LoginCodeFirst/LoginCodeFirst/obj/Debug/netcoreapp2.2/Razor/Views/Shared/_LayoutLogin.g.cshtml.cs
+/home/local/3SI/tuan.dv/3si 20.5/3S/LoginCodeFirst/LoginCodeFirst/obj/Debug/netcoreapp2.2/Razor/Views/Shared/_LeftSidebarPartial.g.cshtml.cs
+/home/local/3SI/tuan.dv/3si 20.5/3S/LoginCodeFirst/LoginCodeFirst/obj/Debug/netcoreapp2.2/Razor/Views/Shared/_MenuPartial.g.cshtml.cs
+/home/local/3SI/tuan.dv/3si 20.5/3S/LoginCodeFirst/LoginCodeFirst/obj/Debug/netcoreapp2.2/Razor/Views/Shared/_RightSidebarPartial.g.cshtml.cs
+/home/local/3SI/tuan.dv/3si 20.5/3S/LoginCodeFirst/LoginCodeFirst/obj/Debug/netcoreapp2.2/Razor/Views/Shared/_SelectLanguagePartial.g.cshtml.cs
+/home/local/3SI/tuan.dv/3si 20.5/3S/LoginCodeFirst/LoginCodeFirst/obj/Debug/netcoreapp2.2/Razor/Views/Shared/_TopSidebarPartial.g.cshtml.cs
+/home/local/3SI/tuan.dv/3si 20.5/3S/LoginCodeFirst/LoginCodeFirst/obj/Debug/netcoreapp2.2/Razor/Views/Shared/_UserLoginPartial.g.cshtml.cs
+/home/local/3SI/tuan.dv/3si 20.5/3S/LoginCodeFirst/LoginCodeFirst/obj/Debug/netcoreapp2.2/Razor/Views/Shared/_ValidationScriptsPartial.g.cshtml.cs
+/home/local/3SI/tuan.dv/3si 20.5/3S/LoginCodeFirst/LoginCodeFirst/obj/Debug/netcoreapp2.2/Razor/Views/Stock/Add.g.cshtml.cs
+/home/local/3SI/tuan.dv/3si 20.5/3S/LoginCodeFirst/LoginCodeFirst/obj/Debug/netcoreapp2.2/Razor/Views/Stock/Edit.g.cshtml.cs
+/home/local/3SI/tuan.dv/3si 20.5/3S/LoginCodeFirst/LoginCodeFirst/obj/Debug/netcoreapp2.2/Razor/Views/Stock/Index.g.cshtml.cs
+/home/local/3SI/tuan.dv/3si 20.5/3S/LoginCodeFirst/LoginCodeFirst/obj/Debug/netcoreapp2.2/Razor/Views/Store/Add.g.cshtml.cs
+/home/local/3SI/tuan.dv/3si 20.5/3S/LoginCodeFirst/LoginCodeFirst/obj/Debug/netcoreapp2.2/Razor/Views/Store/Edit.g.cshtml.cs
+/home/local/3SI/tuan.dv/3si 20.5/3S/LoginCodeFirst/LoginCodeFirst/obj/Debug/netcoreapp2.2/Razor/Views/Store/Index.g.cshtml.cs
+/home/local/3SI/tuan.dv/3si 20.5/3S/LoginCodeFirst/LoginCodeFirst/obj/Debug/netcoreapp2.2/Razor/Views/User/Add.g.cshtml.cs
+/home/local/3SI/tuan.dv/3si 20.5/3S/LoginCodeFirst/LoginCodeFirst/obj/Debug/netcoreapp2.2/Razor/Views/User/Edit.g.cshtml.cs
+/home/local/3SI/tuan.dv/3si 20.5/3S/LoginCodeFirst/LoginCodeFirst/obj/Debug/netcoreapp2.2/Razor/Views/User/EditPassword.g.cshtml.cs
+/home/local/3SI/tuan.dv/3si 20.5/3S/LoginCodeFirst/LoginCodeFirst/obj/Debug/netcoreapp2.2/Razor/Views/User/Index.g.cshtml.cs
+/home/local/3SI/tuan.dv/3si 20.5/3S/LoginCodeFirst/LoginCodeFirst/obj/Debug/netcoreapp2.2/Razor/Views/User/_ChangePassword.g.cshtml.cs
+/home/local/3SI/tuan.dv/3si 20.5/3S/LoginCodeFirst/LoginCodeFirst/obj/Debug/netcoreapp2.2/Razor/Views/_ViewImports.g.cshtml.cs
+/home/local/3SI/tuan.dv/3si 20.5/3S/LoginCodeFirst/LoginCodeFirst/obj/Debug/netcoreapp2.2/Razor/Views/_ViewStart.g.cshtml.cs
+/home/local/3SI/tuan.dv/3si 20.5/3S/LoginCodeFirst/LoginCodeFirst/obj/Debug/netcoreapp2.2/LoginCodeFirst.RazorTargetAssemblyInfo.cache
+/home/local/3SI/tuan.dv/3si 20.5/3S/LoginCodeFirst/LoginCodeFirst/obj/Debug/netcoreapp2.2/LoginCodeFirst.RazorTargetAssemblyInfo.cs
+/home/local/3SI/tuan.dv/3si 20.5/3S/LoginCodeFirst/LoginCodeFirst/obj/Debug/netcoreapp2.2/LoginCodeFirst.Views.pdb
+/home/local/3SI/tuan.dv/3si 20.5/3S/LoginCodeFirst/LoginCodeFirst/obj/Debug/netcoreapp2.2/LoginCodeFirst.dll
+/home/local/3SI/tuan.dv/3si 20.5/3S/LoginCodeFirst/LoginCodeFirst/obj/Debug/netcoreapp2.2/LoginCodeFirst.pdb
+/home/local/3SI/tuan.dv/3si 20.5/3S/LoginCodeFirst/LoginCodeFirst/obj/Debug/netcoreapp2.2/LoginCodeFirst.csproj.CopyComplete

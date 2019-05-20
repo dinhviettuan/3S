@@ -22,7 +22,7 @@
                             <thead>
                             <tr>
                                 <th>
-                                    @StoreLocalizer.GetLocalizedHtmlString("lbl_NumbericalOrder")
+                                    @CommonLocalizer.GetLocalizedHtmlString("lbl_NumbericalOrder")
                                 </th>
                                 <th>
                                     @StoreLocalizer.GetLocalizedHtmlString("lbl_StoreName")
@@ -46,7 +46,7 @@
                                     @StoreLocalizer.GetLocalizedHtmlString("lbl_ZipCode")
                                 </th>
                                 <th>
-                                    @StoreLocalizer.GetLocalizedHtmlString("lbl_Actions")
+                                    @CommonLocalizer.GetLocalizedHtmlString("lbl_Actions")
                                 </th>
                             </tr>
                             </thead>
@@ -57,9 +57,6 @@
                                 stt += 1;
                                 <tr>
                                     <td>@stt</td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.StoreId)
-                                    </td>
                                     <td>
                                         @Html.DisplayFor(modelItem => item.StoreName)
                                     </td>
@@ -84,7 +81,7 @@
 
                                     <td>
                                         <a asp-controller="Store" asp-action="Edit" 
-                                           asp-route-id="@item.StoreId">@CommonLocalizer.GetLocalizedHtmlString("a_Edit")</a> |
+                                           asp-route-id="@item.StoreId">@CommonLocalizer.GetLocalizedHtmlString("btn_Edit")</a> |
                                         <a asp-controller="Store" asp-action="Delete" 
                                            onclick=" return confirm('@CommonLocalizer.GetLocalizedHtmlString("btn_YouDelete")')"
                                            asp-route-id="@item.StoreId">@CommonLocalizer.GetLocalizedHtmlString("btn_Delete")</a>

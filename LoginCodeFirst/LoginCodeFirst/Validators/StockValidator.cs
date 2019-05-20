@@ -9,12 +9,12 @@ namespace LoginCodeFirst.Validators.Stock
     public class StockValidator : AbstractValidator<StockViewModel>
     {
 
-        public StockValidator(ResourcesServices<StockResources> localizer,IStockServices stockServices)
+        public StockValidator(ResourcesServices<StockResources> localizer,ResourcesServices<CommonResources> commonlocalizer,IStockServices stockServices)
         {
             RuleFor(x => x.Quantity).NotNull()
-                .WithMessage(localizer.GetLocalizedHtmlString("lbl_QuantityNotBeEmpty"));
+                .WithMessage(commonlocalizer.GetLocalizedHtmlString("msg_NotBeEmpty"));
             RuleFor(x => x.Quantity).GreaterThanOrEqualTo(1)
-                .WithMessage(localizer.GetLocalizedHtmlString("lbl_QuantityGreaterThan1"));
+                .WithMessage(localizer.GetLocalizedHtmlString("msg_QuantityGreaterThan1"));
         }
     }
 }

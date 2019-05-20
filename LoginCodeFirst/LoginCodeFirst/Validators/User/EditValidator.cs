@@ -7,18 +7,19 @@ namespace LoginCodeFirst.Validators.User
 {
     public class IndexValidator : AbstractValidator<EditViewModel>
     {
-        public IndexValidator(ResourcesServices<UserResources> localizer,IUserServices userServices)
+        public IndexValidator(ResourcesServices<CommonResources> commonlocalizer,IUserServices userServices)
         {
             RuleFor(x => x.Email).Must((reg,c) => !userServices.IsExistedName(reg.Email,reg.UserId))
-                .WithMessage(localizer.GetLocalizedHtmlString("lbl_ThisEmailAlreadyExists"));
+                .WithMessage((reg,c) => string.Format(commonlocalizer.GetLocalizedHtmlString("msg_AlreadyExists"),c));
+            
             RuleFor(x => x.Email).NotNull()
-                .WithMessage(localizer.GetLocalizedHtmlString("lbl_EmailNotBeEmpty"));
+                .WithMessage(commonlocalizer.GetLocalizedHtmlString("msg_NotBeEmpty"));
             RuleFor(x => x.Email).EmailAddress()
-                .WithMessage(localizer.GetLocalizedHtmlString("lbl_PleaseEnterAValidEmail"));            
+                .WithMessage(commonlocalizer.GetLocalizedHtmlString("msg_AValidEmail"));            
             RuleFor(x => x.FullName).NotNull()
-                .WithMessage(localizer.GetLocalizedHtmlString("lbl_FullNameNotBeEmpty"));
+                .WithMessage(commonlocalizer.GetLocalizedHtmlString("msg_NotBeEmpty"));
             RuleFor(x => x.Phone).NotNull()
-                .WithMessage(localizer.GetLocalizedHtmlString("lbl_PhoneNotBeEmpty"));
+                .WithMessage(commonlocalizer.GetLocalizedHtmlString("msg_NotBeEmpty"));
             RuleFor(x => x.IsActive).NotNull();
         }
 

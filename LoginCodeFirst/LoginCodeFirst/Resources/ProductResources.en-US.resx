@@ -18,4 +18,33 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
+    <data name="lbl_ListProduct">
+        <value>List Product</value>
+    </data>
+    <data name="lbl_ProductName">
+        <value>Product Name</value>
+    </data>
+    <data name="lbl_BrandId">
+        <value>Brand Id</value>
+    </data>
+    <data name="lbl_CategoryId">
+        <value>Category Id</value>
+    </data>
+    <data name="lbl_ModelYear">
+        <value>Model Year</value>
+    </data>
+    <data name="lbl_ListPrice">
+        <value>List Price</value>
+    </data>
+    <data name="lbl_Image">
+        <value>Image</value>
+    </data>
+    <data name="lbl_EditProduct">
+        <value>Edit Product</value>
+    </data>
+    <data name="lbl_AddProduct">
+        <value>Add Product</value>
+    </data>
+
+   
 </root>

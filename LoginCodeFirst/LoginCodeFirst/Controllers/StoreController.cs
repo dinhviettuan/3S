@@ -1,11 +1,14 @@
 ﻿    using System.Threading.Tasks;
-using LoginCodeFirst.Services;
+    using LoginCodeFirst.Filter;
+    using LoginCodeFirst.Services;
 using LoginCodeFirst.ViewModels.Store;
 using Microsoft.AspNetCore.Mvc;
 
 
 namespace LoginCodeFirst.Controllers
 {
+    [ServiceFilter(typeof(ActionFilter))]
+
     public class StoreController : Controller
     {
         private readonly IStoreServices _storeService;

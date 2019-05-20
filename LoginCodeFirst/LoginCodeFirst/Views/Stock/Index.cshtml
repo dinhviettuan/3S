@@ -24,7 +24,7 @@
                             <thead>
                             <tr>
                                 <th>
-                                    @StockLocalizer.GetLocalizedHtmlString("lbl_NumbericalOrder")
+                                    @CommonLocalizer.GetLocalizedHtmlString("lbl_NumbericalOrder")
                                 </th>
                                 <th>
                                     @StockLocalizer.GetLocalizedHtmlString("lbl_StoreId")
@@ -36,7 +36,7 @@
                                     @StockLocalizer.GetLocalizedHtmlString("lbl_Quantity")
                                 </th>
                                 <th>
-                                    @StockLocalizer.GetLocalizedHtmlString("lbl_Actions")
+                                    @CommonLocalizer.GetLocalizedHtmlString("lbl_Actions")
                                 </th>
                             </tr>
                             </thead>
@@ -47,7 +47,6 @@
                                 stt += 1;
                                 <tr>
                                     <td>@stt</td>
-                                    <td>
                                     <td>
                                         @Html.DisplayFor(modelItem => item.StoreId)
                                     </td>

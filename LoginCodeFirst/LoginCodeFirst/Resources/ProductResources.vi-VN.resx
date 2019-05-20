@@ -41,9 +41,11 @@
         <value>Ảnh</value>
     </data>
     <data name="lbl_EditProduct">
-        <value>Ảnh</value>
+        <value>Sửa Sản Phẩm</value>
     </data>
     <data name="lbl_AddProduct">
-        <value>Ảnh</value>
+        <value>Thêm Sản Phẩm</value>
     </data>
+
+    
 </root>

@@ -28,4 +28,8 @@
     <data name="lbl_EditBrand">
         <value>Edit Brand</value>
     </data>
+    <data name="lbl_BrandName">
+        <value>BrandName</value>
+    </data>
+    
 </root>

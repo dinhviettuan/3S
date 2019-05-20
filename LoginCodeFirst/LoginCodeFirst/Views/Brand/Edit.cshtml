@@ -20,7 +20,7 @@
                             <form asp-controller="Brand" asp-action="Edit" method="post">
                                 <input asp-for="BrandId" type="hidden">
                                 <div class="form-group">
-                                    <label class="form-label" asp-for="BrandName">@CommonLocalizer.GetLocalizedHtmlString("lbl_BrandName")</label>
+                                    <label class="form-label" asp-for="BrandName">@BrandLocalizer.GetLocalizedHtmlString("lbl_BrandName")</label>
                                     <input type="text" asp-for="BrandName" placeholder="BrandName" class="form-control">
                                     <span class="text-danger" asp-validation-for="BrandName"></span>
                                 </div>

@@ -1,4 +1,5 @@
 ﻿using System.Threading.Tasks;
+using LoginCodeFirst.Filter;
 using LoginCodeFirst.Services;
 using LoginCodeFirst.ViewModels.Product;
 using Microsoft.AspNetCore.Mvc;
@@ -6,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace LoginCodeFirst.Controllers
 {
+    [ServiceFilter(typeof(ActionFilter))]
     public class ProductController : Controller
     {
         private readonly IProductServices _productServices;

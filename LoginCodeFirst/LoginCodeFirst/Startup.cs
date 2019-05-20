@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Globalization;
-using System.Reflection;
 using AutoMapper;
 using FluentValidation.AspNetCore;
+using LoginCodeFirst.Filter;
 using LoginCodeFirst.Models;
 using LoginCodeFirst.Resources;
 using LoginCodeFirst.Services;
@@ -75,7 +75,9 @@ namespace LoginCodeFirst
             services.AddTransient<IBrandServices, BrandServices>();
             services.AddTransient<IProductServices, ProductServices>();
             services.AddTransient<IStockServices, StockServices>();
-            services.AddTransient<IStoreServices, StoreServices>();  
+            services.AddTransient<IStoreServices, StoreServices>(); 
+            services.AddScoped<ActionFilter>();
+
             services.AddDbContext<CodeDataContext>(item => item.UseSqlServer(Configuration.GetConnectionString("connectdb")));
             services.AddMvc()
                 .AddViewLocalization(opts => { opts.ResourcesPath = "Resources";})

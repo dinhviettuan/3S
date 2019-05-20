@@ -37,4 +37,9 @@
     <data name="lbl_AddStock">
         <value>Thêm Kho</value>
     </data>
+
+   
+    <data name="msg_QuantityGreaterThan1">
+        <value>Số lượng phải lớn hơn 1</value>
+    </data>
 </root>

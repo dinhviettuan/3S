@@ -1,13 +1,15 @@
 ﻿using System.Threading.Tasks;
+using LoginCodeFirst.Filter;
 using LoginCodeFirst.Services;
 using LoginCodeFirst.ViewModels.User;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
 
 namespace LoginCodeFirst.Controllers
 {
+    [ServiceFilter(typeof(ActionFilter))]
+
     public class UserController : Controller
     {
 
@@ -145,10 +147,11 @@ namespace LoginCodeFirst.Controllers
         {
             if (ModelState.IsValid)
             {
-                if (await _userService.EditPasswordAsync(userViewModel))
+                var usersPassword = await _userService.EditPasswordAsync(userViewModel);
+                if (usersPassword)
                 {
                     TempData["Success"] = "Edit Password Success";
-                    return RedirectToAction("Index");
+                    return PartialView("_ChangePassword",userViewModel);
                 }
                 ViewBag.Err = "Edit Password Failure";
                 return PartialView("_ChangePassword",userViewModel); 

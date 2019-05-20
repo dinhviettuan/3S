@@ -7,14 +7,13 @@ namespace LoginCodeFirst.Validators.BrandValidator
 {
     public class BrandValidator : AbstractValidator<BrandViewModel>
     {
-        public BrandValidator(ResourcesServices<BrandResources> localizer,IBrandServices brandService)
+        public BrandValidator(ResourcesServices<CommonResources> commonlocalizer,IBrandServices brandService)
         {              
             RuleFor(x => x.BrandName).Must((reg,c) => !brandService.IsExistedName(reg.BrandName,reg.BrandId))
-                    .WithMessage(localizer.GetLocalizedHtmlString("lbl_ThisBrandNameAlreadyExists"));
+                    .WithMessage((reg,c) => string.Format(commonlocalizer.GetLocalizedHtmlString("msg_AlreadyExists"),c));
+            
             RuleFor(x => x.BrandName).NotNull()
-                    .WithMessage(localizer.GetLocalizedHtmlString("lbl_BrandNameNotBeEmpty"));
-            RuleFor(x => x.BrandName).NotNull()
-                .WithMessage(localizer.GetLocalizedHtmlString("lbl_StartWithLetters"));
+                    .WithMessage(commonlocalizer.GetLocalizedHtmlString("msg_NotBeEmpty"));
         }
     }
 }

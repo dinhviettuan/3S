@@ -1,4 +1,5 @@
-﻿using FluentValidation;
+﻿using System.Text.RegularExpressions;
+using FluentValidation;
 using LoginCodeFirst.Resources;
 using LoginCodeFirst.Services;
 using LoginCodeFirst.ViewModels.User;
@@ -7,25 +8,26 @@ namespace LoginCodeFirst.Validators
 {
     public class IndexValidator : AbstractValidator<IndexViewModel>
     {
-        public IndexValidator(ResourcesServices<UserResources> localizer,IUserServices userServices)
+        public IndexValidator(ResourcesServices<UserResources> localizer,ResourcesServices<CommonResources> commonlocalizer,IUserServices userServices)
         {
             RuleFor(x => x.Email).Must((reg,c) => !userServices.IsExistedName(reg.Email,reg.UserId))
-                .WithMessage(localizer.GetLocalizedHtmlString("lbl_ThisEmailAlreadyExists"));
+                .WithMessage((reg,c) => string.Format(commonlocalizer.GetLocalizedHtmlString("msg_ThisEmailAlreadyExists"),c));
             
             RuleFor(x => x.Email).NotNull()
-                .WithMessage(localizer.GetLocalizedHtmlString("lbl_EmailNotBeEmpty"));
+                .WithMessage(commonlocalizer.GetLocalizedHtmlString("msg_NotBeEmpty"));
             RuleFor(x => x.Email)
-                .EmailAddress().WithMessage(localizer.GetLocalizedHtmlString("lbl_PleaseEnterAValidEmail"));
+                .EmailAddress().WithMessage(commonlocalizer.GetLocalizedHtmlString("msg_AValidEmail"));
             RuleFor(x => x.Password)
-                .NotNull().WithMessage(localizer.GetLocalizedHtmlString("lbl_PasswordNotBeEmpty"));
+                .NotNull().WithMessage(commonlocalizer.GetLocalizedHtmlString("msg_NotBeEmpty"));
             RuleFor(x => x.Password)
-                .MinimumLength(8).WithMessage(localizer.GetLocalizedHtmlString("lbl_PasswordNotLessThan8Characters"));
+                .MinimumLength(8).WithMessage(commonlocalizer.GetLocalizedHtmlString("msg_8Characters"));
             RuleFor(x => x.Password)
-                .Matches("^(?=.*[0-9])(?=.*[a-zA-Z])([a-zA-Z0-9]+)$").WithMessage(localizer.GetLocalizedHtmlString("lbl_PasswordMustHaveBothLettersAndNumbers"));
+                .Matches("^(?=.*[0-9])(?=.*[a-zA-Z])([a-zA-Z0-9]+)$")
+                .WithMessage(commonlocalizer.GetLocalizedHtmlString("msg_LettersAndNumbers"));
             RuleFor(x => x.FullName)
-                .NotNull().WithMessage(localizer.GetLocalizedHtmlString("lbl_FullNameNotBeEmpty"));
+                .NotNull().WithMessage(commonlocalizer.GetLocalizedHtmlString("msg_NotBeEmpty"));
             RuleFor(x => x.Phone)
-                .NotNull().WithMessage(localizer.GetLocalizedHtmlString("lbl_PhoneNotBeEmpty"));
+                .NotNull().WithMessage(commonlocalizer.GetLocalizedHtmlString("msg_NotBeEmpty"));
             RuleFor(x => x.IsActive).NotNull();
         }
     }

@@ -18,4 +18,54 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
+    <data name="lbl_StoreId">
+        <value>StoreId</value>
+    </data>
+    <data name="lbl_FullName">
+        <value>FullName</value>
+    </data>
+    <data name="lbl_IsActive">
+        <value>IsActive</value>
+    </data>
+    <data name="lbl_ListUser">
+        <value>List User</value>
+    </data>
+    <data name="lbl_EditUser">
+        <value>Edit User</value>
+    </data>
+    <data name="lbl_AddUser">
+        <value>Add User</value>
+    </data>
+    <data name="lbl_ZipCode">
+        <value>Zip Code</value>
+    </data>
+    <data name="lbl_Phone">
+        <value>Phone*</value>
+    </data>
+    <data name="lbl_Email">
+        <value>Email*</value>
+    </data>
+    <data name="lbl_Password">
+        <value>Password*</value>
+    </data>
+    <data name="lbl_ConfirmPassword">
+        <value>ConfirmPassword*</value>
+    </data>
+    <data name="lbl_NewPassword">
+        <value>NewPassword*</value>
+    </data>
+    <data name="lbl_EditPassword">
+        <value>EditPassword</value>
+    </data>
+    <data name="lbl_NewPassword">
+        <value>New Password*</value>
+    </data>
+    <data name="lbl_ConfirmPassword">
+        <value>ConfirmPassword*</value>
+    </data>
+    
+    
+    <data name="msg_ConfirmPasswordMustBeEqualNewPassword">
+        <value>Password Must Have Both Letters And Numbers</value>
+    </data>
 </root>

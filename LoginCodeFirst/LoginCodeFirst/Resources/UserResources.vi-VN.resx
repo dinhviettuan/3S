@@ -37,4 +37,35 @@
     <data name="lbl_AddUser">
         <value>Thêm Người Dùng</value>
     </data>
+    <data name="lbl_ZipCode">
+        <value>Mã Bưu Chính</value>
+    </data>
+    <data name="lbl_Phone">
+        <value>SDT*</value>
+    </data>
+    <data name="lbl_Email">
+        <value>Email*</value>
+    </data> 
+    <data name="lbl_Password">
+        <value>Mât Khẩu*</value>
+    </data>
+    <data name="lbl_ConfirmPassword">
+        <value>Nhập Lại Mật Khẩu*</value>
+    </data>
+    <data name="lbl_NewPassword">
+        <value>Nhập Mật Khẩu Mới*</value>
+    </data>
+    <data name="lbl_EditPassword">
+        <value>Sửa Mật Khẩu*</value>
+    </data>
+    <data name="lbl_NewPassword">
+        <value>Mật Khẩu Mới*</value>
+    </data>
+    <data name="lbl_ConfirmPassword">
+        <value>Nhập Lại Mật Khẩu*</value>
+    </data>
+
+    <data name="msg_ConfirmPasswordMustBeEqualNewPassword">
+        <value>Xác nhận mật khẩu phải bằng mật khẩu mới</value>
+    </data>
 </root>

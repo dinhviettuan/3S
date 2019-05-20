@@ -9,16 +9,17 @@ namespace LoginCodeFirst.Validators.Product
 {
     public class ProductValidator : AbstractValidator<ProductViewModel>
     {
-        public ProductValidator(ResourcesServices<ProductResources> localizer,IProductServices productServices)
+        public ProductValidator(ResourcesServices<CommonResources> commonlocalizer,IProductServices productServices)
         {          
             RuleFor(x => x.ProductName).Must((Reg,c) => !productServices.IsExistedName(Reg.ProductName,Reg.ProductId))
-                .WithMessage(localizer.GetLocalizedHtmlString("lbl_ThisProductNameAlreadyExists"));            
+                .WithMessage((reg,c) => string.Format(commonlocalizer.GetLocalizedHtmlString("msg_AlreadyExists"),c));
+            
             RuleFor(x => x.ProductName).NotNull()
-                .WithMessage(localizer.GetLocalizedHtmlString("lbl_ProductNameNotBeEmpty"));
+                .WithMessage(commonlocalizer.GetLocalizedHtmlString("msg_NotBeEmpty"));
             RuleFor(x => x.ModelYear).NotNull()
-                .WithMessage(localizer.GetLocalizedHtmlString("lbl_ModelYearNotBeEmpty"));
+                .WithMessage(commonlocalizer.GetLocalizedHtmlString("msg_NotBeEmpty"));
             RuleFor(x => x.ListPrice).NotNull()
-                .WithMessage(localizer.GetLocalizedHtmlString("lbl_ListPriceNotBeEmpty"));
+                .WithMessage(commonlocalizer.GetLocalizedHtmlString("msg_NotBeEmpty"));
         }
     }
 }

@@ -28,5 +28,9 @@
     <data name="lbl_EditBrand">
         <value>Sửa Nhãn Hiệu</value>
     </data>
-   
+    <data name="lbl_BrandName">
+        <value>Tên Nhãn Hiệu</value>
+    </data>
+
+    
 </root>

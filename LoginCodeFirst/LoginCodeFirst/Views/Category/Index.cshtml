@@ -1,5 +1,4 @@
-﻿@using LoginCodeFirst.Resources
-@model List<LoginCodeFirst.ViewModels.Category.CategoryViewModel>
+﻿@model List<LoginCodeFirst.ViewModels.Category.CategoryViewModel>
 @{
     ViewBag.Title = CategoryLocalizer.GetLocalizedHtmlString("lbl_ListCategory");
 }
@@ -46,10 +45,6 @@
                                 stt += 1;
                                 <tr>
                                     <td>@stt</td>
-                                    <td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.CategoryId)
-                                    </td>
                                     <td>
                                         @Html.DisplayFor(modelItem => item.CategoryName)
                                     </td>

@@ -1,9 +1,7 @@
-﻿@using LoginCodeFirst.Resources
-@model List<LoginCodeFirst.ViewModels.User.IndexViewModel>
-@inject ResourcesServices<ViewUserResources> Localizer
+﻿@model List<LoginCodeFirst.ViewModels.User.IndexViewModel>
 @{
 
-    ViewBag.Title = Localizer.GetLocalizedHtmlString("lbl_ListUser");
+    ViewBag.Title = UserLocalizer.GetLocalizedHtmlString("lbl_ListUser");
     Layout = "_Layout";
 }
 <div class="container-fluid">
@@ -16,7 +14,7 @@
                 <div class="header">                   
                     <h2> 
                         <a type="button" class="btn btn-primary" data-toggle="ajax-modal" data-target="#add-contact"
-                           asp-controller="User" asp-action="Add")>@Localizer.GetLocalizedHtmlString("btn_Add")</a>
+                           asp-controller="User" asp-action="Add")>@CommonLocalizer.GetLocalizedHtmlString("btn_Add")</a>
                     </h2>                    
                 </div>
                 <div class="body">
@@ -25,25 +23,25 @@
                             <thead>
                             <tr>
                                 <th>
-                                    @Localizer.GetLocalizedHtmlString("lbl_NumbericalOrder")
+                                    @CommonLocalizer.GetLocalizedHtmlString("lbl_NumbericalOrder")
                                 </th>
                                 <th>
-                                    @Localizer.GetLocalizedHtmlString("lbl_StoreId")
+                                    @UserLocalizer.GetLocalizedHtmlString("lbl_StoreId")
                                 </th>
                                 <th>
-                                    @Localizer.GetLocalizedHtmlString("lbl_Email")
+                                    @UserLocalizer.GetLocalizedHtmlString("lbl_Email")
                                 </th>
                                 <th>
-                                    @Localizer.GetLocalizedHtmlString("lbl_FullName")
+                                    @UserLocalizer.GetLocalizedHtmlString("lbl_FullName")
                                 </th>
                                 <th>
-                                    @Localizer.GetLocalizedHtmlString("lbl_Phone")
+                                    @UserLocalizer.GetLocalizedHtmlString("lbl_Phone")
                                 </th>
                                 <th>
-                                    @Localizer.GetLocalizedHtmlString("lbl_IsActive")
+                                    @UserLocalizer.GetLocalizedHtmlString("lbl_IsActive")
                                 </th>
                                 <th>
-                                    @Localizer.GetLocalizedHtmlString("lbl_Actions")
+                                    @CommonLocalizer.GetLocalizedHtmlString("lbl_Actions")
                                 </th>
                             </tr>
                             </thead>
@@ -54,9 +52,6 @@
                                 stt += 1;
                                 <tr>
                                     <td>@stt</td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.UserId)
-                                    </td>
                                     <td>
                                         @Html.DisplayFor(modelItem => item.Store.StoreName)
                                     </td>
@@ -73,19 +68,16 @@
                                         @Html.DisplayFor(modelItem => item.IsActive)
                                     </td>
                                     <td>
-
-                                        <!-- Button trigger modal -->
+                                        <div id="modal-placeholder"></div>
                                         <button type="button" class="btn btn-primary" data-toggle="ajax-modal" data-url="@Url.Action("EditPassword", new {id = item.UserId})">
                                             Change Password
                                         </button>
-
-                                        <!-- Modal -->
                                         ||
                                         <a asp-controller="User" asp-action="Edit" 
-                                           asp-route-id="@item.UserId">@Localizer.GetLocalizedHtmlString("btn_Edit")</a> ||
+                                           asp-route-id="@item.UserId">@CommonLocalizer.GetLocalizedHtmlString("btn_Edit")</a> ||
                                         <a asp-controller="User" asp-action="Delete" 
-                                           onclick=" return confirm('@Localizer.GetLocalizedHtmlString("btn_YouDelete")')" 
-                                           asp-route-id="@item.UserId">@Localizer.GetLocalizedHtmlString("btn_Delete")</a>
+                                           onclick=" return confirm('@CommonLocalizer.GetLocalizedHtmlString("btn_YouDelete")')" 
+                                           asp-route-id="@item.UserId">@CommonLocalizer.GetLocalizedHtmlString("btn_Delete")</a>
                                     </td>
                                 </tr>
                             }
@@ -98,4 +90,3 @@
     </div>
 </div>
 
-<div id="modal-placeholder"></div>
