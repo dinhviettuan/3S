@@ -1,5 +1,6 @@
 ﻿using System.Threading.Tasks;
 using LoginCodeFirst.Filter;
+using LoginCodeFirst.Resources;
 using LoginCodeFirst.Services;
 using LoginCodeFirst.ViewModels.Brand;
 using Microsoft.AspNetCore.Mvc;
@@ -10,10 +11,16 @@ namespace LoginCodeFirst.Controllers
     public class BrandController : Controller
     {
         private readonly IBrandServices _brandServices;
+        private readonly ResourcesServices<CommonResources> _commonLocalizer;
+        private readonly ResourcesServices<BrandResources> _brandLocalizer;
 
-        public BrandController(IBrandServices brandServices)
+        public BrandController(IBrandServices brandServices,
+            ResourcesServices<CommonResources> commonLocalizer,
+            ResourcesServices<BrandResources> brandLocalizer)
         {
             _brandServices = brandServices;
+            _commonLocalizer = commonLocalizer;
+            _brandLocalizer = brandLocalizer;
         }
         
         
@@ -24,8 +31,8 @@ namespace LoginCodeFirst.Controllers
         [HttpGet]
         public async Task<IActionResult> Index()
         {
-            var listBrand = await _brandServices.GetBrandListAsync();
-            return View(listBrand);
+            var listBrands = await _brandServices.GetBrandListAsync();
+            return View(listBrands);
         }
 
         /// <summary>
@@ -40,24 +47,25 @@ namespace LoginCodeFirst.Controllers
         /// <summary>
         /// Add Brand Post Function
         /// </summary>
-        /// <param name="brand"></param>
+        /// <param name="brandViewModel"></param>
         /// <returns>Brand Index View</returns>
         [HttpPost]
-        public async Task<IActionResult> Add(BrandViewModel brand)
+        public async Task<IActionResult> Add(BrandViewModel brandViewModel)
         {
 
             if (ModelState.IsValid)
             { 
-                var  list= await _brandServices.AddAsync(brand);
-                if (list)
+                var  brand = await _brandServices.AddAsync(brandViewModel);
+                if (brand)
                 {
-                    TempData["Success"] = "Add Brand Success";
+                    TempData["Success"] = _commonLocalizer.GetLocalizedHtmlString("msg_AddSuccess").ToString();
                     return RedirectToAction("Index"); 
                 }
-                ViewBag.Err = "Add Brand Failure";
-                return View(brand);
+                ViewData["Error"] = _brandLocalizer.GetLocalizedHtmlString("err_AddBrandFailure");
+                return View(brandViewModel);
             }
-            return View(brand);
+            ViewData["Error"] = _brandLocalizer.GetLocalizedHtmlString("err_AddBrandFailure");
+            return View(brandViewModel);
         }
 
         /// <summary>
@@ -72,37 +80,38 @@ namespace LoginCodeFirst.Controllers
             {
                 return BadRequest();
             }
-            var brand = await _brandServices.GetIdAsync(id.Value);
-            if (brand == null)
+            var getId = await _brandServices.GetIdAsync(id.Value);
+            if (getId == null)
             {
                 return NotFound();
             }
 
-            return View(brand);
+            return View(getId);
 
         }
 
         /// <summary>
         /// Edit Brand Post Function
         /// </summary>
-        /// <param name="brand"></param>
+        /// <param name="brandViewModel"></param>
         /// <returns>Brand Index View</returns>
         [HttpPost]
-        public async Task<IActionResult> Edit(BrandViewModel brand)
+        public async Task<IActionResult> Edit(BrandViewModel brandViewModel)
         {
 
             if (ModelState.IsValid)
             {
-                var list= await _brandServices.EditAsync(brand);
-                if (list)
+                var brand = await _brandServices.EditAsync(brandViewModel);
+                if (brand)
                 {
-                    TempData["Success"] = "Edit Brand Success";
+                    TempData["Success"] = _commonLocalizer.GetLocalizedHtmlString("msg_EditSuccess").ToString();
                     return RedirectToAction("Index");
                 } 
-                ViewBag.Err = "Edit Brand Failure";
-                return View(brand);
+                ViewData["Error"] =_brandLocalizer.GetLocalizedHtmlString("err_EditBrandFailure");
+                return View(brandViewModel);
             }
-            return View(brand);
+            ViewData["Error"] =_brandLocalizer.GetLocalizedHtmlString("err_EditBrandFailure");
+            return View(brandViewModel);
         }
 
         /// <summary>
@@ -113,8 +122,12 @@ namespace LoginCodeFirst.Controllers
         [HttpGet]
         public async  Task<IActionResult> Delete(int? id)
         {
+            if (id == null)
+            {
+                return BadRequest();
+            }
             await _brandServices.DeleteAsync(id.Value);
-            TempData["Success"] = "Delete Brand Success";
+            TempData["Success"] = _commonLocalizer.GetLocalizedHtmlString("msg_DeleteSuccess").ToString();
             return  RedirectToAction("Index");
         }   
     }

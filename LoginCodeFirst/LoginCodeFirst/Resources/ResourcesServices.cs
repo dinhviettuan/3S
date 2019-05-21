@@ -21,21 +21,5 @@ namespace LoginCodeFirst.Resources
         }
         
         
-    }
-    public class BrandResources
-    {}
-    public class CommonResources
-    {}
-    public class CategoryResources
-    {}
-    public class LoginResources
-    {}
-    public class ProductResources
-    {}
-    public class StockResources
-    {}
-    public class StoreResources
-    {}
-    public class UserResources
-    {}
+    }  
 }

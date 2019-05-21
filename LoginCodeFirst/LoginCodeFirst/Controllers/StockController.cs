@@ -1,5 +1,6 @@
 ﻿using System.Threading.Tasks;
 using LoginCodeFirst.Filter;
+using LoginCodeFirst.Resources;
 using LoginCodeFirst.Services;
 using LoginCodeFirst.ViewModels.Stock;
 using Microsoft.AspNetCore.Mvc;
@@ -13,12 +14,20 @@ namespace LoginCodeFirst.Controllers
         private readonly IStockServices _stockServices;
         private readonly IProductServices _productServices;
         private readonly IStoreServices _storeServices;
-
-        public StockController(IStockServices stockServices, IProductServices productServices,IStoreServices storeServices)
+        private readonly ResourcesServices<CommonResources> _commonLocalizer;
+        private readonly ResourcesServices<StockResources> _stockLocalizer;
+        public StockController(IStockServices stockServices, 
+            IProductServices productServices,
+            IStoreServices storeServices,
+            ResourcesServices<CommonResources> commonLocalizer,
+            ResourcesServices<StockResources> stockLocalizer
+            )
         {
             _stockServices = stockServices;
             _productServices = productServices;
             _storeServices = storeServices;
+            _commonLocalizer = commonLocalizer;
+            _stockLocalizer = stockLocalizer;
         }
 
         /// <summary>
@@ -47,28 +56,29 @@ namespace LoginCodeFirst.Controllers
         /// <summary>
         /// Add Stock Post Funciton
         /// </summary>
-        /// <param name="stock"></param>
+        /// <param name="stockViewModel"></param>
         /// <returns>Stock Index View</returns>
         [HttpPost]
-        public async Task<IActionResult> Add(StockViewModel stock)
+        public async Task<IActionResult> Add(StockViewModel stockViewModel)
         {
 
             if (ModelState.IsValid)
             { 
-                var list = await _stockServices.AddAsync(stock);
-                if (list)
+                var stock = await _stockServices.AddAsync(stockViewModel);
+                if (stock)
                 {
-                    TempData["Success"] = "Add Stock Success";
+                    TempData["Success"] = _commonLocalizer.GetLocalizedHtmlString("msg_AddSuccess").ToString();
                     return RedirectToAction("Index");
                 }
-                ViewBag.ProductId = new SelectList(_productServices.GetProducts(), "ProductId", "ProductName",stock.ProductId);
-                ViewBag.StoreId = new SelectList(_storeServices.GetStores(), "StoreId", "StoreName",stock.StoreId);
-                ViewBag.Err = "Add Stock Failure";
-                return View(stock);
+                ViewBag.ProductId = new SelectList(_productServices.GetProducts(), "ProductId", "ProductName",stockViewModel.ProductId);
+                ViewBag.StoreId = new SelectList(_storeServices.GetStores(), "StoreId", "StoreName",stockViewModel.StoreId);
+                ViewData["Error"] = _stockLocalizer.GetLocalizedHtmlString("err_AddStockFailure");
+                return View(stockViewModel);
             }
-            ViewBag.ProductId = new SelectList(_productServices.GetProducts(), "ProductId", "ProductName",stock.ProductId);
-            ViewBag.StoreId = new SelectList(_storeServices.GetStores(), "StoreId", "StoreName",stock.StoreId);
-            return View(stock);
+            ViewBag.ProductId = new SelectList(_productServices.GetProducts(), "ProductId", "ProductName",stockViewModel.ProductId);
+            ViewBag.StoreId = new SelectList(_storeServices.GetStores(), "StoreId", "StoreName",stockViewModel.StoreId);
+            ViewData["Error"] = _stockLocalizer.GetLocalizedHtmlString("err_AddStockFailure");
+            return View(stockViewModel);
         }
 
         /// <summary>
@@ -84,14 +94,14 @@ namespace LoginCodeFirst.Controllers
             {
                 return BadRequest();
             }
-            var list = await _stockServices.GetIdAsync(storeId.Value, productId.Value);
-            if (list == null)
+            var getId = await _stockServices.GetIdAsync(storeId.Value, productId.Value);
+            if (getId == null)
             {
                 return BadRequest();
             }
             ViewBag.ProductId = new SelectList(_productServices.GetProducts(), "ProductId", "ProductName");
             ViewBag.StoreId = new SelectList(_storeServices.GetStores(), "StoreId", "StoreName");
-            return View(list);
+            return View(getId);
         }
 
         /// <summary>
@@ -105,20 +115,21 @@ namespace LoginCodeFirst.Controllers
 
             if (ModelState.IsValid)
             {
-                  var stocks =   await _stockServices.EditAsync(stockViewModel);
-                if (stocks)
+                  var stock =   await _stockServices.EditAsync(stockViewModel);
+                if (stock)
                 {
-                    TempData["Success"] = "Edit Stock Success";
+                    TempData["Success"] = _commonLocalizer.GetLocalizedHtmlString("msg_EditSuccess").ToString();
                     return RedirectToAction("Index"); 
                 }
                 ViewBag.ProductId = new SelectList(_productServices.GetProducts(), "ProductId", "ProductName",stockViewModel.ProductId);
                 ViewBag.StoreId = new SelectList(_storeServices.GetStores(), "StoreId", "StoreName",stockViewModel.StoreId);
-                ViewBag.Err = "Edit Stock Failure";
+                ViewData["Error"] = _stockLocalizer.GetLocalizedHtmlString("err_EditStockFailure");
                 return View(stockViewModel);
                     
             } 
             ViewBag.ProductId = new SelectList(_productServices.GetProducts(), "ProductId", "ProductName",stockViewModel.ProductId);
             ViewBag.StoreId = new SelectList(_storeServices.GetStores(), "StoreId", "StoreName",stockViewModel.StoreId);
+            ViewData["Error"] = _stockLocalizer.GetLocalizedHtmlString("err_EditStockFailure");
             return View(stockViewModel);
         }
 
@@ -131,10 +142,12 @@ namespace LoginCodeFirst.Controllers
         [HttpGet]
         public async Task<IActionResult> Delete(int? storeId, int? productId)
         {
+            if (storeId == null || productId == null)
+            {
+                return BadRequest();
+            }
             await _stockServices.DeleteAsync(storeId.Value,productId.Value);
-            TempData["Success"] = "Delete Stock Success";
-
-            TempData["Stock"] = "Delete Stock Success";
+            TempData["Success"] = _commonLocalizer.GetLocalizedHtmlString("msg_DeleteSuccess").ToString();
             return  RedirectToAction("Index");
         }
     }

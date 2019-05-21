@@ -11,7 +11,12 @@
             <div class="email">@Context.Session.GetString("fullname")</div>
             <div class="btn-group user-helper-dropdown">
                 <i class="material-icons" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">keyboard_arrow_down</i>
-                <ul class="dropdown-menu pull-right">
+                <ul class="dropdown-menu pull-right" style="
+                                      position: absolute;
+                                      transform: translate3d(0, 24px, 0);
+                                      top: 0;    
+                                      left: unset;
+                                      will-change: transform;">
                     <li><a href="javascript:void(0);"><i class="material-icons">person</i>Profile</a></li>
                     <li role="separator" class="divider"></li>
                     <li><a href="javascript:void(0);"><i class="material-icons">group</i>Followers</a></li>

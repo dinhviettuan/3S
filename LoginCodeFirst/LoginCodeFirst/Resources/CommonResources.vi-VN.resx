@@ -48,7 +48,7 @@
     <data name="msg_AlreadyExists">
         <value>Đã tồn tại</value>
     </data>
-    <data name="msg_NotBeEmpty">
+    <data name="msg_NotEmpty">
         <value>Không được để trống</value>
     </data>
     <data name="msg_8Characters">
@@ -62,5 +62,15 @@
     </data>
     <data name="msg_WithALetter">
         <value>Email Bắt đầu bằng chữ cái</value>
+    </data>
+
+    <data name="msg_AddSuccess">
+        <value>Thêm Thành Công</value>
+    </data>
+    <data name="msg_DeleteSuccess">
+        <value>Xóa Thành Công</value>
+    </data>
+    <data name="msg_EditSuccess">
+        <value>Sửa Thành Công</value>
     </data>
 </root>

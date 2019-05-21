@@ -1,5 +1,6 @@
 ﻿    using System.Threading.Tasks;
     using LoginCodeFirst.Filter;
+    using LoginCodeFirst.Resources;
     using LoginCodeFirst.Services;
 using LoginCodeFirst.ViewModels.Store;
 using Microsoft.AspNetCore.Mvc;
@@ -11,10 +12,16 @@ namespace LoginCodeFirst.Controllers
 
     public class StoreController : Controller
     {
+        private readonly ResourcesServices<CommonResources> _commonLocalizer;
+        private readonly ResourcesServices<StoreResources> _storeLocalizer;
         private readonly IStoreServices _storeService;
-        public StoreController(IStoreServices storeService)
+        public StoreController(IStoreServices storeService,
+            ResourcesServices<CommonResources> commonLocalizer,
+            ResourcesServices<StoreResources> storeLocalizer)
         {
+            _commonLocalizer = commonLocalizer;
             _storeService = storeService;
+            _storeLocalizer = storeLocalizer;
         }
 
 
@@ -42,24 +49,26 @@ namespace LoginCodeFirst.Controllers
         /// <summary>
         /// Add Store Post Function
         /// </summary>
-        /// <param name="store"></param>
+        /// <param name="storeViewModel"></param>
         /// <returns>Store Index View</returns>
         [HttpPost]
-        public async Task<IActionResult> Add(StoreViewModel store)
+        public async Task<IActionResult> Add(StoreViewModel storeViewModel)
         {
 
             if (ModelState.IsValid)
             { 
-                var list = await _storeService.AddAsync(store);
-                if (list)
+                var store = await _storeService.AddAsync(storeViewModel);
+                if (store)
                 {
-                    TempData["Success"] = "Add Store Success";
+                    TempData["Success"] = _commonLocalizer.GetLocalizedHtmlString("msg_AddSuccess").ToString();
                     return RedirectToAction("Index");
                 }
-                ViewBag.Err = "Add Store Failure";
-                return View(store);
+                
+                ViewData["Error"] = _storeLocalizer.GetLocalizedHtmlString("err_AddStoreFailure");
+                return View(storeViewModel);
             }
-            return View(store);
+            ViewData["Error"] = _storeLocalizer.GetLocalizedHtmlString("err_AddStoreFailure");
+            return View(storeViewModel);
         }
 
         /// <summary>
@@ -74,13 +83,13 @@ namespace LoginCodeFirst.Controllers
             {
                 return BadRequest();
             }
-            var store = await _storeService.GetIdAsync(id.Value);
-            if (store == null)
+            var getId = await _storeService.GetIdAsync(id.Value);
+            if (getId == null)
             {
                 return NotFound();
             }
  
-            return View(store);
+            return View(getId);
         }
         /// <summary>
         ///  Edit Store Post Function
@@ -97,12 +106,13 @@ namespace LoginCodeFirst.Controllers
                 var store = await _storeService.EditAsync(storeViewModel);
                 if (store)
                 {
-                    TempData["Success"] = "Edit Store Success";
+                    TempData["Success"] = _commonLocalizer.GetLocalizedHtmlString("msg_EditSuccess").ToString();
                     return RedirectToAction("Index");
                 }
-                ViewBag.Err = "Edit Store Failure";
+                ViewData["Error"] = _storeLocalizer.GetLocalizedHtmlString("err_EditStoreFailure");
                 return View(storeViewModel);
             }
+            ViewData["Error"] = _storeLocalizer.GetLocalizedHtmlString("err_EditStoreFailure");
             return View(storeViewModel);
         }
 
@@ -114,8 +124,12 @@ namespace LoginCodeFirst.Controllers
         [HttpGet]
         public async Task<IActionResult> Delete(int? id)
         {
+            if (id == null)
+            {
+                return BadRequest();
+            }
             await _storeService.DeleteAsync(id.Value);
-            TempData["Success"] = "Delete Store Success";
+            TempData["Success"] = _commonLocalizer.GetLocalizedHtmlString("msg_DeleteSuccess").ToString();
             return  RedirectToAction("Index");
         }
    }

@@ -6,7 +6,7 @@ using LoginCodeFirst.Filter;
 using LoginCodeFirst.Models;
 using LoginCodeFirst.Resources;
 using LoginCodeFirst.Services;
-using LoginCodeFirst.Validator;
+using LoginCodeFirst.Validators.User;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -107,6 +107,24 @@ namespace LoginCodeFirst
             app.UseStaticFiles();
             app.UseCookiePolicy();
             app.UseSession();
+            app.Use(async (context, next) =>
+            {
+                await next();
+                if (!context.Response.HasStarted && context.Response.StatusCode != StatusCodes.Status200OK)
+                {
+                    switch (context.Response.StatusCode)
+                    {
+                        case StatusCodes.Status400BadRequest:
+                            context.Request.Path ="/Error/400";
+                            await next();
+                            break;
+                        case StatusCodes.Status401Unauthorized:
+                            context.Request.Path ="/Error/401";
+                            await next();
+                            break;
+                    }
+                }
+            });
             #region snippet2
             var options = app.ApplicationServices.GetService<IOptions<RequestLocalizationOptions>>();
             app.UseRequestLocalization(options.Value);

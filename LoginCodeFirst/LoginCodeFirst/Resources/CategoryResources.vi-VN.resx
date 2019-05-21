@@ -31,5 +31,12 @@
     <data name="lbl_EditCategory">
         <value>Sửa Thể Loại</value>
     </data>
-    
+
+    <data name="err_AddCategoryFailure">
+        <value>Thêm Thể Loại Thất Bại</value>
+    </data>
+    <data name="err_EditCategoryFailure">
+        <value>Sửa Thể Loại Thất Bại</value>
+    </data>
+
 </root>

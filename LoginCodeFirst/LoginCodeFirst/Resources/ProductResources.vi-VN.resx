@@ -47,5 +47,11 @@
         <value>Thêm Sản Phẩm</value>
     </data>
 
-    
+    <data name="err_AddProductFailure">
+        <value>Thêm Sản Phẩm Thất Bại</value>
+    </data>
+    <data name="err_EditProductFailure">
+        <value>Sửa Sản Phẩm Thất Bại</value>
+    </data>
+
 </root>

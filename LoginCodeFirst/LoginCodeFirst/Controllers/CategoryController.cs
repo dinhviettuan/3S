@@ -1,5 +1,6 @@
 ﻿using System.Threading.Tasks;
 using LoginCodeFirst.Filter;
+using LoginCodeFirst.Resources;
 using LoginCodeFirst.Services;
 using LoginCodeFirst.ViewModels.Category;
 using Microsoft.AspNetCore.Mvc;
@@ -10,10 +11,15 @@ namespace LoginCodeFirst.Controllers
     public class CategoryController : Controller
     {
         private readonly ICategoryServices _categoryServices;
-
-        public CategoryController(ICategoryServices categoryServices)
+        private readonly ResourcesServices<CommonResources> _commonLocalizer;
+        private readonly ResourcesServices<CategoryResources> _categoryLocalizer;
+        public CategoryController(ICategoryServices categoryServices,
+            ResourcesServices<CommonResources> commonLocalizer,
+            ResourcesServices<CategoryResources> categoryLocalizer)
         {
             _categoryServices = categoryServices;
+            _categoryLocalizer = categoryLocalizer;
+            _commonLocalizer = commonLocalizer;
         }
 
 
@@ -41,24 +47,25 @@ namespace LoginCodeFirst.Controllers
         /// <summary>
         /// Add Category Post Function
         /// </summary>
-        /// <param name="category"></param>
+        /// <param name="categoryViewModel"></param>
         /// <returns>Category Index View</returns>
         [HttpPost]
-        public async Task<IActionResult> Add(CategoryViewModel category)
+        public async Task<IActionResult> Add(CategoryViewModel categoryViewModel)
         {
 
             if (ModelState.IsValid)
             {
-                var list = await _categoryServices.AddAsync(category);
-                if (list)
+                var category = await _categoryServices.AddAsync(categoryViewModel);
+                if (category)
                 {
-                    TempData["Success"] = "Add Category Success";
+                    TempData["Success"] =_commonLocalizer.GetLocalizedHtmlString("msg_AddSuccess").ToString();
                     return RedirectToAction("Index");
                 }
-                ViewBag.Err = "Add Category Failure";
-                return View(category);
+                ViewData["Error"] =_categoryLocalizer.GetLocalizedHtmlString("err_AddCategoryFailure");
+                return View(categoryViewModel);
             }
-            return View(category);
+            ViewData["Error"] =_categoryLocalizer.GetLocalizedHtmlString("err_AddCategoryFailure");
+            return View(categoryViewModel);
         }
 
         /// <summary>
@@ -69,40 +76,41 @@ namespace LoginCodeFirst.Controllers
         [HttpGet]
         public async Task<IActionResult> Edit(int? id)
         {
-            if (id == 0)
+            if (id == null)
             {
                 return BadRequest();
             }
-            var list = await _categoryServices.GetIdAsync(id.Value);
-            if (list == null)
+            var getId = await _categoryServices.GetIdAsync(id.Value);
+            if (getId == null)
             {
                 return NotFound();
             }
 
-            return View(list);
+            return View(getId);
         }
 
         /// <summary>
         /// Edit Category Post Function
         /// </summary>
-        /// <param name="category"></param>
+        /// <param name="categoryViewModel"></param>
         /// <returns>Category Index View</returns>
         [HttpPost]
-        public async Task<IActionResult> Edit(CategoryViewModel category)
+        public async Task<IActionResult> Edit(CategoryViewModel categoryViewModel)
         {
 
             if (ModelState.IsValid)
             {
-                var list = await _categoryServices.EditAsync(category);
-                if (list)
+                var category = await _categoryServices.EditAsync(categoryViewModel);
+                if (category)
                 {
-                    TempData["Success"] = "Edit Category Success";
+                    TempData["Success"] = _commonLocalizer.GetLocalizedHtmlString("msg_EditSuccess").ToString();
                     return RedirectToAction("Index");
                 }
-                ViewBag.Err = "Edit Category Failure";
-                return View(category);
+                ViewData["Error"] = _categoryLocalizer.GetLocalizedHtmlString("err_EditCategoryFailure");
+                return View(categoryViewModel);
             }
-            return View(category);
+            ViewData["Error"] = _categoryLocalizer.GetLocalizedHtmlString("err_EditCategoryFailure");
+            return View(categoryViewModel);
         }
 
         /// <summary>
@@ -113,11 +121,13 @@ namespace LoginCodeFirst.Controllers
         [HttpGet]
         public async Task<IActionResult> Delete(int? id)
         {
+            if (id == null)
+            {
+                return BadRequest();
+            }
             await _categoryServices.DeleteAsync(id.Value);
 
-            TempData["Success"] = "Delete Category Success";
-
- 
+            TempData["Success"] = _categoryLocalizer.GetLocalizedHtmlString("msg_DeleteSuccess").ToString();
             return RedirectToAction("Index");
         }
     }

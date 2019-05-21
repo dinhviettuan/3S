@@ -1,4 +1,5 @@
 ﻿using System.Threading.Tasks;
+using LoginCodeFirst.Resources;
 using LoginCodeFirst.Services;
 using LoginCodeFirst.ViewModels;
 using Microsoft.AspNetCore.Http;
@@ -11,10 +12,12 @@ namespace LoginCodeFirst.Controllers
 
 
         private readonly IUserServices _userServices;
+        private readonly ResourcesServices<UserResources> _userLocalizer;
         
-        public LoginController(IUserServices userServices)
+        public LoginController(IUserServices userServices,
+            ResourcesServices<UserResources> userLocalizer)
         {
-
+            _userLocalizer = userLocalizer;
             _userServices = userServices;
         }
 
@@ -29,25 +32,25 @@ namespace LoginCodeFirst.Controllers
         }
 
         /// <summary>
-        /// Login Post Function
+        /// Login
         /// </summary>
-        /// <param name="loginViewModel"></param>
-        /// <returns>Login View</returns>
+        /// <param name="login"></param>
+        /// <returns></returns>
         [HttpPost]
-        public async Task<IActionResult> Login(LoginViewModel user)
+        public async Task<IActionResult> Login(LoginViewModel login)
         { 
             if (ModelState.IsValid)
             { 
-                var isValidator = _userServices.Login(user.Email, user.Password);
+                var isValidator = _userServices.Login(login.Email, login.Password);
                 if (isValidator)
                 {
-                    var getEmail = await _userServices.GetEmail(user.Email);
+                    var getEmail = await _userServices.GetEmail(login.Email);
                     HttpContext.Session.SetString("fullname",getEmail.FullName);
                     return RedirectToAction("Index","User");
                 }
             }
-            ViewData["errorMessage"] = "Login Fail";
-            return View(user);
+            ViewData["Error"] = _userLocalizer.GetLocalizedHtmlString("err_LoginFailure");
+            return View(login);
         }
         
         /// <summary>

@@ -26,7 +26,10 @@
 </head>
 
 <body class="login-page">
-
+@if(ViewData["Error"] != null)
+{
+    <p class="text-danger">@ViewData["Error"]</p>
+}
     @RenderBody()
 
 <!-- Jquery Core Js -->

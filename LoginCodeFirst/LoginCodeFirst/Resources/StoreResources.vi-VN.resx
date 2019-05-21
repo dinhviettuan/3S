@@ -50,6 +50,11 @@
         <value>Email</value>
     </data>
 
-    
+    <data name="err_AddStoreFailure">
+        <value>Thêm Cửa Hàng Thất Bại</value>
+    </data>
+    <data name="err_EditStoreFailure">
+        <value>Sửa Cửa Hàng Thất Bại</value>
+    </data>
     
 </root>

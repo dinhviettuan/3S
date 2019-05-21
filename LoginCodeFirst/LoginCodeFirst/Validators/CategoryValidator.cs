@@ -10,12 +10,12 @@ namespace LoginCodeFirst.Validators.CategoryValidator
     {
         public CategoryValidator(ResourcesServices<CommonResources> commonlocalizer, ICategoryServices categoryServices)
         { 
-                
-            RuleFor(x => x.CategoryName).Must((Reg,c) => !categoryServices.IsExistedName(Reg.CategoryName,Reg.CategoryId))
-                    .WithMessage((reg,c) => string.Format(commonlocalizer.GetLocalizedHtmlString("msg_AlreadyExists"),c));
             
             RuleFor(x => x.CategoryName).NotNull()
-                    .WithMessage(commonlocalizer.GetLocalizedHtmlString("msg_NotBeEmpty"));
+                .WithMessage(commonlocalizer.GetLocalizedHtmlString("msg_NotEmpty"));
+            
+            RuleFor(x => x.CategoryName).Must((Reg,c) => !categoryServices.IsExistedName(Reg.CategoryName,Reg.CategoryId))
+                    .WithMessage((reg,c) => string.Format(commonlocalizer.GetLocalizedHtmlString("msg_AlreadyExists"),c));    
         }
     }
 }

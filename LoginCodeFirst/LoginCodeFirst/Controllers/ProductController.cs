@@ -1,5 +1,6 @@
 ﻿using System.Threading.Tasks;
 using LoginCodeFirst.Filter;
+using LoginCodeFirst.Resources;
 using LoginCodeFirst.Services;
 using LoginCodeFirst.ViewModels.Product;
 using Microsoft.AspNetCore.Mvc;
@@ -11,18 +12,23 @@ namespace LoginCodeFirst.Controllers
     public class ProductController : Controller
     {
         private readonly IProductServices _productServices;
+        private readonly ICategoryServices _categoryServices;
+        private readonly IBrandServices _brandServices;
+        private readonly ResourcesServices<CommonResources> _commonLocalizer;
+        private readonly ResourcesServices<ProductResources> _productLocalizer;
 
-        public readonly ICategoryServices _categoryServices;
-
-        public readonly IBrandServices _brandServices;
-
-        public ProductController(IProductServices productServices, ICategoryServices categoryServices, IBrandServices brandServices)
+        public ProductController(IProductServices productServices,
+            ICategoryServices categoryServices, 
+            IBrandServices brandServices,
+            ResourcesServices<CommonResources> commonLocalizer,
+            ResourcesServices<ProductResources> productLocalizer
+            )
         {
             _productServices = productServices;
-
             _categoryServices = categoryServices;
-
             _brandServices = brandServices;
+            _commonLocalizer = commonLocalizer;
+            _productLocalizer = productLocalizer;
         }
 
 
@@ -53,28 +59,29 @@ namespace LoginCodeFirst.Controllers
         /// <summary>
         /// Add Product Post Function
         /// </summary>
-        /// <param name="product"></param>
+        /// <param name="productViewModel"></param>
         /// <returns>Product Index View</returns>
         [HttpPost]
-        public async Task<IActionResult> Add(ProductViewModel product)
+        public async Task<IActionResult> Add(ProductViewModel productViewModel)
         {
             if (ModelState.IsValid)
             {
-                var list = await _productServices.AddAsync(product);
-                if (list)
+                var product = await _productServices.AddAsync(productViewModel);
+                if (product)
                 {
-                    TempData["Success"] = "Add Product Success";
+                    TempData["Success"] = _commonLocalizer.GetLocalizedHtmlString("msg_AddSuccess").ToString();
                     return RedirectToAction("Index");
                 }
-                ViewBag.ErrorMessage = "Add Product Failure";
-                ViewBag.CategoryId = new SelectList(_categoryServices.GetCategorys(), "CategoryId", "CategoryName",product.CategoryId);
-                ViewBag.BrandId = new SelectList(_brandServices.GetBrands(), "BrandId", "BrandName",product.BrandId);
-                return View(product);
+                ViewData["Error"] = _productLocalizer.GetLocalizedHtmlString("err_AddProductFailure");
+                ViewBag.CategoryId = new SelectList(_categoryServices.GetCategorys(), "CategoryId", "CategoryName",productViewModel.CategoryId);
+                ViewBag.BrandId = new SelectList(_brandServices.GetBrands(), "BrandId", "BrandName",productViewModel.BrandId);
+                return View(productViewModel);
                 
             }
-            ViewBag.CategoryId = new SelectList(_categoryServices.GetCategorys(), "CategoryId", "CategoryName",product.CategoryId);
-            ViewBag.BrandId = new SelectList(_brandServices.GetBrands(), "BrandId", "BrandName",product.BrandId);
-            return View(product);
+            ViewData["Error"] = _productLocalizer.GetLocalizedHtmlString("err_AddProductFailure");
+            ViewBag.CategoryId = new SelectList(_categoryServices.GetCategorys(), "CategoryId", "CategoryName",productViewModel.CategoryId);
+            ViewBag.BrandId = new SelectList(_brandServices.GetBrands(), "BrandId", "BrandName",productViewModel.BrandId);
+            return View(productViewModel);
         }
 
         /// <summary>
@@ -90,39 +97,40 @@ namespace LoginCodeFirst.Controllers
                 return BadRequest();
             }
 
-            var list =  await _productServices.GetIdAsync(id.Value);
-            if (list == null)
+            var getId =  await _productServices.GetIdAsync(id.Value);
+            if (getId == null)
             {
                 return BadRequest();
             }
             ViewBag.CategoryId = new SelectList(_categoryServices.GetCategorys(), "CategoryId", "CategoryName");
             ViewBag.BrandId = new SelectList(_brandServices.GetBrands(), "BrandId", "BrandName");
-            return View(list);
+            return View(getId);
         }
 
         /// <summary>
         /// Edit Product Post Function
         /// </summary>
-        /// <param name="product"></param>
+        /// <param name="productViewModel"></param>
         /// <returns>Product Index View</returns>
         [HttpPost]
-        public async Task<IActionResult> Edit(ProductViewModel product)
+        public async Task<IActionResult> Edit(ProductViewModel productViewModel)
         {
 
             if (ModelState.IsValid)
             {
-                var list = await _productServices.EditAsync(product);
-                if (list)
+                var product = await _productServices.EditAsync(productViewModel);
+                if (product)
                 {
-                    ViewBag.CategoryId = new SelectList(_categoryServices.GetCategorys(), "CategoryId", "CategoryName", product.CategoryId);
-                    ViewBag.BrandId = new SelectList(_brandServices.GetBrands(), "BrandId", "BrandName",product.BrandId);
-                    TempData["Success"] = "Edit Product Success";
+                    ViewBag.CategoryId = new SelectList(_categoryServices.GetCategorys(), "CategoryId", "CategoryName", productViewModel.CategoryId);
+                    ViewBag.BrandId = new SelectList(_brandServices.GetBrands(), "BrandId", "BrandName",productViewModel.BrandId);
+                    TempData["Success"] = _commonLocalizer.GetLocalizedHtmlString("msg_EditSuccess").ToString();
                     return RedirectToAction("Index"); 
                 }
-                ViewBag.Err = "Edit Product Failure";
-                return View(product);
+                ViewData["Error"] = _productLocalizer.GetLocalizedHtmlString("err_EditProductFailure");
+                return View(productViewModel);
             }
-            return View(product);
+            ViewData["Error"] = _productLocalizer.GetLocalizedHtmlString("err_EditProductFailure");
+            return View(productViewModel);
         }
 
         /// <summary>
@@ -133,9 +141,13 @@ namespace LoginCodeFirst.Controllers
         [HttpGet]
         public async Task<IActionResult> Delete(int? id)
         {
+            if (id == null)
+            {
+                return BadRequest();
+            }
             await _productServices.DeleteAsync(id.Value);
 
-            TempData["Success"] = "Delete Product Success";
+            TempData["Success"] = _commonLocalizer.GetLocalizedHtmlString("msg_DeleteSuccess").ToString();
             return  RedirectToAction("Index");
         }
     }

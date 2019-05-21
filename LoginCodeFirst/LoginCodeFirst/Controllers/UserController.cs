@@ -1,5 +1,6 @@
 ﻿using System.Threading.Tasks;
 using LoginCodeFirst.Filter;
+using LoginCodeFirst.Resources;
 using LoginCodeFirst.Services;
 using LoginCodeFirst.ViewModels.User;
 using Microsoft.AspNetCore.Mvc;
@@ -12,16 +13,21 @@ namespace LoginCodeFirst.Controllers
 
     public class UserController : Controller
     {
-
+        private readonly ResourcesServices<CommonResources> _commonLocalizer;
+        private readonly ResourcesServices<UserResources> _userLocalizer;
         private readonly IUserServices _userService;
 
         private readonly IStoreServices _storeServices;
 
-        public UserController(IUserServices userService,IStoreServices storeServices)
+        public UserController(IUserServices userService,IStoreServices storeServices,
+            ResourcesServices<CommonResources> commonLocalizer,
+            ResourcesServices<UserResources> userLocalizer)
         {
 
             _userService = userService;
             _storeServices = storeServices;
+            _commonLocalizer = commonLocalizer;
+            _userLocalizer = userLocalizer;
         }
 
 
@@ -51,27 +57,28 @@ namespace LoginCodeFirst.Controllers
         /// <summary>
         /// Add User Post Function
         /// </summary>
-        /// <param name="user"></param>
+        /// <param name="userViewModel"></param>
         /// <returns>User Index View</returns>
         [HttpPost]
-        public async Task<IActionResult> Add(IndexViewModel user)
+        public async Task<IActionResult> Add(IndexViewModel userViewModel)
         {
             if (ModelState.IsValid)
             {
 
-                var list = await _userService.AddAsync(user);
-                if (list)
+                var user = await _userService.AddAsync(userViewModel);
+                if (user)
                 {
-                    ViewBag.StoreId = new SelectList(_storeServices.GetStores(), "StoreId", "StoreName", user.StoreId);
-                    TempData["Success"] = "Add user success!";
+                    ViewBag.StoreId = new SelectList(_storeServices.GetStores(), "StoreId", "StoreName", userViewModel.StoreId);
+                    TempData["Succces"] = _commonLocalizer.GetLocalizedHtmlString("msg_AddSuccess").ToString();
                     return RedirectToAction("Index");
                 }
-                ViewBag.Err = "Add User Failure";
-                ViewBag.StoreId = new SelectList(_storeServices.GetStores(), "StoreId", "StoreName", user.StoreId);
-                return View(user);
+                ViewData["Error"] = _userLocalizer.GetLocalizedHtmlString("err_AddUserFailure");
+                ViewBag.StoreId = new SelectList(_storeServices.GetStores(), "StoreId", "StoreName", userViewModel.StoreId);
+                return View(userViewModel);
             }
-            ViewBag.StoreId = new SelectList(_storeServices.GetStores(), "StoreId", "StoreName", user.StoreId);
-            return View(user);
+            ViewBag.StoreId = new SelectList(_storeServices.GetStores(), "StoreId", "StoreName", userViewModel.StoreId);
+            ViewData["Error"] = _userLocalizer.GetLocalizedHtmlString("err_AddUserFailure");
+            return View(userViewModel);
         }
 
         /// <summary>
@@ -86,37 +93,40 @@ namespace LoginCodeFirst.Controllers
             {
                 return BadRequest();
             }
-            var user = await _userService.GetIdAsync(id.Value);
-            if (user == null)
+            var getId = await _userService.GetIdAsync(id.Value);
+            if (getId == null)
             {
                 return BadRequest();
             }
             ViewBag.StoreId = new SelectList(_storeServices.GetStores(), "StoreId", "StoreName");
-            return View(user);
+            return View(getId);
         }
 
         /// <summary>
         /// Edit User Post Function
         /// </summary>
-        /// <param name="user"></param>
+        /// <param name="userViewModel"></param>
         /// <returns>User Index View</returns>
         [HttpPost]
-        public async Task<IActionResult> Edit(EditViewModel user)
+        public async Task<IActionResult> Edit(EditViewModel userViewModel)
         {
 
             if (ModelState.IsValid)
             {
-                var list = await _userService.EditAsync(user);
-                if (list)
+                var user = await _userService.EditAsync(userViewModel);
+                if (user)
                 {
-                    TempData["Success"] = "Edit User Success";
+                    TempData["Success"] = _commonLocalizer.GetLocalizedHtmlString("msg_EditSuccess").ToString();
                     return RedirectToAction("Index"); 
-                }  
-                ViewBag.StoreId = new SelectList(_storeServices.GetStores(), "StoreId", "StoreName", user.StoreId);
-                return View(user);
+                }
+
+                ViewData["Error"] = _userLocalizer.GetLocalizedHtmlString("err_EditUserFailure");
+                ViewBag.StoreId = new SelectList(_storeServices.GetStores(), "StoreId", "StoreName", userViewModel.StoreId);
+                return View(userViewModel);
             }
-            ViewBag.StoreId = new SelectList(_storeServices.GetStores(), "StoreId", "StoreName", user.StoreId);
-            return View(user);
+            ViewBag.StoreId = new SelectList(_storeServices.GetStores(), "StoreId", "StoreName", userViewModel.StoreId);
+            ViewData["Error"] = _userLocalizer.GetLocalizedHtmlString("err_EditUserFailure");
+            return View(userViewModel);
         }
 
         /// <summary>
@@ -127,14 +137,16 @@ namespace LoginCodeFirst.Controllers
         [HttpGet]
         public async Task<IActionResult> EditPassword(int? id)
         {
-
-            var users = await _userService.GetEditPasswordAsync(id.Value);
-            if (users == null)
+            if (id == null)
             {
                 return BadRequest();
             }
-            return PartialView("_ChangePassword", users); 
-
+                var getId = await _userService.GetEditPasswordAsync(id.Value);
+                if (getId == null)
+                {
+                    return BadRequest();
+                }
+                return PartialView("_ChangePassword", getId);
         }
 
         /// <summary>
@@ -150,13 +162,13 @@ namespace LoginCodeFirst.Controllers
                 var usersPassword = await _userService.EditPasswordAsync(userViewModel);
                 if (usersPassword)
                 {
-                    TempData["Success"] = "Edit Password Success";
+                    TempData["Success"] = _userLocalizer.GetLocalizedHtmlString("msg_EditPasswordSuccess").ToString();
                     return PartialView("_ChangePassword",userViewModel);
                 }
-                ViewBag.Err = "Edit Password Failure";
+                ViewData["Error"] = _userLocalizer.GetLocalizedHtmlString("err_EditPasswordFailure");
                 return PartialView("_ChangePassword",userViewModel); 
             }
-
+            ViewData["Error"] = _userLocalizer.GetLocalizedHtmlString("err_EditPasswordFailure");
             return PartialView("_ChangePassword",userViewModel);
         }
 
@@ -168,12 +180,15 @@ namespace LoginCodeFirst.Controllers
         [HttpGet]
         public async Task<IActionResult> Delete(int? id)
         {
+            if (id == null)
+            {
+                return BadRequest();
+            }
+
             await _userService.DeleteAsync(id.Value);
 
-            TempData["Success"] = "Delete User Success";
-            return RedirectToAction("Index");
+                TempData["Success"] = _commonLocalizer.GetLocalizedHtmlString("msg_DeleteSuccess").ToString();
+                return RedirectToAction("Index");
         }
-
-        
     }
 }

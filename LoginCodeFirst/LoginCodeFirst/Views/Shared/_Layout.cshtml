@@ -102,21 +102,16 @@
     @await Html.PartialAsync("_RightSidebarPartial")
     <!-- #END# Right Sidebar -->
 </section>
-@if (TempData["Success"] != null)
-{
-    <div class="alert alert-success alert-dismissible">
-        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-        <strong>@TempData["Success"]</strong>
-    </div>
-}
-@if(ViewBag.Err != null)
-{
-    <div class="alert alert-danger">
-        <strong>@ViewBag.Err</strong>
-    </div>
-}
-<section class="content">
 
+<section class="content">
+    @if (TempData["Success"] != null)
+    {
+       <p class="text-danger">@TempData["Success"]</p>
+    }
+    @if(ViewData["Error"] != null)
+    {
+        <p class="text-danger">@ViewData["Error"]</p>
+    }
     @RenderBody()
 
 </section>

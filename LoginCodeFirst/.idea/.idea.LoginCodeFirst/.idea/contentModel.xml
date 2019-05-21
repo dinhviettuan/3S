@@ -7,6 +7,7 @@
         <e p="Controllers" t="Include">
           <e p="BrandController.cs" t="Include" />
           <e p="CategoryController.cs" t="Include" />
+          <e p="ErrorController.cs" t="Include" />
           <e p="HomeController.cs" t="Include" />
           <e p="LoginController.cs" t="Include" />
           <e p="ProductController.cs" t="Include" />
@@ -41,38 +42,37 @@
           <e p="launchSettings.json" t="Include" />
         </e>
         <e p="Resources" t="Include">
-          <e p="BrandResources.en-US.Designer.cs" t="Include" />
-          <e p="BrandResources.en-US.resx" t="Include" />
+          <e p="BrandResources.Designer.cs" t="Include" />
+          <e p="BrandResources.resx" t="Include" />
           <e p="BrandResources.vi-VN.Designer.cs" t="Include" />
           <e p="BrandResources.vi-VN.resx" t="Include" />
-          <e p="CategoryResources.en-US.Designer.cs" t="Include" />
-          <e p="CategoryResources.en-US.resx" t="Include" />
+          <e p="CategoryResources.Designer.cs" t="Include" />
+          <e p="CategoryResources.resx" t="Include" />
           <e p="CategoryResources.vi-VN.Designer.cs" t="Include" />
           <e p="CategoryResources.vi-VN.resx" t="Include" />
-          <e p="CommonResources.en-US.Designer.cs" t="Include" />
-          <e p="CommonResources.en-US.resx" t="Include" />
+          <e p="CommonResources.Designer.cs" t="Include" />
+          <e p="CommonResources.resx" t="Include" />
           <e p="CommonResources.vi-VN.Designer.cs" t="Include" />
           <e p="CommonResources.vi-VN.resx" t="Include" />
-          <e p="LoginResources.en-US.Designer.cs" t="Include" />
-          <e p="LoginResources.en-US.resx" t="Include" />
+          <e p="LoginResources.Designer.cs" t="Include" />
+          <e p="LoginResources.resx" t="Include" />
           <e p="LoginResources.vi-VN.Designer.cs" t="Include" />
           <e p="LoginResources.vi-VN.resx" t="Include" />
-          <e p="ProductResources.en-US.Designer.cs" t="Include" />
-          <e p="ProductResources.en-US.resx" t="Include" />
+          <e p="ProductResources.Designer.cs" t="Include" />
+          <e p="ProductResources.resx" t="Include" />
           <e p="ProductResources.vi-VN.Designer.cs" t="Include" />
           <e p="ProductResources.vi-VN.resx" t="Include" />
           <e p="ResourcesServices.cs" t="Include" />
-          <e p="SharedResource.cs" t="Include" />
-          <e p="StockResources.en-US.Designer.cs" t="Include" />
-          <e p="StockResources.en-US.resx" t="Include" />
+          <e p="StockResources.Designer.cs" t="Include" />
+          <e p="StockResources.resx" t="Include" />
           <e p="StockResources.vi-VN.Designer.cs" t="Include" />
           <e p="StockResources.vi-VN.resx" t="Include" />
-          <e p="StoreResources.en-US.Designer.cs" t="Include" />
-          <e p="StoreResources.en-US.resx" t="Include" />
+          <e p="StoreResources.Designer.cs" t="Include" />
+          <e p="StoreResources.resx" t="Include" />
           <e p="StoreResources.vi-VN.Designer.cs" t="Include" />
           <e p="StoreResources.vi-VN.resx" t="Include" />
-          <e p="UserResources.en-US.Designer.cs" t="Include" />
-          <e p="UserResources.en-US.resx" t="Include" />
+          <e p="UserResources.Designer.cs" t="Include" />
+          <e p="UserResources.resx" t="Include" />
           <e p="UserResources.vi-VN.Designer.cs" t="Include" />
           <e p="UserResources.vi-VN.resx" t="Include" />
         </e>
@@ -127,6 +127,10 @@
             <e p="Edit.cshtml" t="Include" />
             <e p="Index.cshtml" t="Include" />
           </e>
+          <e p="Error" t="Include">
+            <e p="Error400.cshtml" t="Include" />
+            <e p="Error401.cshtml" t="Include" />
+          </e>
           <e p="Home" t="Include">
             <e p="Index.cshtml" t="Include" />
             <e p="Privacy.cshtml" t="Include" />
@@ -143,6 +147,8 @@
             <e p="Error.cshtml" t="Include" />
             <e p="_CookieConsentPartial.cshtml" t="Include" />
             <e p="_Layout.cshtml" t="Include" />
+            <e p="_LayoutError.cshtml" t="Include" />
+            <e p="_LayoutError400.cshtml" t="Include" />
             <e p="_LayoutLogin.cshtml" t="Include" />
             <e p="_LeftSidebarPartial.cshtml" t="Include" />
             <e p="_MenuPartial.cshtml" t="Include" />
@@ -165,7 +171,6 @@
           <e p="User" t="Include">
             <e p="Add.cshtml" t="Include" />
             <e p="Edit.cshtml" t="Include" />
-            <e p="EditPassword.cshtml" t="Include" />
             <e p="Index.cshtml" t="Include" />
             <e p="_ChangePassword.cshtml" t="Include" />
           </e>
@@ -4640,6 +4645,8 @@
             </e>
           </e>
           <e p="css" t="Include">
+            <e p="Error.css" t="Include" />
+            <e p="Error400.css" t="Include" />
             <e p="site.css" t="Include" />
           </e>
           <e p="favicon.ico" t="Include" />

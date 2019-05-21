@@ -42,4 +42,10 @@
     <data name="msg_QuantityGreaterThan1">
         <value>Số lượng phải lớn hơn 1</value>
     </data>
+    <data name="err_AddStockFailure">
+        <value>Thêm Kho Thất Bại</value>
+    </data>
+    <data name="err_EditStockFailure">
+        <value>Sửa Kho Thất Bại</value>
+    </data>
 </root>

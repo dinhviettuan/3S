@@ -34,9 +34,6 @@
           "LoginCodeFirst.dll": {}
         },
         "resources": {
-          "en-US/LoginCodeFirst.resources.dll": {
-            "locale": "en-US"
-          },
           "vi-VN/LoginCodeFirst.resources.dll": {
             "locale": "vi-VN"
           }

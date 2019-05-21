@@ -143,8 +143,6 @@ form p:last-child {
 [type="checkbox"]:not(:checked),
 [type="checkbox"]:checked {
   position: absolute;
-  left: -9999px;
-  opacity: 0;
 }
 
 [type="checkbox"] {
@@ -171,7 +169,6 @@ form p:last-child {
 
 [type="checkbox"] + label:before,
 [type="checkbox"]:not(.filled-in) + label:after {
-  content: '';
   position: absolute;
   top: 0;
   left: 0;

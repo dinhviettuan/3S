@@ -44,8 +44,8 @@
         <value>SDT*</value>
     </data>
     <data name="lbl_Email">
-        <value>Email*</value>
-    </data> 
+        <value>email*</value>
+    </data>
     <data name="lbl_Password">
         <value>Mât Khẩu*</value>
     </data>
@@ -56,16 +56,36 @@
         <value>Nhập Mật Khẩu Mới*</value>
     </data>
     <data name="lbl_EditPassword">
-        <value>Sửa Mật Khẩu*</value>
+        <value>Sửa Mật Khẩu</value>
     </data>
-    <data name="lbl_NewPassword">
-        <value>Mật Khẩu Mới*</value>
-    </data>
-    <data name="lbl_ConfirmPassword">
-        <value>Nhập Lại Mật Khẩu*</value>
+    <data name="btn_EditPassword">
+        <value>Sửa Mật Khẩu</value>
     </data>
 
     <data name="msg_ConfirmPasswordMustBeEqualNewPassword">
         <value>Xác nhận mật khẩu phải bằng mật khẩu mới</value>
     </data>
+    <data name="btn_Close">
+        <value>Đóng</value>
+    </data>
+    <data name="btn_Save">
+        <value>Lưu</value>
+    </data>
+    
+    <data name="msg_EditPasswordSuccess">
+        <value>Sửa Mật Khẩu Thành Công</value>
+    </data>
+    <data name="err_EditPasswordFailure">
+        <value>Sửa Mật Khẩu Thất Bại</value>
+    </data>
+    <data name="err_EditUserFailure">
+        <value>Sửa Người Dùng Thất Bại</value>
+    </data>
+    <data name="err_AddUserFailure">
+        <value>Thêm Người Dùng Thất Bại</value>
+    </data>
+    <data name="err_LoginFailure">
+        <value>Đăng Nhập Thất Bại</value>
+    </data> 
+    
 </root>
