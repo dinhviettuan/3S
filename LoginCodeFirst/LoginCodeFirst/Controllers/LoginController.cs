@@ -1,16 +1,22 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Security.Claims;
+using System.Threading.Tasks;
 using LoginCodeFirst.Resources;
 using LoginCodeFirst.Services;
 using LoginCodeFirst.ViewModels;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace LoginCodeFirst.Controllers
 {
+//    [Authorize]
     public class LoginController : Controller
     {
 
-
+        
         private readonly IUserServices _userServices;
         private readonly ResourcesServices<UserResources> _userLocalizer;
         
@@ -18,7 +24,7 @@ namespace LoginCodeFirst.Controllers
             ResourcesServices<UserResources> userLocalizer)
         {
             _userLocalizer = userLocalizer;
-            _userServices = userServices;
+            _userServices = userServices;         
         }
 
         /// <summary>
@@ -41,6 +47,20 @@ namespace LoginCodeFirst.Controllers
         { 
             if (ModelState.IsValid)
             { 
+                var claims = new List<Claim>
+                {
+                    new Claim(ClaimTypes.Name, login.Email),
+                    new Claim("FullName", login.Email),
+                    new Claim(ClaimTypes.Role, "Admin"),
+                    new Claim(ClaimTypes.Role, "User")
+                };
+                var claimsIdentity = new ClaimsIdentity(
+                    claims, CookieAuthenticationDefaults.AuthenticationScheme);
+                var authProperties = new AuthenticationProperties();
+                await HttpContext.SignInAsync(
+                    CookieAuthenticationDefaults.AuthenticationScheme, 
+                    new ClaimsPrincipal(claimsIdentity), 
+                    authProperties);
                 var isValidator = _userServices.Login(login.Email, login.Password);
                 if (isValidator)
                 {
@@ -58,8 +78,10 @@ namespace LoginCodeFirst.Controllers
         /// </summary>
         /// <returns>Login View</returns>
         [HttpGet]
-        public IActionResult LogOut()
-        {
+        public async Task<IActionResult> LogOut()
+        { 
+            await HttpContext.SignOutAsync(
+                CookieAuthenticationDefaults.AuthenticationScheme);
             HttpContext.Session.Remove("fullname");
             return RedirectToAction("Login");
         }

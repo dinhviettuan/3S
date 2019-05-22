@@ -7,6 +7,7 @@ using LoginCodeFirst.Models;
 using LoginCodeFirst.Resources;
 using LoginCodeFirst.Services;
 using LoginCodeFirst.Validators.User;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -40,6 +41,7 @@ namespace LoginCodeFirst
             });
             
             services.AddAutoMapper();
+//           
             services.AddSession();
             services.AddSingleton<ResourcesServices<BrandResources>>();
             services.AddSingleton<ResourcesServices<CommonResources>>();
@@ -52,7 +54,9 @@ namespace LoginCodeFirst
             #region snippet1
             
             services.AddLocalization(options => options.ResourcesPath = "Resources");
-
+//            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+                .AddCookie();
             services.Configure<RequestLocalizationOptions>(options =>
             {
                 var supportedCultures = new List<CultureInfo>
@@ -128,6 +132,7 @@ namespace LoginCodeFirst
             #region snippet2
             var options = app.ApplicationServices.GetService<IOptions<RequestLocalizationOptions>>();
             app.UseRequestLocalization(options.Value);
+            app.UseAuthentication();
             #endregion
             app.UseMvc(routes =>
             {

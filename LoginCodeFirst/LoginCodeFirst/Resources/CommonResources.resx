@@ -47,7 +47,7 @@
 
     
     <data name="msg_AlreadyExists">
-        <value>Already Exists</value>
+        <value>{0} Already Exists</value>
     </data>
     <data name="msg_NotEmpty">
         <value>Not Be Empty</value>

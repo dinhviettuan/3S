@@ -1,10 +1,9 @@
-﻿
-using FluentValidation;
+﻿using FluentValidation;
 using LoginCodeFirst.Resources;
 using LoginCodeFirst.Services;
 using LoginCodeFirst.ViewModels.Stock;
 
-namespace LoginCodeFirst.Validators.Stock
+namespace LoginCodeFirst.Validators
 {
     public class StockValidator : AbstractValidator<StockViewModel>
     {

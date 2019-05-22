@@ -42,11 +42,11 @@
         <value>Bạn Có Chắc Chắn Muốn Xóa</value>
     </data>
     <data name="lbl_NumbericalOrder">
-        <value>STT</value>
+        <value>Số Thứ Tự</value>
     </data>
 
     <data name="msg_AlreadyExists">
-        <value>Đã tồn tại</value>
+        <value>{0} Đã tồn tại</value>
     </data>
     <data name="msg_NotEmpty">
         <value>Không được để trống</value>

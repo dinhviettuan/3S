@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace LoginCodeFirst.Migrations
 {
-    public partial class AddDbTask : Migration
+    public partial class AddDBtask : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -37,7 +37,7 @@ namespace LoginCodeFirst.Migrations
                 name: "Store",
                 columns: table => new
                 {
-                    StoreId = table.Column<int>(nullable: false)
+                    Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     StoreName = table.Column<string>(maxLength: 255, nullable: false),
                     Phone = table.Column<string>(maxLength: 25, nullable: false),
@@ -49,7 +49,7 @@ namespace LoginCodeFirst.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Store", x => x.StoreId);
+                    table.PrimaryKey("PK_Store", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -93,7 +93,8 @@ namespace LoginCodeFirst.Migrations
                     Password = table.Column<string>(maxLength: 100, nullable: false),
                     Fullname = table.Column<string>(maxLength: 100, nullable: true),
                     Phone = table.Column<string>(maxLength: 100, nullable: true),
-                    IsActive = table.Column<bool>(nullable: false)
+                    IsActive = table.Column<bool>(nullable: false),
+                    Role = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -102,7 +103,7 @@ namespace LoginCodeFirst.Migrations
                         name: "FK_User_Store_StoreId",
                         column: x => x.StoreId,
                         principalTable: "Store",
-                        principalColumn: "StoreId",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -127,7 +128,7 @@ namespace LoginCodeFirst.Migrations
                         name: "FK_Stock_Store_StoreId",
                         column: x => x.StoreId,
                         principalTable: "Store",
-                        principalColumn: "StoreId",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -143,18 +144,22 @@ namespace LoginCodeFirst.Migrations
 
             migrationBuilder.InsertData(
                 table: "Store",
-                columns: new[] { "StoreId", "City", "Email", "Phone", "State", "StoreName", "Street", "ZipCode" },
+                columns: new[] { "Id", "City", "Email", "Phone", "State", "StoreName", "Street", "ZipCode" },
                 values: new object[] { 1, "Hue City", "Tuan1@gmail.com", "0768407899", "Hue", "TuanStore", "51 minh mang", "20000" });
+
+            migrationBuilder.InsertData(
+                table: "User",
+                columns: new[] { "UserId", "Email", "Fullname", "IsActive", "Password", "Phone", "Role", "StoreId" },
+                values: new object[,]
+                {
+                    { 1, "tuan1@gmail.com", "Dinh Viet Tuan", true, "10000:lfU7RduhawKL2nQkrfFW4z4oH1Kb3l8F8PsauYcv/oYFKr0p", "123456789", "Admin", 3 },
+                    { 2, "tuan@gmail.com", "Dinh Viet Tuan", true, "10000:a2IF8zhR5S/p6qIwMU4r6jJ7d8J2A21OuiE9BRiNXOdTiPdk", "123456789", "User", 2 }
+                });
 
             migrationBuilder.InsertData(
                 table: "Product",
                 columns: new[] { "ProductId", "BrandId", "CategoryId", "Image", "ListPrice", "ModelYear", "ProductName" },
                 values: new object[] { 1, 1, 1, "wewqe", 123456m, 1, "giay" });
-
-            migrationBuilder.InsertData(
-                table: "User",
-                columns: new[] { "UserId", "Email", "Fullname", "IsActive", "Password", "Phone", "StoreId" },
-                values: new object[] { 1, "tuan1@gmail.com", "Dinh Viet Tuan", true, "10000:5kTFzM8vq20sEyPJg8ZtHfyKDX0OVYa1BJw70Mu2yf6mvHxJ", "123456789", 1 });
 
             migrationBuilder.InsertData(
                 table: "Stock",

@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LoginCodeFirst.Migrations
 {
     [DbContext(typeof(CodeDataContext))]
-    [Migration("20190513034346_AddDbTask")]
-    partial class AddDbTask
+    [Migration("20190522105530_AddDBtask")]
+    partial class AddDBtask
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -20,7 +20,7 @@ namespace LoginCodeFirst.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("LoginCodeFirst.Models.Products.Brand", b =>
+            modelBuilder.Entity("LoginCodeFirst.Models.Brand", b =>
                 {
                     b.Property<int>("BrandId")
                         .ValueGeneratedOnAdd()
@@ -40,7 +40,7 @@ namespace LoginCodeFirst.Migrations
                         });
                 });
 
-            modelBuilder.Entity("LoginCodeFirst.Models.Products.Category", b =>
+            modelBuilder.Entity("LoginCodeFirst.Models.Category", b =>
                 {
                     b.Property<int>("CategoryId")
                         .ValueGeneratedOnAdd()
@@ -60,7 +60,7 @@ namespace LoginCodeFirst.Migrations
                         });
                 });
 
-            modelBuilder.Entity("LoginCodeFirst.Models.Products.Product", b =>
+            modelBuilder.Entity("LoginCodeFirst.Models.Product", b =>
                 {
                     b.Property<int>("ProductId")
                         .ValueGeneratedOnAdd()
@@ -99,7 +99,7 @@ namespace LoginCodeFirst.Migrations
                         });
                 });
 
-            modelBuilder.Entity("LoginCodeFirst.Models.Products.Stock", b =>
+            modelBuilder.Entity("LoginCodeFirst.Models.Stock", b =>
                 {
                     b.Property<int>("ProductId");
 
@@ -124,7 +124,7 @@ namespace LoginCodeFirst.Migrations
 
             modelBuilder.Entity("LoginCodeFirst.Models.Store", b =>
                 {
-                    b.Property<int>("StoreId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
@@ -152,14 +152,14 @@ namespace LoginCodeFirst.Migrations
                     b.Property<string>("ZipCode")
                         .HasMaxLength(5);
 
-                    b.HasKey("StoreId");
+                    b.HasKey("Id");
 
                     b.ToTable("Store");
 
                     b.HasData(
                         new
                         {
-                            StoreId = 1,
+                            Id = 1,
                             City = "Hue City",
                             Email = "Tuan1@gmail.com",
                             Phone = "0768407899",
@@ -192,6 +192,8 @@ namespace LoginCodeFirst.Migrations
                     b.Property<string>("Phone")
                         .HasMaxLength(100);
 
+                    b.Property<string>("Role");
+
                     b.Property<int>("StoreId");
 
                     b.HasKey("UserId");
@@ -207,28 +209,40 @@ namespace LoginCodeFirst.Migrations
                             Email = "tuan1@gmail.com",
                             Fullname = "Dinh Viet Tuan",
                             IsActive = true,
-                            Password = "10000:5kTFzM8vq20sEyPJg8ZtHfyKDX0OVYa1BJw70Mu2yf6mvHxJ",
+                            Password = "10000:lfU7RduhawKL2nQkrfFW4z4oH1Kb3l8F8PsauYcv/oYFKr0p",
                             Phone = "123456789",
-                            StoreId = 1
+                            Role = "Admin",
+                            StoreId = 3
+                        },
+                        new
+                        {
+                            UserId = 2,
+                            Email = "tuan@gmail.com",
+                            Fullname = "Dinh Viet Tuan",
+                            IsActive = true,
+                            Password = "10000:a2IF8zhR5S/p6qIwMU4r6jJ7d8J2A21OuiE9BRiNXOdTiPdk",
+                            Phone = "123456789",
+                            Role = "User",
+                            StoreId = 2
                         });
                 });
 
-            modelBuilder.Entity("LoginCodeFirst.Models.Products.Product", b =>
+            modelBuilder.Entity("LoginCodeFirst.Models.Product", b =>
                 {
-                    b.HasOne("LoginCodeFirst.Models.Products.Brand", "Brand")
+                    b.HasOne("LoginCodeFirst.Models.Brand", "Brand")
                         .WithMany("Products")
                         .HasForeignKey("BrandId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("LoginCodeFirst.Models.Products.Category", "Category")
+                    b.HasOne("LoginCodeFirst.Models.Category", "Category")
                         .WithMany("Products")
                         .HasForeignKey("CategoryId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("LoginCodeFirst.Models.Products.Stock", b =>
+            modelBuilder.Entity("LoginCodeFirst.Models.Stock", b =>
                 {
-                    b.HasOne("LoginCodeFirst.Models.Products.Product", "Product")
+                    b.HasOne("LoginCodeFirst.Models.Product", "Product")
                         .WithMany("Stocks")
                         .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade);

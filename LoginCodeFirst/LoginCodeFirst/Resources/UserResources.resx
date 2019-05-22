@@ -48,12 +48,6 @@
     <data name="lbl_Password">
         <value>Password*</value>
     </data>
-    <data name="lbl_ConfirmPassword">
-        <value>ConfirmPassword*</value>
-    </data>
-    <data name="lbl_NewPassword">
-        <value>NewPassword*</value>
-    </data>
     <data name="lbl_EditPassword">
         <value>Edit Password</value>
     </data>
@@ -67,9 +61,6 @@
     
     <data name="msg_ConfirmPasswordMustBeEqualNewPassword">
         <value>Password Must Have Both Letters And Numbers</value>
-    </data>
-    <data name="lbl_EditPassword">
-        <value>Edit Password</value>
     </data>
     <data name="btn_Close">
         <value>Close</value>

@@ -81,10 +81,10 @@
 
                                     <td>
                                         <a asp-controller="Store" asp-action="Edit" 
-                                           asp-route-id="@item.StoreId">@CommonLocalizer.GetLocalizedHtmlString("btn_Edit")</a> |
+                                           asp-route-id="@item.Id">@CommonLocalizer.GetLocalizedHtmlString("btn_Edit")</a> |
                                         <a asp-controller="Store" asp-action="Delete" 
                                            onclick=" return confirm('@CommonLocalizer.GetLocalizedHtmlString("btn_YouDelete")')"
-                                           asp-route-id="@item.StoreId">@CommonLocalizer.GetLocalizedHtmlString("btn_Delete")</a>
+                                           asp-route-id="@item.Id">@CommonLocalizer.GetLocalizedHtmlString("btn_Delete")</a>
                                     </td>
                                 </tr>
                             }

@@ -20,8 +20,8 @@
         </e>
         <e p="LoginCodeFirst.csproj" t="IncludeRecursive" />
         <e p="Migrations" t="Include">
-          <e p="20190513034346_AddDbTask.Designer.cs" t="Include" />
-          <e p="20190513034346_AddDbTask.cs" t="Include" />
+          <e p="20190522105530_AddDBtask.Designer.cs" t="Include" />
+          <e p="20190522105530_AddDBtask.cs" t="Include" />
           <e p="CodeDataContextModelSnapshot.cs" t="Include" />
         </e>
         <e p="Models" t="Include">

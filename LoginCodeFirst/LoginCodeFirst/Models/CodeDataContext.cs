@@ -11,7 +11,7 @@ namespace LoginCodeFirst.Models
         {
         }
 
-        public DbSet<Store> Store { get; set; }
+        public DbSet<Store> Store { get; set;}
         public DbSet<User> User { get; set; }
         public DbSet<Category> Category { get; set; }
         public DbSet<Brand> Brand { get; set; }
@@ -39,7 +39,8 @@ namespace LoginCodeFirst.Models
                 .Property(t => t.IsActive);
             modelBuilder.Entity<User>()
                 .Property(t => t.StoreId);
-            
+            modelBuilder.Entity<User>()
+                .Property(t => t.Role);
             
             modelBuilder.Entity<Store>()
                 .Property(t => t.StoreName)
@@ -136,15 +137,27 @@ namespace LoginCodeFirst.Models
                     Password = SecurePasswordHasher.Hash("12345"),
                     Fullname = "Dinh Viet Tuan",
                     Phone = "123456789",
-                    StoreId = 1,
-                    IsActive = true
-                });
+                    StoreId = 3,
+                    IsActive = true,
+                    Role = "Admin"
+                },
+            new User
+            {
+                UserId = 2,
+                Email = "tuan@gmail.com",
+                Password = SecurePasswordHasher.Hash("12345"),
+                Fullname = "Dinh Viet Tuan",
+                Phone = "123456789",
+                StoreId = 2,
+                IsActive = true,
+                Role = "User"
+            });
             
             
             modelBuilder.Entity<Store>().HasData(
                 new Store
                 {
-                    StoreId = 1,
+                    Id = 1,
                     StoreName = "TuanStore",
                     Phone = "0768407899",
                     Email = "Tuan1@gmail.com",

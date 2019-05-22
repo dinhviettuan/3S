@@ -3,7 +3,7 @@ using LoginCodeFirst.Resources;
 using LoginCodeFirst.Services;
 using LoginCodeFirst.ViewModels.Brand;
 
-namespace LoginCodeFirst.Validators.BrandValidator
+namespace LoginCodeFirst.Validators
 {
     public class BrandValidator : AbstractValidator<BrandViewModel>
     {

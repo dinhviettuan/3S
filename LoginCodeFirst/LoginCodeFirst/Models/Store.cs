@@ -4,7 +4,7 @@ namespace LoginCodeFirst.Models
 {
     public class Store
     {
-        public int StoreId { get; set; }
+        public int Id { get; set; }
         public string StoreName { get; set; }
         public string Phone { get; set; }
         public string Email { get; set; }

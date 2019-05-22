@@ -138,7 +138,7 @@ namespace LoginCodeFirst.Services
         {
             try
             {
-                var stores = await _context.Store.FindAsync(store.StoreId);
+                var stores = await _context.Store.FindAsync(store.Id);
 
                 stores.StoreName = store.StoreName;
                 stores.Email = store.Email;
@@ -187,7 +187,7 @@ namespace LoginCodeFirst.Services
         /// <returns>ExistedName</returns>
         public bool IsExistedName(string email,int id)
         {
-            return  _context.Store.Any(x => x.Email == email && x.StoreId != id);
+            return  _context.Store.Any(x => x.Email == email && x.Id != id);
         }
     }
 }

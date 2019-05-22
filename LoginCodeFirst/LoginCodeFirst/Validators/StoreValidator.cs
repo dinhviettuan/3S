@@ -24,7 +24,7 @@ namespace LoginCodeFirst.Validators.Store
             RuleFor(x => x.Email).NotNull()
                 .WithMessage(commonlocalizer.GetLocalizedHtmlString("msg_NotEmpty"));
             
-            RuleFor(x => x.Email).Must((Reg,c) => !storeServices.IsExistedName(Reg.Email,Reg.StoreId))
+            RuleFor(x => x.Email).Must((Reg,c) => !storeServices.IsExistedName(Reg.Email,Reg.Id))
                 .WithMessage((reg,c) => string.Format(commonlocalizer.GetLocalizedHtmlString("msg_AlreadyExists"),c));
                    
             RuleFor(x => x.Email).EmailAddress()

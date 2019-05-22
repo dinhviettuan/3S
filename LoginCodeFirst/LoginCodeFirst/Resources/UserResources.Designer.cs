@@ -106,9 +106,9 @@ namespace LoginCodeFirst.Resources {
             }
         }
         
-        public static string lbl_ConfirmPassword {
+        public static string lbl_EditPassword {
             get {
-                return ResourceManager.GetString("lbl_ConfirmPassword", resourceCulture);
+                return ResourceManager.GetString("lbl_EditPassword", resourceCulture);
             }
         }
         
@@ -118,9 +118,9 @@ namespace LoginCodeFirst.Resources {
             }
         }
         
-        public static string lbl_EditPassword {
+        public static string lbl_ConfirmPassword {
             get {
-                return ResourceManager.GetString("lbl_EditPassword", resourceCulture);
+                return ResourceManager.GetString("lbl_ConfirmPassword", resourceCulture);
             }
         }
         
