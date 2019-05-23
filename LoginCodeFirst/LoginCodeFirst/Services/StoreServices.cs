@@ -68,6 +68,7 @@ namespace LoginCodeFirst.Services
             _mapper = mapper;
         }
 
+        /// <inheritdoc />
         /// <summary>
         /// GetStores
         /// </summary>

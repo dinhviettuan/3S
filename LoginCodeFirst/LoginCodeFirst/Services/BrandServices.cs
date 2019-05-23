@@ -66,6 +66,7 @@ namespace LoginCodeFirst.Services
             _mapper = mapper;
         }
 
+        /// <inheritdoc />
         /// <summary>
         /// GetBrands
         /// </summary>
@@ -93,22 +94,22 @@ namespace LoginCodeFirst.Services
         /// <returns>Could be Addted?</returns>
         public async Task<bool> AddAsync(BrandViewModel brand)
         { 
-           try
+            try
             {
-              var brands = new Brand
+                var brands = new Brand
                 {
                     BrandName = brand.BrandName
                 };
                 _context.Brand.Add(brands);
-               await _context.SaveChangesAsync();
-               return true;
+                await _context.SaveChangesAsync();
+                return true;
             }
             catch (Exception e)
             {
                 Console.WriteLine(e);
-               return false;
+                return false;
             }
-         }
+        }
 
         /// <summary>
         /// GetIdAsync
@@ -131,22 +132,23 @@ namespace LoginCodeFirst.Services
         {
             try
             {   
-            var brands = await _context.Brand.FindAsync(brand.BrandId);
+                var brands = await _context.Brand.FindAsync(brand.BrandId);
            
-            brands.BrandName = brand.BrandName;
+                brands.BrandName = brand.BrandName;
             
-            _context.Brand.Update(brands);
-            await _context.SaveChangesAsync();
-            return true;
+                _context.Brand.Update(brands);
+                await _context.SaveChangesAsync();
+                return true;
             }
             catch (Exception e)
             {
                 Console.WriteLine(e);
                 return false;
             }
-         }
+        }
 
 
+        /// <inheritdoc />
         /// <summary>
         /// DeleteAsync
         /// </summary>
@@ -156,16 +158,16 @@ namespace LoginCodeFirst.Services
         {   
             try
             {
-             var brand = await _context.Brand.FindAsync(id);
+                var brand = await _context.Brand.FindAsync(id);
             
-            _context.Brand.Remove(brand);
-            await _context.SaveChangesAsync();
-            return true;
+                _context.Brand.Remove(brand);
+                await _context.SaveChangesAsync();
+                return true;
             }
             catch (Exception e)
             {
-            Console.WriteLine(e);
-            return false;
+                Console.WriteLine(e);
+                return false;
             }
            
         }

@@ -67,6 +67,7 @@ namespace LoginCodeFirst.Services
             _mapper = mapper;
         }
 
+        /// <inheritdoc />
         /// <summary>
         /// GetProducts
         /// </summary>
@@ -76,6 +77,7 @@ namespace LoginCodeFirst.Services
             return _context.Product;
         }
 
+        /// <inheritdoc />
         /// <summary>
         /// GetProductListAsync
         /// </summary>
@@ -84,12 +86,14 @@ namespace LoginCodeFirst.Services
         {
            var product = await _context.Product
                .Include(p => p.Brand)
-               .Include(p => p.Category).ToListAsync();
+               .Include(p => p.Category)
+               .ToListAsync();
            var list = _mapper.Map<List<ProductViewModel>>(product);
             return list;
         }
 
 
+        /// <inheritdoc />
         /// <summary>
         /// AddAsync
         /// </summary>
@@ -125,6 +129,7 @@ namespace LoginCodeFirst.Services
             }
            
         }
+        /// <inheritdoc />
         /// <summary>
         /// GetIdAsync
         /// </summary>
@@ -136,6 +141,7 @@ namespace LoginCodeFirst.Services
             var list = _mapper.Map<ProductViewModel>(product);
             return list;
         }
+        /// <inheritdoc />
         /// <summary>
         /// EditAsync
         /// </summary>
@@ -185,6 +191,7 @@ namespace LoginCodeFirst.Services
             }
             
         }
+        /// <inheritdoc />
         /// <summary>
         /// IsExistedName
         /// </summary>

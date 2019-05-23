@@ -14,6 +14,6 @@ namespace LoginCodeFirst.Models
         public bool IsActive { get; set; }
         public string Role { get; set; }
         
-        public  virtual Store Store { get; set; }
+        public virtual Store Store { get; set; }
     }
 }

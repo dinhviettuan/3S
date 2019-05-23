@@ -113,8 +113,7 @@ namespace LoginCodeFirst.Models
             modelBuilder.Entity<Stock>().HasOne(d => d.Product)
                 .WithMany(p => p.Stocks)
                 .HasForeignKey(d => d.ProductId);
-            
-            
+                        
 //            khoa ngoai tu store qua user
             modelBuilder.Entity<User>().HasOne(d => d.Store)
                 .WithMany(p => p.Users)
@@ -134,10 +133,10 @@ namespace LoginCodeFirst.Models
                 {
                     UserId = 1,
                     Email = "tuan1@gmail.com",
-                    Password = SecurePasswordHasher.Hash("12345"),
+                    Password = SecurePasswordHasher.Hash("Aa@12345"),
                     Fullname = "Dinh Viet Tuan",
                     Phone = "123456789",
-                    StoreId = 3,
+                    StoreId = 1,
                     IsActive = true,
                     Role = "Admin"
                 },
@@ -145,10 +144,10 @@ namespace LoginCodeFirst.Models
             {
                 UserId = 2,
                 Email = "tuan@gmail.com",
-                Password = SecurePasswordHasher.Hash("12345"),
+                Password = SecurePasswordHasher.Hash("Aa@12345"),
                 Fullname = "Dinh Viet Tuan",
                 Phone = "123456789",
-                StoreId = 2,
+                StoreId = 1,
                 IsActive = true,
                 Role = "User"
             });

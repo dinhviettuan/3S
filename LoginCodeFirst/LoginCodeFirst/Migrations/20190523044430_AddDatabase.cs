@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace LoginCodeFirst.Migrations
 {
-    public partial class AddDBtask : Migration
+    public partial class AddDatabase : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -34,6 +34,37 @@ namespace LoginCodeFirst.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Product",
+                columns: table => new
+                {
+                    ProductId = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    ProductName = table.Column<string>(nullable: true),
+                    BrandId = table.Column<int>(nullable: false),
+                    CategoryId = table.Column<int>(nullable: false),
+                    ModelYear = table.Column<int>(nullable: false),
+                    ListPrice = table.Column<decimal>(nullable: false),
+                    Image = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Product", x => x.ProductId);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Stock",
+                columns: table => new
+                {
+                    StoreId = table.Column<int>(nullable: false),
+                    ProductId = table.Column<int>(nullable: false),
+                    Quantity = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Stock", x => new { x.ProductId, x.StoreId });
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Store",
                 columns: table => new
                 {
@@ -53,36 +84,6 @@ namespace LoginCodeFirst.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Product",
-                columns: table => new
-                {
-                    ProductId = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    ProductName = table.Column<string>(nullable: true),
-                    BrandId = table.Column<int>(nullable: false),
-                    CategoryId = table.Column<int>(nullable: false),
-                    ModelYear = table.Column<int>(nullable: false),
-                    ListPrice = table.Column<decimal>(nullable: false),
-                    Image = table.Column<string>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Product", x => x.ProductId);
-                    table.ForeignKey(
-                        name: "FK_Product_Brand_BrandId",
-                        column: x => x.BrandId,
-                        principalTable: "Brand",
-                        principalColumn: "BrandId",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_Product_Category_CategoryId",
-                        column: x => x.CategoryId,
-                        principalTable: "Category",
-                        principalColumn: "CategoryId",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "User",
                 columns: table => new
                 {
@@ -99,37 +100,6 @@ namespace LoginCodeFirst.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_User", x => x.UserId);
-                    table.ForeignKey(
-                        name: "FK_User_Store_StoreId",
-                        column: x => x.StoreId,
-                        principalTable: "Store",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Stock",
-                columns: table => new
-                {
-                    StoreId = table.Column<int>(nullable: false),
-                    ProductId = table.Column<int>(nullable: false),
-                    Quantity = table.Column<int>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Stock", x => new { x.ProductId, x.StoreId });
-                    table.ForeignKey(
-                        name: "FK_Stock_Product_ProductId",
-                        column: x => x.ProductId,
-                        principalTable: "Product",
-                        principalColumn: "ProductId",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_Stock_Store_StoreId",
-                        column: x => x.StoreId,
-                        principalTable: "Store",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.InsertData(
@@ -143,20 +113,6 @@ namespace LoginCodeFirst.Migrations
                 values: new object[] { 1, "tui sach" });
 
             migrationBuilder.InsertData(
-                table: "Store",
-                columns: new[] { "Id", "City", "Email", "Phone", "State", "StoreName", "Street", "ZipCode" },
-                values: new object[] { 1, "Hue City", "Tuan1@gmail.com", "0768407899", "Hue", "TuanStore", "51 minh mang", "20000" });
-
-            migrationBuilder.InsertData(
-                table: "User",
-                columns: new[] { "UserId", "Email", "Fullname", "IsActive", "Password", "Phone", "Role", "StoreId" },
-                values: new object[,]
-                {
-                    { 1, "tuan1@gmail.com", "Dinh Viet Tuan", true, "10000:lfU7RduhawKL2nQkrfFW4z4oH1Kb3l8F8PsauYcv/oYFKr0p", "123456789", "Admin", 3 },
-                    { 2, "tuan@gmail.com", "Dinh Viet Tuan", true, "10000:a2IF8zhR5S/p6qIwMU4r6jJ7d8J2A21OuiE9BRiNXOdTiPdk", "123456789", "User", 2 }
-                });
-
-            migrationBuilder.InsertData(
                 table: "Product",
                 columns: new[] { "ProductId", "BrandId", "CategoryId", "Image", "ListPrice", "ModelYear", "ProductName" },
                 values: new object[] { 1, 1, 1, "wewqe", 123456m, 1, "giay" });
@@ -166,46 +122,40 @@ namespace LoginCodeFirst.Migrations
                 columns: new[] { "ProductId", "StoreId", "Quantity" },
                 values: new object[] { 1, 1, 1 });
 
-            migrationBuilder.CreateIndex(
-                name: "IX_Product_BrandId",
-                table: "Product",
-                column: "BrandId");
+            migrationBuilder.InsertData(
+                table: "Store",
+                columns: new[] { "Id", "City", "Email", "Phone", "State", "StoreName", "Street", "ZipCode" },
+                values: new object[] { 1, "Hue City", "Tuan1@gmail.com", "0768407899", "Hue", "TuanStore", "51 minh mang", "20000" });
 
-            migrationBuilder.CreateIndex(
-                name: "IX_Product_CategoryId",
-                table: "Product",
-                column: "CategoryId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Stock_StoreId",
-                table: "Stock",
-                column: "StoreId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_User_StoreId",
+            migrationBuilder.InsertData(
                 table: "User",
-                column: "StoreId");
+                columns: new[] { "UserId", "Email", "Fullname", "IsActive", "Password", "Phone", "Role", "StoreId" },
+                values: new object[,]
+                {
+                    { 1, "tuan1@gmail.com", "Dinh Viet Tuan", true, "10000:h92JoyrKUKyQS3QLyt5f9lB43/Hie1jcEzwjP4d+LgWg950u", "123456789", "Admin", 3 },
+                    { 2, "tuan@gmail.com", "Dinh Viet Tuan", true, "10000:XKnEd0ycjytRxFnQQxDjN5b/c1CXF5sSC0gOkoWgF/694Lc3", "123456789", "User", 2 }
+                });
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Stock");
+                name: "Brand");
 
             migrationBuilder.DropTable(
-                name: "User");
+                name: "Category");
 
             migrationBuilder.DropTable(
                 name: "Product");
 
             migrationBuilder.DropTable(
+                name: "Stock");
+
+            migrationBuilder.DropTable(
                 name: "Store");
 
             migrationBuilder.DropTable(
-                name: "Brand");
-
-            migrationBuilder.DropTable(
-                name: "Category");
+                name: "User");
         }
     }
 }

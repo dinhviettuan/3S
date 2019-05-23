@@ -207,10 +207,10 @@ namespace LoginCodeFirst.Migrations
                             Email = "tuan1@gmail.com",
                             Fullname = "Dinh Viet Tuan",
                             IsActive = true,
-                            Password = "10000:lfU7RduhawKL2nQkrfFW4z4oH1Kb3l8F8PsauYcv/oYFKr0p",
+                            Password = "10000:xqjOusyesNCymYsDRlATdoVvTaZMpCD2RheKLMEYBUYZhe3U",
                             Phone = "123456789",
                             Role = "Admin",
-                            StoreId = 3
+                            StoreId = 1
                         },
                         new
                         {
@@ -218,10 +218,10 @@ namespace LoginCodeFirst.Migrations
                             Email = "tuan@gmail.com",
                             Fullname = "Dinh Viet Tuan",
                             IsActive = true,
-                            Password = "10000:a2IF8zhR5S/p6qIwMU4r6jJ7d8J2A21OuiE9BRiNXOdTiPdk",
+                            Password = "10000:Fle5cEP4Rh3AC31BuSWbItUWl2EyWmzCImOVZhkXKCDb+nIX",
                             Phone = "123456789",
                             Role = "User",
-                            StoreId = 2
+                            StoreId = 1
                         });
                 });
 

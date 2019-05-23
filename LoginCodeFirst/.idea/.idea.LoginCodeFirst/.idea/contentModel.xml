@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ContentModelStore">
-    <e p="$USER_HOME$/.Rider2018.1/system/resharper-host/local/Transient/ReSharperHost/v12/SolutionCaches/_LoginCodeFirst.2071702047.00" t="ExcludeRecursive" />
+    <e p="$USER_HOME$/.Rider2018.1/system/resharper-host/local/Transient/ReSharperHost/v12/SolutionCaches/_LoginCodeFirst.449898109.00" t="ExcludeRecursive" />
     <e p="$PROJECT_DIR$" t="IncludeFlat">
       <e p="LoginCodeFirst" t="IncludeRecursive">
         <e p="Controllers" t="Include">
@@ -20,18 +20,19 @@
         </e>
         <e p="LoginCodeFirst.csproj" t="IncludeRecursive" />
         <e p="Migrations" t="Include">
-          <e p="20190522105530_AddDBtask.Designer.cs" t="Include" />
-          <e p="20190522105530_AddDBtask.cs" t="Include" />
+          <e p="20190523044430_AddDatabase.Designer.cs" t="Include" />
+          <e p="20190523044430_AddDatabase.cs" t="Include" />
+          <e p="20190523061801_AddRelationships.Designer.cs" t="Include" />
+          <e p="20190523061801_AddRelationships.cs" t="Include" />
+          <e p="20190523070154_UpdatePassword.Designer.cs" t="Include" />
+          <e p="20190523070154_UpdatePassword.cs" t="Include" />
           <e p="CodeDataContextModelSnapshot.cs" t="Include" />
         </e>
         <e p="Models" t="Include">
           <e p="Brand.cs" t="Include" />
           <e p="Category.cs" t="Include" />
           <e p="CodeDataContext.cs" t="Include" />
-          <e p="Customer.cs" t="Include" />
           <e p="ErrorViewModel.cs" t="Include" />
-          <e p="Order.cs" t="Include" />
-          <e p="OrderItem.cs" t="Include" />
           <e p="Product.cs" t="Include" />
           <e p="Stock.cs" t="Include" />
           <e p="Store.cs" t="Include" />

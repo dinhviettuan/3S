@@ -64,7 +64,6 @@ namespace LoginCodeFirst.Controllers
                 ViewData["Error"] = _brandLocalizer.GetLocalizedHtmlString("err_AddBrandFailure");
                 return View(brandViewModel);
             }
-            ViewData["Error"] = _brandLocalizer.GetLocalizedHtmlString("err_AddBrandFailure");
             return View(brandViewModel);
         }
 
@@ -110,7 +109,6 @@ namespace LoginCodeFirst.Controllers
                 ViewData["Error"] =_brandLocalizer.GetLocalizedHtmlString("err_EditBrandFailure");
                 return View(brandViewModel);
             }
-            ViewData["Error"] =_brandLocalizer.GetLocalizedHtmlString("err_EditBrandFailure");
             return View(brandViewModel);
         }
 
@@ -126,8 +124,14 @@ namespace LoginCodeFirst.Controllers
             {
                 return BadRequest();
             }
-            await _brandServices.DeleteAsync(id.Value);
-            TempData["Success"] = _commonLocalizer.GetLocalizedHtmlString("msg_DeleteSuccess").ToString();
+            
+            var brand = await _brandServices.DeleteAsync(id.Value);
+            if (brand)
+            {
+                TempData["Success"] = _commonLocalizer.GetLocalizedHtmlString("msg_DeleteSuccess").ToString();
+                return  RedirectToAction("Index");
+            }
+            TempData["Error"] = _commonLocalizer.GetLocalizedHtmlString("msg_DeleteError").ToString();
             return  RedirectToAction("Index");
         }   
     }

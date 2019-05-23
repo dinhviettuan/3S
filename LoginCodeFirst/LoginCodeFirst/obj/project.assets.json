@@ -12225,11 +12225,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/local/3SI/tuan.dv/3si 20.5/3S/LoginCodeFirst/LoginCodeFirst/LoginCodeFirst.csproj",
+      "projectUniqueName": "/home/local/3SI/tuan.dv/RiderProjects/3S/LoginCodeFirst/LoginCodeFirst/LoginCodeFirst.csproj",
       "projectName": "LoginCodeFirst",
-      "projectPath": "/home/local/3SI/tuan.dv/3si 20.5/3S/LoginCodeFirst/LoginCodeFirst/LoginCodeFirst.csproj",
+      "projectPath": "/home/local/3SI/tuan.dv/RiderProjects/3S/LoginCodeFirst/LoginCodeFirst/LoginCodeFirst.csproj",
       "packagesPath": "/home/local/3SI/tuan.dv/.nuget/packages/",
-      "outputPath": "/home/local/3SI/tuan.dv/3si 20.5/3S/LoginCodeFirst/LoginCodeFirst/obj/",
+      "outputPath": "/home/local/3SI/tuan.dv/RiderProjects/3S/LoginCodeFirst/LoginCodeFirst/obj/",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "/usr/share/dotnet/sdk/NuGetFallbackFolder"

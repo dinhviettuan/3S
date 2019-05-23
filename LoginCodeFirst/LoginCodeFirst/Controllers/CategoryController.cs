@@ -47,7 +47,7 @@ namespace LoginCodeFirst.Controllers
         /// <summary>
         /// Add Category Post Function
         /// </summary>
-        /// <param name="categoryViewModel"></param>
+        /// <param name="categoryViewModel">CategoryViewModel</param>
         /// <returns>Category Index View</returns>
         [HttpPost]
         public async Task<IActionResult> Add(CategoryViewModel categoryViewModel)
@@ -69,9 +69,9 @@ namespace LoginCodeFirst.Controllers
         }
 
         /// <summary>
-        /// Edit Category Get Function
+        /// Edit Category
         /// </summary>
-        /// <param name="id"></param>
+        /// <param name="id">Category id</param>
         /// <returns>Category Index View</returns>
         [HttpGet]
         public async Task<IActionResult> Edit(int? id)
@@ -90,9 +90,9 @@ namespace LoginCodeFirst.Controllers
         }
 
         /// <summary>
-        /// Edit Category Post Function
+        /// Edit Category
         /// </summary>
-        /// <param name="categoryViewModel"></param>
+        /// <param name="categoryViewModel">CategoryViewModel</param>
         /// <returns>Category Index View</returns>
         [HttpPost]
         public async Task<IActionResult> Edit(CategoryViewModel categoryViewModel)
@@ -114,9 +114,9 @@ namespace LoginCodeFirst.Controllers
         }
 
         /// <summary>
-        /// Delete Category Get Function
+        /// Delete Category 
         /// </summary>
-        /// <param name="id"></param>
+        /// <param name="id">Category id</param>
         /// <returns>Category Index View</returns>
         [HttpGet]
         public async Task<IActionResult> Delete(int? id)
@@ -125,9 +125,13 @@ namespace LoginCodeFirst.Controllers
             {
                 return BadRequest();
             }
-            await _categoryServices.DeleteAsync(id.Value);
-
-            TempData["Success"] = _categoryLocalizer.GetLocalizedHtmlString("msg_DeleteSuccess").ToString();
+            var category = await _categoryServices.DeleteAsync(id.Value);
+            if (category)
+            {
+                TempData["Success"] = _categoryLocalizer.GetLocalizedHtmlString("msg_DeleteSuccess").ToString();
+                return RedirectToAction("Index");            
+            }
+            TempData["Error"] = _categoryLocalizer.GetLocalizedHtmlString("msg_DeleteError").ToString();
             return RedirectToAction("Index");
         }
     }

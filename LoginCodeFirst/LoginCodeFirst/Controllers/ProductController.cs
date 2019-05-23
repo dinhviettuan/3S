@@ -22,7 +22,7 @@ namespace LoginCodeFirst.Controllers
             IBrandServices brandServices,
             ResourcesServices<CommonResources> commonLocalizer,
             ResourcesServices<ProductResources> productLocalizer
-            )
+        )
         {
             _productServices = productServices;
             _categoryServices = categoryServices;
@@ -145,9 +145,13 @@ namespace LoginCodeFirst.Controllers
             {
                 return BadRequest();
             }
-            await _productServices.DeleteAsync(id.Value);
-
-            TempData["Success"] = _commonLocalizer.GetLocalizedHtmlString("msg_DeleteSuccess").ToString();
+            var product = await _productServices.DeleteAsync(id.Value);
+            if (product)
+            {
+                TempData["Success"] = _commonLocalizer.GetLocalizedHtmlString("msg_DeleteSuccess").ToString();
+                return  RedirectToAction("Index");
+            }
+            TempData["Error"] = _commonLocalizer.GetLocalizedHtmlString("msg_DeleteError").ToString();
             return  RedirectToAction("Index");
         }
     }

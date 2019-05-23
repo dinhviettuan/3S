@@ -50,7 +50,7 @@ namespace LoginCodeFirst.Controllers
         [HttpGet]
         public IActionResult Add()
         {
-            ViewBag.StoreId = new SelectList(_storeServices.GetStores(), "StoreId", "StoreName");
+            ViewBag.StoreId = new SelectList(_storeServices.GetStores(), "Id", "StoreName");
             return View();
         }
 
@@ -68,15 +68,15 @@ namespace LoginCodeFirst.Controllers
                 var user = await _userService.AddAsync(userViewModel);
                 if (user)
                 {
-                    ViewBag.StoreId = new SelectList(_storeServices.GetStores(), "StoreId", "StoreName", userViewModel.StoreId);
+                    ViewBag.StoreId = new SelectList(_storeServices.GetStores(), "Id", "StoreName", userViewModel.StoreId);
                     TempData["Succces"] = _commonLocalizer.GetLocalizedHtmlString("msg_AddSuccess").ToString();
                     return RedirectToAction("Index");
                 }
                 ViewData["Error"] = _userLocalizer.GetLocalizedHtmlString("err_AddUserFailure");
-                ViewBag.StoreId = new SelectList(_storeServices.GetStores(), "StoreId", "StoreName", userViewModel.StoreId);
+                ViewBag.StoreId = new SelectList(_storeServices.GetStores(), "Id", "StoreName", userViewModel.StoreId);
                 return View(userViewModel);
             }
-            ViewBag.StoreId = new SelectList(_storeServices.GetStores(), "StoreId", "StoreName", userViewModel.StoreId);
+            ViewBag.StoreId = new SelectList(_storeServices.GetStores(), "Id", "StoreName", userViewModel.StoreId);
             ViewData["Error"] = _userLocalizer.GetLocalizedHtmlString("err_AddUserFailure");
             return View(userViewModel);
         }
@@ -98,7 +98,7 @@ namespace LoginCodeFirst.Controllers
             {
                 return BadRequest();
             }
-            ViewBag.StoreId = new SelectList(_storeServices.GetStores(), "StoreId", "StoreName");
+            ViewBag.StoreId = new SelectList(_storeServices.GetStores(), "Id", "StoreName");
             return View(getId);
         }
 
@@ -121,10 +121,10 @@ namespace LoginCodeFirst.Controllers
                 }
 
                 ViewData["Error"] = _userLocalizer.GetLocalizedHtmlString("err_EditUserFailure");
-                ViewBag.StoreId = new SelectList(_storeServices.GetStores(), "StoreId", "StoreName", userViewModel.StoreId);
+                ViewBag.StoreId = new SelectList(_storeServices.GetStores(), "Id", "StoreName", userViewModel.StoreId);
                 return View(userViewModel);
             }
-            ViewBag.StoreId = new SelectList(_storeServices.GetStores(), "StoreId", "StoreName", userViewModel.StoreId);
+            ViewBag.StoreId = new SelectList(_storeServices.GetStores(), "Id", "StoreName", userViewModel.StoreId);
             ViewData["Error"] = _userLocalizer.GetLocalizedHtmlString("err_EditUserFailure");
             return View(userViewModel);
         }
@@ -184,10 +184,13 @@ namespace LoginCodeFirst.Controllers
             {
                 return BadRequest();
             }
-
-            await _userService.DeleteAsync(id.Value);
-
+           var user = await _userService.DeleteAsync(id.Value);
+            if (user)
+            {
                 TempData["Success"] = _commonLocalizer.GetLocalizedHtmlString("msg_DeleteSuccess").ToString();
+                return RedirectToAction("Index");
+            } 
+                TempData["Error"] = _commonLocalizer.GetLocalizedHtmlString("msg_DeleteError").ToString();
                 return RedirectToAction("Index");
         }
     }

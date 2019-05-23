@@ -146,8 +146,13 @@ namespace LoginCodeFirst.Controllers
             {
                 return BadRequest();
             }
-            await _stockServices.DeleteAsync(storeId.Value,productId.Value);
-            TempData["Success"] = _commonLocalizer.GetLocalizedHtmlString("msg_DeleteSuccess").ToString();
+            var stock = await _stockServices.DeleteAsync(storeId.Value,productId.Value);
+            if (stock)
+            {
+                TempData["Success"] = _commonLocalizer.GetLocalizedHtmlString("msg_DeleteSuccess").ToString();
+                return  RedirectToAction("Index");
+            }
+            TempData["Error"] = _commonLocalizer.GetLocalizedHtmlString("msg_DeleteError").ToString();
             return  RedirectToAction("Index");
         }
     }
