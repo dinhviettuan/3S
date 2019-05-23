@@ -16,35 +16,41 @@ namespace LoginCodeFirst.Services
         /// </summary>
         /// <returns>Brands</returns>
         IEnumerable<Brand> GetBrands();
+        
         /// <summary>
         /// GetListBrandAsync
         /// </summary>
         /// <returns>ListBrand</returns>
         Task<List<BrandViewModel>> GetBrandListAsync();
+        
         /// <summary>
         /// AddBrand
         /// </summary>
         /// <param name="brand">BrandViewModel</param>
         /// <returns>Could be Addted?</returns>
         Task<bool> AddAsync(BrandViewModel brand);
+        
         /// <summary>
         /// GetIdAsync
         /// </summary>
         /// <param name="id">Brand Id</param>
         /// <returns>Brand</returns>
         Task<BrandViewModel> GetIdAsync(int id);
+        
         /// <summary>
         /// EditBrand
         /// </summary>
         /// <param name="brand">BrandViewModel</param>
         /// <returns>Could be Edited?</returns>
         Task<bool> EditAsync(BrandViewModel brand);
+        
         /// <summary>
         /// DeleteBrand
         /// </summary>
         /// <param name="id">Brand Id</param>
         /// <returns>Could be Deleted?</returns>
         Task<bool> DeleteAsync(int id);
+        
         /// <summary>
         /// IsExistedName
         /// </summary>
@@ -58,8 +64,7 @@ namespace LoginCodeFirst.Services
     {
         private readonly CodeDataContext _context;
         private readonly IMapper _mapper;
-        
-        
+               
         public BrandServices(CodeDataContext context,IMapper mapper)
         {
             _context = context;
@@ -76,6 +81,7 @@ namespace LoginCodeFirst.Services
             return _context.Brand;
         }
 
+        /// <inheritdoc />
         /// <summary>
         /// GetBrandListAsync
         /// </summary>
@@ -87,6 +93,7 @@ namespace LoginCodeFirst.Services
             return brandViewModel;
         }
 
+        /// <inheritdoc />
         /// <summary>
         /// AddAsync
         /// </summary>
@@ -111,6 +118,7 @@ namespace LoginCodeFirst.Services
             }
         }
 
+        /// <inheritdoc />
         /// <summary>
         /// GetIdAsync
         /// </summary>
@@ -123,6 +131,7 @@ namespace LoginCodeFirst.Services
             return brandViewModel;
         }
 
+        /// <inheritdoc />
         /// <summary>
         /// EditAsync
         /// </summary>
@@ -147,7 +156,6 @@ namespace LoginCodeFirst.Services
             }
         }
 
-
         /// <inheritdoc />
         /// <summary>
         /// DeleteAsync
@@ -168,16 +176,16 @@ namespace LoginCodeFirst.Services
             {
                 Console.WriteLine(e);
                 return false;
-            }
-           
+            }          
         }
 
+        /// <inheritdoc />
         /// <summary>
         /// IsExistedName
         /// </summary>
         /// <param name="name">Brand Name</param>
         /// <param name="id">Brand Id</param>
-        /// <returns>ExistedName</returns>
+        /// <returns>ExistedName?</returns>
         public bool IsExistedName(string name,int id)
         {
             return  _context.Brand.Any(x => x.BrandName == name && x.BrandId != id);

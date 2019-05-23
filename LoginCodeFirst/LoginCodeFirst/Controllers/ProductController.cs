@@ -75,10 +75,8 @@ namespace LoginCodeFirst.Controllers
                 ViewData["Error"] = _productLocalizer.GetLocalizedHtmlString("err_AddProductFailure");
                 ViewBag.CategoryId = new SelectList(_categoryServices.GetCategorys(), "CategoryId", "CategoryName",productViewModel.CategoryId);
                 ViewBag.BrandId = new SelectList(_brandServices.GetBrands(), "BrandId", "BrandName",productViewModel.BrandId);
-                return View(productViewModel);
-                
+                return View(productViewModel);                
             }
-            ViewData["Error"] = _productLocalizer.GetLocalizedHtmlString("err_AddProductFailure");
             ViewBag.CategoryId = new SelectList(_categoryServices.GetCategorys(), "CategoryId", "CategoryName",productViewModel.CategoryId);
             ViewBag.BrandId = new SelectList(_brandServices.GetBrands(), "BrandId", "BrandName",productViewModel.BrandId);
             return View(productViewModel);
@@ -115,7 +113,6 @@ namespace LoginCodeFirst.Controllers
         [HttpPost]
         public async Task<IActionResult> Edit(ProductViewModel productViewModel)
         {
-
             if (ModelState.IsValid)
             {
                 var product = await _productServices.EditAsync(productViewModel);
@@ -129,7 +126,6 @@ namespace LoginCodeFirst.Controllers
                 ViewData["Error"] = _productLocalizer.GetLocalizedHtmlString("err_EditProductFailure");
                 return View(productViewModel);
             }
-            ViewData["Error"] = _productLocalizer.GetLocalizedHtmlString("err_EditProductFailure");
             return View(productViewModel);
         }
 

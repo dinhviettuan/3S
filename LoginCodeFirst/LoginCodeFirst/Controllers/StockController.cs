@@ -77,7 +77,6 @@ namespace LoginCodeFirst.Controllers
             }
             ViewBag.ProductId = new SelectList(_productServices.GetProducts(), "ProductId", "ProductName",stockViewModel.ProductId);
             ViewBag.StoreId = new SelectList(_storeServices.GetStores(), "StoreId", "StoreName",stockViewModel.StoreId);
-            ViewData["Error"] = _stockLocalizer.GetLocalizedHtmlString("err_AddStockFailure");
             return View(stockViewModel);
         }
 
@@ -124,12 +123,10 @@ namespace LoginCodeFirst.Controllers
                 ViewBag.ProductId = new SelectList(_productServices.GetProducts(), "ProductId", "ProductName",stockViewModel.ProductId);
                 ViewBag.StoreId = new SelectList(_storeServices.GetStores(), "StoreId", "StoreName",stockViewModel.StoreId);
                 ViewData["Error"] = _stockLocalizer.GetLocalizedHtmlString("err_EditStockFailure");
-                return View(stockViewModel);
-                    
+                return View(stockViewModel);                    
             } 
             ViewBag.ProductId = new SelectList(_productServices.GetProducts(), "ProductId", "ProductName",stockViewModel.ProductId);
             ViewBag.StoreId = new SelectList(_storeServices.GetStores(), "StoreId", "StoreName",stockViewModel.StoreId);
-            ViewData["Error"] = _stockLocalizer.GetLocalizedHtmlString("err_EditStockFailure");
             return View(stockViewModel);
         }
 

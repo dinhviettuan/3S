@@ -1,17 +1,16 @@
-﻿using System.Text.RegularExpressions;
-using FluentValidation;
+﻿using FluentValidation;
 using LoginCodeFirst.Resources;
 using LoginCodeFirst.Services;
 using LoginCodeFirst.ViewModels.User;
 
-namespace LoginCodeFirst.Validators
+namespace LoginCodeFirst.Validators.User
 {
-    public class IndexValidator : AbstractValidator<IndexViewModel>
+    public class UserValidator : AbstractValidator<IndexViewModel>
     {
-        public IndexValidator(ResourcesServices<UserResources> localizer,ResourcesServices<CommonResources> commonlocalizer,IUserServices userServices)
+        public UserValidator(ResourcesServices<CommonResources> commonlocalizer,IUserServices userServices)
         {
-            RuleFor(x => x.Email).NotNull()
-                .WithMessage(commonlocalizer.GetLocalizedHtmlString("msg_NotEmpty"));
+            RuleFor(x => x.Email)
+                .NotNull().WithMessage(commonlocalizer.GetLocalizedHtmlString("msg_NotEmpty"));
             RuleFor(x => x.Password)
                 .NotNull().WithMessage(commonlocalizer.GetLocalizedHtmlString("msg_NotEmpty"));
             RuleFor(x => x.FullName)
@@ -29,9 +28,7 @@ namespace LoginCodeFirst.Validators
                 .MinimumLength(8).WithMessage(commonlocalizer.GetLocalizedHtmlString("msg_8Characters"));
             RuleFor(x => x.Password)
                 .Matches("^(?=.*[0-9])(?=.*[a-zA-Z])([a-zA-Z0-9]+)$")
-                .WithMessage(commonlocalizer.GetLocalizedHtmlString("msg_LettersAndNumbers"));
-           
-            
+                .WithMessage(commonlocalizer.GetLocalizedHtmlString("msg_LettersAndNumbers"));         
         }
     }
 }

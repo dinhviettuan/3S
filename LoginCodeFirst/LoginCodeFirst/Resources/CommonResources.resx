@@ -74,5 +74,8 @@
     <data name="msg_EditSuccess">
         <value>Edit Success</value>
     </data>
+    <data name="msg_DeleteError">
+        <value>Delete Error</value>
+    </data>
     
 </root>

@@ -147,5 +147,11 @@ namespace LoginCodeFirst.Resources {
                 return ResourceManager.GetString("msg_EditSuccess", resourceCulture);
             }
         }
+        
+        public static string msg_DeleteError {
+            get {
+                return ResourceManager.GetString("msg_DeleteError", resourceCulture);
+            }
+        }
     }
 }

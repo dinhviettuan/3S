@@ -16,35 +16,41 @@ namespace LoginCodeFirst.Services
         /// </summary>
         /// <returns>Categorys</returns>
         IEnumerable<Category> GetCategorys();
+        
         /// <summary>
         /// GetCategoryListAsync
         /// </summary>
         /// <returns>ListCategory</returns>
         Task<List<CategoryViewModel>> GetCategoryListAsync();
+        
         /// <summary>
         /// AddAsync
         /// </summary>
         /// <param name="category">CategoryViewModel</param>
         /// <returns>Could Be Addted?</returns>
         Task<bool>AddAsync(CategoryViewModel category);
+        
         /// <summary>
         /// GetIdAsync
         /// </summary>
         /// <param name="id">Category Id</param>
         /// <returns>CategoryViewModel</returns>
         Task<CategoryViewModel> GetIdAsync(int id);
+        
         /// <summary>
         /// EditAsync
         /// </summary>
         /// <param name="categoryViewModel">CategoryViewModel</param>
         /// <returns>Could be Editted?</returns>
         Task<bool> EditAsync(CategoryViewModel categoryViewModel);
+        
         /// <summary>
         /// DeleteAsync
         /// </summary>
         /// <param name="id"> Category Id</param>
         /// <returns>Could be Deleted</returns>
         Task<bool> DeleteAsync(int id);
+        
         /// <summary>
         /// IsExistedName
         /// </summary>
@@ -52,7 +58,6 @@ namespace LoginCodeFirst.Services
         /// <param name="id">Category Id</param>
         /// <returns>ExistedName</returns>
         bool IsExistedName(string name,int id);
-
     }
 
     public class CategoryServices : ICategoryServices
@@ -65,6 +70,7 @@ namespace LoginCodeFirst.Services
             _mapper = mapper;
         }
 
+        /// <inheritdoc />
         /// <summary>
         /// GetCategorys
         /// </summary>
@@ -74,6 +80,7 @@ namespace LoginCodeFirst.Services
             return _context.Category;
         }
 
+        /// <inheritdoc />
         /// <summary>
         /// GetCategoryListAsync
         /// </summary>
@@ -86,6 +93,7 @@ namespace LoginCodeFirst.Services
         }
 
 
+        /// <inheritdoc />
         /// <summary>
         /// AddAsync
         /// </summary>
@@ -107,9 +115,10 @@ namespace LoginCodeFirst.Services
             {
                 Console.WriteLine(e);
                 return false;
-            }
-            
+            }    
         }
+        
+        /// <inheritdoc />
         /// <summary>
         /// GetIdAsync
         /// </summary>
@@ -122,6 +131,7 @@ namespace LoginCodeFirst.Services
             return categoryViewModel;
         }
 
+        /// <inheritdoc />
         /// <summary>
         /// EditAsync
         /// </summary>
@@ -144,8 +154,9 @@ namespace LoginCodeFirst.Services
                 Console.WriteLine(e);
                 return false;
             }
-            
         }
+        
+        /// <inheritdoc />
         /// <summary>
         /// DeleteAsync
         /// </summary>
@@ -161,23 +172,22 @@ namespace LoginCodeFirst.Services
                     _context.Category.Remove(category);
                     await _context.SaveChangesAsync();
                 }
-
                 return true;
             }
             catch (Exception e)
             {
                 Console.WriteLine(e);
                 return false;
-            }
-           
+            }        
         }
 
+        /// <inheritdoc />
         /// <summary>
         /// IsExistedName
         /// </summary>
         /// <param name="name">Category Name</param>
         /// <param name="id">Category Id</param>
-        /// <returns>ExistedName</returns>
+        /// <returns>ExistedName?</returns>
         public bool IsExistedName(string name,int id)
         {
             return  _context.Category.Any(x => x.CategoryName == name && x.CategoryId != id);

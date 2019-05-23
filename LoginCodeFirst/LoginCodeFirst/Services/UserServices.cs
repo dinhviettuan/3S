@@ -12,13 +12,13 @@ using TaskTranning.Infrastructure;
 namespace LoginCodeFirst.Services
 {
     public interface IUserServices
-    {
-       
+    {  
         /// <summary>
         /// GetUserListAsync
         /// </summary>
         /// <returns>ListUser</returns>
         Task<List<IndexViewModel>> GetUserListAsync();
+        
         /// <summary>
         /// GetIdAsync
         /// </summary>
@@ -68,13 +68,15 @@ namespace LoginCodeFirst.Services
         /// <param name="id">User Id</param>
         /// <returns>ExistedName</returns>
         bool IsExistedName(string email, int id);
+        
         /// <summary>
         /// Login
         /// </summary>
         /// <param name="email">Email</param>
         /// <param name="password">Password</param>
-        /// <returns>Login</returns>
+        /// <returns>Login?</returns>
         bool Login(string email, string password);
+        
         /// <summary>
         /// GetEmail
         /// </summary>
@@ -82,7 +84,6 @@ namespace LoginCodeFirst.Services
         /// <returns>IndexViewModel</returns>
         Task<IndexViewModel> GetEmail(string email);
     }
-
 
     public class UserServices : IUserServices
     {
@@ -93,8 +94,14 @@ namespace LoginCodeFirst.Services
             _context = context;
             _mapper = mapper;
         }
-
-        
+ 
+        /// <inheritdoc />
+        /// <summary>
+        /// Login
+        /// </summary>
+        /// <param name="email">Email</param>
+        /// <param name="password">Password</param>
+        /// <returns>Login?</returns>
         public bool Login(string email, string password)
         {
             if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(password))
@@ -110,6 +117,12 @@ namespace LoginCodeFirst.Services
             return true;
         }
         
+        /// <inheritdoc />
+        /// <summary>
+        /// GetEmail
+        /// </summary>
+        /// <param name="email"></param>
+        /// <returns></returns>
         public async Task<IndexViewModel> GetEmail(string email)
         {
             var findEmail = await _context.User.FirstOrDefaultAsync(x => x.Email == email);
@@ -117,20 +130,20 @@ namespace LoginCodeFirst.Services
             return getEmail;
         }
        
+        /// <inheritdoc />
         /// <summary>
         /// GetUserListAsync
         /// </summary>
         /// <returns>ListUser</returns>
-
         public async Task<List<IndexViewModel>> GetUserListAsync()
         {
             var users = await _context.User
                 .Include(u => u.Store)
                 .ToListAsync();
             var list = _mapper.Map<List<IndexViewModel>>(users);
-            return list;
-         
+            return list;         
         }
+        
         /// <summary>
         /// GetIdAsync
         /// </summary>
@@ -142,6 +155,7 @@ namespace LoginCodeFirst.Services
             var userViewModel = _mapper.Map<EditViewModel>(user);
             return userViewModel;
         }
+        
         /// <inheritdoc />
         /// <summary>
         /// GetEditPasswordAsync
@@ -154,7 +168,8 @@ namespace LoginCodeFirst.Services
             var passwordViewModel = _mapper.Map<PasswordViewModel>(user);
             return passwordViewModel;
         }
-
+        
+        /// <inheritdoc />
         /// <summary>
         /// AddAsync
         /// </summary>
@@ -183,6 +198,8 @@ namespace LoginCodeFirst.Services
                 return false;
             }     
         }
+        
+        /// <inheritdoc />
         /// <summary>
         /// EditAsync
         /// </summary>
@@ -205,10 +222,10 @@ namespace LoginCodeFirst.Services
             {
                 Console.WriteLine(e);
                 return false;
-            }
-            
+            }        
         }
 
+        /// <inheritdoc />
         /// <summary>
         /// EditPasswordAsync
         /// </summary>
@@ -228,9 +245,10 @@ namespace LoginCodeFirst.Services
             {
                 Console.WriteLine(e);
                 return false;
-            }
-            
+            }          
         }
+        
+        /// <inheritdoc />
         /// <summary>
         /// DeleteAsync
         /// </summary>
@@ -249,16 +267,16 @@ namespace LoginCodeFirst.Services
             {
                 Console.WriteLine(e);
                 return false;
-            }
-            
+            }         
         }
         
+        /// <inheritdoc />
         /// <summary>
         /// IsExistedName
         /// </summary>
         /// <param name="email">User email</param>
         /// <param name="id">User Id</param>
-        /// <returns>ExistedName</returns>
+        /// <returns>ExistedName?</returns>
         public bool IsExistedName(string email,int id)
         {
             return  _context.User.Any(x => x.Email == email && x.UserId != id);

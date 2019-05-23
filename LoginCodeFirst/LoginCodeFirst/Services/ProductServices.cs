@@ -17,35 +17,41 @@ namespace LoginCodeFirst.Services
         /// </summary>
         /// <returns>Products</returns>
         IEnumerable<Product> GetProducts();
+        
         /// <summary>
         /// GetProductListAsync
         /// </summary>
         /// <returns>ListProduct</returns>
         Task<List<ProductViewModel>> GetProductListAsync();
+        
         /// <summary>
         /// AddAsync
         /// </summary>
         /// <param name="product">ProductViewModel</param>
         /// <returns>Could be Addted?</returns>
         Task<bool> AddAsync(ProductViewModel product);
+        
         /// <summary>
         /// GetIdAsync
         /// </summary>
         /// <param name="id">Product Id</param>
         /// <returns>ProductViewModel</returns>
         Task<ProductViewModel> GetIdAsync(int id);
+        
         /// <summary>
         /// EditAsync
         /// </summary>
         /// <param name="product">ProductViewModel</param>
         /// <returns>Could Be Editted</returns>
         Task<bool> EditAsync(ProductViewModel product);
+        
         /// <summary>
         /// DeleteAsync
         /// </summary>
         /// <param name="id">Product Id</param>
         /// <returns>Could Be Deleted?</returns>
         Task<bool> DeleteAsync(int id);
+        
         /// <summary>
         /// IsExistedName
         /// </summary>
@@ -59,7 +65,6 @@ namespace LoginCodeFirst.Services
     {
         private readonly CodeDataContext _context;
         private readonly IMapper _mapper;
-
 
         public ProductServices(CodeDataContext context, IMapper mapper)
         {
@@ -84,14 +89,13 @@ namespace LoginCodeFirst.Services
         /// <returns>ListProduct</returns>
         public async Task<List<ProductViewModel>> GetProductListAsync()
         {
-           var product = await _context.Product
-               .Include(p => p.Brand)
-               .Include(p => p.Category)
-               .ToListAsync();
-           var list = _mapper.Map<List<ProductViewModel>>(product);
+            var product = await _context.Product
+                .Include(p => p.Brand)
+                .Include(p => p.Category)
+                .ToListAsync();
+            var list = _mapper.Map<List<ProductViewModel>>(product);
             return list;
         }
-
 
         /// <inheritdoc />
         /// <summary>
@@ -116,8 +120,7 @@ namespace LoginCodeFirst.Services
                     ModelYear = product.ModelYear,
                     ListPrice = product.ListPrice,
                     Image = product.ImageFile.FileName
-                };
-            
+                };         
                 _context.Product.Add(products);
                 await _context.SaveChangesAsync();
                 return true;
@@ -126,9 +129,9 @@ namespace LoginCodeFirst.Services
             {
                 Console.WriteLine(e);
                 return false;
-            }
-           
+            }     
         }
+        
         /// <inheritdoc />
         /// <summary>
         /// GetIdAsync
@@ -141,6 +144,7 @@ namespace LoginCodeFirst.Services
             var list = _mapper.Map<ProductViewModel>(product);
             return list;
         }
+        
         /// <inheritdoc />
         /// <summary>
         /// EditAsync
@@ -167,9 +171,9 @@ namespace LoginCodeFirst.Services
             { 
                 Console.WriteLine(e);
                 return false;
-            }
-           
+            }       
         }
+        
         /// <summary>
         /// DeleteAsync
         /// </summary>
@@ -188,9 +192,9 @@ namespace LoginCodeFirst.Services
             {
                 Console.WriteLine(e);
                 return false;
-            }
-            
+            }         
         }
+        
         /// <inheritdoc />
         /// <summary>
         /// IsExistedName
@@ -201,7 +205,6 @@ namespace LoginCodeFirst.Services
         public bool IsExistedName(string name,int id)
         {
             return  _context.Product.Any(x => x.ProductName == name && x.ProductId != id);
-        }
-               
-        }
+        }         
     }
+}

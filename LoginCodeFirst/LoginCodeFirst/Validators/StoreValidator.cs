@@ -29,8 +29,6 @@ namespace LoginCodeFirst.Validators.Store
                    
             RuleFor(x => x.Email).EmailAddress()
                 .WithMessage(commonlocalizer.GetLocalizedHtmlString("msg_WithALetter"));
-            
-
         }
     }
 }

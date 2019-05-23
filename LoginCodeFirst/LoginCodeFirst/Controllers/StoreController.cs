@@ -54,7 +54,6 @@ namespace LoginCodeFirst.Controllers
         [HttpPost]
         public async Task<IActionResult> Add(StoreViewModel storeViewModel)
         {
-
             if (ModelState.IsValid)
             { 
                 var store = await _storeService.AddAsync(storeViewModel);
@@ -62,12 +61,10 @@ namespace LoginCodeFirst.Controllers
                 {
                     TempData["Success"] = _commonLocalizer.GetLocalizedHtmlString("msg_AddSuccess").ToString();
                     return RedirectToAction("Index");
-                }
-                
+                }                
                 ViewData["Error"] = _storeLocalizer.GetLocalizedHtmlString("err_AddStoreFailure");
                 return View(storeViewModel);
             }
-            ViewData["Error"] = _storeLocalizer.GetLocalizedHtmlString("err_AddStoreFailure");
             return View(storeViewModel);
         }
 
@@ -87,10 +84,10 @@ namespace LoginCodeFirst.Controllers
             if (getId == null)
             {
                 return NotFound();
-            }
- 
+            } 
             return View(getId);
         }
+        
         /// <summary>
         ///  Edit Store Post Function
         /// </summary>
@@ -99,10 +96,8 @@ namespace LoginCodeFirst.Controllers
         [HttpPost]
         public async Task<IActionResult> Edit(StoreViewModel storeViewModel)
         {
-
             if (ModelState.IsValid)
             {
-
                 var store = await _storeService.EditAsync(storeViewModel);
                 if (store)
                 {
@@ -112,7 +107,6 @@ namespace LoginCodeFirst.Controllers
                 ViewData["Error"] = _storeLocalizer.GetLocalizedHtmlString("err_EditStoreFailure");
                 return View(storeViewModel);
             }
-            ViewData["Error"] = _storeLocalizer.GetLocalizedHtmlString("err_EditStoreFailure");
             return View(storeViewModel);
         }
 

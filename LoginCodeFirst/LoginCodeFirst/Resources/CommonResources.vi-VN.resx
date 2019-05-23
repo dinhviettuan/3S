@@ -73,4 +73,7 @@
     <data name="msg_EditSuccess">
         <value>Sửa Thành Công</value>
     </data>
+    <data name="msg_DeleteError">
+        <value>Xóa Thất Bại</value>
+    </data>
 </root>

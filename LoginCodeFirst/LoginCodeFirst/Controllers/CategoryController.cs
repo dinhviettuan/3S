@@ -64,7 +64,6 @@ namespace LoginCodeFirst.Controllers
                 ViewData["Error"] =_categoryLocalizer.GetLocalizedHtmlString("err_AddCategoryFailure");
                 return View(categoryViewModel);
             }
-            ViewData["Error"] =_categoryLocalizer.GetLocalizedHtmlString("err_AddCategoryFailure");
             return View(categoryViewModel);
         }
 
@@ -109,7 +108,6 @@ namespace LoginCodeFirst.Controllers
                 ViewData["Error"] = _categoryLocalizer.GetLocalizedHtmlString("err_EditCategoryFailure");
                 return View(categoryViewModel);
             }
-            ViewData["Error"] = _categoryLocalizer.GetLocalizedHtmlString("err_EditCategoryFailure");
             return View(categoryViewModel);
         }
 

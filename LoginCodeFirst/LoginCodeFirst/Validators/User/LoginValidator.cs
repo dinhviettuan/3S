@@ -12,7 +12,7 @@ namespace LoginCodeFirst.Validators.User
             RuleFor(x => x.Password).NotNull().WithMessage(commonlocalizer.GetLocalizedHtmlString("msg_NotEmpty"));
             
             RuleFor(x => x.Email).EmailAddress().WithMessage(commonlocalizer.GetLocalizedHtmlString("msg_WithALetter"));
-            RuleFor(x => x.Password).MinimumLength(5).WithMessage(commonlocalizer.GetLocalizedHtmlString("msg_8Characters"));
+            RuleFor(x => x.Password).MinimumLength(8).WithMessage(commonlocalizer.GetLocalizedHtmlString("msg_8Characters"));
         }
     }
 }

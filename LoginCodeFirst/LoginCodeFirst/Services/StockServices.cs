@@ -10,22 +10,21 @@ namespace LoginCodeFirst.Services
 {
     public interface IStockServices
     {
-        /// <summary>
-        /// GetStocks
-        /// </summary>
-        /// <returns>Stocks</returns>
-        IEnumerable<Stock> GetStocks();
+       
+        
         /// <summary>
         /// GetStockListAsync
         /// </summary>
         /// <returns>ListStock</returns>
         Task<List<StockViewModel>> GetStockListAsync();
+        
         /// <summary>
         /// AddAsync
         /// </summary>
         /// <param name="stock">StockViewModel</param>
         /// <returns>Could Be Addted?</returns>
         Task<bool> AddAsync(StockViewModel stock);
+        
         /// <summary>
         /// GetIdAsync
         /// </summary>
@@ -33,12 +32,14 @@ namespace LoginCodeFirst.Services
         /// <param name="productId">Product Id</param>
         /// <returns>StockViewModel</returns>
         Task<StockViewModel> GetIdAsync(int storeId, int productId);
+        
         /// <summary>
         /// EditAsync
         /// </summary>
         /// <param name="stockViewModel">StockViewModel</param>
         /// <returns>Could Be Editted?</returns>
         Task<bool> EditAsync(StockViewModel stockViewModel);
+        
         /// <summary>
         /// DeleteAsync
         /// </summary>
@@ -53,21 +54,13 @@ namespace LoginCodeFirst.Services
         private readonly CodeDataContext _context;
         private readonly IMapper _mapper;
 
-
         public StockServices(CodeDataContext context, IMapper mapper)
         {
             _context = context;
             _mapper = mapper;
         }
-
-        /// <summary>
-        /// GetStocks
-        /// </summary>
-        /// <returns>Stocks</returns>
-        public IEnumerable<Stock> GetStocks()
-        {
-            return _context.Stock;
-        }
+        
+        /// <inheritdoc />
         /// <summary>
         /// GetStockListAsync
         /// </summary>
@@ -81,6 +74,8 @@ namespace LoginCodeFirst.Services
             var list = _mapper.Map<List<StockViewModel>>(stocks);
             return list;
         }
+        
+        /// <inheritdoc />
         /// <summary>
         /// AddAsync
         /// </summary>
@@ -112,9 +107,10 @@ namespace LoginCodeFirst.Services
             {
                 Console.WriteLine(e);
                 return false;
-            }
-            
+            }            
         }
+        
+        /// <inheritdoc />
         /// <summary>
         /// GetIdAsync
         /// </summary>
@@ -127,6 +123,8 @@ namespace LoginCodeFirst.Services
             var getViewModel = _mapper.Map<StockViewModel>(stock);
             return getViewModel;
         }
+        
+        /// <inheritdoc />
         /// <summary>
         /// EditAsync
         /// </summary>
@@ -148,9 +146,10 @@ namespace LoginCodeFirst.Services
             {
                 Console.WriteLine(e);
                 return false;
-            }
-            
+            }        
         }
+        
+        /// <inheritdoc />
         /// <summary>
         /// DeleteAsync
         /// </summary>
@@ -170,8 +169,7 @@ namespace LoginCodeFirst.Services
             {
                 Console.WriteLine(e);
                 return false;
-            }
-            
+            }       
         }
     }
 }

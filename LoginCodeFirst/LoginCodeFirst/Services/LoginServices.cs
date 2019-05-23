@@ -1,5 +1,4 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using LoginCodeFirst.Models;
 using Microsoft.EntityFrameworkCore;
 using TaskTranning.Infrastructure;
@@ -40,14 +39,13 @@ namespace LoginCodeFirst.Services
         /// <returns>LoginViewModel</returns>
         public async Task<bool> LoginAsync(string email, string password)
         {
-                if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(password))
-                {
-                    return false;
-                }
-
-                var user = await _context.User.FirstOrDefaultAsync(u =>
-                    u.Email == email && SecurePasswordHasher.Verify(password, u.Password));
-                return user != null;
+            if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(password))
+            {
+                return false;
+            }
+            var user = await _context.User.FirstOrDefaultAsync(u =>
+                u.Email == email && SecurePasswordHasher.Verify(password, u.Password));
+            return user != null;
         }
     }
 }

@@ -1,11 +1,9 @@
 ﻿using FluentValidation;
-using LoginCodeFirst.Models;
 using LoginCodeFirst.Resources;
 using LoginCodeFirst.Services;
 using LoginCodeFirst.ViewModels.Product;
-using Microsoft.Extensions.Localization;
 
-namespace LoginCodeFirst.Validators.Product
+namespace LoginCodeFirst.Validators
 {
     public class ProductValidator : AbstractValidator<ProductViewModel>
     {
@@ -18,7 +16,7 @@ namespace LoginCodeFirst.Validators.Product
             RuleFor(x => x.ListPrice).NotNull()
                 .WithMessage(commonlocalizer.GetLocalizedHtmlString("msg_NotEmpty"));
             
-            RuleFor(x => x.ProductName).Must((Reg,c) => !productServices.IsExistedName(Reg.ProductName,Reg.ProductId))
+            RuleFor(x => x.ProductName).Must((reg,c) => !productServices.IsExistedName(reg.ProductName,reg.ProductId))
                 .WithMessage((reg,c) => string.Format(commonlocalizer.GetLocalizedHtmlString("msg_AlreadyExists"),c));
             
             

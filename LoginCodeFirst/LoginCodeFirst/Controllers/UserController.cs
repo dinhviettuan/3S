@@ -31,10 +31,10 @@ namespace LoginCodeFirst.Controllers
         }
 
 
-         /// <summary>
-         /// Index User Get Funciton
-         /// </summary>
-         /// <returns>User Index View</returns>
+        /// <summary>
+        /// Index User Get Funciton
+        /// </summary>
+        /// <returns>User Index View</returns>
         [HttpGet]
         public async Task<IActionResult> Index()
         {
@@ -64,7 +64,6 @@ namespace LoginCodeFirst.Controllers
         {
             if (ModelState.IsValid)
             {
-
                 var user = await _userService.AddAsync(userViewModel);
                 if (user)
                 {
@@ -77,7 +76,6 @@ namespace LoginCodeFirst.Controllers
                 return View(userViewModel);
             }
             ViewBag.StoreId = new SelectList(_storeServices.GetStores(), "Id", "StoreName", userViewModel.StoreId);
-            ViewData["Error"] = _userLocalizer.GetLocalizedHtmlString("err_AddUserFailure");
             return View(userViewModel);
         }
 
@@ -93,13 +91,13 @@ namespace LoginCodeFirst.Controllers
             {
                 return BadRequest();
             }
-            var getId = await _userService.GetIdAsync(id.Value);
-            if (getId == null)
+            var user = await _userService.GetIdAsync(id.Value);
+            if (user == null)
             {
                 return BadRequest();
             }
             ViewBag.StoreId = new SelectList(_storeServices.GetStores(), "Id", "StoreName");
-            return View(getId);
+            return View(user);
         }
 
         /// <summary>
@@ -110,7 +108,6 @@ namespace LoginCodeFirst.Controllers
         [HttpPost]
         public async Task<IActionResult> Edit(EditViewModel userViewModel)
         {
-
             if (ModelState.IsValid)
             {
                 var user = await _userService.EditAsync(userViewModel);
@@ -125,7 +122,6 @@ namespace LoginCodeFirst.Controllers
                 return View(userViewModel);
             }
             ViewBag.StoreId = new SelectList(_storeServices.GetStores(), "Id", "StoreName", userViewModel.StoreId);
-            ViewData["Error"] = _userLocalizer.GetLocalizedHtmlString("err_EditUserFailure");
             return View(userViewModel);
         }
 
@@ -141,12 +137,12 @@ namespace LoginCodeFirst.Controllers
             {
                 return BadRequest();
             }
-                var getId = await _userService.GetEditPasswordAsync(id.Value);
-                if (getId == null)
-                {
-                    return BadRequest();
-                }
-                return PartialView("_ChangePassword", getId);
+            var getId = await _userService.GetEditPasswordAsync(id.Value);
+            if (getId == null)
+            {
+                return BadRequest();
+            }
+            return PartialView("_ChangePassword", getId);
         }
 
         /// <summary>
@@ -168,7 +164,6 @@ namespace LoginCodeFirst.Controllers
                 ViewData["Error"] = _userLocalizer.GetLocalizedHtmlString("err_EditPasswordFailure");
                 return PartialView("_ChangePassword",userViewModel); 
             }
-            ViewData["Error"] = _userLocalizer.GetLocalizedHtmlString("err_EditPasswordFailure");
             return PartialView("_ChangePassword",userViewModel);
         }
 
@@ -184,14 +179,14 @@ namespace LoginCodeFirst.Controllers
             {
                 return BadRequest();
             }
-           var user = await _userService.DeleteAsync(id.Value);
+            var user = await _userService.DeleteAsync(id.Value);
             if (user)
             {
                 TempData["Success"] = _commonLocalizer.GetLocalizedHtmlString("msg_DeleteSuccess").ToString();
                 return RedirectToAction("Index");
             } 
-                TempData["Error"] = _commonLocalizer.GetLocalizedHtmlString("msg_DeleteError").ToString();
-                return RedirectToAction("Index");
+            TempData["Error"] = _commonLocalizer.GetLocalizedHtmlString("msg_DeleteError").ToString();
+            return RedirectToAction("Index");
         }
     }
 }

@@ -17,35 +17,41 @@ namespace LoginCodeFirst.Services
         /// </summary>
         /// <returns>Stores</returns>
         IEnumerable<Store> GetStores();
+        
         /// <summary>
         /// GetStoreListAsync
         /// </summary>
         /// <returns>ListStore</returns>
         Task<List<StoreViewModel>> GetStoreListAsync();
+        
         /// <summary>
         /// AddAsync
         /// </summary>
         /// <param name="store">StoreViewModel</param>
         /// <returns>Could Be Addted?</returns>
         Task<bool> AddAsync(StoreViewModel store);
+        
         /// <summary>
         /// GetIdAsync
         /// </summary>
         /// <param name="id">Store Id</param>
         /// <returns>StoreViewModel</returns>
         Task<StoreViewModel> GetIdAsync(int id);
+        
         /// <summary>
         /// EditAsync
         /// </summary>
         /// <param name="store">StoreViewModel</param>
         /// <returns>Could Be Editted?</returns>
         Task<bool> EditAsync(StoreViewModel store);
+        
         /// <summary>
         /// DeleteAsync
         /// </summary>
         /// <param name="id">Store Id</param>
         /// <returns>Could Be Deleted?</returns>
         Task<bool> DeleteAsync(int id);
+        
         /// <summary>
         /// IsExistedName
         /// </summary>
@@ -53,8 +59,6 @@ namespace LoginCodeFirst.Services
         /// <param name="id">Store Id</param>
         /// <returns>ExistedName</returns>
         bool IsExistedName(string name, int id);
-
-
     }
 
     public class StoreServices : IStoreServices
@@ -77,6 +81,8 @@ namespace LoginCodeFirst.Services
         {
             return _context.Store;
         }
+        
+        /// <inheritdoc />
         /// <summary>
         /// GetStoreListAsync
         /// </summary>
@@ -87,6 +93,8 @@ namespace LoginCodeFirst.Services
             var storeViewModels = _mapper.Map<List<StoreViewModel>>(stores);
             return storeViewModels;
         }
+        
+        /// <inheritdoc />
         /// <summary>
         /// AddAsync
         /// </summary>
@@ -98,7 +106,6 @@ namespace LoginCodeFirst.Services
             {
                 var stores = new Store
                 {
-
                     StoreName = store.StoreName,
                     Phone = store.Phone,
                     Email = store.Email,
@@ -106,8 +113,7 @@ namespace LoginCodeFirst.Services
                     City = store.City,
                     State = store.State,
                     ZipCode = store.ZipCode
-                };
-                  
+                };                 
                 _context.Store.Add(stores);
                 await _context.SaveChangesAsync();
                 return true;
@@ -116,9 +122,10 @@ namespace LoginCodeFirst.Services
             {
                 Console.WriteLine(e);
                 return false;
-            }
-          
+            }          
         }
+        
+        /// <inheritdoc />
         /// <summary>
         /// GetIdAsync
         /// </summary>
@@ -130,6 +137,8 @@ namespace LoginCodeFirst.Services
             var storeEditViewModel = _mapper.Map<StoreViewModel>(store);
             return storeEditViewModel;
         }
+        
+        /// <inheritdoc />
         /// <summary>
         /// EditAsync
         /// </summary>
@@ -159,6 +168,8 @@ namespace LoginCodeFirst.Services
                 return false;
             }
         }
+        
+        /// <inheritdoc />
         /// <summary>
         /// DeleteAsync
         /// </summary>
@@ -177,18 +188,19 @@ namespace LoginCodeFirst.Services
             {
                 Console.WriteLine(e);
                 return false;
-            }
-            
+            }          
         }
+        
+        /// <inheritdoc />
         /// <summary>
         /// IsExistedName
         /// </summary>
         /// <param name="email">Store Name</param>
         /// <param name="id">Store Id</param>
-        /// <returns>ExistedName</returns>
+        /// <returns>ExistedName?</returns>
         public bool IsExistedName(string email,int id)
         {
-            return  _context.Store.Any(x => x.Email == email && x.Id != id);
+            return _context.Store.Any(x => x.Email == email && x.Id != id);
         }
     }
 }
