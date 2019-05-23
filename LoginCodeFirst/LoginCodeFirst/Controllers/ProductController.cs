@@ -2,13 +2,14 @@
 using LoginCodeFirst.Filter;
 using LoginCodeFirst.Resources;
 using LoginCodeFirst.Services;
-using LoginCodeFirst.ViewModels.Product;
+using LoginCodeFirst.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace LoginCodeFirst.Controllers
 {
-    [ServiceFilter(typeof(ActionFilter))]
+    [Authorize]
     public class ProductController : Controller
     {
         private readonly IProductServices _productServices;
@@ -134,6 +135,7 @@ namespace LoginCodeFirst.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns>Product Index View</returns>
+        [Authorize(Roles = "User")]
         [HttpGet]
         public async Task<IActionResult> Delete(int? id)
         {

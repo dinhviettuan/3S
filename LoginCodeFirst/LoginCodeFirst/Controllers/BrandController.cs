@@ -3,11 +3,13 @@ using LoginCodeFirst.Filter;
 using LoginCodeFirst.Resources;
 using LoginCodeFirst.Services;
 using LoginCodeFirst.ViewModels.Brand;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace LoginCodeFirst.Controllers
 {
-    [ServiceFilter(typeof(ActionFilter))]
+//    [ServiceFilter(typeof(ActionFilter))]
+    [Authorize]
     public class BrandController : Controller
     {
         private readonly IBrandServices _brandServices;
@@ -117,6 +119,7 @@ namespace LoginCodeFirst.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns>Brand Index View</returns>
+        [Authorize(Roles = "User")]
         [HttpGet]
         public async  Task<IActionResult> Delete(int? id)
         {

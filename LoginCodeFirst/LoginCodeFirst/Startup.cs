@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Globalization;
 using AutoMapper;
 using FluentValidation.AspNetCore;
@@ -54,9 +55,15 @@ namespace LoginCodeFirst
             #region snippet1
             
             services.AddLocalization(options => options.ResourcesPath = "Resources");
-//            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
-                .AddCookie();
+                .AddCookie(options =>
+                {
+                    options.AccessDeniedPath = new PathString("/Error/401");
+                    options.LoginPath = new PathString("/Login/Login");
+                    options.ReturnUrlParameter = "RequestPath";
+                    options.SlidingExpiration = true;
+                    options.ExpireTimeSpan = TimeSpan.FromMinutes(30);
+                });
             services.Configure<RequestLocalizationOptions>(options =>
             {
                 var supportedCultures = new List<CultureInfo>

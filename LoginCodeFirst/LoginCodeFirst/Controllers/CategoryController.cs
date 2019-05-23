@@ -3,11 +3,13 @@ using LoginCodeFirst.Filter;
 using LoginCodeFirst.Resources;
 using LoginCodeFirst.Services;
 using LoginCodeFirst.ViewModels.Category;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace LoginCodeFirst.Controllers
 {
-    [ServiceFilter(typeof(ActionFilter))]
+//    [ServiceFilter(typeof(ActionFilter))]
+    [Authorize]
     public class CategoryController : Controller
     {
         private readonly ICategoryServices _categoryServices;
@@ -116,6 +118,7 @@ namespace LoginCodeFirst.Controllers
         /// </summary>
         /// <param name="id">Category id</param>
         /// <returns>Category Index View</returns>
+        [Authorize(Roles = "User")]
         [HttpGet]
         public async Task<IActionResult> Delete(int? id)
         {

@@ -68,8 +68,9 @@ namespace LoginCodeFirst.Controllers
                     HttpContext.Session.SetString("fullname",getEmail.FullName);
                     return RedirectToAction("Index","User");
                 }
+                ViewData["Error"] = _userLocalizer.GetLocalizedHtmlString("err_LoginFailure");
+                return View(login);
             }
-            ViewData["Error"] = _userLocalizer.GetLocalizedHtmlString("err_LoginFailure");
             return View(login);
         }
         

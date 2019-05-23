@@ -1,7 +1,7 @@
 ﻿using FluentValidation;
 using LoginCodeFirst.Resources;
 using LoginCodeFirst.Services;
-using LoginCodeFirst.ViewModels.Product;
+using LoginCodeFirst.ViewModels;
 
 namespace LoginCodeFirst.Validators
 {

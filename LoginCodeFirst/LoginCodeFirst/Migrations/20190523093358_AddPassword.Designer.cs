@@ -3,14 +3,16 @@ using LoginCodeFirst.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace LoginCodeFirst.Migrations
 {
     [DbContext(typeof(CodeDataContext))]
-    partial class CodeDataContextModelSnapshot : ModelSnapshot
+    [Migration("20190523093358_AddPassword")]
+    partial class AddPassword
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -190,7 +192,7 @@ namespace LoginCodeFirst.Migrations
                     b.Property<string>("Phone")
                         .HasMaxLength(100);
 
-                    b.Property<int>("Role");
+                    b.Property<string>("Role");
 
                     b.Property<int>("StoreId");
 
@@ -207,9 +209,9 @@ namespace LoginCodeFirst.Migrations
                             Email = "tuan1@gmail.com",
                             Fullname = "Dinh Viet Tuan",
                             IsActive = true,
-                            Password = "10000:4i+HfkR4PJZs4iWO7xqT22y2/p98NWNeh0qjRy3LUq7l6OTz",
+                            Password = "10000:FeE0tSfa0EYkMuYs+HZDpNbNj2FnVQaU9j/VPbQ4n7uT1i+Y",
                             Phone = "123456789",
-                            Role = 1,
+                            Role = "Admin",
                             StoreId = 1
                         },
                         new
@@ -218,9 +220,9 @@ namespace LoginCodeFirst.Migrations
                             Email = "tuan@gmail.com",
                             Fullname = "Dinh Viet Tuan",
                             IsActive = true,
-                            Password = "10000:rMO0ZX7I7whcvRG64+E7qam7ECjKNsYzJjjtl1Jcfqkm9ViC",
+                            Password = "10000:3cXPnf5tr5bkX6OZixIOrG3NXLRLMs0WsYXuEoQhKhHh+SjN",
                             Phone = "123456789",
-                            Role = 2,
+                            Role = "User",
                             StoreId = 1
                         });
                 });

@@ -8,5 +8,6 @@
             public string Phone { get; set; }
             public int StoreId { get; set; }
             public bool IsActive { get; set; }
+            public int Role { get; set; }
     }
 }

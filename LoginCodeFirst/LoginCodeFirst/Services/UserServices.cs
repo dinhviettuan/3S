@@ -17,7 +17,7 @@ namespace LoginCodeFirst.Services
         /// GetUserListAsync
         /// </summary>
         /// <returns>ListUser</returns>
-        Task<List<IndexViewModel>> GetUserListAsync();
+        Task<List<UserViewModel>> GetUserListAsync();
         
         /// <summary>
         /// GetIdAsync
@@ -38,7 +38,7 @@ namespace LoginCodeFirst.Services
         /// </summary>
         /// <param name="user">IndexViewModel</param>
         /// <returns>Could Be Addted?</returns>
-        Task<bool> AddAsync(IndexViewModel user);
+        Task<bool> AddAsync(UserViewModel user);
         
         /// <summary>
         /// EditAsync
@@ -82,7 +82,7 @@ namespace LoginCodeFirst.Services
         /// </summary>
         /// <param name="email">Email</param>
         /// <returns>IndexViewModel</returns>
-        Task<IndexViewModel> GetEmail(string email);
+        Task<UserViewModel> GetEmail(string email);
     }
 
     public class UserServices : IUserServices
@@ -123,10 +123,10 @@ namespace LoginCodeFirst.Services
         /// </summary>
         /// <param name="email"></param>
         /// <returns></returns>
-        public async Task<IndexViewModel> GetEmail(string email)
+        public async Task<UserViewModel> GetEmail(string email)
         {
             var findEmail = await _context.User.FirstOrDefaultAsync(x => x.Email == email);
-            var getEmail = _mapper.Map<IndexViewModel>(findEmail);
+            var getEmail = _mapper.Map<UserViewModel>(findEmail);
             return getEmail;
         }
        
@@ -135,12 +135,12 @@ namespace LoginCodeFirst.Services
         /// GetUserListAsync
         /// </summary>
         /// <returns>ListUser</returns>
-        public async Task<List<IndexViewModel>> GetUserListAsync()
+        public async Task<List<UserViewModel>> GetUserListAsync()
         {
             var users = await _context.User
                 .Include(u => u.Store)
                 .ToListAsync();
-            var list = _mapper.Map<List<IndexViewModel>>(users);
+            var list = _mapper.Map<List<UserViewModel>>(users);
             return list;         
         }
         
@@ -175,7 +175,7 @@ namespace LoginCodeFirst.Services
         /// </summary>
         /// <param name="userViewModel">IndexViewModel</param>
         /// <returns>Could Be Addted?</returns>
-        public async Task<bool> AddAsync(IndexViewModel userViewModel)
+        public async Task<bool> AddAsync(UserViewModel userViewModel)
         {
             try
             {

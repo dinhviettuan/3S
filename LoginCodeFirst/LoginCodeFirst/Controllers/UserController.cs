@@ -1,16 +1,16 @@
 ﻿using System.Threading.Tasks;
-using LoginCodeFirst.Filter;
 using LoginCodeFirst.Resources;
 using LoginCodeFirst.Services;
 using LoginCodeFirst.ViewModels.User;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
 
 namespace LoginCodeFirst.Controllers
 {
-    [ServiceFilter(typeof(ActionFilter))]
-
+//    [ServiceFilter(typeof(ActionFilter))]
+    [Authorize(Roles = "Admin")]
     public class UserController : Controller
     {
         private readonly ResourcesServices<CommonResources> _commonLocalizer;
@@ -60,7 +60,7 @@ namespace LoginCodeFirst.Controllers
         /// <param name="userViewModel"></param>
         /// <returns>User Index View</returns>
         [HttpPost]
-        public async Task<IActionResult> Add(IndexViewModel userViewModel)
+        public async Task<IActionResult> Add(UserViewModel userViewModel)
         {
             if (ModelState.IsValid)
             {

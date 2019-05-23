@@ -1,7 +1,6 @@
 ﻿using AutoMapper;
 using LoginCodeFirst.ViewModels.Brand;
 using LoginCodeFirst.ViewModels.Category;
-using LoginCodeFirst.ViewModels.Product;
 using LoginCodeFirst.ViewModels.Stock;
 using LoginCodeFirst.ViewModels.Store;
 using LoginCodeFirst.ViewModels.User;
@@ -21,7 +20,7 @@ namespace LoginCodeFirst.ViewModels
                 
                 CreateMap<Models.User, LoginViewModel>();
                 CreateMap<Models.User, PasswordViewModel>();
-                CreateMap<Models.User, IndexViewModel>();
+                CreateMap<Models.User, UserViewModel>();
                 
             }
         }

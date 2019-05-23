@@ -5,7 +5,7 @@ using LoginCodeFirst.ViewModels.User;
 
 namespace LoginCodeFirst.Validators.User
 {
-    public class UserValidator : AbstractValidator<IndexViewModel>
+    public class UserValidator : AbstractValidator<UserViewModel>
     {
         public UserValidator(ResourcesServices<CommonResources> commonlocalizer,IUserServices userServices)
         {

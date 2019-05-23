@@ -5,7 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using LoginCodeFirst.Models;
-using LoginCodeFirst.ViewModels.Product;
+using LoginCodeFirst.ViewModels;
 using Microsoft.EntityFrameworkCore;
 
 namespace LoginCodeFirst.Services

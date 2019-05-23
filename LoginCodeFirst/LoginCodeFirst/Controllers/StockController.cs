@@ -1,14 +1,14 @@
 ﻿using System.Threading.Tasks;
-using LoginCodeFirst.Filter;
 using LoginCodeFirst.Resources;
 using LoginCodeFirst.Services;
 using LoginCodeFirst.ViewModels.Stock;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace LoginCodeFirst.Controllers
 {
-    [ServiceFilter(typeof(ActionFilter))]
+    [Authorize]
     public class StockController : Controller
     {
         private readonly IStockServices _stockServices;
@@ -136,6 +136,7 @@ namespace LoginCodeFirst.Controllers
         /// <param name="storeId"></param>
         /// <param name="productId"></param>
         /// <returns>Stock Index View</returns>
+        [Authorize(Roles = "User")]
         [HttpGet]
         public async Task<IActionResult> Delete(int? storeId, int? productId)
         {

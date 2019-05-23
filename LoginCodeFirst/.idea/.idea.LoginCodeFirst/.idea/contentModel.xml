@@ -26,6 +26,10 @@
           <e p="20190523061801_AddRelationships.cs" t="Include" />
           <e p="20190523070154_UpdatePassword.Designer.cs" t="Include" />
           <e p="20190523070154_UpdatePassword.cs" t="Include" />
+          <e p="20190523093358_AddPassword.Designer.cs" t="Include" />
+          <e p="20190523093358_AddPassword.cs" t="Include" />
+          <e p="20190523104048_AddRole.Designer.cs" t="Include" />
+          <e p="20190523104048_AddRole.cs" t="Include" />
           <e p="CodeDataContextModelSnapshot.cs" t="Include" />
         </e>
         <e p="Models" t="Include">
@@ -113,8 +117,8 @@
           <e p="StoreViewModel.cs" t="Include" />
           <e p="User" t="Include">
             <e p="EditViewModel.cs" t="Include" />
-            <e p="IndexViewModel.cs" t="Include" />
             <e p="PasswordViewModel.cs" t="Include" />
+            <e p="UserViewModel.cs" t="Include" />
           </e>
         </e>
         <e p="Views" t="Include">
@@ -4652,6 +4656,7 @@
           </e>
           <e p="favicon.ico" t="Include" />
           <e p="images" t="Include">
+            <e p="baseline-people-24px.svg" t="Include" />
             <e p="download.jpeg" t="Include" />
             <e p="n-5-l-eau-packshot-default-105510-8817973657630.jpg" t="Include" />
           </e>

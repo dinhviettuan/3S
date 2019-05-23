@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Microsoft.AspNetCore.Http;
 
-namespace LoginCodeFirst.ViewModels.Product
+namespace LoginCodeFirst.ViewModels
 {
     public class ProductViewModel
     {

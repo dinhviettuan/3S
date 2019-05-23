@@ -10,15 +10,13 @@ namespace LoginCodeFirst.Models
             : base(options)
         {
         }
-
         public DbSet<Store> Store { get; set;}
         public DbSet<User> User { get; set; }
         public DbSet<Category> Category { get; set; }
         public DbSet<Brand> Brand { get; set; }
         public DbSet<Product> Product { get; set; }
         public DbSet<Stock> Stock { get; set; }
-        
-        
+               
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<User>()
@@ -39,8 +37,8 @@ namespace LoginCodeFirst.Models
                 .Property(t => t.IsActive);
             modelBuilder.Entity<User>()
                 .Property(t => t.StoreId);
-            modelBuilder.Entity<User>()
-                .Property(t => t.Role);
+//            modelBuilder.Entity<User>()
+//                .Property(t => t.Role);
             
             modelBuilder.Entity<Store>()
                 .Property(t => t.StoreName)
@@ -66,16 +64,13 @@ namespace LoginCodeFirst.Models
             modelBuilder.Entity<Store>()
                 .Property(t => t.ZipCode)
                 .HasMaxLength(5);
-            
-            
+                        
             modelBuilder.Entity<Category>()
                 .Property(t => t.CategoryName);
-//            
-//            
+          
             modelBuilder.Entity<Brand>()
                 .Property(t => t.BrandName);
-
-//            
+            
             modelBuilder.Entity<Product>()
                 .Property(t => t.ProductName);
             modelBuilder.Entity<Product>()
@@ -88,16 +83,14 @@ namespace LoginCodeFirst.Models
                 .Property(t => t.ListPrice);
             modelBuilder.Entity<Product>()
                 .Property(t => t.Image);
-//            
+            
             modelBuilder.Entity<Stock>()
                 .Property(t => t.StoreId);
             modelBuilder.Entity<Stock>()
                 .Property(t => t.ProductId);
             modelBuilder.Entity<Stock>()
                 .Property(t => t.Quantity);
-            
-
-            
+                        
 //             Khoa ngoai tu bang Product sang category, brand 
             modelBuilder.Entity<Product>().HasOne(d => d.Category)
                 .WithMany(p => p.Products)
@@ -126,33 +119,31 @@ namespace LoginCodeFirst.Models
             modelBuilder.Entity<Product>().ToTable("Product");
             modelBuilder.Entity<Stock>().ToTable("Stock");
             modelBuilder.Entity<Stock>().HasKey(st => new {st.ProductId, st.StoreId});
-            
-           
+                       
             modelBuilder.Entity<User>().HasData(
                 new User
                 {
                     UserId = 1,
                     Email = "tuan1@gmail.com",
-                    Password = SecurePasswordHasher.Hash("Aa@12345"),
+                    Password = SecurePasswordHasher.Hash("Aa123456"),
                     Fullname = "Dinh Viet Tuan",
                     Phone = "123456789",
                     StoreId = 1,
                     IsActive = true,
-                    Role = "Admin"
+//                    Role = 1
                 },
-            new User
-            {
-                UserId = 2,
-                Email = "tuan@gmail.com",
-                Password = SecurePasswordHasher.Hash("Aa@12345"),
-                Fullname = "Dinh Viet Tuan",
-                Phone = "123456789",
-                StoreId = 1,
-                IsActive = true,
-                Role = "User"
-            });
-            
-            
+                new User
+                {
+                    UserId = 2,
+                    Email = "tuan@gmail.com",
+                    Password = SecurePasswordHasher.Hash("Aa123456"),
+                    Fullname = "Dinh Viet Tuan",
+                    Phone = "123456789",
+                    StoreId = 1,
+                    IsActive = true,
+//                    Role = 2
+                });
+                  
             modelBuilder.Entity<Store>().HasData(
                 new Store
                 {
@@ -166,16 +157,13 @@ namespace LoginCodeFirst.Models
                     ZipCode = "20000"
                 });
             
-            
-
             modelBuilder.Entity<Category>().HasData(
                 new Category
                 {
                     CategoryId   = 1,
                     CategoryName = "tui sach"
                 });
-//
-//           
+            
             modelBuilder.Entity<Brand>().HasData(
                 new Brand
                 {
@@ -194,7 +182,7 @@ namespace LoginCodeFirst.Models
                     ListPrice = 123456,
                     Image = "wewqe"
                 });
-//
+
             modelBuilder.Entity<Stock>().HasData(
                 new Stock
                 {

@@ -13,6 +13,10 @@ namespace LoginCodeFirst.Validators.User
             
             RuleFor(x => x.Email).EmailAddress().WithMessage(commonlocalizer.GetLocalizedHtmlString("msg_WithALetter"));
             RuleFor(x => x.Password).MinimumLength(8).WithMessage(commonlocalizer.GetLocalizedHtmlString("msg_8Characters"));
+            
+            RuleFor(x => x.Password)
+                .Matches("^(?=.*[0-9])(?=.*[a-zA-Z])([a-zA-Z0-9]+)$")
+                .WithMessage(commonlocalizer.GetLocalizedHtmlString("msg_LettersAndNumbers"));       
         }
     }
 }
