@@ -1,5 +1,4 @@
 ﻿using System.Threading.Tasks;
-using LoginCodeFirst.Filter;
 using LoginCodeFirst.Resources;
 using LoginCodeFirst.Services;
 using LoginCodeFirst.ViewModels.Store;
@@ -27,7 +26,7 @@ namespace LoginCodeFirst.Controllers
 
 
         /// <summary>
-        /// Index Store Get Function
+        /// Index Store
         /// </summary>
         /// <returns>Store Index View</returns>
         [HttpGet]
@@ -38,7 +37,7 @@ namespace LoginCodeFirst.Controllers
         }
 
         /// <summary>
-        /// Add Store Get Function
+        /// Add Store
         /// </summary>
         /// <returns>Store Index View</returns>
         [HttpGet]
@@ -48,9 +47,9 @@ namespace LoginCodeFirst.Controllers
         }
 
         /// <summary>
-        /// Add Store Post Function
+        /// Add Store
         /// </summary>
-        /// <param name="storeViewModel"></param>
+        /// <param name="storeViewModel">StoreViewModel</param>
         /// <returns>Store Index View</returns>
         [HttpPost]
         public async Task<IActionResult> Add(StoreViewModel storeViewModel)
@@ -70,9 +69,9 @@ namespace LoginCodeFirst.Controllers
         }
 
         /// <summary>
-        /// Edit Store Get Function
+        /// Edit Store
         /// </summary>
-        /// <param name="id"></param>
+        /// <param name="id">Store Id</param>
         /// <returns>Store Index View</returns>
         [HttpGet]
         public async Task<IActionResult> Edit(int? id)
@@ -90,9 +89,9 @@ namespace LoginCodeFirst.Controllers
         }
         
         /// <summary>
-        ///  Edit Store Post Function
+        ///  Edit Store
         /// </summary>
-        /// <param name="storeViewModel"></param>
+        /// <param name="storeViewModel">StoreViewModel</param>
         /// <returns>Store Index View</returns>
         [HttpPost]
         public async Task<IActionResult> Edit(StoreViewModel storeViewModel)
@@ -112,9 +111,9 @@ namespace LoginCodeFirst.Controllers
         }
 
         /// <summary>
-        /// Delete Store Get Function
+        /// Delete Store
         /// </summary>
-        /// <param name="id"></param>
+        /// <param name="id">Store Id</param>
         /// <returns>Store Index View</returns>
         [Authorize(Roles = "User")] 
         [HttpGet]

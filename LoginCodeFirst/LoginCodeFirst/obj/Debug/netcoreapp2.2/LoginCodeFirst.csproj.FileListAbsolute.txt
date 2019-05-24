@@ -635,3 +635,5 @@ C:/3S-master/LoginCodeFirst/LoginCodeFirst/obj/Debug/netcoreapp2.2/LoginCodeFirs
 /home/local/3SI/tuan.dv/RiderProjects/3S/LoginCodeFirst/LoginCodeFirst/obj/Debug/netcoreapp2.2/LoginCodeFirst.dll
 /home/local/3SI/tuan.dv/RiderProjects/3S/LoginCodeFirst/LoginCodeFirst/obj/Debug/netcoreapp2.2/LoginCodeFirst.pdb
 /home/local/3SI/tuan.dv/RiderProjects/3S/LoginCodeFirst/LoginCodeFirst/obj/Debug/netcoreapp2.2/LoginCodeFirst.csproj.CopyComplete
+/home/local/3SI/tuan.dv/RiderProjects/3S/LoginCodeFirst/LoginCodeFirst/obj/Debug/netcoreapp2.2/Razor/Views/Error/Error404.g.cshtml.cs
+/home/local/3SI/tuan.dv/RiderProjects/3S/LoginCodeFirst/LoginCodeFirst/obj/Debug/netcoreapp2.2/Razor/Views/Shared/_LayoutError404.g.cshtml.cs

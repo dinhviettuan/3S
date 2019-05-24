@@ -28,8 +28,8 @@
           <e p="20190523070154_UpdatePassword.cs" t="Include" />
           <e p="20190523093358_AddPassword.Designer.cs" t="Include" />
           <e p="20190523093358_AddPassword.cs" t="Include" />
-          <e p="20190523104048_AddRole.Designer.cs" t="Include" />
-          <e p="20190523104048_AddRole.cs" t="Include" />
+          <e p="20190524040656_RemoveRole.Designer.cs" t="Include" />
+          <e p="20190524040656_RemoveRole.cs" t="Include" />
           <e p="CodeDataContextModelSnapshot.cs" t="Include" />
         </e>
         <e p="Models" t="Include">
@@ -135,6 +135,7 @@
           <e p="Error" t="Include">
             <e p="Error400.cshtml" t="Include" />
             <e p="Error401.cshtml" t="Include" />
+            <e p="Error404.cshtml" t="Include" />
           </e>
           <e p="Home" t="Include">
             <e p="Index.cshtml" t="Include" />
@@ -154,6 +155,7 @@
             <e p="_Layout.cshtml" t="Include" />
             <e p="_LayoutError.cshtml" t="Include" />
             <e p="_LayoutError400.cshtml" t="Include" />
+            <e p="_LayoutError404.cshtml" t="Include" />
             <e p="_LayoutLogin.cshtml" t="Include" />
             <e p="_LeftSidebarPartial.cshtml" t="Include" />
             <e p="_MenuPartial.cshtml" t="Include" />
@@ -4652,6 +4654,7 @@
           <e p="css" t="Include">
             <e p="Error.css" t="Include" />
             <e p="Error400.css" t="Include" />
+            <e p="Error404.css" t="Include" />
             <e p="site.css" t="Include" />
           </e>
           <e p="favicon.ico" t="Include" />

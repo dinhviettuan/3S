@@ -71,6 +71,9 @@
     <data name="btn_Save">
         <value>Lưu</value>
     </data>
+    <data name="lbl_Role">
+        <value>Vai trò</value>
+    </data>
     
     <data name="msg_EditPasswordSuccess">
         <value>Sửa Mật Khẩu Thành Công</value>

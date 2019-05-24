@@ -87,4 +87,7 @@
     <data name="btn_EditPassword">
         <value>Edit Password</value>
     </data>
+    <data name="lbl_Role">
+        <value>Role</value>
+    </data>
 </root>

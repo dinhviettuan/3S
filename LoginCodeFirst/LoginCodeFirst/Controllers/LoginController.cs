@@ -12,11 +12,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace LoginCodeFirst.Controllers
 {
-//    [Authorize]
     public class LoginController : Controller
-    {
-
-        
+    {        
         private readonly IUserServices _userServices;
         private readonly ResourcesServices<UserResources> _userLocalizer;
         
@@ -28,7 +25,7 @@ namespace LoginCodeFirst.Controllers
         }
 
         /// <summary>
-        /// Login Get Function
+        /// Login
         /// </summary>
         /// <returns>Login View</returns>
         [HttpGet]
@@ -40,32 +37,43 @@ namespace LoginCodeFirst.Controllers
         /// <summary>
         /// Login
         /// </summary>
-        /// <param name="login"></param>
-        /// <returns></returns>
+        /// <param name="login">Login</param>
+        /// <returns>Login</returns>
         [HttpPost]
         public async Task<IActionResult> Login(LoginViewModel login)
         { 
             if (ModelState.IsValid)
             { 
-                var claims = new List<Claim>
+                var isLogin = _userServices.Login(login.Email, login.Password);
+                if (isLogin)
                 {
-                    new Claim(ClaimTypes.Name, login.Email),
-                    new Claim("FullName", login.Email),
-                    new Claim(ClaimTypes.Role, "Admin"),
-                    new Claim(ClaimTypes.Role, "User")
-                };
-                var claimsIdentity = new ClaimsIdentity(
-                    claims, CookieAuthenticationDefaults.AuthenticationScheme);
-                var authProperties = new AuthenticationProperties();
-                await HttpContext.SignInAsync(
-                    CookieAuthenticationDefaults.AuthenticationScheme, 
-                    new ClaimsPrincipal(claimsIdentity), 
-                    authProperties);
-                var isValidator = _userServices.Login(login.Email, login.Password);
-                if (isValidator)
-                {
-                    var getEmail = await _userServices.GetEmail(login.Email);
-                    HttpContext.Session.SetString("fullname",getEmail.FullName);
+                    var user = await _userServices.GetEmail(login.Email);
+                    var role = "";
+                    if (user.Role == 1)
+                    {
+                        role = "Admin";
+                    }
+                    else if (user.Role == 2)
+                    {
+                        role = "User";
+                    }
+                    var claims = new List<Claim>
+                    {
+                        new Claim(ClaimTypes.Name, login.Email),
+                        new Claim("FullName", login.Email),
+                        new Claim(ClaimTypes.Role, role)
+                    };
+                    var claimsIdentity = new ClaimsIdentity(
+                        claims, CookieAuthenticationDefaults.AuthenticationScheme);
+                    var authProperties = new AuthenticationProperties();
+                    await HttpContext.SignInAsync(
+                        CookieAuthenticationDefaults.AuthenticationScheme, 
+                        new ClaimsPrincipal(claimsIdentity), 
+                        authProperties);
+
+                    
+                    
+                    HttpContext.Session.SetString("fullname",user.FullName);
                     return RedirectToAction("Index","User");
                 }
                 ViewData["Error"] = _userLocalizer.GetLocalizedHtmlString("err_LoginFailure");
@@ -75,7 +83,7 @@ namespace LoginCodeFirst.Controllers
         }
         
         /// <summary>
-        /// Logout Get Function
+        /// Logout
         /// </summary>
         /// <returns>Login View</returns>
         [HttpGet]

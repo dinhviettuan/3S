@@ -1,6 +1,5 @@
 ﻿@model List<LoginCodeFirst.ViewModels.User.UserViewModel>
 @{
-
     ViewBag.Title = UserLocalizer.GetLocalizedHtmlString("lbl_ListUser");
 }
 <div class="container-fluid">
@@ -40,7 +39,7 @@
                                     @UserLocalizer.GetLocalizedHtmlString("lbl_IsActive")
                                 </th>
                                 <th>
-                                    @CommonLocalizer.GetLocalizedHtmlString("lbl_Role")
+                                    @UserLocalizer.GetLocalizedHtmlString("lbl_Role")
                                 </th>
                                 <th>
                                     @CommonLocalizer.GetLocalizedHtmlString("lbl_Actions")

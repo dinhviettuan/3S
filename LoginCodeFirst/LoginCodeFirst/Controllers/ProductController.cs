@@ -1,5 +1,4 @@
 ﻿using System.Threading.Tasks;
-using LoginCodeFirst.Filter;
 using LoginCodeFirst.Resources;
 using LoginCodeFirst.Services;
 using LoginCodeFirst.ViewModels;
@@ -34,7 +33,7 @@ namespace LoginCodeFirst.Controllers
 
 
         /// <summary>
-        /// Index Product Get Function
+        /// Index Product
         /// </summary>
         /// <returns>Product Index View</returns>
         [HttpGet]
@@ -46,7 +45,7 @@ namespace LoginCodeFirst.Controllers
 
 
         /// <summary>
-        /// Add Product Get Function
+        /// Add Product
         /// </summary>
         /// <returns>Product Index View</returns>
         [HttpGet]
@@ -58,17 +57,17 @@ namespace LoginCodeFirst.Controllers
         }
 
         /// <summary>
-        /// Add Product Post Function
+        /// Add Product
         /// </summary>
-        /// <param name="productViewModel"></param>
+        /// <param name="productViewModel">ProductViewModel</param>
         /// <returns>Product Index View</returns>
         [HttpPost]
         public async Task<IActionResult> Add(ProductViewModel productViewModel)
         {
             if (ModelState.IsValid)
             {
-                var product = await _productServices.AddAsync(productViewModel);
-                if (product)
+                var products = await _productServices.AddAsync(productViewModel);
+                if (products)
                 {
                     TempData["Success"] = _commonLocalizer.GetLocalizedHtmlString("msg_AddSuccess").ToString();
                     return RedirectToAction("Index");
@@ -84,9 +83,9 @@ namespace LoginCodeFirst.Controllers
         }
 
         /// <summary>
-        /// Edit Product Get Function
+        /// Edit Product
         /// </summary>
-        /// <param name="id"></param>
+        /// <param name="id">Product Id</param>
         /// <returns>Product Index View</returns>
         [HttpGet]
         public async Task<IActionResult> Edit(int? id)
@@ -96,20 +95,20 @@ namespace LoginCodeFirst.Controllers
                 return BadRequest();
             }
 
-            var getId =  await _productServices.GetIdAsync(id.Value);
-            if (getId == null)
+            var product =  await _productServices.GetIdAsync(id.Value);
+            if (product == null)
             {
                 return BadRequest();
             }
             ViewBag.CategoryId = new SelectList(_categoryServices.GetCategorys(), "CategoryId", "CategoryName");
             ViewBag.BrandId = new SelectList(_brandServices.GetBrands(), "BrandId", "BrandName");
-            return View(getId);
+            return View(product);
         }
 
         /// <summary>
-        /// Edit Product Post Function
+        /// Edit Product
         /// </summary>
-        /// <param name="productViewModel"></param>
+        /// <param name="productViewModel">ProductViewModel</param>
         /// <returns>Product Index View</returns>
         [HttpPost]
         public async Task<IActionResult> Edit(ProductViewModel productViewModel)
@@ -131,9 +130,9 @@ namespace LoginCodeFirst.Controllers
         }
 
         /// <summary>
-        /// Delete Product Get Function
+        /// Delete Product
         /// </summary>
-        /// <param name="id"></param>
+        /// <param name="id">Product Id</param>
         /// <returns>Product Index View</returns>
         [Authorize(Roles = "User")]
         [HttpGet]

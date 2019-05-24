@@ -1,5 +1,4 @@
 ﻿using System.Threading.Tasks;
-using LoginCodeFirst.Filter;
 using LoginCodeFirst.Resources;
 using LoginCodeFirst.Services;
 using LoginCodeFirst.ViewModels.Category;
@@ -26,7 +25,7 @@ namespace LoginCodeFirst.Controllers
 
 
         /// <summary>
-        /// Index Category Get Function
+        /// Index Category
         /// </summary>
         /// <returns>Category Index View</returns>
         [HttpGet]
@@ -37,7 +36,7 @@ namespace LoginCodeFirst.Controllers
         }
 
         /// <summary>
-        ///  Add Category Get Function
+        ///  Add Category
         /// </summary>
         /// <returns>Category Index View</returns>
         [HttpGet]
@@ -47,14 +46,13 @@ namespace LoginCodeFirst.Controllers
         }
 
         /// <summary>
-        /// Add Category Post Function
+        /// Add Category
         /// </summary>
         /// <param name="categoryViewModel">CategoryViewModel</param>
         /// <returns>Category Index View</returns>
         [HttpPost]
         public async Task<IActionResult> Add(CategoryViewModel categoryViewModel)
         {
-
             if (ModelState.IsValid)
             {
                 var category = await _categoryServices.AddAsync(categoryViewModel);
@@ -98,7 +96,6 @@ namespace LoginCodeFirst.Controllers
         [HttpPost]
         public async Task<IActionResult> Edit(CategoryViewModel categoryViewModel)
         {
-
             if (ModelState.IsValid)
             {
                 var category = await _categoryServices.EditAsync(categoryViewModel);

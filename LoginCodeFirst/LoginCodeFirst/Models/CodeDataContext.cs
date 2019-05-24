@@ -37,8 +37,8 @@ namespace LoginCodeFirst.Models
                 .Property(t => t.IsActive);
             modelBuilder.Entity<User>()
                 .Property(t => t.StoreId);
-//            modelBuilder.Entity<User>()
-//                .Property(t => t.Role);
+            modelBuilder.Entity<User>()
+                .Property(t => t.Role);
             
             modelBuilder.Entity<Store>()
                 .Property(t => t.StoreName)
@@ -130,7 +130,7 @@ namespace LoginCodeFirst.Models
                     Phone = "123456789",
                     StoreId = 1,
                     IsActive = true,
-//                    Role = 1
+                    Role = 1
                 },
                 new User
                 {
@@ -141,7 +141,7 @@ namespace LoginCodeFirst.Models
                     Phone = "123456789",
                     StoreId = 1,
                     IsActive = true,
-//                    Role = 2
+                    Role = 2
                 });
                   
             modelBuilder.Entity<Store>().HasData(

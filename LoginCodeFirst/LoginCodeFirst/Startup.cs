@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Globalization;
 using AutoMapper;
 using FluentValidation.AspNetCore;
-using LoginCodeFirst.Filter;
 using LoginCodeFirst.Models;
 using LoginCodeFirst.Resources;
 using LoginCodeFirst.Services;
@@ -41,8 +40,7 @@ namespace LoginCodeFirst
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
             
-            services.AddAutoMapper();
-//           
+            services.AddAutoMapper();           
             services.AddSession();
             services.AddSingleton<ResourcesServices<BrandResources>>();
             services.AddSingleton<ResourcesServices<CommonResources>>();
@@ -68,7 +66,6 @@ namespace LoginCodeFirst
             {
                 var supportedCultures = new List<CultureInfo>
                 {
-
                     new CultureInfo("en-US"),
                     new CultureInfo("vi-VN")
                 };
@@ -79,7 +76,6 @@ namespace LoginCodeFirst
             });
 
             #endregion
-
             
             services.AddTransient<IUserServices, UserServices>();
             services.AddTransient<ICategoryServices, CategoryServices>();
@@ -87,7 +83,7 @@ namespace LoginCodeFirst
             services.AddTransient<IProductServices, ProductServices>();
             services.AddTransient<IStockServices, StockServices>();
             services.AddTransient<IStoreServices, StoreServices>(); 
-            services.AddScoped<ActionFilter>();
+//            services.AddScoped<ActionFilter>();
 
             services.AddDbContext<CodeDataContext>(item => item.UseSqlServer(Configuration.GetConnectionString("connectdb")));
             services.AddMvc()
@@ -97,7 +93,6 @@ namespace LoginCodeFirst
                 .AddViewLocalization()
                 .AddDataAnnotationsLocalization()
                 .SetCompatibilityVersion(CompatibilityVersion.Version_2_2).AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<LoginValidator>());
-
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -117,12 +112,16 @@ namespace LoginCodeFirst
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
+            
+            app.UseAuthentication();
+            
             app.UseSession();
             app.Use(async (context, next) =>
             {
-                await next();
+                
                 if (!context.Response.HasStarted && context.Response.StatusCode != StatusCodes.Status200OK)
-                {
+                {   
+                    await next();
                     switch (context.Response.StatusCode)
                     {
                         case StatusCodes.Status400BadRequest:
@@ -133,13 +132,12 @@ namespace LoginCodeFirst
                             context.Request.Path ="/Error/401";
                             await next();
                             break;
-                    }
+                    } 
                 }
             });
             #region snippet2
             var options = app.ApplicationServices.GetService<IOptions<RequestLocalizationOptions>>();
             app.UseRequestLocalization(options.Value);
-            app.UseAuthentication();
             #endregion
             app.UseMvc(routes =>
             {

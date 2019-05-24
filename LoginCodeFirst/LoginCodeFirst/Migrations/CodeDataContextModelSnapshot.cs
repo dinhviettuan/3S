@@ -3,7 +3,6 @@ using LoginCodeFirst.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace LoginCodeFirst.Migrations
 {
@@ -207,7 +206,7 @@ namespace LoginCodeFirst.Migrations
                             Email = "tuan1@gmail.com",
                             Fullname = "Dinh Viet Tuan",
                             IsActive = true,
-                            Password = "10000:4i+HfkR4PJZs4iWO7xqT22y2/p98NWNeh0qjRy3LUq7l6OTz",
+                            Password = "10000:sK3XxXBZO4L2um4IL56snrr/kijdQ4YRqDMu8bwtDh5QvrOP",
                             Phone = "123456789",
                             Role = 1,
                             StoreId = 1
@@ -218,7 +217,7 @@ namespace LoginCodeFirst.Migrations
                             Email = "tuan@gmail.com",
                             Fullname = "Dinh Viet Tuan",
                             IsActive = true,
-                            Password = "10000:rMO0ZX7I7whcvRG64+E7qam7ECjKNsYzJjjtl1Jcfqkm9ViC",
+                            Password = "10000:vkoj1s/Fe56e5nzqEx5tuWVC9xu9vogaQcxUXzD5B8yM6CTN",
                             Phone = "123456789",
                             Role = 2,
                             StoreId = 1

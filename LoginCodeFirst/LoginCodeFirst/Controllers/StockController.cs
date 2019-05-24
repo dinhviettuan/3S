@@ -54,9 +54,9 @@ namespace LoginCodeFirst.Controllers
         }
 
         /// <summary>
-        /// Add Stock Post Funciton
+        /// Add Stock
         /// </summary>
-        /// <param name="stockViewModel"></param>
+        /// <param name="stockViewModel">StockViewModel</param>
         /// <returns>Stock Index View</returns>
         [HttpPost]
         public async Task<IActionResult> Add(StockViewModel stockViewModel)
@@ -81,10 +81,10 @@ namespace LoginCodeFirst.Controllers
         }
 
         /// <summary>
-        /// Edit Stock Get Function
+        /// Edit Stock
         /// </summary>
-        /// <param name="storeId"></param>
-        /// <param name="productId"></param>
+        /// <param name="storeId">Store Id</param>
+        /// <param name="productId">Product Id</param>
         /// <returns>Stock Index View</returns>
         [HttpGet]
         public async Task<IActionResult> Edit(int? storeId, int? productId)
@@ -104,14 +104,13 @@ namespace LoginCodeFirst.Controllers
         }
 
         /// <summary>
-        /// Edit Stock Post Function
+        /// Edit Stock
         /// </summary>
-        /// <param name="stockViewModel"></param>
+        /// <param name="stockViewModel">StockViewModel</param>
         /// <returns>Stock Index View</returns>
         [HttpPost]
         public async Task<IActionResult> Edit(StockViewModel stockViewModel)
         {
-
             if (ModelState.IsValid)
             {
                   var stock =   await _stockServices.EditAsync(stockViewModel);
@@ -131,10 +130,10 @@ namespace LoginCodeFirst.Controllers
         }
 
         /// <summary>
-        /// Delete Stock Get Function
+        /// Delete Stock
         /// </summary>
-        /// <param name="storeId"></param>
-        /// <param name="productId"></param>
+        /// <param name="storeId">Store Id</param>
+        /// <param name="productId">Product Id</param>
         /// <returns>Stock Index View</returns>
         [Authorize(Roles = "User")]
         [HttpGet]

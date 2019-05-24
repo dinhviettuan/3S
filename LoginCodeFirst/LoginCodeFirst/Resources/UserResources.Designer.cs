@@ -177,5 +177,11 @@ namespace LoginCodeFirst.Resources {
                 return ResourceManager.GetString("btn_EditPassword", resourceCulture);
             }
         }
+        
+        public static string lbl_Role {
+            get {
+                return ResourceManager.GetString("lbl_Role", resourceCulture);
+            }
+        }
     }
 }

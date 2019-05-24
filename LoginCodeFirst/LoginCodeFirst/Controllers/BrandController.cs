@@ -1,5 +1,4 @@
 ﻿using System.Threading.Tasks;
-using LoginCodeFirst.Filter;
 using LoginCodeFirst.Resources;
 using LoginCodeFirst.Services;
 using LoginCodeFirst.ViewModels.Brand;
@@ -27,7 +26,7 @@ namespace LoginCodeFirst.Controllers
         
         
         /// <summary>
-        /// Index Brand Get Function
+        /// Index Brand
         /// </summary>
         /// <returns>Brand Index View</returns>
         [HttpGet]
@@ -38,7 +37,7 @@ namespace LoginCodeFirst.Controllers
         }
 
         /// <summary>
-        /// Add Brand Get Function
+        /// Add Brand
         /// </summary>
         /// <returns>Brand Index View</returns>
         [HttpGet]
@@ -47,14 +46,13 @@ namespace LoginCodeFirst.Controllers
             return View();
         }
         /// <summary>
-        /// Add Brand Post Function
+        /// Add Brand
         /// </summary>
-        /// <param name="brandViewModel"></param>
+        /// <param name="brandViewModel">BrandViewModel</param>
         /// <returns>Brand Index View</returns>
         [HttpPost]
         public async Task<IActionResult> Add(BrandViewModel brandViewModel)
         {
-
             if (ModelState.IsValid)
             { 
                 var  brand = await _brandServices.AddAsync(brandViewModel);
@@ -70,9 +68,9 @@ namespace LoginCodeFirst.Controllers
         }
 
         /// <summary>
-        /// Edit Brand Get Function
+        /// Edit Brand
         /// </summary>
-        /// <param name="id"></param>
+        /// <param name="id">Brand Id</param>
         /// <returns>Brand Index View</returns>
         [HttpGet]
         public async Task<IActionResult> Edit(int? id)
@@ -81,25 +79,22 @@ namespace LoginCodeFirst.Controllers
             {
                 return BadRequest();
             }
-            var getId = await _brandServices.GetIdAsync(id.Value);
-            if (getId == null)
+            var brand = await _brandServices.GetIdAsync(id.Value);
+            if (brand == null)
             {
                 return NotFound();
             }
-
-            return View(getId);
-
+            return View(brand);
         }
 
         /// <summary>
-        /// Edit Brand Post Function
+        /// Edit Brand
         /// </summary>
-        /// <param name="brandViewModel"></param>
+        /// <param name="brandViewModel">BrandViewModel</param>
         /// <returns>Brand Index View</returns>
         [HttpPost]
         public async Task<IActionResult> Edit(BrandViewModel brandViewModel)
         {
-
             if (ModelState.IsValid)
             {
                 var brand = await _brandServices.EditAsync(brandViewModel);
@@ -115,9 +110,9 @@ namespace LoginCodeFirst.Controllers
         }
 
         /// <summary>
-        /// Delete Brand Get Function
+        /// Delete Brand
         /// </summary>
-        /// <param name="id"></param>
+        /// <param name="id">Brand Id</param>
         /// <returns>Brand Index View</returns>
         [Authorize(Roles = "User")]
         [HttpGet]
@@ -126,8 +121,7 @@ namespace LoginCodeFirst.Controllers
             if (id == null)
             {
                 return BadRequest();
-            }
-            
+            }         
             var brand = await _brandServices.DeleteAsync(id.Value);
             if (brand)
             {
