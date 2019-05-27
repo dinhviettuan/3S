@@ -6,49 +6,45 @@ namespace LoginCodeFirst.Migrations
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.AlterColumn<int>(
+            migrationBuilder.DropColumn(
                 name: "Role",
-                table: "User",
-                nullable: false,
-                oldClrType: typeof(string),
-                oldNullable: true);
+                table: "User");
 
             migrationBuilder.UpdateData(
                 table: "User",
                 keyColumn: "UserId",
                 keyValue: 1,
-                columns: new[] { "Password", "Role" },
-                values: new object[] { "10000:sK3XxXBZO4L2um4IL56snrr/kijdQ4YRqDMu8bwtDh5QvrOP", 1 });
+                column: "Password",
+                value: "10000:xS8nrtH0x5oWNkRrZYCeYZdLc5NU/JRGqW811FBvXExJTCht");
 
             migrationBuilder.UpdateData(
                 table: "User",
                 keyColumn: "UserId",
                 keyValue: 2,
-                columns: new[] { "Password", "Role" },
-                values: new object[] { "10000:vkoj1s/Fe56e5nzqEx5tuWVC9xu9vogaQcxUXzD5B8yM6CTN", 2 });
+                column: "Password",
+                value: "10000:gMBOFhHDH8RDq2UAG+H6Sxy7MbrgU+P6pYuJ0IrS4UbFB0hw");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.AlterColumn<string>(
+            migrationBuilder.AddColumn<string>(
                 name: "Role",
                 table: "User",
-                nullable: true,
-                oldClrType: typeof(int));
+                nullable: true);
 
             migrationBuilder.UpdateData(
                 table: "User",
                 keyColumn: "UserId",
                 keyValue: 1,
-                columns: new[] { "Password", "Role" },
-                values: new object[] { "10000:B1En2ET+8j3OTdhCUMbkDWDoMhM0CMl4S18d5sDh8jjdGa4H", "1" });
+                column: "Password",
+                value: "10000:sK3XxXBZO4L2um4IL56snrr/kijdQ4YRqDMu8bwtDh5QvrOP");
 
             migrationBuilder.UpdateData(
                 table: "User",
                 keyColumn: "UserId",
                 keyValue: 2,
-                columns: new[] { "Password", "Role" },
-                values: new object[] { "10000:SLffoH9fszsxc8GOH7gGwbvjdPp2L47zoAcfq5al5WwRKexC", "1" });
+                column: "Password",
+                value: "10000:vkoj1s/Fe56e5nzqEx5tuWVC9xu9vogaQcxUXzD5B8yM6CTN");
         }
     }
 }

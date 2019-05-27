@@ -59,8 +59,9 @@ namespace LoginCodeFirst.Controllers
                     }
                     var claims = new List<Claim>
                     {
-                        new Claim(ClaimTypes.Name, login.Email),
-                        new Claim("FullName", login.Email),
+                        new Claim(ClaimTypes.Name, user.Email),
+                        new Claim("FullName", user.FullName),
+                        new Claim("Email", user.Email),
                         new Claim(ClaimTypes.Role, role)
                     };
                     var claimsIdentity = new ClaimsIdentity(
@@ -71,9 +72,6 @@ namespace LoginCodeFirst.Controllers
                         new ClaimsPrincipal(claimsIdentity), 
                         authProperties);
 
-                    
-                    
-                    HttpContext.Session.SetString("fullname",user.FullName);
                     return RedirectToAction("Index","User");
                 }
                 ViewData["Error"] = _userLocalizer.GetLocalizedHtmlString("err_LoginFailure");
@@ -91,7 +89,6 @@ namespace LoginCodeFirst.Controllers
         { 
             await HttpContext.SignOutAsync(
                 CookieAuthenticationDefaults.AuthenticationScheme);
-            HttpContext.Session.Remove("fullname");
             return RedirectToAction("Login");
         }
     }

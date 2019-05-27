@@ -15,9 +15,6 @@
           <e p="StoreController.cs" t="Include" />
           <e p="UserController.cs" t="Include" />
         </e>
-        <e p="Filter" t="Include">
-          <e p="ActionFilter.cs" t="Include" />
-        </e>
         <e p="LoginCodeFirst.csproj" t="IncludeRecursive" />
         <e p="Migrations" t="Include">
           <e p="20190523044430_AddDatabase.Designer.cs" t="Include" />
@@ -28,8 +25,8 @@
           <e p="20190523070154_UpdatePassword.cs" t="Include" />
           <e p="20190523093358_AddPassword.Designer.cs" t="Include" />
           <e p="20190523093358_AddPassword.cs" t="Include" />
-          <e p="20190524040656_RemoveRole.Designer.cs" t="Include" />
-          <e p="20190524040656_RemoveRole.cs" t="Include" />
+          <e p="20190527110839_RemoveRole.Designer.cs" t="Include" />
+          <e p="20190527110839_RemoveRole.cs" t="Include" />
           <e p="CodeDataContextModelSnapshot.cs" t="Include" />
         </e>
         <e p="Models" t="Include">

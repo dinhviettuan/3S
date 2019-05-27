@@ -118,10 +118,9 @@ namespace LoginCodeFirst
             app.UseSession();
             app.Use(async (context, next) =>
             {
-                
+                await next();
                 if (!context.Response.HasStarted && context.Response.StatusCode != StatusCodes.Status200OK)
                 {   
-                    await next();
                     switch (context.Response.StatusCode)
                     {
                         case StatusCodes.Status400BadRequest:

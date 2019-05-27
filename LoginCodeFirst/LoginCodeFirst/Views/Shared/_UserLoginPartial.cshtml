@@ -1,14 +1,13 @@
-﻿@using Microsoft.AspNetCore.Http
-
-@if (Context.Session.GetString("fullname") != null)
+﻿
+@if (User.Claims.FirstOrDefault(claim => claim.Type == "FullName") != null)
 {
     <div class="user-info">
         <div class="image">
             <img src="~/admin/images/user.png" width="48" height="48" alt="User" />
         </div>
         <div class="info-container">
-            <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Admin</div>
-            <div class="email">@Context.Session.GetString("fullname")</div>
+            <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">@User.Claims.FirstOrDefault(claim => claim.Type == "FullName")</div>
+            <div class="email">@User.Claims.FirstOrDefault(claim => claim.Type == "Email")</div>
             <div class="btn-group user-helper-dropdown">
                 <i class="material-icons" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">keyboard_arrow_down</i>
                 <ul class="dropdown-menu pull-right" style="">

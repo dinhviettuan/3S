@@ -3,6 +3,7 @@ using LoginCodeFirst.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace LoginCodeFirst.Migrations
 {
@@ -13,7 +14,7 @@ namespace LoginCodeFirst.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "2.2.0-rtm-35687")
+                .HasAnnotation("ProductVersion", "2.2.4-servicing-10062")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
@@ -189,8 +190,6 @@ namespace LoginCodeFirst.Migrations
                     b.Property<string>("Phone")
                         .HasMaxLength(100);
 
-                    b.Property<int>("Role");
-
                     b.Property<int>("StoreId");
 
                     b.HasKey("UserId");
@@ -206,9 +205,8 @@ namespace LoginCodeFirst.Migrations
                             Email = "tuan1@gmail.com",
                             Fullname = "Dinh Viet Tuan",
                             IsActive = true,
-                            Password = "10000:sK3XxXBZO4L2um4IL56snrr/kijdQ4YRqDMu8bwtDh5QvrOP",
+                            Password = "10000:xS8nrtH0x5oWNkRrZYCeYZdLc5NU/JRGqW811FBvXExJTCht",
                             Phone = "123456789",
-                            Role = 1,
                             StoreId = 1
                         },
                         new
@@ -217,9 +215,8 @@ namespace LoginCodeFirst.Migrations
                             Email = "tuan@gmail.com",
                             Fullname = "Dinh Viet Tuan",
                             IsActive = true,
-                            Password = "10000:vkoj1s/Fe56e5nzqEx5tuWVC9xu9vogaQcxUXzD5B8yM6CTN",
+                            Password = "10000:gMBOFhHDH8RDq2UAG+H6Sxy7MbrgU+P6pYuJ0IrS4UbFB0hw",
                             Phone = "123456789",
-                            Role = 2,
                             StoreId = 1
                         });
                 });
