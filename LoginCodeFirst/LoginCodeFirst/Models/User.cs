@@ -12,7 +12,7 @@ namespace LoginCodeFirst.Models
         public string Fullname { get; set; }
         public string Phone { get; set; }
         public bool IsActive { get; set; }
-//        public int Role { get; set; }
+        public int Role { get; set; }
         
         public virtual Store Store { get; set; }
     }

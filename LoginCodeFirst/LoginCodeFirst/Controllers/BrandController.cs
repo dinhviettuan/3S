@@ -4,6 +4,8 @@ using LoginCodeFirst.Services;
 using LoginCodeFirst.ViewModels.Brand;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
+using Serilog;
 
 namespace LoginCodeFirst.Controllers
 {
@@ -23,8 +25,7 @@ namespace LoginCodeFirst.Controllers
             _commonLocalizer = commonLocalizer;
             _brandLocalizer = brandLocalizer;
         }
-        
-        
+               
         /// <summary>
         /// Index Brand
         /// </summary>
@@ -33,6 +34,7 @@ namespace LoginCodeFirst.Controllers
         public async Task<IActionResult> Index()
         {
             var listBrands = await _brandServices.GetBrandListAsync();
+            Log.Information("Get Brand List Async");
             return View(listBrands);
         }
 
@@ -45,6 +47,7 @@ namespace LoginCodeFirst.Controllers
         {
             return View();
         }
+        
         /// <summary>
         /// Add Brand
         /// </summary>
@@ -55,8 +58,8 @@ namespace LoginCodeFirst.Controllers
         {
             if (ModelState.IsValid)
             { 
-                var  brand = await _brandServices.AddAsync(brandViewModel);
-                if (brand)
+                var  brands = await _brandServices.AddAsync(brandViewModel);
+                if (brands)
                 {
                     TempData["Success"] = _commonLocalizer.GetLocalizedHtmlString("msg_AddSuccess").ToString();
                     return RedirectToAction("Index"); 
@@ -64,6 +67,7 @@ namespace LoginCodeFirst.Controllers
                 ViewData["Error"] = _brandLocalizer.GetLocalizedHtmlString("err_AddBrandFailure");
                 return View(brandViewModel);
             }
+            Log.Error("Add Brand Error");
             return View(brandViewModel);
         }
 
@@ -77,12 +81,14 @@ namespace LoginCodeFirst.Controllers
         {
             if (id == null)
             {
+                Log.Error("Id equal null");
                 return BadRequest();
             }
             var brand = await _brandServices.GetIdAsync(id.Value);
             if (brand == null)
             {
-                return NotFound();
+                Log.Error("brand equal null");
+                return BadRequest();
             }
             return View(brand);
         }
@@ -103,9 +109,10 @@ namespace LoginCodeFirst.Controllers
                     TempData["Success"] = _commonLocalizer.GetLocalizedHtmlString("msg_EditSuccess").ToString();
                     return RedirectToAction("Index");
                 } 
-                ViewData["Error"] =_brandLocalizer.GetLocalizedHtmlString("err_EditBrandFailure");
+                ViewData["Error"] =_brandLocalizer.GetLocalizedHtmlString("err_EditBrandFailure");                
                 return View(brandViewModel);
-            }
+            } 
+            Log.Error("Edit Brand Error");
             return View(brandViewModel);
         }
 
@@ -113,13 +120,14 @@ namespace LoginCodeFirst.Controllers
         /// Delete Brand
         /// </summary>
         /// <param name="id">Brand Id</param>
-        /// <returns>Brand Index View</returns>
-        [Authorize(Roles = "User")]
+        /// <returns>Brand Index View</returns>       
         [HttpGet]
+        [Authorize(Roles = "Admin")]
         public async  Task<IActionResult> Delete(int? id)
         {
             if (id == null)
             {
+                Log.Warning("Id Brand Equal Null");
                 return BadRequest();
             }         
             var brand = await _brandServices.DeleteAsync(id.Value);
@@ -129,6 +137,7 @@ namespace LoginCodeFirst.Controllers
                 return  RedirectToAction("Index");
             }
             TempData["Error"] = _commonLocalizer.GetLocalizedHtmlString("msg_DeleteError").ToString();
+            Log.Warning("Brand Equal Null");
             return  RedirectToAction("Index");
         }   
     }

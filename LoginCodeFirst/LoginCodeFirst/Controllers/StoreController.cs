@@ -1,9 +1,10 @@
 ﻿using System.Threading.Tasks;
 using LoginCodeFirst.Resources;
 using LoginCodeFirst.Services;
-using LoginCodeFirst.ViewModels.Store;
+using LoginCodeFirst.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Serilog;
 
 
 namespace LoginCodeFirst.Controllers
@@ -33,6 +34,7 @@ namespace LoginCodeFirst.Controllers
         public async Task<IActionResult> Index()
         {
             var liststore = await _storeService.GetStoreListAsync();
+            Log.Information("Get Store List Async");
             return View(liststore);
         }
 
@@ -65,6 +67,7 @@ namespace LoginCodeFirst.Controllers
                 ViewData["Error"] = _storeLocalizer.GetLocalizedHtmlString("err_AddStoreFailure");
                 return View(storeViewModel);
             }
+            Log.Error("Add Store Error");
             return View(storeViewModel);
         }
 
@@ -78,14 +81,16 @@ namespace LoginCodeFirst.Controllers
         {
             if (id == null)
             {
+                Log.Warning("Id Equal Null");
                 return BadRequest();
             }
-            var getId = await _storeService.GetIdAsync(id.Value);
-            if (getId == null)
+            var store = await _storeService.GetIdAsync(id.Value);
+            if (store == null)
             {
+                Log.Warning("Store Equal Null");
                 return NotFound();
             } 
-            return View(getId);
+            return View(store);
         }
         
         /// <summary>
@@ -107,6 +112,7 @@ namespace LoginCodeFirst.Controllers
                 ViewData["Error"] = _storeLocalizer.GetLocalizedHtmlString("err_EditStoreFailure");
                 return View(storeViewModel);
             }
+            Log.Error("Edit Store Error");
             return View(storeViewModel);
         }
 
@@ -115,12 +121,13 @@ namespace LoginCodeFirst.Controllers
         /// </summary>
         /// <param name="id">Store Id</param>
         /// <returns>Store Index View</returns>
-        [Authorize(Roles = "User")] 
         [HttpGet]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
             {
+                Log.Warning("Id Store Equal Null");
                 return BadRequest();
             }
             var  store = await _storeService.DeleteAsync(id.Value);
@@ -130,6 +137,7 @@ namespace LoginCodeFirst.Controllers
                 return  RedirectToAction("Index");
             }
             TempData["Error"] = _commonLocalizer.GetLocalizedHtmlString("msg_DeleteError").ToString();
+            Log.Error("Delete Store Error");
             return  RedirectToAction("Index");
         }
    }

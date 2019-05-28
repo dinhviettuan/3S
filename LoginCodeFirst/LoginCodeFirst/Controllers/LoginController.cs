@@ -6,9 +6,8 @@ using LoginCodeFirst.Services;
 using LoginCodeFirst.ViewModels;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Serilog;
 
 namespace LoginCodeFirst.Controllers
 {
@@ -31,6 +30,7 @@ namespace LoginCodeFirst.Controllers
         [HttpGet]
         public IActionResult Login()
         {
+            Log.Information("Login");
             return View();
         }
 
@@ -72,11 +72,12 @@ namespace LoginCodeFirst.Controllers
                         new ClaimsPrincipal(claimsIdentity), 
                         authProperties);
 
-                    return RedirectToAction("Index","User");
+                    return RedirectToAction("Index","Store");
                 }
                 ViewData["Error"] = _userLocalizer.GetLocalizedHtmlString("err_LoginFailure");
                 return View(login);
             }
+            Log.Error("Login Error");
             return View(login);
         }
         

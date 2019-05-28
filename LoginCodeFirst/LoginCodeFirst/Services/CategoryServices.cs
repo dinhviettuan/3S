@@ -6,6 +6,7 @@ using AutoMapper;
 using LoginCodeFirst.Models;
 using LoginCodeFirst.ViewModels.Category;
 using Microsoft.EntityFrameworkCore;
+using Serilog;
 
 namespace LoginCodeFirst.Services
 {
@@ -87,9 +88,17 @@ namespace LoginCodeFirst.Services
         /// <returns>ListCategory</returns>
         public async Task<List<CategoryViewModel>> GetCategoryListAsync()
         {
-            var category = await _context.Category.ToListAsync();
-            var list = _mapper.Map<List<CategoryViewModel>>(category);
-            return list;
+            try
+            {
+                var category = await _context.Category.ToListAsync();
+                var list = _mapper.Map<List<CategoryViewModel>>(category);
+                return list;
+            }
+            catch (Exception e)
+            {
+                Log.Information("Get Category List Async: {0}",e.Message );
+                throw;
+            }           
         }
 
 
@@ -113,7 +122,7 @@ namespace LoginCodeFirst.Services
             }
             catch (Exception e)
             {
-                Console.WriteLine(e);
+                Log.Error("Add Categoy Async Error: {0}",e.Message);
                 return false;
             }    
         }
@@ -126,9 +135,17 @@ namespace LoginCodeFirst.Services
         /// <returns>CategoryViewModel</returns>
         public async Task<CategoryViewModel> GetIdAsync(int id)
         {
-            var category = await _context.Category.FindAsync(id);
-            var categoryViewModel = _mapper.Map<CategoryViewModel>(category);
-            return categoryViewModel;
+            try
+            {
+                var category = await _context.Category.FindAsync(id);
+                var categoryViewModel = _mapper.Map<CategoryViewModel>(category);
+                return categoryViewModel;
+            }
+            catch (Exception e)
+            {
+                Log.Warning("Get Id Category Async Error: {0}",e.Message);
+                throw;
+            }         
         }
 
         /// <inheritdoc />
@@ -151,7 +168,7 @@ namespace LoginCodeFirst.Services
             }
             catch (Exception e)
             {
-                Console.WriteLine(e);
+                Log.Error("Edit Category Async Error: {0}",e.Message);
                 return false;
             }
         }
@@ -176,7 +193,7 @@ namespace LoginCodeFirst.Services
             }
             catch (Exception e)
             {
-                Console.WriteLine(e);
+               Log.Error("Delete Category Async Error:{0}",e.Message);
                 return false;
             }        
         }
@@ -190,7 +207,16 @@ namespace LoginCodeFirst.Services
         /// <returns>ExistedName?</returns>
         public bool IsExistedName(string name,int id)
         {
-            return  _context.Category.Any(x => x.CategoryName == name && x.CategoryId != id);
+            try
+            {
+                return  _context.Category.Any(x => x.CategoryName == name && x.CategoryId != id);
+            }
+            catch (Exception e)
+            {
+                Log.Warning("Is Category Existed Name Error :{0}",e.Message);
+                throw;
+            }
+            
         }
     }
 }

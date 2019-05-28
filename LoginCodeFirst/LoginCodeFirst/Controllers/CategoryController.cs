@@ -4,6 +4,7 @@ using LoginCodeFirst.Services;
 using LoginCodeFirst.ViewModels.Category;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Serilog;
 
 namespace LoginCodeFirst.Controllers
 {
@@ -32,6 +33,7 @@ namespace LoginCodeFirst.Controllers
         public async Task<IActionResult> Index()
         {
             var liststore = await _categoryServices.GetCategoryListAsync();
+            Log.Information("Get Category List Async");
             return View(liststore);
         }
 
@@ -55,8 +57,8 @@ namespace LoginCodeFirst.Controllers
         {
             if (ModelState.IsValid)
             {
-                var category = await _categoryServices.AddAsync(categoryViewModel);
-                if (category)
+                var categories = await _categoryServices.AddAsync(categoryViewModel);
+                if (categories)
                 {
                     TempData["Success"] =_commonLocalizer.GetLocalizedHtmlString("msg_AddSuccess").ToString();
                     return RedirectToAction("Index");
@@ -64,6 +66,7 @@ namespace LoginCodeFirst.Controllers
                 ViewData["Error"] =_categoryLocalizer.GetLocalizedHtmlString("err_AddCategoryFailure");
                 return View(categoryViewModel);
             }
+            Log.Error("Add Category Error");
             return View(categoryViewModel);
         }
 
@@ -77,15 +80,17 @@ namespace LoginCodeFirst.Controllers
         {
             if (id == null)
             {
+                Log.Warning("Id Equal Null");
                 return BadRequest();
             }
-            var getId = await _categoryServices.GetIdAsync(id.Value);
-            if (getId == null)
+            var categoryViewModel = await _categoryServices.GetIdAsync(id.Value);
+            if (categoryViewModel == null)
             {
-                return NotFound();
+                Log.Warning("Category Equal Null");
+                return BadRequest();
             }
 
-            return View(getId);
+            return View(categoryViewModel);
         }
 
         /// <summary>
@@ -107,6 +112,7 @@ namespace LoginCodeFirst.Controllers
                 ViewData["Error"] = _categoryLocalizer.GetLocalizedHtmlString("err_EditCategoryFailure");
                 return View(categoryViewModel);
             }
+            Log.Error("Edit Category Error");
             return View(categoryViewModel);
         }
 
@@ -115,12 +121,13 @@ namespace LoginCodeFirst.Controllers
         /// </summary>
         /// <param name="id">Category id</param>
         /// <returns>Category Index View</returns>
-        [Authorize(Roles = "User")]
         [HttpGet]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
             {
+                Log.Warning("Id Category Equal Null");
                 return BadRequest();
             }
             var category = await _categoryServices.DeleteAsync(id.Value);
@@ -130,6 +137,7 @@ namespace LoginCodeFirst.Controllers
                 return RedirectToAction("Index");            
             }
             TempData["Error"] = _categoryLocalizer.GetLocalizedHtmlString("msg_DeleteError").ToString();
+            Log.Error("Delete Category Error");
             return RedirectToAction("Index");
         }
     }

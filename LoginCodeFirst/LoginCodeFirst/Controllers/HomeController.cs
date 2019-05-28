@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using LoginCodeFirst.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Localization;
+using Serilog;
 
 namespace LoginCodeFirst.Controllers
 {
@@ -12,6 +13,7 @@ namespace LoginCodeFirst.Controllers
         public IActionResult Index()
         {
             return View();
+            
         }
 
         public IActionResult Privacy()

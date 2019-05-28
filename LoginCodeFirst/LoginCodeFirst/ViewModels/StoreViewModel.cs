@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 
-
-namespace LoginCodeFirst.ViewModels.Store
+namespace LoginCodeFirst.ViewModels
 {
     public class StoreViewModel
     {

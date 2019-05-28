@@ -608,9 +608,6 @@ C:/3S-master/LoginCodeFirst/LoginCodeFirst/obj/Debug/netcoreapp2.2/LoginCodeFirs
 /home/local/3SI/tuan.dv/RiderProjects/3S/LoginCodeFirst/LoginCodeFirst/obj/Debug/netcoreapp2.2/Razor/Views/Shared/Error.g.cshtml.cs
 /home/local/3SI/tuan.dv/RiderProjects/3S/LoginCodeFirst/LoginCodeFirst/obj/Debug/netcoreapp2.2/Razor/Views/Shared/_CookieConsentPartial.g.cshtml.cs
 /home/local/3SI/tuan.dv/RiderProjects/3S/LoginCodeFirst/LoginCodeFirst/obj/Debug/netcoreapp2.2/Razor/Views/Shared/_Layout.g.cshtml.cs
-/home/local/3SI/tuan.dv/RiderProjects/3S/LoginCodeFirst/LoginCodeFirst/obj/Debug/netcoreapp2.2/Razor/Views/Shared/_LayoutError.g.cshtml.cs
-/home/local/3SI/tuan.dv/RiderProjects/3S/LoginCodeFirst/LoginCodeFirst/obj/Debug/netcoreapp2.2/Razor/Views/Shared/_LayoutError400.g.cshtml.cs
-/home/local/3SI/tuan.dv/RiderProjects/3S/LoginCodeFirst/LoginCodeFirst/obj/Debug/netcoreapp2.2/Razor/Views/Shared/_LayoutError404.g.cshtml.cs
 /home/local/3SI/tuan.dv/RiderProjects/3S/LoginCodeFirst/LoginCodeFirst/obj/Debug/netcoreapp2.2/Razor/Views/Shared/_LayoutLogin.g.cshtml.cs
 /home/local/3SI/tuan.dv/RiderProjects/3S/LoginCodeFirst/LoginCodeFirst/obj/Debug/netcoreapp2.2/Razor/Views/Shared/_LeftSidebarPartial.g.cshtml.cs
 /home/local/3SI/tuan.dv/RiderProjects/3S/LoginCodeFirst/LoginCodeFirst/obj/Debug/netcoreapp2.2/Razor/Views/Shared/_MenuPartial.g.cshtml.cs
@@ -637,3 +634,4 @@ C:/3S-master/LoginCodeFirst/LoginCodeFirst/obj/Debug/netcoreapp2.2/LoginCodeFirs
 /home/local/3SI/tuan.dv/RiderProjects/3S/LoginCodeFirst/LoginCodeFirst/obj/Debug/netcoreapp2.2/LoginCodeFirst.dll
 /home/local/3SI/tuan.dv/RiderProjects/3S/LoginCodeFirst/LoginCodeFirst/obj/Debug/netcoreapp2.2/LoginCodeFirst.pdb
 /home/local/3SI/tuan.dv/RiderProjects/3S/LoginCodeFirst/LoginCodeFirst/obj/Debug/netcoreapp2.2/LoginCodeFirst.csproj.CopyComplete
+/home/local/3SI/tuan.dv/RiderProjects/3S/LoginCodeFirst/LoginCodeFirst/obj/Debug/netcoreapp2.2/Razor/Views/Shared/_LayoutError.g.cshtml.cs

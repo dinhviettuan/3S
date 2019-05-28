@@ -129,7 +129,8 @@ namespace LoginCodeFirst.Models
                     Fullname = "Dinh Viet Tuan",
                     Phone = "123456789",
                     StoreId = 1,
-                    IsActive = true
+                    IsActive = true,
+                    Role = 1
                 },
                 new User
                 {
@@ -139,7 +140,8 @@ namespace LoginCodeFirst.Models
                     Fullname = "Dinh Viet Tuan",
                     Phone = "123456789",
                     StoreId = 1,
-                    IsActive = true
+                    IsActive = true,
+                    Role = 2
                 });
                   
             modelBuilder.Entity<Store>().HasData(

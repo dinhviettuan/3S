@@ -20,7 +20,7 @@ namespace LoginCodeFirst.Validators.User
             RuleFor(x => x.IsActive).NotNull();
             
             RuleFor(x => x.Email).Must((reg,c) => !userServices.IsExistedName(reg.Email,reg.UserId))
-                .WithMessage((reg,c) => string.Format(commonlocalizer.GetLocalizedHtmlString("msg_ThisEmailAlreadyExists"),c));
+                .WithMessage((reg,c) => string.Format(commonlocalizer.GetLocalizedHtmlString("msg_AlreadyExists"),c));
             
             RuleFor(x => x.Email)
                 .EmailAddress().WithMessage(commonlocalizer.GetLocalizedHtmlString("msg_AValidEmail"));

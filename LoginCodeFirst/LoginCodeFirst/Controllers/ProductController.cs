@@ -5,6 +5,7 @@ using LoginCodeFirst.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Serilog;
 
 namespace LoginCodeFirst.Controllers
 {
@@ -40,6 +41,7 @@ namespace LoginCodeFirst.Controllers
         public async Task<IActionResult> Index()
         {
             var list = await _productServices.GetProductListAsync();
+            Log.Information("Get Product List Async");
             return View(list);
         }
 
@@ -79,6 +81,7 @@ namespace LoginCodeFirst.Controllers
             }
             ViewBag.CategoryId = new SelectList(_categoryServices.GetCategorys(), "CategoryId", "CategoryName",productViewModel.CategoryId);
             ViewBag.BrandId = new SelectList(_brandServices.GetBrands(), "BrandId", "BrandName",productViewModel.BrandId);
+            Log.Error("Add Product Error");
             return View(productViewModel);
         }
 
@@ -92,12 +95,14 @@ namespace LoginCodeFirst.Controllers
         {
             if (id == null)
             {
+                Log.Warning("Id Equal Null");
                 return BadRequest();
             }
 
             var product =  await _productServices.GetIdAsync(id.Value);
             if (product == null)
             {
+                Log.Warning("Product Equal Null");
                 return BadRequest();
             }
             ViewBag.CategoryId = new SelectList(_categoryServices.GetCategorys(), "CategoryId", "CategoryName");
@@ -126,6 +131,7 @@ namespace LoginCodeFirst.Controllers
                 ViewData["Error"] = _productLocalizer.GetLocalizedHtmlString("err_EditProductFailure");
                 return View(productViewModel);
             }
+            Log.Error("Edit Product Error");
             return View(productViewModel);
         }
 
@@ -134,12 +140,13 @@ namespace LoginCodeFirst.Controllers
         /// </summary>
         /// <param name="id">Product Id</param>
         /// <returns>Product Index View</returns>
-        [Authorize(Roles = "User")]
         [HttpGet]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
             {
+                Log.Warning("Id Product Equal Null");
                 return BadRequest();
             }
             var product = await _productServices.DeleteAsync(id.Value);
@@ -149,6 +156,7 @@ namespace LoginCodeFirst.Controllers
                 return  RedirectToAction("Index");
             }
             TempData["Error"] = _commonLocalizer.GetLocalizedHtmlString("msg_DeleteError").ToString();
+            Log.Error("Delete Product Error");
             return  RedirectToAction("Index");
         }
     }

@@ -4,8 +4,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using LoginCodeFirst.Models;
-using LoginCodeFirst.ViewModels.Store;
+using LoginCodeFirst.ViewModels;
 using Microsoft.EntityFrameworkCore;
+using Serilog;
 
 
 namespace LoginCodeFirst.Services
@@ -89,9 +90,17 @@ namespace LoginCodeFirst.Services
         /// <returns>ListStore</returns>
         public async Task<List<StoreViewModel>> GetStoreListAsync()
         {
-            var stores = await _context.Store.ToListAsync();
-            var storeViewModels = _mapper.Map<List<StoreViewModel>>(stores);
-            return storeViewModels;
+            try
+            {
+                var stores = await _context.Store.ToListAsync();
+                var storeViewModels = _mapper.Map<List<StoreViewModel>>(stores);
+                return storeViewModels;
+            }
+            catch (Exception e)
+            {
+                Log.Information("Get Store List Async: {0}",e.Message);
+                throw;
+            }            
         }
         
         /// <inheritdoc />
@@ -120,7 +129,7 @@ namespace LoginCodeFirst.Services
             }
             catch (Exception e)
             {
-                Console.WriteLine(e);
+                Log.Error("Add Store Async Error: {0}",e.Message);
                 return false;
             }          
         }
@@ -133,9 +142,17 @@ namespace LoginCodeFirst.Services
         /// <returns>StoreViewModel</returns>
         public async Task<StoreViewModel> GetIdAsync(int id)
         {
-            var store = await _context.Store.FindAsync(id);
-            var storeEditViewModel = _mapper.Map<StoreViewModel>(store);
-            return storeEditViewModel;
+            try
+            {
+                var store = await _context.Store.FindAsync(id);
+                var storeEditViewModel = _mapper.Map<StoreViewModel>(store);
+                return storeEditViewModel;
+            }
+            catch (Exception e)
+            {
+                Log.Warning("Get Id Store Async Error: {0}",e.Message);
+                throw;
+            }          
         }
         
         /// <inheritdoc />
@@ -164,7 +181,7 @@ namespace LoginCodeFirst.Services
             }
             catch (Exception e)
             {
-                Console.WriteLine(e);
+                Log.Error("Edit Store Async Error:{0}",e.Message);
                 return false;
             }
         }
@@ -186,7 +203,7 @@ namespace LoginCodeFirst.Services
             }
             catch (Exception e)
             {
-                Console.WriteLine(e);
+                Log.Error("Delete Store Async Error:{0}",e.Message);
                 return false;
             }          
         }
@@ -200,7 +217,15 @@ namespace LoginCodeFirst.Services
         /// <returns>ExistedName?</returns>
         public bool IsExistedName(string email,int id)
         {
-            return _context.Store.Any(x => x.Email == email && x.Id != id);
+            try
+            {
+                return _context.Store.Any(x => x.Email == email && x.Id != id);
+            }
+            catch (Exception e)
+            {
+                Log.Warning("Is Store Existed Name Error:{0}",e.Message);
+                throw;
+            }          
         }
     }
 }

@@ -6,6 +6,7 @@ using AutoMapper;
 using LoginCodeFirst.Models;
 using LoginCodeFirst.ViewModels.User;
 using Microsoft.EntityFrameworkCore;
+using Serilog;
 using TaskTranning.Infrastructure;
 
 
@@ -125,9 +126,17 @@ namespace LoginCodeFirst.Services
         /// <returns></returns>
         public async Task<UserViewModel> GetEmail(string email)
         {
-            var findEmail = await _context.User.FirstOrDefaultAsync(x => x.Email == email);
-            var getEmail = _mapper.Map<UserViewModel>(findEmail);
-            return getEmail;
+            try
+            {
+                var findEmail = await _context.User.FirstOrDefaultAsync(x => x.Email == email);
+                var getEmail = _mapper.Map<UserViewModel>(findEmail);
+                return getEmail;
+            }
+            catch (Exception e)
+            {
+                Log.Warning("Get Email User Error:{0}",e.Message);
+                throw;
+            }            
         }
        
         /// <inheritdoc />
@@ -137,11 +146,19 @@ namespace LoginCodeFirst.Services
         /// <returns>ListUser</returns>
         public async Task<List<UserViewModel>> GetUserListAsync()
         {
-            var users = await _context.User
-                .Include(u => u.Store)
-                .ToListAsync();
-            var list = _mapper.Map<List<UserViewModel>>(users);
-            return list;         
+            try
+            {
+                var users = await _context.User
+                    .Include(u => u.Store)
+                    .ToListAsync();
+                var list = _mapper.Map<List<UserViewModel>>(users);
+                return list;         
+            }
+            catch (Exception e)
+            {
+                Log.Information("Get User List Async: {0}",e.Message);
+                throw;
+            }          
         }
         
         /// <summary>
@@ -151,9 +168,17 @@ namespace LoginCodeFirst.Services
         /// <returns>EditViewModel</returns>
         public async Task<EditViewModel> GetIdAsync(int id)
         {
-            var user = await _context.User.FindAsync(id);
-            var userViewModel = _mapper.Map<EditViewModel>(user);
-            return userViewModel;
+            try
+            {
+                var user = await _context.User.FindAsync(id);
+                var userViewModel = _mapper.Map<EditViewModel>(user);
+                return userViewModel;
+            }
+            catch (Exception e)
+            {
+                Log.Warning("Get Id User Error: {0}",e.Message);
+                throw;
+            }        
         }
         
         /// <inheritdoc />
@@ -164,9 +189,17 @@ namespace LoginCodeFirst.Services
         /// <returns>PasswordViewModel</returns>
         public async Task<PasswordViewModel> GetEditPasswordAsync(int id)
         {
-            var user = await _context.User.FindAsync(id);
-            var passwordViewModel = _mapper.Map<PasswordViewModel>(user);
-            return passwordViewModel;
+            try
+            {
+                var user = await _context.User.FindAsync(id);
+                var passwordViewModel = _mapper.Map<PasswordViewModel>(user);
+                return passwordViewModel;
+            }
+            catch (Exception e)
+            {
+                Log.Warning("Get Id Password User Error: {0}",e.Message);
+                throw;
+            }           
         }
         
         /// <inheritdoc />
@@ -186,7 +219,8 @@ namespace LoginCodeFirst.Services
                     Password = SecurePasswordHasher.Hash(userViewModel.Password),
                     Phone = userViewModel.Phone,
                     IsActive = userViewModel.IsActive,
-                    StoreId = userViewModel.StoreId
+                    StoreId = userViewModel.StoreId,
+                    Role = userViewModel.Role
                 };
                      _context.User.Add(users);
                      await _context.SaveChangesAsync();
@@ -194,7 +228,7 @@ namespace LoginCodeFirst.Services
             }
             catch (Exception e)
             {
-                Console.WriteLine(e);
+               Log.Error("Add User Async Error: {0}",e.Message);
                 return false;
             }     
         }
@@ -214,13 +248,14 @@ namespace LoginCodeFirst.Services
                 users.Fullname = userViewModel.FullName;
                 users.Phone = userViewModel.Phone;
                 users.IsActive = userViewModel.IsActive;
+                users.Role = userViewModel.Role;
                 _context.User.Update(users);
                 await _context.SaveChangesAsync();
                 return true;
             }
             catch (Exception e)
             {
-                Console.WriteLine(e);
+                Log.Error("Edit User Async Error: {0}",e.Message);
                 return false;
             }        
         }
@@ -243,7 +278,7 @@ namespace LoginCodeFirst.Services
             }
             catch (Exception e)
             {
-                Console.WriteLine(e);
+                Log.Error("Edit Password User Async Error: {0}",e.Message);
                 return false;
             }          
         }
@@ -265,7 +300,7 @@ namespace LoginCodeFirst.Services
             }
             catch (Exception e)
             {
-                Console.WriteLine(e);
+                Log.Error("Delete User Async Error: {0}",e.Message);
                 return false;
             }         
         }
@@ -279,7 +314,15 @@ namespace LoginCodeFirst.Services
         /// <returns>ExistedName?</returns>
         public bool IsExistedName(string email,int id)
         {
-            return  _context.User.Any(x => x.Email == email && x.UserId != id);
+            try
+            {
+                return  _context.User.Any(x => x.Email == email && x.UserId != id);
+            }
+            catch (Exception e)
+            {
+                Log.Warning("Is User Existed Name Error:{0}",e.Message);
+                throw;
+            }         
         }
     }
 }

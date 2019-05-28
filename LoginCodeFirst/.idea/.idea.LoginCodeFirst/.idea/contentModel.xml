@@ -16,6 +16,9 @@
           <e p="UserController.cs" t="Include" />
         </e>
         <e p="LoginCodeFirst.csproj" t="IncludeRecursive" />
+        <e p="Logs" t="Include">
+          <e p="log20190528.txt" t="Include" />
+        </e>
         <e p="Migrations" t="Include">
           <e p="20190523044430_AddDatabase.Designer.cs" t="Include" />
           <e p="20190523044430_AddDatabase.cs" t="Include" />
@@ -27,6 +30,8 @@
           <e p="20190523093358_AddPassword.cs" t="Include" />
           <e p="20190527110839_RemoveRole.Designer.cs" t="Include" />
           <e p="20190527110839_RemoveRole.cs" t="Include" />
+          <e p="20190528021201_AddRole.Designer.cs" t="Include" />
+          <e p="20190528021201_AddRole.cs" t="Include" />
           <e p="CodeDataContextModelSnapshot.cs" t="Include" />
         </e>
         <e p="Models" t="Include">
@@ -151,8 +156,6 @@
             <e p="_CookieConsentPartial.cshtml" t="Include" />
             <e p="_Layout.cshtml" t="Include" />
             <e p="_LayoutError.cshtml" t="Include" />
-            <e p="_LayoutError400.cshtml" t="Include" />
-            <e p="_LayoutError404.cshtml" t="Include" />
             <e p="_LayoutLogin.cshtml" t="Include" />
             <e p="_LeftSidebarPartial.cshtml" t="Include" />
             <e p="_MenuPartial.cshtml" t="Include" />
@@ -4658,6 +4661,7 @@
           <e p="images" t="Include">
             <e p="baseline-people-24px.svg" t="Include" />
             <e p="download.jpeg" t="Include" />
+            <e p="download.png" t="Include" />
             <e p="n-5-l-eau-packshot-default-105510-8817973657630.jpg" t="Include" />
           </e>
           <e p="js" t="Include">

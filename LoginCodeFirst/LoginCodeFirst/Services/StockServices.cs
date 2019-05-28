@@ -5,6 +5,7 @@ using AutoMapper;
 using LoginCodeFirst.Models;
 using LoginCodeFirst.ViewModels.Stock;
 using Microsoft.EntityFrameworkCore;
+using Serilog;
 
 namespace LoginCodeFirst.Services
 {
@@ -67,12 +68,21 @@ namespace LoginCodeFirst.Services
         /// <returns>ListStock</returns>
         public async Task<List<StockViewModel>> GetStockListAsync()
         {
-            var stocks = await _context.Stock
-                .Include(stock => stock.Product)
-                .Include(stock => stock.Store)
-                .ToListAsync();
-            var list = _mapper.Map<List<StockViewModel>>(stocks);
-            return list;
+            try
+            {
+                var stocks = await _context.Stock
+                    .Include(stock => stock.Product)
+                    .Include(stock => stock.Store)
+                    .ToListAsync();
+                var list = _mapper.Map<List<StockViewModel>>(stocks);
+                return list;
+            }
+            catch (Exception e)
+            {
+                Log.Information("Get Stock List Async: {0}",e.Message);
+                throw;
+            }
+            
         }
         
         /// <inheritdoc />
@@ -105,7 +115,7 @@ namespace LoginCodeFirst.Services
             }
             catch (Exception e)
             {
-                Console.WriteLine(e);
+               Log.Error("Add Stock Async Error: {0}",e.Message);
                 return false;
             }            
         }
@@ -119,9 +129,17 @@ namespace LoginCodeFirst.Services
         /// <returns>StockViewModel</returns>
         public async Task<StockViewModel> GetIdAsync(int storeId, int productId)
         {
-            var stock = await _context.Stock.FindAsync(storeId, productId);
-            var getViewModel = _mapper.Map<StockViewModel>(stock);
-            return getViewModel;
+            try
+            {
+                var stock = await _context.Stock.FindAsync(storeId, productId);
+                var getViewModel = _mapper.Map<StockViewModel>(stock);
+                return getViewModel;
+            }
+            catch (Exception e)
+            {
+                Log.Warning("Get Id Stock Async Error: {0}",e.Message);
+                throw;
+            }           
         }
         
         /// <inheritdoc />
@@ -144,7 +162,7 @@ namespace LoginCodeFirst.Services
             }
             catch (Exception e)
             {
-                Console.WriteLine(e);
+                Log.Error("Edit Stock Async Error:{0}",e.Message);
                 return false;
             }        
         }
@@ -167,7 +185,7 @@ namespace LoginCodeFirst.Services
             }
             catch (Exception e)
             {
-                Console.WriteLine(e);
+                Log.Error("Delete Stock Async Error:{0}",e.Message);
                 return false;
             }       
         }

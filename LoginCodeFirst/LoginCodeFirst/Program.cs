@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using Serilog;
 
 namespace LoginCodeFirst
 {
@@ -12,7 +13,18 @@ namespace LoginCodeFirst
     {
         public static void Main(string[] args)
         {
-            var host = CreateWebHostBuilder(args).Build();
+            Log.Logger = new LoggerConfiguration()
+                .MinimumLevel.Information()
+                .WriteTo.Console()
+                .WriteTo.File("Logs/log.txt",
+                    rollingInterval: RollingInterval.Day,
+                    rollOnFileSizeLimit: true)
+                .CreateLogger();            
+//            Log.Information("Hello");  
+//            Log.Error("");
+//            Log.CloseAndFlush();
+            
+            var host = CreateWebHostBuilder(args).Build();            
             using (var scope = host.Services.CreateScope())
             {    
                 var services = scope.ServiceProvider;
@@ -32,5 +44,5 @@ namespace LoginCodeFirst
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
                 .UseStartup<Startup>();
-    }
+    }        
 }

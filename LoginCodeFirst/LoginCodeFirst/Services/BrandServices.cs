@@ -6,6 +6,7 @@ using AutoMapper;
 using LoginCodeFirst.Models;
 using LoginCodeFirst.ViewModels.Brand;
 using Microsoft.EntityFrameworkCore;
+using Serilog;
 
 namespace LoginCodeFirst.Services
 {
@@ -88,9 +89,17 @@ namespace LoginCodeFirst.Services
         /// <returns>ListBrand</returns>
         public async Task<List<BrandViewModel>> GetBrandListAsync()
         {
-            var brand = await _context.Brand.ToListAsync();
-            var brandViewModel = _mapper.Map<List<BrandViewModel>>(brand);
-            return brandViewModel;
+            try
+            {
+                var brand = await _context.Brand.ToListAsync();
+                var brandViewModel = _mapper.Map<List<BrandViewModel>>(brand);
+                return brandViewModel;
+            }
+            catch (Exception e)
+            {
+                Log.Information("Get Brand List Async Error: {0}", e.Message);
+                throw;
+            }
         }
 
         /// <inheritdoc />
@@ -113,7 +122,7 @@ namespace LoginCodeFirst.Services
             }
             catch (Exception e)
             {
-                Console.WriteLine(e);
+                Log.Error("Add Brand Async Error: {0}", e.Message);
                 return false;
             }
         }
@@ -126,9 +135,18 @@ namespace LoginCodeFirst.Services
         /// <returns>Brand</returns>
         public async Task<BrandViewModel> GetIdAsync(int id)
         {
-            var brand = await _context.Brand.FindAsync(id);
-            var brandViewModel = _mapper.Map<BrandViewModel>(brand);
-            return brandViewModel;
+            try
+            {
+                var brand = await _context.Brand.FindAsync(id);
+                var brandViewModel = _mapper.Map<BrandViewModel>(brand);
+                return brandViewModel;
+            }
+            catch (Exception e)
+            {
+                Log.Warning("Get Id Async Error: {0}",e.Message);
+                throw;
+            }
+            
         }
 
         /// <inheritdoc />
@@ -151,7 +169,7 @@ namespace LoginCodeFirst.Services
             }
             catch (Exception e)
             {
-                Console.WriteLine(e);
+                Log.Error("Edit Async Error : {0}", e.Message);
                 return false;
             }
         }
@@ -174,7 +192,7 @@ namespace LoginCodeFirst.Services
             }
             catch (Exception e)
             {
-                Console.WriteLine(e);
+                Log.Error("Delete Async Error : {0}", e.Message);
                 return false;
             }          
         }
@@ -188,7 +206,16 @@ namespace LoginCodeFirst.Services
         /// <returns>ExistedName?</returns>
         public bool IsExistedName(string name,int id)
         {
-            return  _context.Brand.Any(x => x.BrandName == name && x.BrandId != id);
+            try
+            {
+                return  _context.Brand.Any(x => x.BrandName == name && x.BrandId != id);
+            }
+            catch (Exception e)
+            {
+                Log.Warning("Is Brand Existed Name Error :{0}",e.Message);
+                throw;
+            }
+            
         }
     }
 }

@@ -5,12 +5,13 @@ using LoginCodeFirst.ViewModels.User;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Serilog;
 
 
 namespace LoginCodeFirst.Controllers
 {
 //    [ServiceFilter(typeof(ActionFilter))]
-    [Authorize(Roles = "Admin")]
+//    [Authorize(Roles = "Admin")]
     public class UserController : Controller
     {
         private readonly ResourcesServices<CommonResources> _commonLocalizer;
@@ -39,6 +40,7 @@ namespace LoginCodeFirst.Controllers
         public async Task<IActionResult> Index()
         {
             var listuser = await _userService.GetUserListAsync();
+            Log.Information("Get User List Async");
             return View(listuser);
         }
 
@@ -76,6 +78,7 @@ namespace LoginCodeFirst.Controllers
                 return View(userViewModel);
             }
             ViewBag.StoreId = new SelectList(_storeServices.GetStores(), "Id", "StoreName", userViewModel.StoreId);
+            Log.Error("Add User Error");
             return View(userViewModel);
         }
 
@@ -89,11 +92,13 @@ namespace LoginCodeFirst.Controllers
         {
             if (id == null)
             {
+                Log.Warning("Id Equal Null");
                 return BadRequest();
             }
             var user = await _userService.GetIdAsync(id.Value);
             if (user == null)
             {
+                Log.Warning("Id Equal Null");
                 return BadRequest();
             }
             ViewBag.StoreId = new SelectList(_storeServices.GetStores(), "Id", "StoreName");
@@ -116,12 +121,12 @@ namespace LoginCodeFirst.Controllers
                     TempData["Success"] = _commonLocalizer.GetLocalizedHtmlString("msg_EditSuccess").ToString();
                     return RedirectToAction("Index"); 
                 }
-
                 ViewData["Error"] = _userLocalizer.GetLocalizedHtmlString("err_EditUserFailure");
                 ViewBag.StoreId = new SelectList(_storeServices.GetStores(), "Id", "StoreName", userViewModel.StoreId);
                 return View(userViewModel);
             }
             ViewBag.StoreId = new SelectList(_storeServices.GetStores(), "Id", "StoreName", userViewModel.StoreId);
+            Log.Error("Edit User Error");
             return View(userViewModel);
         }
 
@@ -135,11 +140,13 @@ namespace LoginCodeFirst.Controllers
         {
             if (id == null)
             {
+                Log.Warning("Id Password Equal Null");
                 return BadRequest();
             }
             var getId = await _userService.GetEditPasswordAsync(id.Value);
             if (getId == null)
             {
+                Log.Warning("Id Password Equal Null");
                 return BadRequest();
             }
             return PartialView("_ChangePassword", getId);
@@ -164,6 +171,7 @@ namespace LoginCodeFirst.Controllers
                 ViewData["Error"] = _userLocalizer.GetLocalizedHtmlString("err_EditPasswordFailure");
                 return PartialView("_ChangePassword",userViewModel); 
             }
+            Log.Error("Edit Password User Error");
             return PartialView("_ChangePassword",userViewModel);
         }
 
@@ -177,6 +185,7 @@ namespace LoginCodeFirst.Controllers
         {
             if (id == null)
             {
+                Log.Warning("Id User Equal Null");
                 return BadRequest();
             }
             var user = await _userService.DeleteAsync(id.Value);
@@ -186,6 +195,7 @@ namespace LoginCodeFirst.Controllers
                 return RedirectToAction("Index");
             } 
             TempData["Error"] = _commonLocalizer.GetLocalizedHtmlString("msg_DeleteError").ToString();
+            Log.Error("Delete User Error");
             return RedirectToAction("Index");
         }
     }

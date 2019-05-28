@@ -7,6 +7,7 @@ using AutoMapper;
 using LoginCodeFirst.Models;
 using LoginCodeFirst.ViewModels;
 using Microsoft.EntityFrameworkCore;
+using Serilog;
 
 namespace LoginCodeFirst.Services
 {
@@ -89,12 +90,21 @@ namespace LoginCodeFirst.Services
         /// <returns>ListProduct</returns>
         public async Task<List<ProductViewModel>> GetProductListAsync()
         {
-            var product = await _context.Product
-                .Include(p => p.Brand)
-                .Include(p => p.Category)
-                .ToListAsync();
-            var list = _mapper.Map<List<ProductViewModel>>(product);
-            return list;
+            try
+            {
+                var product = await _context.Product
+                    .Include(p => p.Brand)
+                    .Include(p => p.Category)
+                    .ToListAsync();
+                var list = _mapper.Map<List<ProductViewModel>>(product);
+                return list;
+            }
+            catch (Exception e)
+            {
+                Log.Information("Get Product List Async: {0}",e.Message);
+                throw;
+            }
+            
         }
 
         /// <inheritdoc />
@@ -127,7 +137,7 @@ namespace LoginCodeFirst.Services
             }
             catch (Exception e)
             {
-                Console.WriteLine(e);
+                Log.Error("Add Product Async Error:{0}",e.Message);
                 return false;
             }     
         }
@@ -140,9 +150,18 @@ namespace LoginCodeFirst.Services
         /// <returns>ProductViewModel</returns>
         public async Task<ProductViewModel> GetIdAsync(int id)
         {
-            var product = await _context.Product.FindAsync(id);
-            var list = _mapper.Map<ProductViewModel>(product);
-            return list;
+            try
+            {
+                var product = await _context.Product.FindAsync(id);
+                var list = _mapper.Map<ProductViewModel>(product);
+                return list;
+            }
+            catch (Exception e)
+            {
+                Log.Warning("Get Id Product Async Error:{0}",e.Message);
+                throw;
+            }
+            
         }
         
         /// <inheritdoc />
@@ -156,20 +175,19 @@ namespace LoginCodeFirst.Services
             try
             {
                 var listProduct = await _context.Product.FindAsync(product.ProductId);
-
                 listProduct.ProductName = product.ProductName;
                 listProduct.BrandId = product.BrandId;
                 listProduct.CategoryId = product.CategoryId;
                 listProduct.ModelYear = product.ModelYear;
                 listProduct.ListPrice = product.ListPrice;
-
+                
                 _context.Product.Update(listProduct);
                 await _context.SaveChangesAsync();
                 return true;
             }
             catch (Exception e)
             { 
-                Console.WriteLine(e);
+                Log.Error("Edit Product Async Error:{0}",e.Message);
                 return false;
             }       
         }
@@ -190,7 +208,7 @@ namespace LoginCodeFirst.Services
             }
             catch (Exception e)
             {
-                Console.WriteLine(e);
+                Log.Error("Delete Product Async: {0}",e.Message);
                 return false;
             }         
         }
@@ -204,7 +222,16 @@ namespace LoginCodeFirst.Services
         /// <returns>ExistedName</returns>
         public bool IsExistedName(string name,int id)
         {
-            return  _context.Product.Any(x => x.ProductName == name && x.ProductId != id);
+            try
+            {
+                return  _context.Product.Any(x => x.ProductName == name && x.ProductId != id);
+            }
+            catch (Exception e)
+            {
+                Log.Warning("Is Product Existed Name: {0}",e.Message);
+                throw;
+            }
+            
         }         
     }
 }
