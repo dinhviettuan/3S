@@ -1,10 +1,9 @@
 ﻿using System.Threading.Tasks;
 using LoginCodeFirst.Resources;
 using LoginCodeFirst.Services;
-using LoginCodeFirst.ViewModels.Brand;
+using LoginCodeFirst.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 using Serilog;
 
 namespace LoginCodeFirst.Controllers

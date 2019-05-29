@@ -53,8 +53,8 @@ namespace LoginCodeFirst.Controllers
         [HttpGet]
         public IActionResult Add()
         {
-            ViewBag.CategoryId = new SelectList(_categoryServices.GetCategorys(), "CategoryId", "CategoryName");
-            ViewBag.BrandId = new SelectList(_brandServices.GetBrands(), "BrandId", "BrandName");
+            ViewBag.CategoryId = new SelectList(_categoryServices.GetCategorys(), "Id", "CategoryName");
+            ViewBag.BrandId = new SelectList(_brandServices.GetBrands(), "Id", "BrandName");
             return View();
         }
 
@@ -75,12 +75,12 @@ namespace LoginCodeFirst.Controllers
                     return RedirectToAction("Index");
                 }
                 ViewData["Error"] = _productLocalizer.GetLocalizedHtmlString("err_AddProductFailure");
-                ViewBag.CategoryId = new SelectList(_categoryServices.GetCategorys(), "CategoryId", "CategoryName",productViewModel.CategoryId);
-                ViewBag.BrandId = new SelectList(_brandServices.GetBrands(), "BrandId", "BrandName",productViewModel.BrandId);
+                ViewBag.CategoryId = new SelectList(_categoryServices.GetCategorys(), "Id", "CategoryName",productViewModel.CategoryId);
+                ViewBag.BrandId = new SelectList(_brandServices.GetBrands(), "Id", "BrandName",productViewModel.BrandId);
                 return View(productViewModel);                
             }
-            ViewBag.CategoryId = new SelectList(_categoryServices.GetCategorys(), "CategoryId", "CategoryName",productViewModel.CategoryId);
-            ViewBag.BrandId = new SelectList(_brandServices.GetBrands(), "BrandId", "BrandName",productViewModel.BrandId);
+            ViewBag.CategoryId = new SelectList(_categoryServices.GetCategorys(), "Id", "CategoryName",productViewModel.CategoryId);
+            ViewBag.BrandId = new SelectList(_brandServices.GetBrands(), "Id", "BrandName",productViewModel.BrandId);
             Log.Error("Add Product Error");
             return View(productViewModel);
         }
@@ -98,15 +98,14 @@ namespace LoginCodeFirst.Controllers
                 Log.Warning("Id Equal Null");
                 return BadRequest();
             }
-
             var product =  await _productServices.GetIdAsync(id.Value);
             if (product == null)
             {
                 Log.Warning("Product Equal Null");
                 return BadRequest();
             }
-            ViewBag.CategoryId = new SelectList(_categoryServices.GetCategorys(), "CategoryId", "CategoryName");
-            ViewBag.BrandId = new SelectList(_brandServices.GetBrands(), "BrandId", "BrandName");
+            ViewBag.CategoryId = new SelectList(_categoryServices.GetCategorys(), "Id", "CategoryName");
+            ViewBag.BrandId = new SelectList(_brandServices.GetBrands(), "Id", "BrandName");
             return View(product);
         }
 
@@ -123,8 +122,8 @@ namespace LoginCodeFirst.Controllers
                 var product = await _productServices.EditAsync(productViewModel);
                 if (product)
                 {
-                    ViewBag.CategoryId = new SelectList(_categoryServices.GetCategorys(), "CategoryId", "CategoryName", productViewModel.CategoryId);
-                    ViewBag.BrandId = new SelectList(_brandServices.GetBrands(), "BrandId", "BrandName",productViewModel.BrandId);
+                    ViewBag.CategoryId = new SelectList(_categoryServices.GetCategorys(), "Id", "CategoryName", productViewModel.CategoryId);
+                    ViewBag.BrandId = new SelectList(_brandServices.GetBrands(), "Id", "BrandName",productViewModel.BrandId);
                     TempData["Success"] = _commonLocalizer.GetLocalizedHtmlString("msg_EditSuccess").ToString();
                     return RedirectToAction("Index"); 
                 }

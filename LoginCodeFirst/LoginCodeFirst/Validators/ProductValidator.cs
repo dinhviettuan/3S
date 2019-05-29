@@ -16,7 +16,7 @@ namespace LoginCodeFirst.Validators
             RuleFor(x => x.ListPrice).NotNull()
                 .WithMessage(commonlocalizer.GetLocalizedHtmlString("msg_NotEmpty"));
             
-            RuleFor(x => x.ProductName).Must((reg,c) => !productServices.IsExistedName(reg.ProductName,reg.ProductId))
+            RuleFor(x => x.ProductName).Must((reg,c) => !productServices.IsExistedName(reg.ProductName,reg.Id))
                 .WithMessage((reg,c) => string.Format(commonlocalizer.GetLocalizedHtmlString("msg_AlreadyExists"),c));
             
             

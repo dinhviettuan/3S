@@ -110,7 +110,6 @@ namespace LoginCodeFirst.Services
                 return false;
             }
             var user = _context.User.FirstOrDefault(x => x.Email == email && SecurePasswordHasher.Verify(password,x.Password));
-
             if (user == null)
             {
                 return false;
@@ -161,6 +160,7 @@ namespace LoginCodeFirst.Services
             }          
         }
         
+        /// <inheritdoc />
         /// <summary>
         /// GetIdAsync
         /// </summary>
@@ -243,7 +243,7 @@ namespace LoginCodeFirst.Services
         {
             try
             {
-                var users = await _context.User.FindAsync(userViewModel.UserId);
+                var users = await _context.User.FindAsync(userViewModel.Id);
                 users.Email = userViewModel.Email;
                 users.Fullname = userViewModel.FullName;
                 users.Phone = userViewModel.Phone;
@@ -316,7 +316,7 @@ namespace LoginCodeFirst.Services
         {
             try
             {
-                return  _context.User.Any(x => x.Email == email && x.UserId != id);
+                return  _context.User.Any(x => x.Email == email && x.Id != id);
             }
             catch (Exception e)
             {

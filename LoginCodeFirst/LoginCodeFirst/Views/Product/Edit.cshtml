@@ -1,5 +1,4 @@
-﻿@using LoginCodeFirst.ViewModels
-@model LoginCodeFirst.ViewModels.ProductViewModel
+﻿@model LoginCodeFirst.ViewModels.ProductViewModel
 @{
     ViewBag.Title = ProductLocalizer.GetLocalizedHtmlString("lbl_EditProduct");
     Layout = "_Layout";
@@ -17,7 +16,7 @@
                     <div class="row clearfix">
                         <div class="col-sm-12">
                             <form asp-controller="Product" asp-action="Edit" method="post" enctype="multipart/form-data">
-                                <input asp-for="ProductId" type="hidden">
+                                <input asp-for="Id" type="hidden">
                                 <div class="form-group">
                                     <label class="form-label" asp-for="ProductName">@ProductLocalizer.GetLocalizedHtmlString("lbl_ProductName")</label>
                                     <input type="text" asp-for="ProductName" placeholder="ProductName" class="form-control">

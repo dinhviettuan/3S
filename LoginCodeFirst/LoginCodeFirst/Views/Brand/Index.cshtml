@@ -1,4 +1,4 @@
-﻿@model List<LoginCodeFirst.ViewModels.Brand.BrandViewModel>
+﻿@model List<LoginCodeFirst.ViewModels.BrandViewModel>
 @{
     ViewBag.Title = BrandLocalizer.GetLocalizedHtmlString("lbl_ListBrand");
 }
@@ -16,7 +16,6 @@
                         <a type="button" class="btn btn-primary" data-toggle="ajax-modal" data-target="#add-contact" 
 
                            asp-controller="Brand" asp-action="Add")>@CommonLocalizer.GetLocalizedHtmlString("btn_Add")</a>
-
                     </h2>  
                 </div>
                 <div class="body">
@@ -48,10 +47,10 @@
                                     <td>
 
                                         <a asp-controller="Brand" asp-action="Edit" 
-                                           asp-route-id="@item.BrandId">@CommonLocalizer.GetLocalizedHtmlString("btn_Edit")</a>
+                                           asp-route-id="@item.Id">@CommonLocalizer.GetLocalizedHtmlString("btn_Edit")</a>
                                         <a asp-controller="Brand" asp-action="Delete" 
                                            onclick=" return confirm('@CommonLocalizer.GetLocalizedHtmlString("btn_YouDelete")')" 
-                                           asp-route-id="@item.BrandId">@CommonLocalizer.GetLocalizedHtmlString("btn_Delete")</a>
+                                           asp-route-id="@item.Id">@CommonLocalizer.GetLocalizedHtmlString("btn_Delete")</a>
                                     </td>
                                 </tr>
                             }

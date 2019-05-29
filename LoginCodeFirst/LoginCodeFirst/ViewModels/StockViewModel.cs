@@ -1,4 +1,4 @@
-﻿namespace LoginCodeFirst.ViewModels.Stock
+﻿namespace LoginCodeFirst.ViewModels
 {
     public class StockViewModel
     {

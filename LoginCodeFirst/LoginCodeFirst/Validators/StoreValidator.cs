@@ -3,11 +3,11 @@ using LoginCodeFirst.Resources;
 using LoginCodeFirst.Services;
 using LoginCodeFirst.ViewModels;
 
-namespace LoginCodeFirst.Validators.Store
+namespace LoginCodeFirst.Validators
 {
     public class StoreValidator : AbstractValidator<StoreViewModel>
     {
-        public StoreValidator(ResourcesServices<StoreResources> localizer,ResourcesServices<CommonResources> commonlocalizer,IStoreServices storeServices)
+        public StoreValidator(ResourcesServices<CommonResources> commonlocalizer,IStoreServices storeServices)
         {
             RuleFor(x => x.Phone).NotNull()
                 .WithMessage(commonlocalizer.GetLocalizedHtmlString("msg_NotEmpty"));
@@ -24,7 +24,7 @@ namespace LoginCodeFirst.Validators.Store
             RuleFor(x => x.Email).NotNull()
                 .WithMessage(commonlocalizer.GetLocalizedHtmlString("msg_NotEmpty"));
             
-            RuleFor(x => x.Email).Must((Reg,c) => !storeServices.IsExistedName(Reg.Email,Reg.Id))
+            RuleFor(x => x.Email).Must((reg,c) => !storeServices.IsExistedName(reg.Email,reg.Id))
                 .WithMessage((reg,c) => string.Format(commonlocalizer.GetLocalizedHtmlString("msg_AlreadyExists"),c));
                    
             RuleFor(x => x.Email).EmailAddress()

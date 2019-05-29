@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using AutoMapper;
 using LoginCodeFirst.Models;
-using LoginCodeFirst.ViewModels.Stock;
+using LoginCodeFirst.ViewModels;
 using Microsoft.EntityFrameworkCore;
 using Serilog;
 

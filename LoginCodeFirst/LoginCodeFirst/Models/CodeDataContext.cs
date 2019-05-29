@@ -123,7 +123,7 @@ namespace LoginCodeFirst.Models
             modelBuilder.Entity<User>().HasData(
                 new User
                 {
-                    UserId = 1,
+                    Id = 1,
                     Email = "tuan1@gmail.com",
                     Password = SecurePasswordHasher.Hash("Aa123456"),
                     Fullname = "Dinh Viet Tuan",
@@ -134,7 +134,7 @@ namespace LoginCodeFirst.Models
                 },
                 new User
                 {
-                    UserId = 2,
+                    Id = 2,
                     Email = "tuan@gmail.com",
                     Password = SecurePasswordHasher.Hash("Aa123456"),
                     Fullname = "Dinh Viet Tuan",
@@ -160,21 +160,21 @@ namespace LoginCodeFirst.Models
             modelBuilder.Entity<Category>().HasData(
                 new Category
                 {
-                    CategoryId   = 1,
+                    Id   = 1,
                     CategoryName = "tui sach"
                 });
             
             modelBuilder.Entity<Brand>().HasData(
                 new Brand
                 {
-                    BrandId   = 1,
+                    Id   = 1,
                     BrandName = "chanel"
                 });
           
             modelBuilder.Entity<Product>().HasData(
                 new Product
                 {
-                    ProductId   = 1,
+                    Id   = 1,
                     ProductName = "giay",
                     BrandId     = 1,
                     CategoryId = 1,

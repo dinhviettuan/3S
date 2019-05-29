@@ -2,13 +2,13 @@
 using System.ComponentModel.DataAnnotations;
 
 
-namespace LoginCodeFirst.ViewModels.Brand
+namespace LoginCodeFirst.ViewModels
 {
     public class BrandViewModel
     {
-        [Display(Name = "Brand Id")]
-        public int BrandId { get; set;  }
-        [Display(Name = "Brand Id")]
+        
+        public int Id { get; set;  }
+        [Display(Name = "Brand Name")]
         public string BrandName { get; set;  } 
         
         public virtual ICollection<Models.Product> Products { get; set; }

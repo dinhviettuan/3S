@@ -1,4 +1,4 @@
-﻿@model List<LoginCodeFirst.ViewModels.Stock.StockViewModel>
+﻿@model List<LoginCodeFirst.ViewModels.StockViewModel>
 @{
     ViewBag.Title = StockLocalizer.GetLocalizedHtmlString("lbl_ListStock");
 }
@@ -55,9 +55,8 @@
                                     </td>
                                     <td>
                                         @Html.DisplayFor(modelItem => item.Quantity)
-                                    </td>
+                                    </td>                                  
                                     <td>
-
                                         <a asp-controller="Stock" asp-action="Edit" 
                                            asp-route-storeId="@item.StoreId" 
                                            asp-route-productId="@item.ProductId">@CommonLocalizer.GetLocalizedHtmlString("btn_Edit")</a>

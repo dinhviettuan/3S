@@ -1,4 +1,4 @@
-﻿@model LoginCodeFirst.ViewModels.Category.CategoryViewModel
+﻿@model LoginCodeFirst.ViewModels.CategoryViewModel
 @{
     ViewBag.Title = CategoryLocalizer.GetLocalizedHtmlString("lbl_EditCategory");
     Layout = "_Layout";
@@ -19,7 +19,7 @@
                     <div class="row clearfix">
                         <div class="col-sm-12">
                             <form asp-controller="Category" asp-action="Edit" method="post">
-                                <input asp-for="CategoryId" type="hidden">
+                                <input asp-for="Id" type="hidden">
                                 <div class="form-group">
                                     <label class="form-label" asp-for="CategoryName">@CategoryLocalizer.GetLocalizedHtmlString("lbl_CategoryName")</label>
                                     <input type="text" asp-for="CategoryName" placeholder="CategoryName" class="form-control">

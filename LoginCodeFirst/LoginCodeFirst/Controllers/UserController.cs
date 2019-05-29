@@ -2,7 +2,6 @@
 using LoginCodeFirst.Resources;
 using LoginCodeFirst.Services;
 using LoginCodeFirst.ViewModels.User;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Serilog;

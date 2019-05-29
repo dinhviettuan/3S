@@ -1,13 +1,12 @@
 ﻿using FluentValidation;
 using LoginCodeFirst.Resources;
-using LoginCodeFirst.Services;
 using LoginCodeFirst.ViewModels.User;
 
 namespace LoginCodeFirst.Validators.User
 {
     public class PasswordValidator : AbstractValidator<PasswordViewModel>
     {
-        public PasswordValidator(ResourcesServices<UserResources> localizer,ResourcesServices<CommonResources> commonlocalizer,IUserServices userServices)
+        public PasswordValidator(ResourcesServices<UserResources> localizer,ResourcesServices<CommonResources> commonlocalizer)
         {
             RuleFor(x => x.NewPassword).NotNull()
                 .WithMessage(commonlocalizer.GetLocalizedHtmlString("msg_NotEmpty"));

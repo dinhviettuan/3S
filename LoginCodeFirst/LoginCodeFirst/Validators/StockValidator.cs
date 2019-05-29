@@ -1,14 +1,13 @@
 ﻿using FluentValidation;
 using LoginCodeFirst.Resources;
-using LoginCodeFirst.Services;
-using LoginCodeFirst.ViewModels.Stock;
+using LoginCodeFirst.ViewModels;
 
 namespace LoginCodeFirst.Validators
 {
     public class StockValidator : AbstractValidator<StockViewModel>
     {
 
-        public StockValidator(ResourcesServices<StockResources> localizer,ResourcesServices<CommonResources> commonlocalizer,IStockServices stockServices)
+        public StockValidator(ResourcesServices<StockResources> localizer,ResourcesServices<CommonResources> commonlocalizer)
         {
             RuleFor(x => x.Quantity).NotNull()
                 .WithMessage(commonlocalizer.GetLocalizedHtmlString("msg_NotEmpty"));

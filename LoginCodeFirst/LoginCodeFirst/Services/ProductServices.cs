@@ -174,7 +174,7 @@ namespace LoginCodeFirst.Services
         {
             try
             {
-                var listProduct = await _context.Product.FindAsync(product.ProductId);
+                var listProduct = await _context.Product.FindAsync(product.Id);
                 listProduct.ProductName = product.ProductName;
                 listProduct.BrandId = product.BrandId;
                 listProduct.CategoryId = product.CategoryId;
@@ -192,6 +192,7 @@ namespace LoginCodeFirst.Services
             }       
         }
         
+        /// <inheritdoc />
         /// <summary>
         /// DeleteAsync
         /// </summary>
@@ -224,7 +225,7 @@ namespace LoginCodeFirst.Services
         {
             try
             {
-                return  _context.Product.Any(x => x.ProductName == name && x.ProductId != id);
+                return  _context.Product.Any(x => x.ProductName == name && x.Id != id);
             }
             catch (Exception e)
             {

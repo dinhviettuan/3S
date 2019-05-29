@@ -1,7 +1,7 @@
 ﻿using FluentValidation;
 using LoginCodeFirst.Resources;
 using LoginCodeFirst.Services;
-using LoginCodeFirst.ViewModels.Category;
+using LoginCodeFirst.ViewModels;
 
 namespace LoginCodeFirst.Validators
 {
@@ -12,7 +12,7 @@ namespace LoginCodeFirst.Validators
             RuleFor(x => x.CategoryName).NotNull()
                 .WithMessage(commonlocalizer.GetLocalizedHtmlString("msg_NotEmpty"));
             
-            RuleFor(x => x.CategoryName).Must((reg,c) => !categoryServices.IsExistedName(reg.CategoryName,reg.CategoryId))
+            RuleFor(x => x.CategoryName).Must((reg,c) => !categoryServices.IsExistedName(reg.CategoryName,reg.Id))
                     .WithMessage((reg,c) => string.Format(commonlocalizer.GetLocalizedHtmlString("msg_AlreadyExists"),c));    
         }
     }

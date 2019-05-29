@@ -1,0 +1,134 @@
+2019-05-29 13:30:05.956 +07:00 [INF] Login
+2019-05-29 13:30:09.814 +07:00 [ERR] Login Error
+2019-05-29 13:30:23.170 +07:00 [INF] Get Store List Async
+2019-05-29 13:30:26.998 +07:00 [INF] Get User List Async
+2019-05-29 13:30:47.919 +07:00 [INF] Get User List Async
+2019-05-29 13:32:41.630 +07:00 [ERR] Edit Password User Error
+2019-05-29 13:35:49.121 +07:00 [INF] Get User List Async
+2019-05-29 13:35:55.958 +07:00 [INF] Get User List Async
+2019-05-29 13:36:02.130 +07:00 [INF] Get Store List Async
+2019-05-29 13:36:03.532 +07:00 [INF] Get Store List Async
+2019-05-29 13:36:30.716 +07:00 [INF] Get Store List Async
+2019-05-29 13:36:43.859 +07:00 [INF] Get Store List Async
+2019-05-29 13:36:49.445 +07:00 [INF] Get Store List Async
+2019-05-29 13:36:57.353 +07:00 [INF] Get Store List Async
+2019-05-29 13:37:02.100 +07:00 [ERR] Get Stock List Async
+2019-05-29 13:37:07.102 +07:00 [ERR] Get Stock List Async
+2019-05-29 13:37:15.977 +07:00 [ERR] Get Stock List Async
+2019-05-29 13:39:57.023 +07:00 [ERR] Get Stock List Async
+2019-05-29 13:40:06.057 +07:00 [ERR] Get Stock List Async
+2019-05-29 13:40:09.113 +07:00 [WRN] Stock Equal Null
+2019-05-29 13:40:17.052 +07:00 [INF] Get Store List Async
+2019-05-29 13:40:35.110 +07:00 [ERR] Get Stock List Async
+2019-05-29 13:40:36.567 +07:00 [ERR] Get Stock List Async
+2019-05-29 13:40:41.332 +07:00 [ERR] Get Stock List Async
+2019-05-29 13:40:43.836 +07:00 [WRN] Stock Equal Null
+2019-05-29 13:40:45.449 +07:00 [INF] Get Store List Async
+2019-05-29 14:21:05.563 +07:00 [INF] Login
+2019-05-29 14:21:13.893 +07:00 [ERR] Login Error
+2019-05-29 14:22:28.285 +07:00 [INF] Get User List Async
+2019-05-29 14:22:33.010 +07:00 [INF] Get User List Async
+2019-05-29 14:22:58.079 +07:00 [INF] Get User List Async
+2019-05-29 14:23:03.929 +07:00 [INF] Get User List Async
+2019-05-29 14:23:32.713 +07:00 [INF] Get User List Async
+2019-05-29 14:23:44.643 +07:00 [INF] Login
+2019-05-29 14:23:52.199 +07:00 [INF] Get Store List Async
+2019-05-29 14:23:56.003 +07:00 [INF] Login
+2019-05-29 14:24:04.706 +07:00 [INF] Get Store List Async
+2019-05-29 14:24:06.344 +07:00 [INF] Get User List Async
+2019-05-29 14:24:15.557 +07:00 [ERR] Get Stock List Async
+2019-05-29 14:24:24.554 +07:00 [ERR] Get Stock List Async
+2019-05-29 14:24:35.784 +07:00 [ERR] Get Stock List Async
+2019-05-29 14:24:38.048 +07:00 [ERR] Get Stock List Async
+2019-05-29 14:24:44.969 +07:00 [ERR] Get Stock List Async
+2019-05-29 14:24:59.984 +07:00 [WRN] Stock Equal Null
+2019-05-29 14:25:01.893 +07:00 [INF] Get Store List Async
+2019-05-29 14:25:05.009 +07:00 [ERR] Get Stock List Async
+2019-05-29 14:30:57.276 +07:00 [INF] Login
+2019-05-29 14:31:09.995 +07:00 [INF] Get Store List Async
+2019-05-29 14:31:12.919 +07:00 [INF] Get User List Async
+2019-05-29 14:31:15.861 +07:00 [ERR] Get Stock List Async
+2019-05-29 14:31:22.931 +07:00 [WRN] Stock Equal Null
+2019-05-29 14:31:24.141 +07:00 [INF] Get Store List Async
+2019-05-29 14:31:26.593 +07:00 [ERR] Get Stock List Async
+2019-05-29 14:31:29.350 +07:00 [ERR] Delete Stock Async Error:Value cannot be null.
+Parameter name: entity
+2019-05-29 14:31:29.358 +07:00 [ERR] Delete Stock Error
+2019-05-29 14:31:29.369 +07:00 [ERR] Get Stock List Async
+2019-05-29 14:31:35.939 +07:00 [ERR] Delete Stock Async Error:Value cannot be null.
+Parameter name: entity
+2019-05-29 14:31:35.940 +07:00 [ERR] Delete Stock Error
+2019-05-29 14:31:35.960 +07:00 [ERR] Get Stock List Async
+2019-05-29 14:33:52.914 +07:00 [INF] Get Product List Async
+2019-05-29 14:33:57.361 +07:00 [WRN] Id Product Equal Null
+2019-05-29 14:34:01.883 +07:00 [INF] Get Store List Async
+2019-05-29 14:34:04.231 +07:00 [INF] Get Product List Async
+2019-05-29 14:34:07.158 +07:00 [INF] Get Product List Async
+2019-05-29 14:34:26.351 +07:00 [INF] Get Product List Async
+2019-05-29 14:34:31.504 +07:00 [WRN] Id Product Equal Null
+2019-05-29 14:34:32.786 +07:00 [INF] Get Store List Async
+2019-05-29 14:34:36.053 +07:00 [INF] Get Product List Async
+2019-05-29 14:34:39.224 +07:00 [WRN] Id Product Equal Null
+2019-05-29 14:34:40.722 +07:00 [INF] Get Store List Async
+2019-05-29 14:35:00.996 +07:00 [INF] Get User List Async
+2019-05-29 16:19:01.951 +07:00 [INF] Login
+2019-05-29 16:28:00.571 +07:00 [INF] Login
+2019-05-29 16:28:07.663 +07:00 [INF] Get Store List Async
+2019-05-29 16:28:14.639 +07:00 [INF] Get Store List Async
+2019-05-29 16:28:17.344 +07:00 [ERR] Get Stock List Async
+2019-05-29 16:28:20.330 +07:00 [ERR] Get Stock List Async
+2019-05-29 16:31:42.676 +07:00 [INF] Login
+2019-05-29 16:31:45.913 +07:00 [ERR] Login Error
+2019-05-29 16:31:51.422 +07:00 [INF] Get Store List Async
+2019-05-29 16:31:53.657 +07:00 [ERR] Get Stock List Async
+2019-05-29 16:31:55.231 +07:00 [ERR] Get Stock List Async
+2019-05-29 16:32:01.707 +07:00 [ERR] Get Stock List Async
+2019-05-29 16:32:43.445 +07:00 [ERR] Get Stock List Async
+2019-05-29 16:32:46.729 +07:00 [INF] Get Brand List Async
+2019-05-29 16:32:51.919 +07:00 [ERR] Get Stock List Async
+2019-05-29 16:32:55.513 +07:00 [INF] Get Store List Async
+2019-05-29 16:32:57.353 +07:00 [INF] Get Store List Async
+2019-05-29 16:33:09.725 +07:00 [INF] Get Store List Async
+2019-05-29 16:33:21.638 +07:00 [ERR] Get Stock List Async
+2019-05-29 16:33:27.501 +07:00 [INF] Get Product List Async
+2019-05-29 16:33:39.700 +07:00 [WRN] Id Product Equal Null
+2019-05-29 16:33:42.231 +07:00 [INF] Get Store List Async
+2019-05-29 16:33:45.487 +07:00 [INF] Get Category List Async
+2019-05-29 16:33:46.811 +07:00 [INF] Get Product List Async
+2019-05-29 16:34:24.352 +07:00 [INF] Get Product List Async
+2019-05-29 16:37:48.203 +07:00 [INF] Login
+2019-05-29 16:37:55.888 +07:00 [INF] Get Store List Async
+2019-05-29 16:38:01.045 +07:00 [INF] Get Store List Async
+2019-05-29 16:38:03.126 +07:00 [INF] Get Store List Async
+2019-05-29 16:38:05.889 +07:00 [ERR] Get Stock List Async
+2019-05-29 16:38:09.876 +07:00 [INF] Get Product List Async
+2019-05-29 16:38:14.546 +07:00 [INF] Get Product List Async
+2019-05-29 16:38:31.122 +07:00 [INF] Get Product List Async
+2019-05-29 16:38:34.912 +07:00 [WRN] Id Product Equal Null
+2019-05-29 17:04:01.465 +07:00 [INF] Login
+2019-05-29 17:37:17.667 +07:00 [INF] Login
+2019-05-29 17:37:23.963 +07:00 [INF] Get Store List Async
+2019-05-29 17:37:32.954 +07:00 [INF] Get Store List Async
+2019-05-29 17:37:34.478 +07:00 [INF] Get Store List Async
+2019-05-29 17:37:50.464 +07:00 [INF] Get Store List Async
+2019-05-29 17:38:17.848 +07:00 [INF] Get User List Async
+2019-05-29 17:38:23.230 +07:00 [INF] Get Product List Async
+2019-05-29 17:38:26.107 +07:00 [WRN] Id Product Equal Null
+2019-05-29 17:38:29.938 +07:00 [INF] Get Store List Async
+2019-05-29 17:38:34.189 +07:00 [INF] Get User List Async
+2019-05-29 17:39:12.033 +07:00 [INF] Get Product List Async
+2019-05-29 17:40:24.882 +07:00 [WRN] Id Product Equal Null
+2019-05-29 17:40:31.386 +07:00 [INF] Get Store List Async
+2019-05-29 17:42:10.121 +07:00 [INF] Login
+2019-05-29 17:42:35.658 +07:00 [INF] Get Store List Async
+2019-05-29 17:42:45.108 +07:00 [INF] Get Product List Async
+2019-05-29 17:45:36.832 +07:00 [INF] Login
+2019-05-29 17:45:42.265 +07:00 [INF] Get Store List Async
+2019-05-29 17:45:44.903 +07:00 [INF] Get Product List Async
+2019-05-29 17:45:50.812 +07:00 [INF] Get Product List Async
+2019-05-29 17:48:54.913 +07:00 [INF] Get Product List Async
+2019-05-29 17:49:00.619 +07:00 [INF] Get Product List Async
+2019-05-29 17:49:32.699 +07:00 [INF] Get Category List Async
+2019-05-29 17:49:35.971 +07:00 [INF] Get Category List Async
+2019-05-29 17:49:38.105 +07:00 [INF] Get Category List Async
+2019-05-29 17:49:40.717 +07:00 [INF] Get Category List Async

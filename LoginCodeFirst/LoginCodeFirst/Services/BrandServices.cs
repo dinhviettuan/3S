@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using LoginCodeFirst.Models;
-using LoginCodeFirst.ViewModels.Brand;
+using LoginCodeFirst.ViewModels;
 using Microsoft.EntityFrameworkCore;
 using Serilog;
 
@@ -159,7 +159,7 @@ namespace LoginCodeFirst.Services
         {
             try
             {   
-                var brands = await _context.Brand.FindAsync(brand.BrandId);
+                var brands = await _context.Brand.FindAsync(brand.Id);
            
                 brands.BrandName = brand.BrandName;
             
@@ -208,7 +208,7 @@ namespace LoginCodeFirst.Services
         {
             try
             {
-                return  _context.Brand.Any(x => x.BrandName == name && x.BrandId != id);
+                return  _context.Brand.Any(x => x.BrandName == name && x.Id != id);
             }
             catch (Exception e)
             {

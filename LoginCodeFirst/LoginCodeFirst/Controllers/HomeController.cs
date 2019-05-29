@@ -4,7 +4,6 @@ using Microsoft.AspNetCore.Mvc;
 using LoginCodeFirst.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Localization;
-using Serilog;
 
 namespace LoginCodeFirst.Controllers
 {

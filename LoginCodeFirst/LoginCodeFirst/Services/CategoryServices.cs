@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using LoginCodeFirst.Models;
-using LoginCodeFirst.ViewModels.Category;
+using LoginCodeFirst.ViewModels;
 using Microsoft.EntityFrameworkCore;
 using Serilog;
 
@@ -158,7 +158,7 @@ namespace LoginCodeFirst.Services
         {
             try
             {
-                var categorys = await _context.Category.FindAsync(categoryViewModel.CategoryId);
+                var categorys = await _context.Category.FindAsync(categoryViewModel.Id);
 
                 categorys.CategoryName = categoryViewModel.CategoryName;
             
@@ -209,7 +209,7 @@ namespace LoginCodeFirst.Services
         {
             try
             {
-                return  _context.Category.Any(x => x.CategoryName == name && x.CategoryId != id);
+                return  _context.Category.Any(x => x.CategoryName == name && x.Id != id);
             }
             catch (Exception e)
             {

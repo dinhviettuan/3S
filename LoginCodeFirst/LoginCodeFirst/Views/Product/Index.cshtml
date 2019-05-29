@@ -78,9 +78,9 @@
                                     </td>
                                     <td>
                                         <a asp-controller="Product" asp-action="Edit" 
-                                           asp-route-id="@item.ProductId">@CommonLocalizer.GetLocalizedHtmlString("btn_Edit")</a>
+                                           asp-route-id="@item.Id">@CommonLocalizer.GetLocalizedHtmlString("btn_Edit")</a>
                                         <a asp-controller="Product" asp-action="Delete" onclick=" return confirm('@CommonLocalizer.GetLocalizedHtmlString("btn_YouDelete")')"
-                                           asp-route-productId="@item.ProductId">@CommonLocalizer.GetLocalizedHtmlString("btn_Delete")</a>
+                                           asp-route-id="@item.Id">@CommonLocalizer.GetLocalizedHtmlString("btn_Delete")</a>
 
                                     </td>
                                 </tr>

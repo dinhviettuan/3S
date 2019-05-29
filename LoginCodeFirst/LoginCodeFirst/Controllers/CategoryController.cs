@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
 using LoginCodeFirst.Resources;
 using LoginCodeFirst.Services;
-using LoginCodeFirst.ViewModels.Category;
+using LoginCodeFirst.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Serilog;
@@ -89,7 +89,6 @@ namespace LoginCodeFirst.Controllers
                 Log.Warning("Category Equal Null");
                 return BadRequest();
             }
-
             return View(categoryViewModel);
         }
 

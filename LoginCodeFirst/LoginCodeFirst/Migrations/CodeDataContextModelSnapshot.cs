@@ -20,47 +20,47 @@ namespace LoginCodeFirst.Migrations
 
             modelBuilder.Entity("LoginCodeFirst.Models.Brand", b =>
                 {
-                    b.Property<int>("BrandId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("BrandName");
 
-                    b.HasKey("BrandId");
+                    b.HasKey("Id");
 
                     b.ToTable("Brand");
 
                     b.HasData(
                         new
                         {
-                            BrandId = 1,
+                            Id = 1,
                             BrandName = "chanel"
                         });
                 });
 
             modelBuilder.Entity("LoginCodeFirst.Models.Category", b =>
                 {
-                    b.Property<int>("CategoryId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("CategoryName");
 
-                    b.HasKey("CategoryId");
+                    b.HasKey("Id");
 
                     b.ToTable("Category");
 
                     b.HasData(
                         new
                         {
-                            CategoryId = 1,
+                            Id = 1,
                             CategoryName = "tui sach"
                         });
                 });
 
             modelBuilder.Entity("LoginCodeFirst.Models.Product", b =>
                 {
-                    b.Property<int>("ProductId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
@@ -76,7 +76,7 @@ namespace LoginCodeFirst.Migrations
 
                     b.Property<string>("ProductName");
 
-                    b.HasKey("ProductId");
+                    b.HasKey("Id");
 
                     b.HasIndex("BrandId");
 
@@ -87,7 +87,7 @@ namespace LoginCodeFirst.Migrations
                     b.HasData(
                         new
                         {
-                            ProductId = 1,
+                            Id = 1,
                             BrandId = 1,
                             CategoryId = 1,
                             Image = "wewqe",
@@ -170,7 +170,7 @@ namespace LoginCodeFirst.Migrations
 
             modelBuilder.Entity("LoginCodeFirst.Models.User", b =>
                 {
-                    b.Property<int>("UserId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
@@ -194,7 +194,7 @@ namespace LoginCodeFirst.Migrations
 
                     b.Property<int>("StoreId");
 
-                    b.HasKey("UserId");
+                    b.HasKey("Id");
 
                     b.HasIndex("StoreId");
 
@@ -203,22 +203,22 @@ namespace LoginCodeFirst.Migrations
                     b.HasData(
                         new
                         {
-                            UserId = 1,
+                            Id = 1,
                             Email = "tuan1@gmail.com",
                             Fullname = "Dinh Viet Tuan",
                             IsActive = true,
-                            Password = "10000:5BVOvtPmK//FO/GDjOXUS7+HvfuVmIcHAO+lmDPV+Lf7DIhU",
+                            Password = "10000:uCdjvFD0a+BZzIa6CHcoH6b3Qwzv5fIaoJQPwyOUtzOiYxf3",
                             Phone = "123456789",
                             Role = 1,
                             StoreId = 1
                         },
                         new
                         {
-                            UserId = 2,
+                            Id = 2,
                             Email = "tuan@gmail.com",
                             Fullname = "Dinh Viet Tuan",
                             IsActive = true,
-                            Password = "10000:K4M4S4C5lT/AljnmgHmKffA3wDHLI2B2cbGKD5S+d8Oges9e",
+                            Password = "10000:85/2kUmeY5v6I457TtSk4sS4l35Zb7BYblZEn+aEJz9yhN9G",
                             Phone = "123456789",
                             Role = 2,
                             StoreId = 1

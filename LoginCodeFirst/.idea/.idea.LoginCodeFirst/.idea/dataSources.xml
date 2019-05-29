@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="tuandb@localhost" uuid="cdb3e550-5316-49f9-b10e-81f87b69938f">
+    <data-source source="LOCAL" name="DbLoginCode@localhost" uuid="0a383203-b125-4b4e-a03b-257bd9942936">
       <driver-ref>sqlserver.ms</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>com.microsoft.sqlserver.jdbc.SQLServerDriver</jdbc-driver>
-      <jdbc-url>jdbc:sqlserver://localhost;database=tuandb</jdbc-url>
+      <jdbc-url>jdbc:sqlserver://localhost;database=DbLoginCode</jdbc-url>
       <driver-properties>
         <property name="applicationName" value="DataGrip" />
       </driver-properties>

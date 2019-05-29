@@ -81,14 +81,14 @@
                                     <td>
                                         <div id="modal-placeholder"></div>
                                         <a type="button"  data-toggle="ajax-modal" data-url="@Url.Action("EditPassword",
-                                          new {id = item.UserId})">@UserLocalizer.GetLocalizedHtmlString("btn_EditPassword")
+                                          new {id = item.Id})">@UserLocalizer.GetLocalizedHtmlString("btn_EditPassword")
                                         </a>
                                         ||
                                         <a asp-controller="User" asp-action="Edit" 
-                                           asp-route-id="@item.UserId">@CommonLocalizer.GetLocalizedHtmlString("btn_Edit")</a> ||
+                                           asp-route-id="@item.Id">@CommonLocalizer.GetLocalizedHtmlString("btn_Edit")</a> ||
                                         <a asp-controller="User" asp-action="Delete" 
                                            onclick=" return confirm('@CommonLocalizer.GetLocalizedHtmlString("btn_YouDelete")')" 
-                                           asp-route-id="@item.UserId">@CommonLocalizer.GetLocalizedHtmlString("btn_Delete")</a>
+                                           asp-route-id="@item.Id">@CommonLocalizer.GetLocalizedHtmlString("btn_Delete")</a>
                                     </td>
                                 </tr>
                             }

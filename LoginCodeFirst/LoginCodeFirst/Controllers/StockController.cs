@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
 using LoginCodeFirst.Resources;
 using LoginCodeFirst.Services;
-using LoginCodeFirst.ViewModels.Stock;
+using LoginCodeFirst.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -50,7 +50,7 @@ namespace LoginCodeFirst.Controllers
         [HttpGet]
         public IActionResult Add()
         {
-            ViewBag.ProductId = new SelectList(_productServices.GetProducts(), "ProductId", "ProductName");
+            ViewBag.ProductId = new SelectList(_productServices.GetProducts(), "Id", "ProductName");
             ViewBag.StoreId = new SelectList(_storeServices.GetStores(), "Id", "StoreName");
             return View();
         }
@@ -71,12 +71,12 @@ namespace LoginCodeFirst.Controllers
                     TempData["Success"] = _commonLocalizer.GetLocalizedHtmlString("msg_AddSuccess").ToString();
                     return RedirectToAction("Index");
                 }
-                ViewBag.ProductId = new SelectList(_productServices.GetProducts(), "ProductId", "ProductName",stockViewModel.ProductId);
+                ViewBag.ProductId = new SelectList(_productServices.GetProducts(), "Id", "ProductName",stockViewModel.ProductId);
                 ViewBag.StoreId = new SelectList(_storeServices.GetStores(), "Id", "StoreName",stockViewModel.StoreId);
                 ViewData["Error"] = _stockLocalizer.GetLocalizedHtmlString("err_AddStockFailure");
                 return View(stockViewModel);
             }
-            ViewBag.ProductId = new SelectList(_productServices.GetProducts(), "ProductId", "ProductName",stockViewModel.ProductId);
+            ViewBag.ProductId = new SelectList(_productServices.GetProducts(), "Id", "ProductName",stockViewModel.ProductId);
             ViewBag.StoreId = new SelectList(_storeServices.GetStores(), "Id", "StoreName",stockViewModel.StoreId);
             Log.Error("Add Stock Error");
             return View(stockViewModel);
@@ -102,7 +102,7 @@ namespace LoginCodeFirst.Controllers
                 Log.Warning("Stock Equal Null");
                 return BadRequest();
             }
-            ViewBag.ProductId = new SelectList(_productServices.GetProducts(), "ProductId", "ProductName");
+            ViewBag.ProductId = new SelectList(_productServices.GetProducts(), "Id", "ProductName");
             ViewBag.StoreId = new SelectList(_storeServices.GetStores(), "Id", "StoreName");
             return View(stock);
         }
@@ -123,12 +123,12 @@ namespace LoginCodeFirst.Controllers
                     TempData["Success"] = _commonLocalizer.GetLocalizedHtmlString("msg_EditSuccess").ToString();
                     return RedirectToAction("Index"); 
                 }
-                ViewBag.ProductId = new SelectList(_productServices.GetProducts(), "ProductId", "ProductName",stockViewModel.ProductId);
+                ViewBag.ProductId = new SelectList(_productServices.GetProducts(), "Id", "ProductName",stockViewModel.ProductId);
                 ViewBag.StoreId = new SelectList(_storeServices.GetStores(), "Id", "StoreName",stockViewModel.StoreId);
                 ViewData["Error"] = _stockLocalizer.GetLocalizedHtmlString("err_EditStockFailure");
                 return View(stockViewModel);                    
             } 
-            ViewBag.ProductId = new SelectList(_productServices.GetProducts(), "ProductId", "ProductName",stockViewModel.ProductId);
+            ViewBag.ProductId = new SelectList(_productServices.GetProducts(), "Id", "ProductName",stockViewModel.ProductId);
             ViewBag.StoreId = new SelectList(_storeServices.GetStores(), "Id", "StoreName",stockViewModel.StoreId);
             Log.Error("Edit Stock Error");
             return View(stockViewModel);

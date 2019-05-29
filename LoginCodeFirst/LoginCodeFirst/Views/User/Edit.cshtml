@@ -16,7 +16,7 @@
                     <div class="row clearfix">
                         <div class="col-sm-12">
                             <form asp-controller="User" asp-action="Edit" method="post">
-                                <input asp-for="UserId" type="hidden">
+                                <input asp-for="Id" type="hidden">
                                 <div class="form-group">
                                     <label class="form-label" asp-for="Email">@UserLocalizer.GetLocalizedHtmlString("lbl_Email")</label>
                                     <input asp-for="Email" type="text" placeholder="Email" class="form-control">

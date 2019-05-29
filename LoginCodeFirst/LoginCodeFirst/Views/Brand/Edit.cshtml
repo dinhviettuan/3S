@@ -1,4 +1,4 @@
-﻿@model LoginCodeFirst.ViewModels.Brand.BrandViewModel
+﻿@model LoginCodeFirst.ViewModels.BrandViewModel
 @{
     ViewBag.Title = BrandLocalizer.GetLocalizedHtmlString("lbl_EditBrand");
     Layout = "_Layout";
@@ -18,15 +18,12 @@
                     <div class="row clearfix">
                         <div class="col-sm-12">
                             <form asp-controller="Brand" asp-action="Edit" method="post">
-                                <input asp-for="BrandId" type="hidden">
+                                <input asp-for="Id" type="hidden">
                                 <div class="form-group">
                                     <label class="form-label" asp-for="BrandName">@BrandLocalizer.GetLocalizedHtmlString("lbl_BrandName")</label>
                                     <input type="text" asp-for="BrandName" placeholder="BrandName" class="form-control">
                                     <span class="text-danger" asp-validation-for="BrandName"></span>
                                 </div>
-
-
-
                                 <button class="btn btn-primary waves-effect" type="submit">@CommonLocalizer.GetLocalizedHtmlString("btn_Submit")</button>
                             </form>
                         </div>
