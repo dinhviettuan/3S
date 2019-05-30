@@ -16,20 +16,17 @@ namespace LoginCodeFirst.Controllers
         private readonly ResourcesServices<CommonResources> _commonLocalizer;
         private readonly ResourcesServices<UserResources> _userLocalizer;
         private readonly IUserServices _userService;
-
         private readonly IStoreServices _storeServices;
 
         public UserController(IUserServices userService,IStoreServices storeServices,
             ResourcesServices<CommonResources> commonLocalizer,
             ResourcesServices<UserResources> userLocalizer)
         {
-
             _userService = userService;
             _storeServices = storeServices;
             _commonLocalizer = commonLocalizer;
             _userLocalizer = userLocalizer;
         }
-
 
         /// <summary>
         /// Index User
@@ -42,7 +39,6 @@ namespace LoginCodeFirst.Controllers
             Log.Information("Get User List Async");
             return View(listuser);
         }
-
 
         /// <summary>
         /// Add User

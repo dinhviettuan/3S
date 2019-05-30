@@ -90,17 +90,9 @@ namespace LoginCodeFirst.Services
         /// <returns>ListStore</returns>
         public async Task<List<StoreViewModel>> GetStoreListAsync()
         {
-            try
-            {
-                var stores = await _context.Store.ToListAsync();
-                var storeViewModels = _mapper.Map<List<StoreViewModel>>(stores);
-                return storeViewModels;
-            }
-            catch (Exception e)
-            {
-                Log.Information("Get Store List Async: {0}",e.Message);
-                throw;
-            }            
+            var stores = await _context.Store.ToListAsync();
+            var storeViewModels = _mapper.Map<List<StoreViewModel>>(stores);
+            return storeViewModels;
         }
         
         /// <inheritdoc />
@@ -142,17 +134,9 @@ namespace LoginCodeFirst.Services
         /// <returns>StoreViewModel</returns>
         public async Task<StoreViewModel> GetIdAsync(int id)
         {
-            try
-            {
-                var store = await _context.Store.FindAsync(id);
-                var storeEditViewModel = _mapper.Map<StoreViewModel>(store);
-                return storeEditViewModel;
-            }
-            catch (Exception e)
-            {
-                Log.Warning("Get Id Store Async Error: {0}",e.Message);
-                throw;
-            }          
+            var store = await _context.Store.FindAsync(id);
+            var storeEditViewModel = _mapper.Map<StoreViewModel>(store);
+            return storeEditViewModel;         
         }
         
         /// <inheritdoc />
@@ -217,15 +201,7 @@ namespace LoginCodeFirst.Services
         /// <returns>ExistedName?</returns>
         public bool IsExistedName(string email,int id)
         {
-            try
-            {
-                return _context.Store.Any(x => x.Email == email && x.Id != id);
-            }
-            catch (Exception e)
-            {
-                Log.Warning("Is Store Existed Name Error:{0}",e.Message);
-                throw;
-            }          
+            return _context.Store.Any(x => x.Email == email && x.Id != id);
         }
     }
 }

@@ -79,11 +79,26 @@ namespace LoginCodeFirst.Services
         bool Login(string email, string password);
         
         /// <summary>
+        /// GetPassword
+        /// </summary>
+        /// <param name="newpassword">NewPassword</param>
+        /// <param name="password">Password</param>
+        /// <returns>PasswordViewModel</returns>
+        Task<bool> GetPassword(string newpassword, string password);
+        
+        /// <summary>
         /// GetEmail
         /// </summary>
         /// <param name="email">Email</param>
         /// <returns>IndexViewModel</returns>
         Task<UserViewModel> GetEmail(string email);
+
+        /// <summary>
+        /// IsExistedPassword
+        /// </summary>
+        /// <param name="password">Password</param>
+        /// <param name="id">Id </param>
+        bool IsExistedPassword(string password, int id);
     }
 
     public class UserServices : IUserServices
@@ -124,18 +139,10 @@ namespace LoginCodeFirst.Services
         /// <param name="email"></param>
         /// <returns></returns>
         public async Task<UserViewModel> GetEmail(string email)
-        {
-            try
-            {
-                var findEmail = await _context.User.FirstOrDefaultAsync(x => x.Email == email);
-                var getEmail = _mapper.Map<UserViewModel>(findEmail);
-                return getEmail;
-            }
-            catch (Exception e)
-            {
-                Log.Warning("Get Email User Error:{0}",e.Message);
-                throw;
-            }            
+        {      
+            var findEmail = await _context.User.FirstOrDefaultAsync(x => x.Email == email);
+            var getEmail = _mapper.Map<UserViewModel>(findEmail);
+            return getEmail;
         }
        
         /// <inheritdoc />
@@ -145,19 +152,11 @@ namespace LoginCodeFirst.Services
         /// <returns>ListUser</returns>
         public async Task<List<UserViewModel>> GetUserListAsync()
         {
-            try
-            {
-                var users = await _context.User
-                    .Include(u => u.Store)
-                    .ToListAsync();
-                var list = _mapper.Map<List<UserViewModel>>(users);
-                return list;         
-            }
-            catch (Exception e)
-            {
-                Log.Information("Get User List Async: {0}",e.Message);
-                throw;
-            }          
+            var users = await _context.User
+                .Include(u => u.Store)
+                .ToListAsync();
+            var list = _mapper.Map<List<UserViewModel>>(users);
+            return list;         
         }
         
         /// <inheritdoc />
@@ -168,17 +167,9 @@ namespace LoginCodeFirst.Services
         /// <returns>EditViewModel</returns>
         public async Task<EditViewModel> GetIdAsync(int id)
         {
-            try
-            {
-                var user = await _context.User.FindAsync(id);
-                var userViewModel = _mapper.Map<EditViewModel>(user);
-                return userViewModel;
-            }
-            catch (Exception e)
-            {
-                Log.Warning("Get Id User Error: {0}",e.Message);
-                throw;
-            }        
+            var user = await _context.User.FindAsync(id);
+            var userViewModel = _mapper.Map<EditViewModel>(user);
+            return userViewModel;            
         }
         
         /// <inheritdoc />
@@ -189,17 +180,9 @@ namespace LoginCodeFirst.Services
         /// <returns>PasswordViewModel</returns>
         public async Task<PasswordViewModel> GetEditPasswordAsync(int id)
         {
-            try
-            {
-                var user = await _context.User.FindAsync(id);
-                var passwordViewModel = _mapper.Map<PasswordViewModel>(user);
-                return passwordViewModel;
-            }
-            catch (Exception e)
-            {
-                Log.Warning("Get Id Password User Error: {0}",e.Message);
-                throw;
-            }           
+            var user = await _context.User.FindAsync(id);
+            var passwordViewModel = _mapper.Map<PasswordViewModel>(user);
+            return passwordViewModel;
         }
         
         /// <inheritdoc />
@@ -222,13 +205,13 @@ namespace LoginCodeFirst.Services
                     StoreId = userViewModel.StoreId,
                     Role = userViewModel.Role
                 };
-                     _context.User.Add(users);
-                     await _context.SaveChangesAsync();
+                _context.User.Add(users);
+                await _context.SaveChangesAsync();
                 return true;
             }
             catch (Exception e)
             {
-               Log.Error("Add User Async Error: {0}",e.Message);
+                Log.Error("Add User Async Error: {0}",e.Message);
                 return false;
             }     
         }
@@ -270,7 +253,7 @@ namespace LoginCodeFirst.Services
         {
             try
             {
-                var user = await _context.User.FindAsync(passwordViewModel.UserId);
+                var user = await _context.User.FindAsync(passwordViewModel.Id);
                 user.Password = SecurePasswordHasher.Hash(passwordViewModel.NewPassword);
                 _context.User.Update(user);
                 await _context.SaveChangesAsync();
@@ -307,22 +290,44 @@ namespace LoginCodeFirst.Services
         
         /// <inheritdoc />
         /// <summary>
+        /// GetPassword
+        /// </summary>
+        /// <param name="newpassword"></param>
+        /// <param name="password"></param>
+        /// <returns></returns>
+        public async Task<bool> GetPassword(string newpassword , string password)
+        {
+            if (string.IsNullOrEmpty(newpassword) != string.IsNullOrEmpty(password))
+            {
+                return false;
+            }
+            var passwordViewModel = await _context.User.FirstOrDefaultAsync(x =>
+                x.Password == password && SecurePasswordHasher.Verify(password, x.Password));
+            return passwordViewModel != null;
+        }
+        
+        /// <inheritdoc />
+        /// <summary>
         /// IsExistedName
         /// </summary>
         /// <param name="email">User email</param>
         /// <param name="id">User Id</param>
         /// <returns>ExistedName?</returns>
         public bool IsExistedName(string email,int id)
+        {           
+            return  _context.User.Any(x => x.Email == email && x.Id != id);        
+        }
+
+        /// <inheritdoc />
+        /// <summary>
+        /// IsExistedPassword
+        /// </summary>
+        /// <param name="password">Password</param>
+        /// <param name="id">User Id</param>
+        /// <returns></returns>
+        public bool IsExistedPassword(string password, int id)
         {
-            try
-            {
-                return  _context.User.Any(x => x.Email == email && x.Id != id);
-            }
-            catch (Exception e)
-            {
-                Log.Warning("Is User Existed Name Error:{0}",e.Message);
-                throw;
-            }         
+            return _context.User.Any(x => x.Password == password && x.Id != id);           
         }
     }
 }

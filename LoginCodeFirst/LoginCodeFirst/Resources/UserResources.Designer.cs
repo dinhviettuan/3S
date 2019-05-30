@@ -183,5 +183,11 @@ namespace LoginCodeFirst.Resources {
                 return ResourceManager.GetString("lbl_Role", resourceCulture);
             }
         }
+        
+        public static string msg_AlreadyExistsPassword {
+            get {
+                return ResourceManager.GetString("msg_AlreadyExistsPassword", resourceCulture);
+            }
+        }
     }
 }

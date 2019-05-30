@@ -1,0 +1,29 @@
+2019-05-30 09:11:53.110 +07:00 [INF] Login
+2019-05-30 09:11:59.648 +07:00 [INF] Get Store List Async
+2019-05-30 09:14:04.723 +07:00 [INF] Get Store List Async
+2019-05-30 09:14:06.144 +07:00 [INF] Get User List Async
+2019-05-30 09:14:23.356 +07:00 [INF] Get Brand List Async
+2019-05-30 09:14:25.642 +07:00 [INF] Get Brand List Async
+2019-05-30 09:14:47.885 +07:00 [INF] Get Brand List Async
+2019-05-30 11:29:56.935 +07:00 [INF] Login
+2019-05-30 11:30:03.087 +07:00 [INF] Get Store List Async
+2019-05-30 11:30:05.768 +07:00 [INF] Get User List Async
+2019-05-30 11:30:15.801 +07:00 [INF] Get User List Async
+2019-05-30 11:30:57.685 +07:00 [INF] Get User List Async
+2019-05-30 11:56:22.768 +07:00 [INF] Login
+2019-05-30 11:56:30.601 +07:00 [INF] Get Store List Async
+2019-05-30 11:56:36.069 +07:00 [INF] Get User List Async
+2019-05-30 11:56:47.887 +07:00 [INF] Get User List Async
+2019-05-30 11:57:08.573 +07:00 [ERR] Edit Password User Error
+2019-05-30 16:18:01.788 +07:00 [INF] Login
+2019-05-30 17:12:42.564 +07:00 [INF] Login
+2019-05-30 17:12:49.350 +07:00 [ERR] Login Error
+2019-05-30 17:12:54.845 +07:00 [INF] Get Store List Async
+2019-05-30 17:12:58.439 +07:00 [INF] Get User List Async
+2019-05-30 17:13:09.853 +07:00 [INF] Get User List Async
+2019-05-30 17:29:41.187 +07:00 [INF] Get User List Async
+2019-05-30 17:31:36.849 +07:00 [INF] Login
+2019-05-30 17:31:42.851 +07:00 [INF] Get Store List Async
+2019-05-30 17:31:47.666 +07:00 [INF] Get User List Async
+2019-05-30 17:32:00.617 +07:00 [ERR] Edit Password User Error
+2019-05-30 17:32:14.217 +07:00 [INF] Get User List Async

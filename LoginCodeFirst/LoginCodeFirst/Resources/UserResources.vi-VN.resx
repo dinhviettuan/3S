@@ -89,6 +89,9 @@
     </data>
     <data name="err_LoginFailure">
         <value>Đăng Nhập Thất Bại</value>
-    </data> 
-    
+    </data>
+
+    <data name="msg_AlreadyExistsPassword">
+        <value>Không Được Trùng Mật Khẩu Cũ</value>
+    </data>
 </root>

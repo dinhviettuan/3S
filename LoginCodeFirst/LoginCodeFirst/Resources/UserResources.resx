@@ -90,4 +90,10 @@
     <data name="lbl_Role">
         <value>Role</value>
     </data>
+    
+    <data name="msg_AlreadyExistsPassword">
+        <value>same old password</value>
+    </data>
+    
+    
 </root>

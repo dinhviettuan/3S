@@ -88,17 +88,9 @@ namespace LoginCodeFirst.Services
         /// <returns>ListCategory</returns>
         public async Task<List<CategoryViewModel>> GetCategoryListAsync()
         {
-            try
-            {
-                var category = await _context.Category.ToListAsync();
-                var list = _mapper.Map<List<CategoryViewModel>>(category);
-                return list;
-            }
-            catch (Exception e)
-            {
-                Log.Information("Get Category List Async: {0}",e.Message );
-                throw;
-            }           
+            var category = await _context.Category.ToListAsync();
+            var list = _mapper.Map<List<CategoryViewModel>>(category);
+            return list;
         }
 
 
@@ -135,17 +127,9 @@ namespace LoginCodeFirst.Services
         /// <returns>CategoryViewModel</returns>
         public async Task<CategoryViewModel> GetIdAsync(int id)
         {
-            try
-            {
-                var category = await _context.Category.FindAsync(id);
-                var categoryViewModel = _mapper.Map<CategoryViewModel>(category);
-                return categoryViewModel;
-            }
-            catch (Exception e)
-            {
-                Log.Warning("Get Id Category Async Error: {0}",e.Message);
-                throw;
-            }         
+            var category = await _context.Category.FindAsync(id);
+            var categoryViewModel = _mapper.Map<CategoryViewModel>(category);
+            return categoryViewModel;
         }
 
         /// <inheritdoc />
@@ -193,7 +177,7 @@ namespace LoginCodeFirst.Services
             }
             catch (Exception e)
             {
-               Log.Error("Delete Category Async Error:{0}",e.Message);
+                Log.Error("Delete Category Async Error:{0}",e.Message);
                 return false;
             }        
         }
@@ -207,16 +191,7 @@ namespace LoginCodeFirst.Services
         /// <returns>ExistedName?</returns>
         public bool IsExistedName(string name,int id)
         {
-            try
-            {
-                return  _context.Category.Any(x => x.CategoryName == name && x.Id != id);
-            }
-            catch (Exception e)
-            {
-                Log.Warning("Is Category Existed Name Error :{0}",e.Message);
-                throw;
-            }
-            
+            return _context.Category.Any(x => x.CategoryName == name && x.Id != id);
         }
     }
 }

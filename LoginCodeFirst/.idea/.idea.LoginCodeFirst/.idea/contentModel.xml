@@ -25,6 +25,7 @@
         <e p="Logs" t="Include">
           <e p="log20190528.txt" t="Include" />
           <e p="log20190529.txt" t="Include" />
+          <e p="log20190530.txt" t="Include" />
         </e>
         <e p="Migrations" t="Include">
           <e p="20190529091504_Adddatabase.Designer.cs" t="Include" />
@@ -4731,9 +4732,13 @@
       </e>
       <e p="LoginCodeFirst.sln" t="IncludeFlat" />
       <e p="TestProject1" t="IncludeRecursive">
+        <e p="Models" t="Include">
+          <e p="DataContextFake.cs" t="Include" />
+          <e p="UserFake.cs" t="Include" />
+        </e>
         <e p="TestProject1.csproj" t="IncludeRecursive" />
-        <e p="UnitTest1.cs" t="Include" />
-        <e p="UserServicesTest.cs" t="Include" />
+        <e p="TestUser.cs" t="Include" />
+        <e p="UserServicesFake.cs" t="Include" />
         <e p="bin" t="ExcludeRecursive" />
         <e p="obj" t="ExcludeRecursive">
           <e p="Debug" t="Include">

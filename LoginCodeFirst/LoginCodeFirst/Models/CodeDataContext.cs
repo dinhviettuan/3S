@@ -6,7 +6,7 @@ namespace LoginCodeFirst.Models
     public class CodeDataContext : DbContext
     {
        
-        public CodeDataContext(DbContextOptions<CodeDataContext> options)
+        public CodeDataContext(DbContextOptions options)
             : base(options)
         {
         }

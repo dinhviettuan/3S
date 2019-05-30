@@ -90,21 +90,12 @@ namespace LoginCodeFirst.Services
         /// <returns>ListProduct</returns>
         public async Task<List<ProductViewModel>> GetProductListAsync()
         {
-            try
-            {
-                var product = await _context.Product
-                    .Include(p => p.Brand)
-                    .Include(p => p.Category)
-                    .ToListAsync();
-                var list = _mapper.Map<List<ProductViewModel>>(product);
-                return list;
-            }
-            catch (Exception e)
-            {
-                Log.Information("Get Product List Async: {0}",e.Message);
-                throw;
-            }
-            
+            var product = await _context.Product
+                .Include(p => p.Brand)
+                .Include(p => p.Category)
+                .ToListAsync();
+            var list = _mapper.Map<List<ProductViewModel>>(product);
+            return list;
         }
 
         /// <inheritdoc />
@@ -150,18 +141,9 @@ namespace LoginCodeFirst.Services
         /// <returns>ProductViewModel</returns>
         public async Task<ProductViewModel> GetIdAsync(int id)
         {
-            try
-            {
-                var product = await _context.Product.FindAsync(id);
-                var list = _mapper.Map<ProductViewModel>(product);
-                return list;
-            }
-            catch (Exception e)
-            {
-                Log.Warning("Get Id Product Async Error:{0}",e.Message);
-                throw;
-            }
-            
+            var product = await _context.Product.FindAsync(id);
+            var list = _mapper.Map<ProductViewModel>(product);
+            return list;
         }
         
         /// <inheritdoc />
@@ -223,16 +205,7 @@ namespace LoginCodeFirst.Services
         /// <returns>ExistedName</returns>
         public bool IsExistedName(string name,int id)
         {
-            try
-            {
-                return  _context.Product.Any(x => x.ProductName == name && x.Id != id);
-            }
-            catch (Exception e)
-            {
-                Log.Warning("Is Product Existed Name: {0}",e.Message);
-                throw;
-            }
-            
+            return  _context.Product.Any(x => x.ProductName == name && x.Id != id);
         }         
     }
 }
