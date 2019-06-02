@@ -141,8 +141,8 @@ namespace LoginCodeFirst.Services
         public async Task<UserViewModel> GetEmail(string email)
         {      
             var findEmail = await _context.User.FirstOrDefaultAsync(x => x.Email == email);
-            var getEmail = _mapper.Map<UserViewModel>(findEmail);
-            return getEmail;
+            var userViewModel = _mapper.Map<UserViewModel>(findEmail);
+            return userViewModel;
         }
        
         /// <inheritdoc />

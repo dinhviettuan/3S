@@ -1,8 +1,7 @@
-﻿using System.Security.Cryptography.X509Certificates;
-using System.Threading.Tasks;
-using AutoMapper;
+﻿using System.Threading.Tasks;
 using LoginCodeFirst.Models;
 using LoginCodeFirst.Services;
+using LoginCodeFirst.ViewModels.User;
 using TaskTranning.Infrastructure;
 using Xunit;
 
@@ -12,18 +11,17 @@ namespace TestCodeFirst.ServicesTest
     {
         private readonly CodeDataContext _codedataContext;
         private readonly UserServices _userServices;
-        private readonly IMapper _mapper;
 
         public UserServicesTest()
         {
             _codedataContext = TestHelpers.GetCodeDataContext();
             AutoMapperConfig.Initialize();
-            _mapper = AutoMapperConfig.GetMapper();
-            _userServices = new UserServices(_codedataContext, _mapper);
+            var mapper = AutoMapperConfig.GetMapper();
+            _userServices = new UserServices(_codedataContext, mapper);
         }
-       
 
-        public void DbSeed()
+
+        private void DbSeed()
         {
             var user = new User
             {
@@ -50,27 +48,114 @@ namespace TestCodeFirst.ServicesTest
 
             _codedataContext.Store.Add(store);
             _codedataContext.SaveChanges();
-            
+
         }
 
         [Fact]
-        public async Task GetUser_ReturnListUser_Test()
+        public async Task GetUser_ReturnListUser()
         {
             DbSeed();
-            var users = await _userServices.GetUserListAsync();            
-            Assert.Equal(users.Count,1);
+            var users = await _userServices.GetUserListAsync();
+            Assert.Equal(users.Count, 1);
         }
-        
+
         [Fact]
-        public async Task GetUser_ReturnNull_Test()
+        public async Task GetUser_ReturnNull()
         {
-            var users = await _userServices.GetUserListAsync();            
-            Assert.Equal(users.Count,0);
+            var users = await _userServices.GetUserListAsync();
+            Assert.Equal(users.Count, 0);
         }
-        
-        public bool Login(string email, string password)
-        {   
-            var user = _context.User.FirstOrDefault(x => x.Email == email && SecurePasswordHasher.Verify(password,x.Password));
+
+        [Fact]
+        public void Login_Return_True()
+        {
+            DbSeed();
+            const string email = "tuan1@gmail.com";
+            const string password = "Aa123456";
+            var isLogin = _userServices.Login(email, password);
+            Assert.True(isLogin);
+        }
+
+        [Fact]
+        public void Login_Return_False()
+        {
+            DbSeed();
+            const string email = "tuan21@gmail.com";
+            const string password = "Aa1234566";
+            var isLogin = _userServices.Login(email, password);
+            Assert.False(isLogin);
+        }
+
+        [Fact]
+        public async Task GetEmail_ReturnUser()
+        {
+            DbSeed();
+            const string email = "tuan1@gmail.com";
+            var user = await _userServices.GetEmail(email);
+            Assert.NotNull(user);
+        }
+
+        [Fact]
+        public async Task GetEmail_ReturnNull()
+        {
+            DbSeed();
+            const string email = "tuan11@gmail.com";
+            var user = await _userServices.GetEmail(email);
+            Assert.Null(user);
+        }
+
+        [Fact]
+        public async Task GetId_ReturnUser()
+        {
+            DbSeed();
+            const int id = 1;
+            var user = await _userServices.GetIdAsync(id);
+            Assert.NotNull(user);
+        }
+
+        [Fact]
+        public async Task GetId_ReturNull()
+        {
+            DbSeed();
+            const int id = 0;
+            var user = await _userServices.GetIdAsync(id);
+            Assert.Null(user);
+        }
+
+        [Fact]
+        public async Task GetEditPassword_ReturnUser()
+        {
+            DbSeed();
+            const int id = 1;
+            var user = await _userServices.GetEditPasswordAsync(id);
+            Assert.NotNull(user);
+        }
+
+        [Fact]
+        public async Task GetEditPassword_ReturnNull()
+        {
+            DbSeed();
+            const int id = 0;
+            var user = await _userServices.GetEditPasswordAsync(id);
+            Assert.Null(user);
+        }
+
+        [Fact]
+        public async Task Add_ReturnTrue()
+        {
+            DbSeed();
+            var user = new UserViewModel()
+            {
+                StoreId = 1,
+                Email = "tuan11@gmail.com",
+                Password = "Aa123456",
+                FullName = "Dinh Viet Tuan",
+                Phone = "0768407899",
+                IsActive = true,
+                Role = 1
+            };
+            var result = await _userServices.AddAsync(user);
+            Assert.True(result);
         }
     }
 }

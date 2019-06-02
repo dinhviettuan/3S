@@ -1,10 +1,10 @@
 ﻿{
   "version": "1.0.0",
   "restore": {
-    "projectUniqueName": "/home/local/3SI/tuan.dv/RiderProjects/3S/LoginCodeFirst/LoginCodeFirst/LoginCodeFirst.csproj",
+    "projectUniqueName": "/home/tuan/3S/LoginCodeFirst/LoginCodeFirst/LoginCodeFirst.csproj",
     "projectName": "LoginCodeFirst",
-    "projectPath": "/home/local/3SI/tuan.dv/RiderProjects/3S/LoginCodeFirst/LoginCodeFirst/LoginCodeFirst.csproj",
-    "outputPath": "/home/local/3SI/tuan.dv/RiderProjects/3S/LoginCodeFirst/LoginCodeFirst/obj/",
+    "projectPath": "/home/tuan/3S/LoginCodeFirst/LoginCodeFirst/LoginCodeFirst.csproj",
+    "outputPath": "/home/tuan/3S/LoginCodeFirst/LoginCodeFirst/obj/",
     "projectStyle": "PackageReference",
     "fallbackFolders": [
       "/usr/share/dotnet/sdk/NuGetFallbackFolder"

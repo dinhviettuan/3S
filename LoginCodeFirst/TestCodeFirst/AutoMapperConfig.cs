@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using LoginCodeFirst.Models;
 using LoginCodeFirst.ViewModels;
+using LoginCodeFirst.ViewModels.User;
 
 namespace TestCodeFirst
 {
@@ -21,7 +22,15 @@ namespace TestCodeFirst
                 {
                     var config = new MapperConfiguration(opts =>
                     {
-                        opts.CreateMap<Brand, BrandViewModel>();
+                        opts.CreateMap<Brand, BrandViewModel>(); 
+                        opts.CreateMap<Category, CategoryViewModel>();
+                        opts.CreateMap<Product, ProductViewModel>();
+                        opts.CreateMap<Store, StoreViewModel>();
+                        opts.CreateMap<Stock,StockViewModel>();
+                
+                        opts.CreateMap<User, LoginViewModel>();
+                        opts.CreateMap<User, PasswordViewModel>();
+                        opts.CreateMap<User, UserViewModel>();   
                     });
                     _initialized = true;
                     _mapper = config.CreateMapper();
