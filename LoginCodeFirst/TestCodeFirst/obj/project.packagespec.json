@@ -1,10 +1,10 @@
 ﻿{
   "version": "1.0.0",
   "restore": {
-    "projectUniqueName": "/home/tuan/3S/LoginCodeFirst/TestCodeFirst/TestCodeFirst.csproj",
+    "projectUniqueName": "/home/local/3SI/tuan.dv/RiderProjects/3S/LoginCodeFirst/TestCodeFirst/TestCodeFirst.csproj",
     "projectName": "TestCodeFirst",
-    "projectPath": "/home/tuan/3S/LoginCodeFirst/TestCodeFirst/TestCodeFirst.csproj",
-    "outputPath": "/home/tuan/3S/LoginCodeFirst/TestCodeFirst/obj/",
+    "projectPath": "/home/local/3SI/tuan.dv/RiderProjects/3S/LoginCodeFirst/TestCodeFirst/TestCodeFirst.csproj",
+    "outputPath": "/home/local/3SI/tuan.dv/RiderProjects/3S/LoginCodeFirst/TestCodeFirst/obj/",
     "projectStyle": "PackageReference",
     "fallbackFolders": [
       "/usr/share/dotnet/sdk/NuGetFallbackFolder"
@@ -15,8 +15,8 @@
     "frameworks": {
       "netcoreapp2.2": {
         "projectReferences": {
-          "/home/tuan/3S/LoginCodeFirst/LoginCodeFirst/LoginCodeFirst.csproj": {
-            "projectPath": "/home/tuan/3S/LoginCodeFirst/LoginCodeFirst/LoginCodeFirst.csproj"
+          "/home/local/3SI/tuan.dv/RiderProjects/3S/LoginCodeFirst/LoginCodeFirst/LoginCodeFirst.csproj": {
+            "projectPath": "/home/local/3SI/tuan.dv/RiderProjects/3S/LoginCodeFirst/LoginCodeFirst/LoginCodeFirst.csproj"
           }
         }
       }

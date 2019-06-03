@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Runtime.InteropServices.ComTypes;
+using System.Threading.Tasks;
 using LoginCodeFirst.Models;
 using LoginCodeFirst.Services;
 using LoginCodeFirst.ViewModels.User;
@@ -45,12 +46,15 @@ namespace TestCodeFirst.ServicesTest
                 State = "hue",
                 ZipCode = "2323"
             };
-
             _codedataContext.Store.Add(store);
             _codedataContext.SaveChanges();
 
         }
 
+        /// <summary>
+        /// GetUser_ReturnListUser
+        /// </summary>
+        /// <returns>List User</returns>
         [Fact]
         public async Task GetUser_ReturnListUser()
         {
@@ -59,6 +63,10 @@ namespace TestCodeFirst.ServicesTest
             Assert.Equal(users.Count, 1);
         }
 
+        /// <summary>
+        /// GetUser_ReturnNull
+        /// </summary>
+        /// <returns>Null</returns>
         [Fact]
         public async Task GetUser_ReturnNull()
         {
@@ -66,8 +74,11 @@ namespace TestCodeFirst.ServicesTest
             Assert.Equal(users.Count, 0);
         }
 
+        /// <summary>
+        /// Login_Return_True
+        /// </summary>
         [Fact]
-        public void Login_Return_True()
+        public void Login_ReturnTrue()
         {
             DbSeed();
             const string email = "tuan1@gmail.com";
@@ -76,8 +87,11 @@ namespace TestCodeFirst.ServicesTest
             Assert.True(isLogin);
         }
 
+        /// <summary>
+        /// Login_ReturnFalse
+        /// </summary>
         [Fact]
-        public void Login_Return_False()
+        public void Login_ReturnFalse()
         {
             DbSeed();
             const string email = "tuan21@gmail.com";
@@ -86,6 +100,10 @@ namespace TestCodeFirst.ServicesTest
             Assert.False(isLogin);
         }
 
+        /// <summary>
+        /// GetEmail_ReturnUser
+        /// </summary>
+        /// <returns>User</returns>
         [Fact]
         public async Task GetEmail_ReturnUser()
         {
@@ -95,6 +113,10 @@ namespace TestCodeFirst.ServicesTest
             Assert.NotNull(user);
         }
 
+        /// <summary>
+        /// GetEmail_ReturnNull
+        /// </summary>
+        /// <returns>Null</returns>
         [Fact]
         public async Task GetEmail_ReturnNull()
         {
@@ -104,6 +126,10 @@ namespace TestCodeFirst.ServicesTest
             Assert.Null(user);
         }
 
+        /// <summary>
+        /// GetId_ReturnUser
+        /// </summary>
+        /// <returns>User</returns>
         [Fact]
         public async Task GetId_ReturnUser()
         {
@@ -113,6 +139,10 @@ namespace TestCodeFirst.ServicesTest
             Assert.NotNull(user);
         }
 
+        /// <summary>
+        /// GetId_ReturNull
+        /// </summary>
+        /// <returns>Null</returns>
         [Fact]
         public async Task GetId_ReturNull()
         {
@@ -122,6 +152,10 @@ namespace TestCodeFirst.ServicesTest
             Assert.Null(user);
         }
 
+        /// <summary>
+        /// GetEditPassword_ReturnUser
+        /// </summary>
+        /// <returns>User</returns>
         [Fact]
         public async Task GetEditPassword_ReturnUser()
         {
@@ -131,6 +165,10 @@ namespace TestCodeFirst.ServicesTest
             Assert.NotNull(user);
         }
 
+        /// <summary>
+        /// GetEditPassword_ReturnNull
+        /// </summary>
+        /// <returns>Null</returns>
         [Fact]
         public async Task GetEditPassword_ReturnNull()
         {
@@ -140,11 +178,15 @@ namespace TestCodeFirst.ServicesTest
             Assert.Null(user);
         }
 
+        /// <summary>
+        /// Add User
+        /// </summary>
+        /// <returns>True</returns>
         [Fact]
         public async Task Add_ReturnTrue()
         {
             DbSeed();
-            var user = new UserViewModel()
+            var user = new UserViewModel
             {
                 StoreId = 1,
                 Email = "tuan11@gmail.com",
@@ -156,6 +198,108 @@ namespace TestCodeFirst.ServicesTest
             };
             var result = await _userServices.AddAsync(user);
             Assert.True(result);
+        }
+        
+        /// <summary>
+        /// Edit User
+        /// </summary>
+        /// <returns>True</returns>
+        [Fact]
+        public async Task Edit_ReturnTrue()
+        {
+            DbSeed();
+            var user = new EditViewModel
+            {
+                Id = 1,
+                Email = "tuan1@gmail.com",
+                FullName = "Dinh Viet Tuan",
+                Phone = "0768407899",
+                IsActive = true,
+                Role = 1
+            };    
+            var result = await _userServices.EditAsync(user); 
+            Assert.True(result);
+        }
+        
+        /// <summary>
+        /// Edit User
+        /// </summary>
+        /// <returns>False</returns>
+        [Fact]
+        public async Task Edit_ReturnFalse()
+        {
+            DbSeed();
+            var user = new EditViewModel
+            {
+                Id = 0,
+                Email = "tuan1@gmail.com",
+                FullName = "Dinh Viet Tuan",
+                Phone = "0768407899",
+                IsActive = true,
+                Role = 1
+            };    
+            var result = await _userServices.EditAsync(user); 
+            Assert.False(result);
+        }
+
+        /// <summary>
+        /// EditPassword
+        /// </summary>
+        /// <returns>True</returns>
+        [Fact]
+        public async Task EditPassword_ReturnTrue()
+        {
+            DbSeed();
+            var user = new PasswordViewModel
+            {
+                Id = 1,
+                NewPassword = "Aa123456"
+            };
+            var result = await _userServices.EditPasswordAsync(user);
+            Assert.True(result);
+        }
+        
+        /// <summary>
+        /// EditPassword
+        /// </summary>
+        /// <returns>False</returns>
+        [Fact]
+        public async Task EditPassword_ReturnFalse()
+        {
+            DbSeed();
+            var user = new PasswordViewModel
+            {
+                Id = 0,
+                NewPassword = "Aa@123456"
+            };
+            var result = await _userServices.EditPasswordAsync(user);
+            Assert.False(result);
+        }
+
+        /// <summary>
+        /// Delete User
+        /// </summary>
+        /// <returns>True</returns>
+        [Fact]
+        public async Task Delete_ReturnTrue()
+        {
+            DbSeed();
+            const int id = 1;
+            var user = await _userServices.DeleteAsync(id);
+            Assert.True(user);
+        }
+        
+        /// <summary>
+        /// Delete User
+        /// </summary>
+        /// <returns>False</returns>
+        [Fact]
+        public async Task Delete_ReturnFalse()
+        {
+            DbSeed();
+            const int id = 0;
+            var user = await _userServices.DeleteAsync(id);
+            Assert.False(user);
         }
     }
 }

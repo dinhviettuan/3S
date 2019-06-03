@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ContentModelStore">
-    <e p="$USER_HOME$/.Rider2018.1/system/resharper-host/local/Transient/ReSharperHost/v12/SolutionCaches/_LoginCodeFirst.102157588.00" t="ExcludeRecursive" />
+    <e p="$USER_HOME$/.Rider2018.1/system/resharper-host/local/Transient/ReSharperHost/v12/SolutionCaches/_LoginCodeFirst.449898109.00" t="ExcludeRecursive" />
     <e p="$USER_HOME$/.nuget/packages/microsoft.net.test.sdk/16.1.1/build/netcoreapp1.0" t="Include">
       <e p="Microsoft.NET.Test.Sdk.Program.cs" t="Include" />
     </e>
@@ -26,6 +26,7 @@
           <e p="log20190528.txt" t="Include" />
           <e p="log20190529.txt" t="Include" />
           <e p="log20190530.txt" t="Include" />
+          <e p="log20190603.txt" t="Include" />
         </e>
         <e p="Migrations" t="Include">
           <e p="20190529091504_Adddatabase.Designer.cs" t="Include" />
@@ -4733,6 +4734,9 @@
       <e p="LoginCodeFirst.sln" t="IncludeFlat" />
       <e p="TestCodeFirst" t="IncludeRecursive">
         <e p="AutoMapperConfig.cs" t="Include" />
+        <e p="ControllerTest" t="Include">
+          <e p="UserControllerTest.cs" t="Include" />
+        </e>
         <e p="ServicesTest" t="Include">
           <e p="UserServicesTest.cs" t="Include" />
         </e>

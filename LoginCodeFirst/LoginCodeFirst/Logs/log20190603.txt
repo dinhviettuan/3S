@@ -1,0 +1,19 @@
+2019-06-03 10:41:54.617 +07:00 [INF] Login
+2019-06-03 10:42:01.944 +07:00 [INF] Get Store List Async
+2019-06-03 10:42:05.957 +07:00 [INF] Get User List Async
+2019-06-03 10:42:19.412 +07:00 [INF] Get User List Async
+2019-06-03 10:42:24.105 +07:00 [INF] Login
+2019-06-03 10:42:29.446 +07:00 [INF] Get Store List Async
+2019-06-03 10:44:09.168 +07:00 [INF] Login
+2019-06-03 10:44:17.325 +07:00 [INF] Get Store List Async
+2019-06-03 10:44:21.346 +07:00 [INF] Get User List Async
+2019-06-03 10:44:32.753 +07:00 [INF] Get User List Async
+2019-06-03 10:44:35.655 +07:00 [INF] Login
+2019-06-03 10:44:41.663 +07:00 [INF] Get Store List Async
+2019-06-03 11:48:47.157 +07:00 [INF] Get User List Async
+2019-06-03 13:19:03.488 +07:00 [INF] Login
+2019-06-03 13:19:10.838 +07:00 [INF] Get Store List Async
+2019-06-03 13:19:15.095 +07:00 [INF] Get User List Async
+2019-06-03 13:19:27.621 +07:00 [INF] Get User List Async
+2019-06-03 13:19:30.922 +07:00 [INF] Login
+2019-06-03 13:19:35.624 +07:00 [INF] Get Store List Async

@@ -15,7 +15,6 @@ namespace LoginCodeFirst.Validators.User
                 .WithMessage(commonlocalizer.GetLocalizedHtmlString("msg_NotEmpty"));
             RuleFor(x => x.Phone).NotNull()
                 .WithMessage(commonlocalizer.GetLocalizedHtmlString("msg_NotEmpty"));
-            RuleFor(x => x.IsActive).NotNull();
             
             RuleFor(x => x.Email).Must((reg,c) => !userServices.IsExistedName(reg.Email,reg.Id))
                 .WithMessage((reg,c) => string.Format(commonlocalizer.GetLocalizedHtmlString("msg_AlreadyExists"),c));

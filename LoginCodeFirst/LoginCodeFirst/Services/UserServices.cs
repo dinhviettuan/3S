@@ -19,6 +19,13 @@ namespace LoginCodeFirst.Services
         /// </summary>
         /// <returns>ListUser</returns>
         Task<List<UserViewModel>> GetUserListAsync();
+
+        /// <summary>
+        /// GetEmail
+        /// </summary>
+        /// <param name="email">Email</param>
+        /// <returns>UserViewModel</returns>
+        Task<UserViewModel> GetEmail(string email);
         
         /// <summary>
         /// GetIdAsync
@@ -77,28 +84,6 @@ namespace LoginCodeFirst.Services
         /// <param name="password">Password</param>
         /// <returns>Login?</returns>
         bool Login(string email, string password);
-        
-        /// <summary>
-        /// GetPassword
-        /// </summary>
-        /// <param name="newpassword">NewPassword</param>
-        /// <param name="password">Password</param>
-        /// <returns>PasswordViewModel</returns>
-        Task<bool> GetPassword(string newpassword, string password);
-        
-        /// <summary>
-        /// GetEmail
-        /// </summary>
-        /// <param name="email">Email</param>
-        /// <returns>IndexViewModel</returns>
-        Task<UserViewModel> GetEmail(string email);
-
-        /// <summary>
-        /// IsExistedPassword
-        /// </summary>
-        /// <param name="password">Password</param>
-        /// <param name="id">Id </param>
-        bool IsExistedPassword(string password, int id);
     }
 
     public class UserServices : IUserServices
@@ -287,24 +272,7 @@ namespace LoginCodeFirst.Services
                 return false;
             }         
         }
-        
-        /// <inheritdoc />
-        /// <summary>
-        /// GetPassword
-        /// </summary>
-        /// <param name="newpassword"></param>
-        /// <param name="password"></param>
-        /// <returns></returns>
-        public async Task<bool> GetPassword(string newpassword , string password)
-        {
-            if (string.IsNullOrEmpty(newpassword) != string.IsNullOrEmpty(password))
-            {
-                return false;
-            }
-            var passwordViewModel = await _context.User.FirstOrDefaultAsync(x =>
-                x.Password == password && SecurePasswordHasher.Verify(password, x.Password));
-            return passwordViewModel != null;
-        }
+       
         
         /// <inheritdoc />
         /// <summary>
@@ -316,18 +284,6 @@ namespace LoginCodeFirst.Services
         public bool IsExistedName(string email,int id)
         {           
             return  _context.User.Any(x => x.Email == email && x.Id != id);        
-        }
-
-        /// <inheritdoc />
-        /// <summary>
-        /// IsExistedPassword
-        /// </summary>
-        /// <param name="password">Password</param>
-        /// <param name="id">User Id</param>
-        /// <returns></returns>
-        public bool IsExistedPassword(string password, int id)
-        {
-            return _context.User.Any(x => x.Password == password && x.Id != id);           
         }
     }
 }
