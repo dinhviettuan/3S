@@ -14,13 +14,16 @@ namespace LoginCodeFirst.Controllers
     public class LoginController : Controller
     {        
         private readonly IUserServices _userServices;
+        private readonly ILoginServices _loginServices;
         private readonly ResourcesServices<UserResources> _userLocalizer;
         
         public LoginController(IUserServices userServices,
+            ILoginServices loginServices,
             ResourcesServices<UserResources> userLocalizer)
         {
             _userLocalizer = userLocalizer;
-            _userServices = userServices;         
+            _userServices = userServices;
+            _loginServices = loginServices;
         }
 
         /// <summary>
@@ -44,7 +47,7 @@ namespace LoginCodeFirst.Controllers
         { 
             if (ModelState.IsValid)
             { 
-                var isLogin = _userServices.Login(login.Email, login.Password);
+                var isLogin = await _loginServices.LoginAsync(login.Email, login.Password);
                 if (isLogin)
                 {
                     var user = await _userServices.GetEmail(login.Email);

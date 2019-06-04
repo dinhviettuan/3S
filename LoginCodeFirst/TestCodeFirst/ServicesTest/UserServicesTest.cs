@@ -1,5 +1,4 @@
-﻿using System.Runtime.InteropServices.ComTypes;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using LoginCodeFirst.Models;
 using LoginCodeFirst.Services;
 using LoginCodeFirst.ViewModels.User;
@@ -48,7 +47,6 @@ namespace TestCodeFirst.ServicesTest
             };
             _codedataContext.Store.Add(store);
             _codedataContext.SaveChanges();
-
         }
 
         /// <summary>
@@ -72,32 +70,6 @@ namespace TestCodeFirst.ServicesTest
         {
             var users = await _userServices.GetUserListAsync();
             Assert.Equal(users.Count, 0);
-        }
-
-        /// <summary>
-        /// Login_Return_True
-        /// </summary>
-        [Fact]
-        public void Login_ReturnTrue()
-        {
-            DbSeed();
-            const string email = "tuan1@gmail.com";
-            const string password = "Aa123456";
-            var isLogin = _userServices.Login(email, password);
-            Assert.True(isLogin);
-        }
-
-        /// <summary>
-        /// Login_ReturnFalse
-        /// </summary>
-        [Fact]
-        public void Login_ReturnFalse()
-        {
-            DbSeed();
-            const string email = "tuan21@gmail.com";
-            const string password = "Aa1234566";
-            var isLogin = _userServices.Login(email, password);
-            Assert.False(isLogin);
         }
 
         /// <summary>
@@ -186,7 +158,7 @@ namespace TestCodeFirst.ServicesTest
         public async Task Add_ReturnTrue()
         {
             DbSeed();
-            var user = new UserViewModel
+            var users = new UserViewModel
             {
                 StoreId = 1,
                 Email = "tuan11@gmail.com",
@@ -196,7 +168,7 @@ namespace TestCodeFirst.ServicesTest
                 IsActive = true,
                 Role = 1
             };
-            var result = await _userServices.AddAsync(user);
+            var result = await _userServices.AddAsync(users);
             Assert.True(result);
         }
         
@@ -208,7 +180,7 @@ namespace TestCodeFirst.ServicesTest
         public async Task Edit_ReturnTrue()
         {
             DbSeed();
-            var user = new EditViewModel
+            var users = new EditViewModel
             {
                 Id = 1,
                 Email = "tuan1@gmail.com",
@@ -217,7 +189,7 @@ namespace TestCodeFirst.ServicesTest
                 IsActive = true,
                 Role = 1
             };    
-            var result = await _userServices.EditAsync(user); 
+            var result = await _userServices.EditAsync(users); 
             Assert.True(result);
         }
         

@@ -14,18 +14,18 @@ namespace LoginCodeFirst.Controllers
     public class UserController : Controller
     {
         private readonly ResourcesServices<CommonResources> _commonLocalizer;
-        private readonly ResourcesServices<UserResources> _userLocalizer;
-        private readonly IUserServices _userService;
+        private readonly IUserServices _userServices;
         private readonly IStoreServices _storeServices;
 
-        public UserController(IUserServices userService,IStoreServices storeServices,
-            ResourcesServices<CommonResources> commonLocalizer,
-            ResourcesServices<UserResources> userLocalizer)
+        public UserController(
+            IUserServices userService,
+            IStoreServices storeServices,
+            ResourcesServices<CommonResources> commonLocalizer)
         {
-            _userService = userService;
+            _userServices = userService;
             _storeServices = storeServices;
             _commonLocalizer = commonLocalizer;
-            _userLocalizer = userLocalizer;
+           
         }
 
         /// <summary>
@@ -35,7 +35,7 @@ namespace LoginCodeFirst.Controllers
         [HttpGet]
         public async Task<IActionResult> Index()
         {
-            var listuser = await _userService.GetUserListAsync();
+            var listuser = await _userServices.GetUserListAsync();
             Log.Information("Get User List Async");
             return View(listuser);
         }
@@ -61,14 +61,14 @@ namespace LoginCodeFirst.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = await _userService.AddAsync(userViewModel);
+                var user = await _userServices.AddAsync(userViewModel);
                 if (user)
                 {
                     ViewBag.StoreId = new SelectList(_storeServices.GetStores(), "Id", "StoreName", userViewModel.StoreId);
                     TempData["Succces"] = _commonLocalizer.GetLocalizedHtmlString("msg_AddSuccess").ToString();
                     return RedirectToAction("Index");
                 }
-                ViewData["Error"] = _userLocalizer.GetLocalizedHtmlString("err_AddUserFailure");
+                ViewData["Error"] = _commonLocalizer.GetLocalizedHtmlString("err_AddUserFailure");
                 ViewBag.StoreId = new SelectList(_storeServices.GetStores(), "Id", "StoreName", userViewModel.StoreId);
                 return View(userViewModel);
             }
@@ -90,7 +90,7 @@ namespace LoginCodeFirst.Controllers
                 Log.Warning("Id Equal Null");
                 return BadRequest();
             }
-            var user = await _userService.GetIdAsync(id.Value);
+            var user = await _userServices.GetIdAsync(id.Value);
             if (user == null)
             {
                 Log.Warning("Id Equal Null");
@@ -110,13 +110,13 @@ namespace LoginCodeFirst.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = await _userService.EditAsync(userViewModel);
+                var user = await _userServices.EditAsync(userViewModel);
                 if (user)
                 {
                     TempData["Success"] = _commonLocalizer.GetLocalizedHtmlString("msg_EditSuccess").ToString();
                     return RedirectToAction("Index"); 
                 }
-                ViewData["Error"] = _userLocalizer.GetLocalizedHtmlString("err_EditUserFailure");
+                ViewData["Error"] = _commonLocalizer.GetLocalizedHtmlString("err_EditUserFailure");
                 ViewBag.StoreId = new SelectList(_storeServices.GetStores(), "Id", "StoreName", userViewModel.StoreId);
                 return View(userViewModel);
             }
@@ -138,7 +138,7 @@ namespace LoginCodeFirst.Controllers
                 Log.Warning("Id Password Equal Null");
                 return BadRequest();
             }
-            var getId = await _userService.GetEditPasswordAsync(id.Value);
+            var getId = await _userServices.GetEditPasswordAsync(id.Value);
             if (getId == null)
             {
                 Log.Warning("Id Password Equal Null");
@@ -157,13 +157,13 @@ namespace LoginCodeFirst.Controllers
         {
             if (ModelState.IsValid)
             {
-                var usersPassword = await _userService.EditPasswordAsync(userViewModel);
+                var usersPassword = await _userServices.EditPasswordAsync(userViewModel);
                 if (usersPassword)
                 {
-                    TempData["Success"] = _userLocalizer.GetLocalizedHtmlString("msg_EditPasswordSuccess").ToString();
+                    TempData["Success"] = _commonLocalizer.GetLocalizedHtmlString("msg_EditPasswordSuccess").ToString();
                     return PartialView("_ChangePassword",userViewModel);
                 }
-                ViewData["Error"] = _userLocalizer.GetLocalizedHtmlString("err_EditPasswordFailure");
+                ViewData["Error"] = _commonLocalizer.GetLocalizedHtmlString("err_EditPasswordFailure");
                 return PartialView("_ChangePassword",userViewModel); 
             }
             Log.Error("Edit Password User Error");
@@ -183,7 +183,7 @@ namespace LoginCodeFirst.Controllers
                 Log.Warning("Id User Equal Null");
                 return BadRequest();
             }
-            var user = await _userService.DeleteAsync(id.Value);
+            var user = await _userServices.DeleteAsync(id.Value);
             if (user)
             {
                 TempData["Success"] = _commonLocalizer.GetLocalizedHtmlString("msg_DeleteSuccess").ToString();

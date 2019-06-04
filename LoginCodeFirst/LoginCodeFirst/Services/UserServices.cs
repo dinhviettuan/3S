@@ -76,14 +76,6 @@ namespace LoginCodeFirst.Services
         /// <param name="id">User Id</param>
         /// <returns>ExistedName</returns>
         bool IsExistedName(string email, int id);
-        
-        /// <summary>
-        /// Login
-        /// </summary>
-        /// <param name="email">Email</param>
-        /// <param name="password">Password</param>
-        /// <returns>Login?</returns>
-        bool Login(string email, string password);
     }
 
     public class UserServices : IUserServices
@@ -96,27 +88,6 @@ namespace LoginCodeFirst.Services
             _mapper = mapper;
         }
  
-        /// <inheritdoc />
-        /// <summary>
-        /// Login
-        /// </summary>
-        /// <param name="email">Email</param>
-        /// <param name="password">Password</param>
-        /// <returns>Login?</returns>
-        public bool Login(string email, string password)
-        {
-            if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(password))
-            {
-                return false;
-            }
-            var user = _context.User.FirstOrDefault(x => x.Email == email && SecurePasswordHasher.Verify(password,x.Password));
-            if (user == null)
-            {
-                return false;
-            }
-            return true;
-        }
-        
         /// <inheritdoc />
         /// <summary>
         /// GetEmail
